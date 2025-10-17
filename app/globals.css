@@ -120,3 +120,12 @@
     @apply bg-background text-foreground;
   }
 }
+
+@utility container {
+  margin-inline: auto;
+  padding-inline: 1.25rem;
+}
+
+@utility text-balance {
+  text-wrap: balance;
+}

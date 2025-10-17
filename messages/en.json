@@ -1,0 +1,25 @@
+{
+  "Home": {
+    "deployNow": "Deploy now",
+    "footer": {
+      "examples": "Examples",
+      "goToNext": " Go to nextjs.org →",
+      "learn": "Learn"
+    },
+    "getStarted": "Get started by editing",
+    "readDocs": "Read our docs",
+    "saveChanges": "Save and see your changes instantly."
+  },
+  "ThemeSwitcher": {
+    "dark": "Dark",
+    "label": "Thème",
+    "light": "Light",
+    "srOnly": "Change theme",
+    "system": "System"
+  },
+  "LanguageSwitcher": {
+    "en": "English",
+    "fr": "French",
+    "srOnly": "Change language"
+  }
+}
