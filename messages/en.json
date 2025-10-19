@@ -1,4 +1,303 @@
 {
+  "Form": {
+    "auth": {
+      "backToSignIn": "Back to signIn",
+      "continueWith": "Continue with",
+      "orSignInWith": "Or sign in with",
+      "resendCountdown": "Resend {name} in {countdown} s",
+      "resendLabel": "Resend {name}"
+    },
+    "common": {
+      "code": "code",
+      "link": "link"
+    },
+    "editAccount": "Is this not the right address? <button>Edit</button>",
+    "errors": {
+      "OAuthAccountNotLinked": "This account already exists with another sign-in method. Please sign in using the method you used to register.",
+      "codeExpired": "The code has expired.",
+      "email": {
+        "notFound": "No account is associated with this email address."
+      },
+      "emailFound": "This email address is already in use.",
+      "fields": {
+        "invalid": "All fields are required."
+      },
+      "generic": "An error occurred. Please try again.",
+      "invalidCode": "The code is invalid.",
+      "notAuthorized": "Unauthorized access.",
+      "token": {
+        "expired": "The link has expired.",
+        "invalid": "The link is invalid.",
+        "missing": "The link could not be found."
+      },
+      "totp": {
+        "disabled": "TOTP not configured."
+      },
+      "usernameFound": "This username is already in use."
+    },
+    "forgotPassword": {
+      "button": "Send reset link",
+      "description": "Enter your email address and we’ll send you a link to reset your password.",
+      "errors": {
+        "email": {
+          "invalid": "Please enter a valid email address.",
+          "required": "Email address is required."
+        }
+      },
+      "fields": {
+        "email": "Email address"
+      },
+      "resend": {
+        "states": {
+          "error": "An error occurred while resending the link.",
+          "success": "The link was resent successfully."
+        }
+      },
+      "states": {
+        "error": "An error occurred while resetting the password.",
+        "success": "A password reset email was sent successfully."
+      },
+      "successCard": {
+        "description": "We’ve sent a password reset link to <strong>{email}</strong>"
+      },
+      "title": "Forgot password"
+    },
+    "resetPassword": {
+      "button": "Reset password",
+      "description": {
+        "enterEmail": "Enter your new password below."
+      },
+      "errors": {
+        "password": {
+          "minLength": "Password must be at least {min} characters.",
+          "required": "Password is required."
+        }
+      },
+      "states": {
+        "success": "Password was reset successfully."
+      },
+      "successCard": {
+        "description": "Your password has been reset successfully. You can now sign in with your new password."
+      },
+      "title": "Reset password"
+    },
+    "settings": {
+      "account": {
+        "errors": {
+          "role": {
+            "invalid": "Invalid role"
+          },
+          "username": {
+            "invalidPattern": "Special characters are not allowed (only letters, numbers, - and _ are accepted).",
+            "maxLength": "Username cannot exceed {max} characters.",
+            "minLength": "Username must be at least {min} characters."
+          }
+        }
+      },
+      "authentication": {
+        "errors": {
+          "twoFactor": {
+            "invalid": "Invalid 2FA setting."
+          }
+        }
+      },
+      "deleteAccount": {
+        "errors": {
+          "confirmation": {
+            "invalid": "You must type 'delete my account' to confirm.",
+            "required": "Confirmation is required."
+          },
+          "deleteConfirmation": {
+            "span1": "Please type",
+            "span2": "'delete my account",
+            "span3": "to confirm"
+          },
+          "email": {
+            "incorrect": "Email address is incorrect.",
+            "invalid": "Please enter a valid email address."
+          },
+          "password": {
+            "incorrect": "Password is incorrect.",
+            "required": "Your password is required."
+          }
+        },
+        "states": {
+          "error": "An error occurred while deleting the account.",
+          "success": "Your account was deleted successfully."
+        }
+      },
+      "deleteAvatar": {
+        "states": {
+          "error": "An error occurred while deleting the avatar.",
+          "success": "Your avatar was deleted successfully."
+        }
+      },
+      "password": {
+        "errors": {
+          "current": {
+            "required": "Your current password is required."
+          },
+          "mutual": {
+            "bothRequired": "Both password fields must be filled."
+          },
+          "new": {
+            "minLength": "New password must be at least {min} characters.",
+            "required": "New password is required."
+          }
+        }
+      },
+      "profile": {
+        "errors": {
+          "bio": {
+            "maxLength": "Bio cannot exceed {max} characters."
+          },
+          "location": {
+            "maxLength": "Location cannot exceed {max} characters."
+          },
+          "name": {
+            "maxLength": "Name cannot exceed {max} characters.",
+            "minLength": "Name must be at least {min} characters."
+          }
+        },
+        "states": {
+          "error": "An error occurred while updating the profile."
+        }
+      },
+      "updateAccount": {
+        "states": {
+          "error": "An error occurred while updating the account.",
+          "success": "Your account was updated successfully."
+        }
+      },
+      "updateAuthentication": {
+        "states": {
+          "error": "An error occurred while updating authentication.",
+          "success": "Your authentication was updated successfully."
+        }
+      },
+      "updateAvatar": {
+        "states": {
+          "error": "An error occurred while updating your avatar.",
+          "success": "Your avatar was updated successfully."
+        }
+      },
+      "updatePassword": {
+        "errors": {
+          "password": {
+            "incorrect": "Password is incorrect."
+          }
+        },
+        "states": {
+          "error": "An error occurred while updating the password.",
+          "success": "Your password was updated successfully."
+        }
+      },
+      "updateProfile": {
+        "states": {
+          "error": "An error occurred while updating the profile.",
+          "success": "Your profile was updated successfully."
+        }
+      }
+    },
+    "signIn": {
+      "button": "Sign in",
+      "createAccount": "Don’t have an account? <link>Sign up</link>",
+      "description": "Sign in to your account.",
+      "errors": {
+        "email": {
+          "invalid": "Please enter a valid email address.",
+          "required": "Email address is required."
+        },
+        "invalidCredentials": "Email address or password is incorrect.",
+        "password": {
+          "required": "Password is required."
+        }
+      },
+      "fields": {
+        "email": "Email address",
+        "password": "Password"
+      },
+      "forgotPassword": "Forgot password?",
+      "states": {
+        "error": "An error occurred while signing in."
+      },
+      "title": "Sign in"
+    },
+    "signUp": {
+      "button": "Create account",
+      "description": "Create your account now.",
+      "errors": {
+        "email": {
+          "invalid": "Please enter a valid email address.",
+          "required": "Email address is required."
+        },
+        "name": {
+          "maxLength": "Name cannot exceed {max} characters.",
+          "minLength": "Name must be at least {min} characters.",
+          "required": "Name is required."
+        },
+        "password": {
+          "minLength": "Password must be at least {min} characters.",
+          "required": "Password is required."
+        }
+      },
+      "fields": {
+        "email": "Email address",
+        "name": "Name",
+        "password": "Password"
+      },
+      "haveAccount": "Already have an account? <link>Sign in</link>",
+      "states": {
+        "error": "An error occurred while signing up."
+      },
+      "title": "Sign up"
+    },
+    "totp": {
+      "generate": {
+        "states": {
+          "error": "An error occurred while generating the one-time secret code.",
+          "success": "Your one-time secret code was generated successfully."
+        }
+      },
+      "verify": {
+        "states": {
+          "error": "An error occurred while verifying the one-time secret code.",
+          "success": "Your one-time secret code was verified successfully."
+        }
+      }
+    },
+    "twoFactor": {
+      "button": "Validate code",
+      "description": "We’ve sent a verification code to <strong>{email}</strong>. Please enter it below.",
+      "resend": {
+        "states": {
+          "error": "An error occurred while resending the code.",
+          "success": "The code was resent successfully."
+        }
+      },
+      "title": "Two-factor verification"
+    },
+    "verifyEmail": {
+      "pending": {
+        "description": "We’ve sent a verification link to <strong>{email}</strong>. Click the link to complete the verification process.",
+        "title": "Verify your email address"
+      },
+      "resend": {
+        "states": {
+          "error": "An error occurred while resending the link.",
+          "success": "The link was resent successfully."
+        }
+      },
+      "states": {
+        "error": "An error occurred while verifying the email address.",
+        "success": "A verification email was sent successfully."
+      },
+      "successCard": {
+        "description": "Congratulations! Your email address has been verified. Your account is now active."
+      },
+      "title": "Email verification"
+    }
+  },
   "Home": {
     "deployNow": "Deploy now",
     "footer": {
@@ -10,16 +309,16 @@
     "readDocs": "Read our docs",
     "saveChanges": "Save and see your changes instantly."
   },
+  "LanguageSwitcher": {
+    "en": "English",
+    "fr": "French",
+    "srOnly": "Change language"
+  },
   "ThemeSwitcher": {
     "dark": "Dark",
     "label": "Thème",
     "light": "Light",
     "srOnly": "Change theme",
     "system": "System"
-  },
-  "LanguageSwitcher": {
-    "en": "English",
-    "fr": "French",
-    "srOnly": "Change language"
   }
 }
