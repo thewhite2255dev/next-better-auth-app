@@ -26,6 +26,11 @@ import { useSession } from "@/lib/auth-client";
 import { signUpWithEmail } from "@/actions/auth/sign-up";
 import { VerifyEmailCard } from "./verify-email-card";
 import { Spinner } from "../ui/spinner";
+import {
+  InputGroup,
+  InputGroupAddon,
+  InputGroupInput,
+} from "../ui/input-group";
 
 export function SignUpForm() {
   const t = useTranslations();
@@ -148,29 +153,28 @@ export function SignUpForm() {
                         <FormLabel>
                           {t("Form.signUp.fields.password")}
                         </FormLabel>
-                        <div className="relative">
+                        <InputGroup>
                           <FormControl>
-                            <Input
+                            <InputGroupInput
                               {...field}
                               type={showPassword ? "text" : "password"}
                               disabled={isPending}
                             />
                           </FormControl>
-                          {field.value !== "" && (
-                            <button
-                              type="button"
-                              onClick={() => setShowPassword(!showPassword)}
-                              className="absolute top-1/2 right-2 -translate-y-1/2 text-gray-500 hover:text-gray-700"
-                              tabIndex={-1}
-                            >
-                              {showPassword ? (
-                                <EyeOff className="h-4 w-4" />
-                              ) : (
-                                <Eye className="h-4 w-4" />
-                              )}
-                            </button>
-                          )}
-                        </div>
+                          <InputGroupAddon align="inline-end">
+                            {showPassword ? (
+                              <EyeOff
+                                onClick={() => setShowPassword(!showPassword)}
+                                className="h-4 w-4 cursor-default"
+                              />
+                            ) : (
+                              <Eye
+                                onClick={() => setShowPassword(!showPassword)}
+                                className="h-4 w-4 cursor-default"
+                              />
+                            )}
+                          </InputGroupAddon>
+                        </InputGroup>
                         <FormMessage />
                       </FormItem>
                     )}

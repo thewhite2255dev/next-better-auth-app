@@ -298,6 +298,9 @@
       "title": "Vérification de l'adresse e-mail"
     }
   },
+  "Header": {
+    "signInButton": "Connexion"
+  },
   "Home": {
     "deployNow": "Déployer maintenant",
     "footer": {
@@ -320,5 +323,10 @@
     "light": "Clair",
     "srOnly": "Changer de thème",
     "system": "Système"
+  },
+  "UserButton": {
+    "SignOut": "Déconnexion",
+    "profile": "Profile",
+    "settings": "Paramètres"
   }
 }

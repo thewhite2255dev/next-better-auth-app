@@ -5,6 +5,13 @@ import { cn } from "@/lib/utils";
 import { ThemeSwitcher } from "./theme-switcher";
 import { LanguageSwitcher } from "./language-switcher";
 import { SiteConfig } from "@/lib/site-config";
+import { useSession } from "@/lib/auth-client";
+import { SignInButton } from "../auth/sign-in-button";
+import { Button } from "../ui/button";
+import { LogIn } from "lucide-react";
+import { useTranslations } from "next-intl";
+import { UserButton } from "./user-button";
+import { Skeleton } from "../ui/skeleton";
 
 export type navItemsType = {
   label: string;
@@ -12,15 +19,17 @@ export type navItemsType = {
 }[];
 
 export function Header() {
+  const t = useTranslations("Header");
   const pathname = usePathname();
+  const { data: session, isPending } = useSession();
 
   const navItems: navItemsType = [];
 
   return (
     <header className="bg-background/95 supports-[backdrop-filter]:bg-background/60 sticky top-0 z-50 w-full border-b backdrop-blur">
-      <div className="container flex h-16 items-center justify-between">
+      <div className="container flex h-14 items-center justify-between">
         <Link href="/">
-          <span className="text-foreground text-lg font-semibold">
+          <span className="text-foreground font-semibold">
             {SiteConfig.title}
           </span>
         </Link>
@@ -43,6 +52,18 @@ export function Header() {
           <div className="hidden items-center gap-2 sm:flex">
             <LanguageSwitcher />
             <ThemeSwitcher />
+            {isPending ? (
+              <Skeleton className="flex size-8 shrink-0 overflow-hidden rounded-md" />
+            ) : !session?.user ? (
+              <SignInButton>
+                <Button variant="outline" size="sm">
+                  <LogIn className="mr-2 h-4 w-4" />
+                  {t("signInButton")}
+                </Button>
+              </SignInButton>
+            ) : (
+              <UserButton user={session?.user} />
+            )}
           </div>
         </div>
       </div>

@@ -35,8 +35,9 @@ export function ScrollToTop() {
           : "pointer-events-none cursor-default opacity-0",
       )}
       size="icon"
+      aria-label="Scroll to top"
     >
-      <ArrowUpToLine size={24} aria-hidden="true" />
+      <ArrowUpToLine className="h-6 w-6" aria-hidden="true" />
     </Button>
   );
 }

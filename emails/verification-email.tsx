@@ -18,10 +18,6 @@ export interface VerificationEmailProps {
   email?: string;
 }
 
-// const baseUrl = process.env.VERCEL_URL
-//   ? `https://${process.env.VERCEL_URL}`
-//   : '';
-
 export default function VerificationEmail({
   token,
   email = "utilisateur@example.com",

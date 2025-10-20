@@ -298,6 +298,9 @@
       "title": "Email verification"
     }
   },
+  "Header": {
+    "signInButton": "Sign in"
+  },
   "Home": {
     "deployNow": "Deploy now",
     "footer": {
@@ -320,5 +323,10 @@
     "light": "Light",
     "srOnly": "Change theme",
     "system": "System"
+  },
+  "UserButton": {
+    "SignOut": "Sign out",
+    "profile": "Profile",
+    "settings": "Settings"
   }
 }

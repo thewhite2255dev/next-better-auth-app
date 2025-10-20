@@ -17,8 +17,6 @@ import { EyeOff, Eye } from "lucide-react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { SignInFormSchema } from "@/schemas/auth";
-// import { useSession } from "next-auth/react";
-// import { signIn } from "@/actions/auth/sign-in";
 import { Link, useRouter } from "@/i18n/navigation";
 import { AuthCard } from "./auth-card";
 import { BackButton } from "./back-button";
@@ -28,6 +26,12 @@ import FormError from "../layout/form-error";
 import { VerifyEmailCard } from "./verify-email-card";
 import { signInWithEmail } from "@/actions/auth/sign-in";
 import { Spinner } from "../ui/spinner";
+import {
+  InputGroup,
+  InputGroupAddon,
+  InputGroupInput,
+} from "../ui/input-group";
+import { DEFAULT_SIGN_IN_REDIRECT } from "@/lib/redirect-config";
 
 export function SignInForm() {
   const t = useTranslations();
@@ -71,7 +75,7 @@ export function SignInForm() {
       }
 
       refetch();
-      router.push("/dashboard");
+      router.push(DEFAULT_SIGN_IN_REDIRECT);
     });
   }
 
@@ -199,29 +203,28 @@ export function SignInForm() {
                           {t("Form.signIn.forgotPassword")}
                         </Link>
                       </div>
-                      <div className="relative">
+                      <InputGroup>
                         <FormControl>
-                          <Input
+                          <InputGroupInput
                             {...field}
                             type={showPassword ? "text" : "password"}
                             disabled={isPending}
                           />
                         </FormControl>
-                        {field.value !== "" && (
-                          <button
-                            type="button"
-                            onClick={() => setShowPassword(!showPassword)}
-                            className="absolute top-1/2 right-2 -translate-y-1/2 text-gray-500 hover:text-gray-700"
-                            tabIndex={-1}
-                          >
-                            {showPassword ? (
-                              <EyeOff className="h-4 w-4" />
-                            ) : (
-                              <Eye className="h-4 w-4" />
-                            )}
-                          </button>
-                        )}
-                      </div>
+                        <InputGroupAddon align="inline-end">
+                          {showPassword ? (
+                            <EyeOff
+                              onClick={() => setShowPassword(!showPassword)}
+                              className="h-4 w-4 cursor-default"
+                            />
+                          ) : (
+                            <Eye
+                              onClick={() => setShowPassword(!showPassword)}
+                              className="h-4 w-4 cursor-default"
+                            />
+                          )}
+                        </InputGroupAddon>
+                      </InputGroup>
                       <FormMessage />
                     </FormItem>
                   )}

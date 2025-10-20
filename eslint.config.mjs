@@ -21,7 +21,7 @@ const eslintConfig = [
     ],
     rules: {
       "@typescript-eslint/consistent-type-imports": [
-        "error",
+        "warn",
         {
           prefer: "type-imports",
           disallowTypeAnnotations: false,

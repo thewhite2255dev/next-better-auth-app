@@ -5,7 +5,7 @@ import { auth } from "@/lib/auth";
 import createIntlMiddleware from "next-intl/middleware";
 import { routing } from "./i18n/routing";
 import { generatedRoutes } from "./lib/generated-routes";
-import { DEFAULT_LOGIN_REDIRECT } from "./lib/redirect-config";
+import { DEFAULT_SIGN_IN_REDIRECT } from "./lib/redirect-config";
 
 const intlMiddleware = createIntlMiddleware(routing);
 
@@ -56,7 +56,7 @@ export async function middleware(req: NextRequest) {
   }
 
   if (session && isAuthRoute) {
-    return NextResponse.redirect(new URL(DEFAULT_LOGIN_REDIRECT, nextUrl));
+    return NextResponse.redirect(new URL(DEFAULT_SIGN_IN_REDIRECT, nextUrl));
   }
 
   return intlMiddleware(req);

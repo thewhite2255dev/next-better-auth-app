@@ -5,7 +5,7 @@ import { useState } from "react";
 import { useTranslations } from "next-intl";
 import { signIn } from "@/lib/auth-client";
 import { useSearchParams } from "next/navigation";
-import { DEFAULT_LOGIN_REDIRECT } from "@/lib/redirect-config";
+import { DEFAULT_SIGN_IN_REDIRECT } from "@/lib/redirect-config";
 import { Spinner } from "../ui/spinner";
 
 export const socialItems = [
@@ -54,7 +54,7 @@ export function SocialButtons({
     signIn.social({
       provider,
       disableRedirect: false,
-      callbackURL: callbackUrl || DEFAULT_LOGIN_REDIRECT,
+      callbackURL: callbackUrl || DEFAULT_SIGN_IN_REDIRECT,
     });
   };
 

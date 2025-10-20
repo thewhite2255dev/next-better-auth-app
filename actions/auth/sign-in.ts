@@ -2,6 +2,7 @@
 
 import { getUserByEmail } from "@/data/auth/user";
 import { auth } from "@/lib/auth";
+import { verifyPassword } from "@/lib/hash";
 import { SignInFormSchema } from "@/schemas/auth";
 import type { SignInFormValues } from "@/types/auth";
 import { getTranslations } from "next-intl/server";
@@ -23,6 +24,15 @@ export async function signInWithEmail(values: SignInFormValues) {
 
     if (!existingUser || !existingUser.email || !existingUser.password) {
       return { error: t("Form.errors.email.notFound") };
+    }
+
+    const passwordMatches = await verifyPassword(
+      existingUser.password,
+      password,
+    );
+
+    if (!passwordMatches) {
+      return { error: t("Form.signIn.errors.invalidCredentials") };
     }
 
     if (!existingUser.emailVerified) {

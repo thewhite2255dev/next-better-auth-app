@@ -2,7 +2,8 @@
 
 import { useSession } from "@/lib/auth-client";
 import { Skeleton } from "@/components/ui/skeleton";
-import { LogoutButton } from "@/components/auth/button/logout-button";
+import { LogoutButton } from "@/components/auth/logout-button";
+import { UserCircle } from "lucide-react";
 
 export default function DashboardPage() {
   const { data: session, isPending } = useSession();
@@ -27,6 +28,7 @@ export default function DashboardPage() {
   return (
     <main className="text-foreground mx-auto flex h-screen max-w-md flex-col items-center justify-center space-y-4 p-6">
       <h1 className="text-2xl font-bold">Dashboard</h1>
+      <UserCircle className="size-6" />
       <p>Welcome, {user.name || "User"}!</p>
       <p>Email: {user.email}</p>
       <LogoutButton>

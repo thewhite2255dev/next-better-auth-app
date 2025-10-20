@@ -7,7 +7,8 @@
   "i18n-ally.displayLanguage": "fr",
   "commentTranslate.targetLanguage": "fr",
   "commentTranslate.source": "Google",
-  "commentTranslate.hover.enabled": true
+  "commentTranslate.hover.enabled": true,
+  "cSpell.enabled": true
   // "i18n-ally.keysInUse": [
   //   "Form.signIn.errors.email.required",
   //   "Form.signIn.errors.email.invalid",
