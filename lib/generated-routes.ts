@@ -19,7 +19,7 @@ export const generatedRoutes = {
   ":locale/auth/sign-up"
 ],
   admin: [],
-  generatedAt: '2025-10-20T02:22:04.808Z'
+  generatedAt: '2025-10-20T14:45:07.264Z'
 } as const;
 
 export type GeneratedRoutes = typeof generatedRoutes;

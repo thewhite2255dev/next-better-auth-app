@@ -1,10 +1,10 @@
 "use server";
 
-import PasswordResetEmail from "@/emails/password-reset-email";
 import { sendEmail } from "./nodemailer";
 import { SiteConfig } from "./site-config";
 import VerificationEmail from "@/emails/verification-email";
 import TwoFactorEmail from "@/emails/two-factor-email";
+import ResetPasswordEmail from "@/emails/reset-password-email";
 
 const SMTP_USER = process.env.SMTP_USER as string;
 
@@ -17,12 +17,12 @@ export const sendTwoFactorTokenEmail = async (email: string, token: string) => {
   });
 };
 
-export const sendPasswordResetEmail = async (email: string, token: string) => {
+export const sendResetPasswordEmail = async (email: string, token: string) => {
   await sendEmail({
     from: `"${SiteConfig.title}" <${SMTP_USER}>`,
     to: email,
     subject: "Réinitialisez votre mot de passe",
-    react: PasswordResetEmail({ token, email }),
+    react: ResetPasswordEmail({ token, email }),
   });
 };
 

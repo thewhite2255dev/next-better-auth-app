@@ -21,7 +21,7 @@ import { Link, useRouter } from "@/i18n/navigation";
 import { AuthCard } from "./auth-card";
 import { BackButton } from "./back-button";
 import { SocialButtons, SocialDivider } from "./social-buttons";
-import { sendVerificationEmail, useSession } from "@/lib/auth-client";
+import { useSession } from "@/lib/auth-client";
 import FormError from "../layout/form-error";
 import { VerifyEmailCard } from "./verify-email-card";
 import { signInWithEmail } from "@/actions/auth/sign-in";
@@ -63,14 +63,11 @@ export function SignInForm() {
 
       if (!success) {
         if (verifyEmail) {
-          await sendVerificationEmail({
-            email: form.getValues("email"),
-          });
           setStep("VerifyEmail");
           return;
         }
 
-        setError(error || t("Form.errors.generic"));
+        setError(error as string);
         return;
       }
 
@@ -156,6 +153,8 @@ export function SignInForm() {
       >
         {step === "VerifyEmail" && (
           <VerifyEmailCard
+            error={error}
+            setError={() => setError(error)}
             email={form.getValues("email")}
             description={
               t.rich("Form.verifyEmail.pending.description", {
@@ -211,19 +210,21 @@ export function SignInForm() {
                             disabled={isPending}
                           />
                         </FormControl>
-                        <InputGroupAddon align="inline-end">
-                          {showPassword ? (
-                            <EyeOff
-                              onClick={() => setShowPassword(!showPassword)}
-                              className="h-4 w-4 cursor-default"
-                            />
-                          ) : (
-                            <Eye
-                              onClick={() => setShowPassword(!showPassword)}
-                              className="h-4 w-4 cursor-default"
-                            />
-                          )}
-                        </InputGroupAddon>
+                        {field.value !== "" && (
+                          <InputGroupAddon align="inline-end">
+                            {showPassword ? (
+                              <EyeOff
+                                onClick={() => setShowPassword(!showPassword)}
+                                className="h-4 w-4 cursor-default"
+                              />
+                            ) : (
+                              <Eye
+                                onClick={() => setShowPassword(!showPassword)}
+                                className="h-4 w-4 cursor-default"
+                              />
+                            )}
+                          </InputGroupAddon>
+                        )}
                       </InputGroup>
                       <FormMessage />
                     </FormItem>

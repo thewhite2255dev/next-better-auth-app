@@ -14,7 +14,7 @@ import {
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 import { generateAvatarFallback } from "@/lib/user-utils";
 import { useTranslations } from "next-intl";
-import { LogoutButton } from "../auth/logout-button";
+import { SignOut } from "../auth/sign-out-button";
 import { Link } from "@/i18n/navigation";
 
 interface UserButtonProps {
@@ -72,10 +72,10 @@ export function UserButton({ user }: UserButtonProps) {
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
         <DropdownMenuItem asChild>
-          <LogoutButton>
+          <SignOut className="hover:bg-accent">
             <LogOut />
             {t("SignOut")}
-          </LogoutButton>
+          </SignOut>
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>

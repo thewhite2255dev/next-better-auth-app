@@ -52,18 +52,20 @@ export function Header() {
           <div className="hidden items-center gap-2 sm:flex">
             <LanguageSwitcher />
             <ThemeSwitcher />
-            {isPending ? (
-              <Skeleton className="flex size-8 shrink-0 overflow-hidden rounded-md" />
-            ) : !session?.user ? (
+            {!session?.user && (
               <SignInButton>
                 <Button variant="outline" size="sm">
                   <LogIn className="mr-2 h-4 w-4" />
                   {t("signInButton")}
                 </Button>
               </SignInButton>
-            ) : (
-              <UserButton user={session?.user} />
             )}
+            {session?.user &&
+              (isPending ? (
+                <Skeleton className="flex size-8 shrink-0 overflow-hidden rounded-md" />
+              ) : (
+                <UserButton user={session?.user} />
+              ))}
           </div>
         </div>
       </div>

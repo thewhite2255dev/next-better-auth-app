@@ -1,4 +1,10 @@
 {
+  "DashboardPage": {
+    "dashboard": "Dashboard",
+    "email": "E-mail address",
+    "signOut": "Sign Out",
+    "welcome": "Welcome"
+  },
   "Form": {
     "auth": {
       "backToSignIn": "Back to signIn",

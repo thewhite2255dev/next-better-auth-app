@@ -1,5 +1,7 @@
 "use client";
 
+import { ForgotPasswordForm } from "@/components/auth/forgot-password-form";
+
 export default function ForgotPasswordPage() {
-  return <div>Forgot Form</div>;
+  return <ForgotPasswordForm />;
 }

@@ -1,4 +1,10 @@
 {
+  "DashboardPage": {
+    "dashboard": "Tableau de bord",
+    "email": "Adresse e-mail",
+    "signOut": "Déconnexion",
+    "welcome": "Bienvenue"
+  },
   "Form": {
     "auth": {
       "backToSignIn": "Retour à la connexion",
@@ -36,7 +42,7 @@
       "usernameFound": "Le nom d'utilisateur est déjà utilisée."
     },
     "forgotPassword": {
-      "button": "Envoyer le lien de réinitialisation.",
+      "button": "Envoyer le lien de réinitialisation",
       "description": "Entrez votre adresse e-mail et nous vous enverrons un lien pour réinitialiser votre mot de passe.",
       "errors": {
         "email": {

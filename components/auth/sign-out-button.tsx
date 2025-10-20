@@ -4,16 +4,17 @@ import { useRouter } from "@/i18n/navigation";
 import { signOut } from "@/lib/auth-client";
 import { cn } from "@/lib/utils";
 
-interface LogoutButtonProps extends React.HTMLAttributes<HTMLElement> {
+interface SignOutProps {
   children: React.ReactNode;
   redirectTo?: string;
+  className?: string;
 }
 
-export function LogoutButton({
+export function SignOut({
   children,
   className,
   redirectTo = "/",
-}: LogoutButtonProps) {
+}: SignOutProps) {
   const router = useRouter();
 
   const handleClick = () => {

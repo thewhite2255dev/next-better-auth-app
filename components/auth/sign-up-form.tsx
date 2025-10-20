@@ -100,6 +100,8 @@ export function SignUpForm() {
       >
         {step === "VerifyEmail" && (
           <VerifyEmailCard
+            error={error}
+            setError={setError}
             email={form.getValues("email")}
             description={
               t.rich("Form.verifyEmail.pending.description", {
@@ -161,19 +163,21 @@ export function SignUpForm() {
                               disabled={isPending}
                             />
                           </FormControl>
-                          <InputGroupAddon align="inline-end">
-                            {showPassword ? (
-                              <EyeOff
-                                onClick={() => setShowPassword(!showPassword)}
-                                className="h-4 w-4 cursor-default"
-                              />
-                            ) : (
-                              <Eye
-                                onClick={() => setShowPassword(!showPassword)}
-                                className="h-4 w-4 cursor-default"
-                              />
-                            )}
-                          </InputGroupAddon>
+                          {field.value !== "" && (
+                            <InputGroupAddon align="inline-end">
+                              {showPassword ? (
+                                <EyeOff
+                                  onClick={() => setShowPassword(!showPassword)}
+                                  className="h-4 w-4 cursor-default"
+                                />
+                              ) : (
+                                <Eye
+                                  onClick={() => setShowPassword(!showPassword)}
+                                  className="h-4 w-4 cursor-default"
+                                />
+                              )}
+                            </InputGroupAddon>
+                          )}
                         </InputGroup>
                         <FormMessage />
                       </FormItem>

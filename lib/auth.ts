@@ -1,7 +1,10 @@
 import { betterAuth } from "better-auth";
 import { prismaAdapter } from "better-auth/adapters/prisma";
 import { prisma } from "./prisma";
-import { sendVerificationEmail as sendVerificationEmailUtil } from "./mail";
+import {
+  sendResetPasswordEmail,
+  sendVerificationEmail as sendVerificationEmailUtil,
+} from "./mail";
 import { hashPassword, verifyPassword } from "./hash";
 import { nextCookies } from "better-auth/next-js";
 
@@ -17,6 +20,11 @@ export const auth = betterAuth({
       hash: async (password) => await hashPassword(password),
       verify: async ({ hash, password }) =>
         await verifyPassword(hash, password),
+    },
+    sendResetPassword: async ({ user, url, token }) => {
+      console.log("sendResetPasswordEmail: ", url);
+
+      await sendResetPasswordEmail(user.email, token);
     },
   },
   emailVerification: {

@@ -36,6 +36,14 @@ export async function signInWithEmail(values: SignInFormValues) {
     }
 
     if (!existingUser.emailVerified) {
+      const sendedEmail = await auth.api.sendVerificationEmail({
+        body: { email },
+      });
+
+      if (!sendedEmail) {
+        return { error: t("Form.errors.generic") };
+      }
+
       return { verifyEmail: true };
     }
 

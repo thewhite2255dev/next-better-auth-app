@@ -4,7 +4,7 @@ import { auth } from "@/lib/auth";
 import type { ActionResult } from "@/types/action";
 import { getTranslations } from "next-intl/server";
 
-export const verifyEmail = async (token: string): Promise<ActionResult> => {
+export async function verifyEmail(token: string): Promise<ActionResult> {
   const t = await getTranslations();
 
   try {
@@ -20,11 +20,11 @@ export const verifyEmail = async (token: string): Promise<ActionResult> => {
       return { error: t("Form.errors.token.invalid") };
     }
 
-    return { success: true, message: t("Form.verifyEmail.states.success") };
+    return { success: true };
   } catch (error) {
     console.error(t("Form.verifyEmail.states.error"), error);
     return {
       error: t("Form.errors.generic"),
     };
   }
-};
+}

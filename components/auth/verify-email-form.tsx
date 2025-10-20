@@ -5,7 +5,7 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { verifyEmail } from "@/actions/auth/verify-email";
 import { MailCheck, XCircle } from "lucide-react";
-import { useSearchParams } from "next/navigation";
+import { notFound, useSearchParams } from "next/navigation";
 import { AuthCard } from "./auth-card";
 import { BackButton } from "./back-button";
 import { Spinner } from "../ui/spinner";
@@ -39,6 +39,10 @@ export function VerifyEmailForm() {
 
     handleSubmit();
   }, [token]);
+
+  if (!token) {
+    notFound();
+  }
 
   return (
     <AuthCard

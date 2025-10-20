@@ -13,17 +13,17 @@ import {
 import { Tailwind } from "@react-email/components";
 import { SiteConfig } from "@/lib/site-config";
 
-export interface PasswordResetEmailProps {
+export interface ResetPasswordEmailProps {
   token: string;
   email?: string;
 }
 
-export default function PasswordResetEmail({
+export default function ResetPasswordEmail({
   token,
   email = "utilisateur@example.com",
-}: PasswordResetEmailProps) {
+}: ResetPasswordEmailProps) {
   const year = new Date().getFullYear();
-  const baseUrl = process.env.AUTH_URL;
+  const baseUrl = process.env.BETTER_AUTH_URL;
   const resetLink = `${baseUrl}/reset-password?token=${token}`;
 
   return (
