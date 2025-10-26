@@ -1,14 +1,14 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { useEffect } from "react";
+import { useEffect, useTransition } from "react";
 import { useState } from "react";
-import { verifyEmail } from "@/actions/auth/verify-email";
 import { MailCheck, XCircle } from "lucide-react";
 import { notFound, useSearchParams } from "next/navigation";
 import { AuthCard } from "./auth-card";
 import { BackButton } from "./back-button";
 import { Spinner } from "../ui/spinner";
+import { authClient } from "@/lib/auth-client";
 
 export function VerifyEmailForm() {
   const t = useTranslations();
@@ -16,29 +16,36 @@ export function VerifyEmailForm() {
   const searchParams = useSearchParams();
   const token = searchParams.get("token");
 
-  const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [isPending, startTransition] = useTransition();
   const [error, setError] = useState<string>("");
-  const [success, setSuccess] = useState<boolean>(false);
+  const [success, setSuccess] = useState<string>("");
 
   useEffect(() => {
-    const handleSubmit = async () => {
+    function handleSubmit() {
       setError("");
 
-      const result = await verifyEmail(token as string);
+      startTransition(async () => {
+        if (token == null) return;
 
-      if (result?.success) {
-        setSuccess(result?.success);
-      }
-
-      if (result?.error) {
-        setError(result?.error);
-      }
-
-      setIsLoading(false);
-    };
-
+        await authClient.verifyEmail(
+          {
+            query: {
+              token,
+            },
+          },
+          {
+            onError: () => {
+              setError(t("Form.errors.token.invalid"));
+            },
+            onSuccess: () => {
+              setSuccess(t("Form.verifyEmail.successCard.description"));
+            },
+          },
+        );
+      });
+    }
     handleSubmit();
-  }, [token]);
+  }, [token, t]);
 
   if (!token) {
     notFound();
@@ -51,7 +58,7 @@ export function VerifyEmailForm() {
         <BackButton href="/auth/sign-in" label={t("Form.auth.backToSignIn")} />
       }
     >
-      {isLoading && (
+      {isPending && (
         <div className="flex justify-center">
           <Spinner className="text-muted-foreground h-6 w-6" />
         </div>
@@ -63,9 +70,7 @@ export function VerifyEmailForm() {
               <MailCheck className="h-6 w-6 text-emerald-600" />
             </div>
           </div>
-          <p className="text-muted-foreground">
-            {t("Form.verifyEmail.successCard.description")}
-          </p>
+          <p className="text-muted-foreground">{success}</p>
         </div>
       )}
       {error && (

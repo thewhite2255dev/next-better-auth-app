@@ -13,7 +13,6 @@ import { Input } from "@/components/ui/input";
 import { useTranslations } from "next-intl";
 import { useState, useTransition } from "react";
 import type { SignInFormValues } from "@/types/auth";
-import { EyeOff, Eye } from "lucide-react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { SignInFormSchema } from "@/schemas/auth";
@@ -21,30 +20,38 @@ import { Link, useRouter } from "@/i18n/navigation";
 import { AuthCard } from "./auth-card";
 import { BackButton } from "./back-button";
 import { SocialButtons, SocialDivider } from "./social-buttons";
-import { useSession } from "@/lib/auth-client";
+import { authClient } from "@/lib/auth-client";
 import FormError from "../layout/form-error";
 import { VerifyEmailCard } from "./verify-email-card";
-import { signInWithEmail } from "@/actions/auth/sign-in";
 import { Spinner } from "../ui/spinner";
 import {
-  InputGroup,
-  InputGroupAddon,
-  InputGroupInput,
-} from "../ui/input-group";
+  InputOTP,
+  InputOTPSeparator,
+  InputOTPSlot,
+  InputOTPGroup,
+} from "@/components/ui/input-otp";
 import { DEFAULT_SIGN_IN_REDIRECT } from "@/lib/redirect-config";
+import { ResendButton } from "./resend-button";
+import FormSuccess from "../layout/form-success";
+import { AUTH_CONSTANTS } from "@/lib/auth-constants";
+import { PasswordInput } from "../layout/password-input";
+import { useAuthErrorMessages } from "@/hooks/use-better-auth-error";
+import { checkTwoFactor } from "@/actions/auth/check-two-factor";
 
 export function SignInForm() {
   const t = useTranslations();
   const router = useRouter();
-
-  const { refetch } = useSession();
+  const authError = useAuthErrorMessages();
 
   const [isPending, startTransition] = useTransition();
+  const [success, setSuccess] = useState<string>("");
   const [error, setError] = useState<string>("");
-  const [showPassword, setShowPassword] = useState<boolean>(false);
   const [step, setStep] = useState<
     "Credential" | "TwoFactor" | "Totp" | "VerifyEmail"
   >("Credential");
+  const [countdown, setCountdown] = useState<number>(
+    AUTH_CONSTANTS.TWO_FA_RESEND_DELAY,
+  );
 
   const form = useForm<SignInFormValues>({
     resolver: zodResolver(SignInFormSchema(t)),
@@ -55,24 +62,123 @@ export function SignInForm() {
     },
   });
 
+  const handleResendCode = () => {
+    setError("");
+    setSuccess("");
+    setCountdown(AUTH_CONSTANTS.VERIFY_EMAIL_RESEND_DELAY);
+    startTransition(async () => {
+      await authClient.twoFactor.sendOtp({
+        fetchOptions: {
+          onError: () => {
+            setError(t("Form.errors.generic"));
+          },
+          onSuccess: () => {
+            setSuccess(t("Form.twoFactor.resend.states.success"));
+          },
+        },
+      });
+    });
+  };
+
+  const handleTwoFactorAuth = async () => {
+    setError("");
+    setSuccess("");
+    setCountdown(AUTH_CONSTANTS.TWO_FA_RESEND_DELAY);
+
+    startTransition(async () => {
+      await authClient.twoFactor.sendOtp({
+        fetchOptions: {
+          onError: () => {
+            setError(t("Form.errors.generic"));
+          },
+          onSuccess: () => {
+            setStep("TwoFactor");
+            setSuccess(t("Form.twoFactor.resend.states.success"));
+          },
+        },
+      });
+    });
+  };
+
   async function handleSubmit(values: SignInFormValues) {
+    setSuccess("");
     setError("");
 
     startTransition(async () => {
-      const { success, error, verifyEmail } = await signInWithEmail(values);
+      if (step === "Credential") {
+        await authClient.signIn.email(
+          {
+            email: values.email,
+            password: values.password,
+          },
+          {
+            onError: async (ctx) => {
+              if (ctx.error.code === "EMAIL_NOT_VERIFIED") {
+                setStep("VerifyEmail");
+                return;
+              }
 
-      if (!success) {
-        if (verifyEmail) {
-          setStep("VerifyEmail");
-          return;
-        }
+              setError(
+                authError[ctx.error.code as string] || t("Form.errors.generic"),
+              );
+            },
+            onSuccess: async (ctx) => {
+              if (ctx.data.twoFactorRedirect) {
+                const { totp } = await checkTwoFactor(values.email);
 
-        setError(error as string);
-        return;
+                if (totp) {
+                  setStep("Totp");
+                } else {
+                  await authClient.twoFactor.sendOtp({
+                    fetchOptions: {
+                      onError: () => {
+                        setError(t("Form.errors.generic"));
+                      },
+                      onSuccess: () => {
+                        setStep("TwoFactor");
+                      },
+                    },
+                  });
+                }
+              }
+
+              router.push(DEFAULT_SIGN_IN_REDIRECT);
+            },
+          },
+        );
       }
 
-      refetch();
-      router.push(DEFAULT_SIGN_IN_REDIRECT);
+      if (step === "TwoFactor") {
+        await authClient.twoFactor.verifyOtp(
+          {
+            code: values.code as string,
+          },
+          {
+            onError: () => {
+              setError(t("Form.errors.invalidCode"));
+            },
+            onSuccess: () => {
+              router.push(DEFAULT_SIGN_IN_REDIRECT);
+            },
+          },
+        );
+      }
+
+      if (step === "Totp") {
+        await authClient.twoFactor.verifyTotp(
+          {
+            code: values.code as string,
+          },
+          {
+            onError: () => {
+              setError(t("Form.errors.invalidCode"));
+            },
+            onSuccess: () => {
+              router.push(DEFAULT_SIGN_IN_REDIRECT);
+            },
+          },
+        );
+      }
     });
   }
 
@@ -153,8 +259,6 @@ export function SignInForm() {
       >
         {step === "VerifyEmail" && (
           <VerifyEmailCard
-            error={error}
-            setError={() => setError(error)}
             email={form.getValues("email")}
             description={
               t.rich("Form.verifyEmail.pending.description", {
@@ -202,30 +306,7 @@ export function SignInForm() {
                           {t("Form.signIn.forgotPassword")}
                         </Link>
                       </div>
-                      <InputGroup>
-                        <FormControl>
-                          <InputGroupInput
-                            {...field}
-                            type={showPassword ? "text" : "password"}
-                            disabled={isPending}
-                          />
-                        </FormControl>
-                        {field.value !== "" && (
-                          <InputGroupAddon align="inline-end">
-                            {showPassword ? (
-                              <EyeOff
-                                onClick={() => setShowPassword(!showPassword)}
-                                className="h-4 w-4 cursor-default"
-                              />
-                            ) : (
-                              <Eye
-                                onClick={() => setShowPassword(!showPassword)}
-                                className="h-4 w-4 cursor-default"
-                              />
-                            )}
-                          </InputGroupAddon>
-                        )}
-                      </InputGroup>
+                      <PasswordInput field={field} loading={isPending} />
                       <FormMessage />
                     </FormItem>
                   )}
@@ -239,6 +320,76 @@ export function SignInForm() {
 
             <SocialDivider text={t("Form.auth.orSignInWith")} />
             <SocialButtons providers={["google", "github"]} />
+          </div>
+        )}
+        {(step === "TwoFactor" || step === "Totp") && (
+          <div className="space-y-2">
+            <Form {...form}>
+              <form
+                onSubmit={form.handleSubmit(handleSubmit)}
+                className="space-y-4"
+              >
+                <FormField
+                  control={form.control}
+                  name="code"
+                  render={({ field }) => (
+                    <FormItem className="w-full">
+                      <div className="flex items-center justify-center">
+                        <FormControl>
+                          <InputOTP
+                            {...field}
+                            disabled={isPending}
+                            required
+                            inputMode="numeric"
+                            maxLength={6}
+                            onInput={(e) => {
+                              const input = e.currentTarget;
+                              input.value = input.value.replace(/\D/g, "");
+                            }}
+                          >
+                            <InputOTPGroup>
+                              <InputOTPSlot index={0} />
+                              <InputOTPSlot index={1} />
+                              <InputOTPSlot index={2} />
+                            </InputOTPGroup>
+                            <InputOTPSeparator />
+                            <InputOTPGroup>
+                              <InputOTPSlot index={3} />
+                              <InputOTPSlot index={4} />
+                              <InputOTPSlot index={5} />
+                            </InputOTPGroup>
+                          </InputOTP>
+                        </FormControl>
+                      </div>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormError message={error} />
+                <FormSuccess message={success} />
+                <Button type="submit" className="w-full" disabled={isPending}>
+                  {isPending ? <Spinner /> : t("Form.twoFactor.button")}
+                </Button>
+              </form>
+            </Form>
+            {step === "TwoFactor" ? (
+              <ResendButton
+                variant="outline"
+                label={t("Form.common.code")}
+                handler={handleResendCode}
+                initialCountdown={countdown}
+                isLoading={isPending}
+              />
+            ) : (
+              <Button
+                onClick={handleTwoFactorAuth}
+                variant="outline"
+                className="w-full"
+                disabled={isPending}
+              >
+                {isPending ? <Spinner /> : "Recevoir le code via email"}
+              </Button>
+            )}
           </div>
         )}
       </AuthCard>

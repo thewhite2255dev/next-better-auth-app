@@ -2,7 +2,6 @@
 
 import {
   Form,
-  FormControl,
   FormField,
   FormItem,
   FormLabel,
@@ -15,18 +14,14 @@ import type { ResetPasswordFormValues } from "@/types/auth";
 import { ResetPasswordFormSchema } from "@/schemas/auth";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import { EyeOff, Eye, Check } from "lucide-react";
+import { Check } from "lucide-react";
 import FormError from "../layout/form-error";
 import { BackButton } from "./back-button";
-import { resetPassword } from "@/actions/auth/reset-password";
 import { notFound, useSearchParams } from "next/navigation";
 import { Button } from "../ui/button";
-import {
-  InputGroup,
-  InputGroupAddon,
-  InputGroupInput,
-} from "../ui/input-group";
 import { Spinner } from "../ui/spinner";
+import { PasswordInput } from "../layout/password-input";
+import { authClient } from "@/lib/auth-client";
 
 export function ResetPasswordForm() {
   const t = useTranslations();
@@ -36,7 +31,6 @@ export function ResetPasswordForm() {
 
   const [isPending, startTransition] = useTransition();
   const [error, setError] = useState<string>("");
-  const [showPassword, setShowPassword] = useState<boolean>(false);
   const [isSubmitted, setIsSubmitted] = useState<boolean>(false);
 
   const form = useForm<ResetPasswordFormValues>({
@@ -50,15 +44,23 @@ export function ResetPasswordForm() {
     setError("");
 
     startTransition(async () => {
-      const { success, error } = await resetPassword(values, token as string);
+      if (token == null) return;
 
-      if (!success) {
-        setError(error || t("Form.errors.generic"));
-        return;
-      }
-
-      setIsSubmitted(true);
-      form.reset();
+      await authClient.resetPassword(
+        {
+          newPassword: values.password,
+          token,
+        },
+        {
+          onError: () => {
+            setError(t("Form.errors.token.invalid"));
+          },
+          onSuccess: () => {
+            setIsSubmitted(true);
+            form.reset();
+          },
+        },
+      );
     });
   }
 
@@ -88,30 +90,7 @@ export function ResetPasswordForm() {
               render={({ field }) => (
                 <FormItem className="w-full">
                   <FormLabel>{t("Form.signIn.fields.password")}</FormLabel>
-                  <InputGroup>
-                    <FormControl>
-                      <InputGroupInput
-                        {...field}
-                        type={showPassword ? "text" : "password"}
-                        disabled={isPending}
-                      />
-                    </FormControl>
-                    {field.value !== "" && (
-                      <InputGroupAddon align="inline-end">
-                        {showPassword ? (
-                          <EyeOff
-                            onClick={() => setShowPassword(!showPassword)}
-                            className="h-4 w-4 cursor-default"
-                          />
-                        ) : (
-                          <Eye
-                            onClick={() => setShowPassword(!showPassword)}
-                            className="h-4 w-4 cursor-default"
-                          />
-                        )}
-                      </InputGroupAddon>
-                    )}
-                  </InputGroup>
+                  <PasswordInput field={field} loading={isPending} />
                   <FormMessage />
                 </FormItem>
               )}

@@ -12,37 +12,35 @@ import { sendVerificationEmail } from "@/lib/auth-client";
 interface VerifyEmailCardProps {
   description: string;
   email: string;
-  error: string;
-  setError: (value: string) => void;
 }
 
-export function VerifyEmailCard({
-  email,
-  description,
-  error,
-  setError,
-}: VerifyEmailCardProps) {
+export function VerifyEmailCard({ email, description }: VerifyEmailCardProps) {
   const t = useTranslations();
 
   const [countdown, setCountdown] = useState<number>(
     AUTH_CONSTANTS.VERIFY_EMAIL_RESEND_DELAY,
   );
   const [isPending, startTransition] = useTransition();
-  // const [error, setError] = useState<string>("");
+  const [error, setError] = useState<string>("");
   const [success, setSuccess] = useState<string>("");
 
   const handleResendLink = () => {
     setError("");
     setSuccess("");
-    setCountdown(AUTH_CONSTANTS.VERIFY_EMAIL_RESEND_DELAY);
-    startTransition(async () => {
-      const { error } = await sendVerificationEmail({ email });
 
-      if (error) {
-        setError(t("Form.errors.generic"));
-      } else {
-        setSuccess(t("Form.verifyEmail.resend.states.success"));
-      }
+    startTransition(async () => {
+      await sendVerificationEmail(
+        { email },
+        {
+          onError: () => {
+            setError(t("Form.errors.generic"));
+          },
+          onSuccess: () => {
+            setSuccess(t("Form.verifyEmail.resend.states.success"));
+            setCountdown(AUTH_CONSTANTS.VERIFY_EMAIL_RESEND_DELAY);
+          },
+        },
+      );
     });
   };
 
@@ -56,15 +54,13 @@ export function VerifyEmailCard({
       <p className="text-muted-foreground">{description}</p>
       <FormError message={error} />
       <FormSuccess message={success} />
-      <div className="py-2">
-        <ResendButton
-          variant="outline"
-          label={t("Form.common.link")}
-          handler={handleResendLink}
-          initialCountdown={countdown}
-          isLoading={isPending}
-        />
-      </div>
+      <ResendButton
+        variant="outline"
+        label={t("Form.common.link")}
+        handler={handleResendLink}
+        initialCountdown={countdown}
+        isLoading={isPending}
+      />
     </div>
   );
 }

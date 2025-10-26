@@ -18,23 +18,21 @@ import { SignOut } from "../auth/sign-out-button";
 import { Link } from "@/i18n/navigation";
 
 interface UserButtonProps {
-  user: Partial<{
-    name: string;
-    email: string;
-    image: string | null;
-  }>;
+  name: string;
+  email: string;
+  image?: string | null | undefined;
 }
 
-export function UserButton({ user }: UserButtonProps) {
+export function UserButton({ name, email, image }: UserButtonProps) {
   const t = useTranslations("UserButton");
 
-  const userFallback = generateAvatarFallback(user.name as string);
+  const userFallback = generateAvatarFallback(name as string);
 
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Avatar className="rounded-md select-none">
-          <AvatarImage src={user.image as string} />
+          <AvatarImage src={image as string} />
           <AvatarFallback className="rounded-md">{userFallback}</AvatarFallback>
         </Avatar>
       </DropdownMenuTrigger>
@@ -42,15 +40,15 @@ export function UserButton({ user }: UserButtonProps) {
         <DropdownMenuLabel className="p-0 font-normal">
           <div className="flex items-center gap-2 px-1 py-1.5 text-left text-sm">
             <Avatar className="rounded-md">
-              <AvatarImage src={user.image as string} alt={user.name} />
+              <AvatarImage src={image as string} alt={name} />
               <AvatarFallback className="rounded-md">
                 {userFallback}
               </AvatarFallback>
             </Avatar>
             <div className="grid flex-1 text-left text-sm leading-tight">
-              <span className="truncate font-medium">{user.name}</span>
+              <span className="truncate font-medium">{name}</span>
               <span className="text-muted-foreground truncate text-xs">
-                {user.email}
+                {email}
               </span>
             </div>
           </div>

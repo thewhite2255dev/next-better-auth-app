@@ -23,7 +23,7 @@ export default function VerificationEmail({
   email = "utilisateur@example.com",
 }: VerificationEmailProps) {
   const year = new Date().getFullYear();
-  const baseUrl = process.env.BETTER_AUTH_URL;
+  const baseUrl = process.env.BETTER_AUTH_URL!;
   const verificationLink = `${baseUrl}/verify-email?token=${token}`;
 
   return (
@@ -51,7 +51,7 @@ export default function VerificationEmail({
             <Section className="my-6 text-center">
               <Link
                 href={verificationLink}
-                className="inline-block rounded bg-blue-600 px-6 py-3 text-white no-underline"
+                className="inline-block rounded bg-blue-600 px-4 py-2 text-white no-underline"
               >
                 Vérifier mon adresse
               </Link>

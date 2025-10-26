@@ -11,7 +11,8 @@ export const generatedRoutes = {
   ":locale/verify-email"
 ],
   protected: [
-  ":locale/dashboard"
+  ":locale/dashboard",
+  ":locale/settings"
 ],
   auth: [
   ":locale/auth/forgot-password",
@@ -19,7 +20,7 @@ export const generatedRoutes = {
   ":locale/auth/sign-up"
 ],
   admin: [],
-  generatedAt: '2025-10-20T14:45:07.264Z'
+  generatedAt: '2025-10-26T03:35:09.747Z'
 } as const;
 
 export type GeneratedRoutes = typeof generatedRoutes;

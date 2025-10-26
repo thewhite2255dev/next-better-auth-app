@@ -62,6 +62,27 @@ export const ResetPasswordFormSchema = (
       }),
   });
 
+export const TwoFactorFormSchema = (t: (key: string, object?: any) => string) =>
+  z.object({
+    code: z.string().min(1, {
+      message: t("Form.resetPassword.errors.password.required"),
+    }),
+  });
+
+export const TwoFactorAuthFormSchema = (
+  t: (key: string, object?: any) => string,
+) =>
+  z.object({
+    password: z
+      .string()
+      .min(1, {
+        message: t("Form.resetPassword.errors.password.required"),
+      })
+      .min(8, {
+        message: t("Form.resetPassword.errors.password.minLength", { min: 8 }),
+      }),
+  });
+
 export const ForgotPasswordFormSchema = (
   t: (key: string, object?: any) => string,
 ) =>

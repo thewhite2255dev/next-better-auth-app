@@ -19,27 +19,20 @@
     },
     "editAccount": "Ce n'est pas la bonne adresse ? <button>modifier</button>",
     "errors": {
-      "OAuthAccountNotLinked": "Ce compte existe déjà avec une autre méthode de connexion. Connectez-vous avec la méthode utilisée lors de l'inscription.",
-      "codeExpired": "Le code a expiré.",
       "email": {
-        "notFound": "Aucun compte n'est associé à cette adresse e-mail."
       },
-      "emailFound": "L'adresse e-mail est déjà utilisée.",
       "fields": {
-        "invalid": "Tous les champs sont requis."
       },
       "generic": "Une erreur est survenue, veuillez réessayer.",
-      "invalidCode": "Le code est invalide.",
-      "notAuthorized": "Accès non autorisé.",
+      "invalidCode": "Le code est invalide ou a expiré.",
+      "invalidPassword": "Le mot de passe est incorrect.",
       "token": {
-        "expired": "Le lien a expiré.",
-        "invalid": "Le lien est invalide ou a expiré.",
-        "missing": "Le lien est introuvable."
+        "invalid": "Le lien est invalide ou a expiré."
       },
       "totp": {
-        "disabled": "TOTP non configuré."
       },
-      "usernameFound": "Le nom d'utilisateur est déjà utilisée."
+      "unauthorized": "Accès non autorisé.",
+      "userAlreadyExist": "L'utilisateur existe déjà. Utilisez une autre adresse e-mail."
     },
     "forgotPassword": {
       "button": "Envoyer le lien de réinitialisation",
@@ -55,13 +48,9 @@
       },
       "resend": {
         "states": {
-          "error": "Une erreur est survenue lors du renvoi du lien.",
-          "success": "Le lien a été renvoyé avec succès."
         }
       },
       "states": {
-        "error": "Une erreur est survenue lors de la réinitialisation du mot de passe.",
-        "success": "Un e-mail de réinitialisation a été envoyé avec succès."
       },
       "successCard": {
         "description": "Nous avons envoyé un lien de réinitialisation de mot de passe à <strong>{email}</strong>"
@@ -80,7 +69,6 @@
         }
       },
       "states": {
-        "success": "Le mot de passe a été réinitialisé avec succès."
       },
       "successCard": {
         "description": "Votre mot de passe a été réinitialisé avec succès. Vous pouvez maintenant vous connecter avec le nouveau mot de passe."
@@ -91,117 +79,79 @@
       "account": {
         "errors": {
           "role": {
-            "invalid": "Rôle invalide"
           },
           "username": {
-            "invalidPattern": "Caractères spéciaux non autorisés (seuls lettres, chiffres, - et _ sont acceptés).",
-            "maxLength": "Le nom d'utilisateur ne peut pas dépasser {max} caractères.",
-            "minLength": "Le nom d'utilisateur doit contenir au moins {min} caractères."
           }
         }
       },
       "authentication": {
         "errors": {
           "twoFactor": {
-            "invalid": "Paramètre 2FA invalide."
           }
         }
       },
       "deleteAccount": {
         "errors": {
           "confirmation": {
-            "invalid": "Vous devez écrire 'supprimer mon compte' pour confirmer.",
-            "required": "La confirmation est requise."
           },
           "deleteConfirmation": {
-            "span1": "Veuillez écrire",
-            "span2": "'supprimer mon compte",
-            "span3": "pour confirmer"
           },
           "email": {
-            "incorrect": "L'adresse e-mail est incorrecte.",
-            "invalid": "Veuillez entrer une adresse e-mail valide."
           },
           "password": {
-            "incorrect": "Le mot de passe est incorrect.",
-            "required": "Votre mot de passe est requis."
           }
         },
         "states": {
-          "error": "Une erreur est survenue lors de la suppression du compte.",
-          "success": "Votre compte a été supprimé avec succès."
         }
       },
       "deleteAvatar": {
         "states": {
-          "error": "Une erreur est survenue lors de la suppression de l'avatar.",
-          "success": "Votre avatar a été supprimé avec succès."
         }
       },
       "password": {
         "errors": {
           "current": {
-            "required": "Votre mot de passe actuel est requis."
           },
           "mutual": {
-            "bothRequired": "Les deux champs de mot de passe doivent être remplis."
           },
           "new": {
-            "minLength": "Le nouveau mot de passe doit contenir au moins {min} caractères.",
-            "required": "Le nouveau mot de passe est requis."
           }
         }
       },
       "profile": {
         "errors": {
           "bio": {
-            "maxLength": "La bio ne peut pas dépasser {max} caractères."
           },
           "location": {
-            "maxLength": "La localisation ne peut pas dépasser {max} caractères."
           },
           "name": {
-            "maxLength": "Le nom ne peut pas dépasser {max} caractères.",
-            "minLength": "Le nom doit contenir au moins {min} caractères."
           }
         },
         "states": {
-          "error": "Une erreur est survenue lors de la configuration du profil."
         }
       },
       "updateAccount": {
         "states": {
-          "error": "Une erreur est survenue lors de la mise à jour du compte.",
-          "success": "Votre compte a été mis à jour avec succès."
         }
       },
       "updateAuthentication": {
         "states": {
-          "error": "Une erreur est survenue lors de la mise à jour de l'authentification.",
-          "success": "Votre authentification a été mise à jour avec succès."
         }
       },
       "updateAvatar": {
         "states": {
-          "error": "Une erreur est survenue lors de la mise à jour de votre avatar.",
-          "success": "Votre avatar a été mis à jour avec succès."
         }
       },
       "updatePassword": {
         "errors": {
           "password": {
-            "incorrect": "Le mot de passe est incorrect."
           }
         },
         "states": {
-          "error": "Une erreur est survenue lors de la mise à jour du mot de passe.",
-          "success": "Votre mot de passe a été mis à jour avec succès."
         }
       },
       "updateProfile": {
         "states": {
-          "error": "Une erreur est survenue lors de la mise à jour du profil.",
-          "success": "Votre profil a été mis à jour avec succès."
         }
       }
     },
@@ -225,7 +175,6 @@
       },
       "forgotPassword": "Mot de passe oublié ?",
       "states": {
-        "error": "Une erreur est survenue lors de la connexion."
       },
       "title": "Connexion"
     },
@@ -254,21 +203,16 @@
       },
       "haveAccount": "Vous avez déjà un compte ? <link>Connectez-vous</link>",
       "states": {
-        "error": "Une erreur est survenue lors de l'inscription."
       },
       "title": "Inscription"
     },
     "totp": {
       "generate": {
         "states": {
-          "error": "Une erreur est survenue lors de la génération du code secret à usage unique.",
-          "success": "Votre code secret à usage unique a été généré avec succès."
         }
       },
       "verify": {
         "states": {
-          "error": "Une erreur est survenue lors de la vérification du code secret à usage unique.",
-          "success": "Votre code secret à usage unique a été vérifié avec succès."
         }
       }
     },
@@ -277,7 +221,6 @@
       "description": "Nous avons envoyé un code de vérification à <strong>{email}</strong>. Veuillez l'entrer ci-dessous.",
       "resend": {
         "states": {
-          "error": "Une erreur est survenue lors du renvoi du code.",
           "success": "Le code a été renvoyé avec succès."
         }
       },
@@ -290,13 +233,10 @@
       },
       "resend": {
         "states": {
-          "error": "Une erreur est survenue lors du renvoi du lien.",
           "success": "Le lien a été renvoyé avec succès."
         }
       },
       "states": {
-        "error": "Une erreur est survenue lors de la vérification de l'adresse e-mail.",
-        "success": "Un e-mail de vérification a été envoyé avec succès."
       },
       "successCard": {
         "description": "Félicitations ! Votre adresse e-mail a été vérifiée avec succès. Votre compte est désormais actif."
@@ -325,7 +265,6 @@
   },
   "ThemeSwitcher": {
     "dark": "Sombre",
-    "label": "Thème",
     "light": "Clair",
     "srOnly": "Changer de thème",
     "system": "Système"

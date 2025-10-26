@@ -3,17 +3,17 @@
 import { sendEmail } from "./nodemailer";
 import { SiteConfig } from "./site-config";
 import VerificationEmail from "@/emails/verification-email";
-import TwoFactorEmail from "@/emails/two-factor-email";
 import ResetPasswordEmail from "@/emails/reset-password-email";
+import TwoFactorOTPEmail from "@/emails/two-factor-otp-email";
 
-const SMTP_USER = process.env.SMTP_USER as string;
+const SMTP_USER = process.env.SMTP_USER!;
 
-export const sendTwoFactorTokenEmail = async (email: string, token: string) => {
+export const sendTwoFactorOTPEmail = async (email: string, token: string) => {
   await sendEmail({
     from: `"${SiteConfig.title}" <${SMTP_USER}>`,
     to: email,
     subject: "Votre code de vérification 2FA",
-    react: TwoFactorEmail({ token, email }),
+    react: TwoFactorOTPEmail({ token, email }),
   });
 };
 

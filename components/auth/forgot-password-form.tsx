@@ -23,9 +23,8 @@ import FormSuccess from "../layout/form-success";
 import { ResendButton } from "./resend-button";
 import { AUTH_CONSTANTS } from "@/lib/auth-constants";
 import { Input } from "../ui/input";
-import { requestPasswordReset } from "@/lib/auth-client";
-import { forgotPassword } from "@/actions/auth/forgot-password";
 import { Spinner } from "../ui/spinner";
+import { authClient } from "@/lib/auth-client";
 
 export function ForgotPasswordForm() {
   const t = useTranslations();
@@ -50,15 +49,19 @@ export function ForgotPasswordForm() {
     setSuccess("");
     setCountdown(AUTH_CONSTANTS.VERIFY_EMAIL_RESEND_DELAY);
     startTransition(async () => {
-      const { error } = await requestPasswordReset({
-        email: form.getValues("email") as string,
-      });
-
-      if (error) {
-        setError(t("Form.errors.generic"));
-      } else {
-        setSuccess(t("Form.verifyEmail.resend.states.success"));
-      }
+      await authClient.requestPasswordReset(
+        {
+          email: form.getValues("email") as string,
+        },
+        {
+          onError: () => {
+            setError(t("Form.errors.generic"));
+          },
+          onSuccess: () => {
+            setSuccess(t("Form.verifyEmail.resend.states.success"));
+          },
+        },
+      );
     });
   };
 
@@ -66,14 +69,19 @@ export function ForgotPasswordForm() {
     setError("");
 
     startTransition(async () => {
-      const { success, error } = await forgotPassword(values);
-
-      if (!success) {
-        setError(error as string);
-        return;
-      }
-
-      setIsSubmitted(true);
+      await authClient.requestPasswordReset(
+        {
+          ...values,
+        },
+        {
+          onError: () => {
+            setError(t("Form.errors.generic"));
+          },
+          onSuccess: () => {
+            setIsSubmitted(true);
+          },
+        },
+      );
     });
   }
 
@@ -146,15 +154,13 @@ export function ForgotPasswordForm() {
           </p>
           <FormError message={error} />
           <FormSuccess message={success} />
-          <div className="py-2">
-            <ResendButton
-              variant="outline"
-              label={t("Form.common.link")}
-              handler={handleResendLink}
-              initialCountdown={countdown}
-              isLoading={isPending}
-            />
-          </div>
+          <ResendButton
+            variant="outline"
+            label={t("Form.common.link")}
+            handler={handleResendLink}
+            initialCountdown={countdown}
+            isLoading={isPending}
+          />
         </div>
       )}
     </AuthCard>

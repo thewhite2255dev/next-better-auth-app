@@ -13,7 +13,6 @@ import { Input } from "@/components/ui/input";
 import { useTranslations } from "next-intl";
 import { useState, useTransition } from "react";
 import type { SignUpFormValues } from "@/types/auth";
-import { EyeOff, Eye } from "lucide-react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { SignUpFormSchema } from "@/schemas/auth";
@@ -22,24 +21,18 @@ import { AuthCard } from "./auth-card";
 import { BackButton } from "./back-button";
 import { SocialButtons, SocialDivider } from "./social-buttons";
 import FormError from "../layout/form-error";
-import { useSession } from "@/lib/auth-client";
-import { signUpWithEmail } from "@/actions/auth/sign-up";
+import { authClient } from "@/lib/auth-client";
 import { VerifyEmailCard } from "./verify-email-card";
 import { Spinner } from "../ui/spinner";
-import {
-  InputGroup,
-  InputGroupAddon,
-  InputGroupInput,
-} from "../ui/input-group";
+import { PasswordInput } from "../layout/password-input";
+import { useAuthErrorMessages } from "@/hooks/use-better-auth-error";
 
 export function SignUpForm() {
   const t = useTranslations();
-
-  const { refetch } = useSession();
+  const authError = useAuthErrorMessages();
 
   const [isPending, startTransition] = useTransition();
   const [error, setError] = useState<string>("");
-  const [showPassword, setShowPassword] = useState<boolean>(false);
   const [step, setStep] = useState<"Credential" | "VerifyEmail">("Credential");
 
   const form = useForm<SignUpFormValues>({
@@ -55,15 +48,21 @@ export function SignUpForm() {
     setError("");
 
     startTransition(async () => {
-      const { success, error } = await signUpWithEmail(values);
-
-      if (!success) {
-        setError(error || t("Form.errors.generic"));
-        return;
-      }
-
-      refetch();
-      setStep("VerifyEmail");
+      await authClient.signUp.email(
+        {
+          ...values,
+        },
+        {
+          onError: (ctx) => {
+            setError(
+              authError[ctx.error.code as string] || t("Form.errors.generic"),
+            );
+          },
+          onSuccess: () => {
+            setStep("VerifyEmail");
+          },
+        },
+      );
     });
   }
 
@@ -100,8 +99,6 @@ export function SignUpForm() {
       >
         {step === "VerifyEmail" && (
           <VerifyEmailCard
-            error={error}
-            setError={setError}
             email={form.getValues("email")}
             description={
               t.rich("Form.verifyEmail.pending.description", {
@@ -155,30 +152,7 @@ export function SignUpForm() {
                         <FormLabel>
                           {t("Form.signUp.fields.password")}
                         </FormLabel>
-                        <InputGroup>
-                          <FormControl>
-                            <InputGroupInput
-                              {...field}
-                              type={showPassword ? "text" : "password"}
-                              disabled={isPending}
-                            />
-                          </FormControl>
-                          {field.value !== "" && (
-                            <InputGroupAddon align="inline-end">
-                              {showPassword ? (
-                                <EyeOff
-                                  onClick={() => setShowPassword(!showPassword)}
-                                  className="h-4 w-4 cursor-default"
-                                />
-                              ) : (
-                                <Eye
-                                  onClick={() => setShowPassword(!showPassword)}
-                                  className="h-4 w-4 cursor-default"
-                                />
-                              )}
-                            </InputGroupAddon>
-                          )}
-                        </InputGroup>
+                        <PasswordInput field={field} loading={isPending} />
                         <FormMessage />
                       </FormItem>
                     )}

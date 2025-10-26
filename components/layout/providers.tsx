@@ -3,10 +3,13 @@
 import { ThemeProvider as NextThemesProvider } from "next-themes";
 import { ProgressProvider } from "@bprogress/next/app";
 import { Toaster } from "../ui/sonner";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 interface providersProps {
   children: React.ReactNode;
 }
+
+const queryClient = new QueryClient();
 
 export function Providers({ children }: providersProps) {
   return (
@@ -18,7 +21,9 @@ export function Providers({ children }: providersProps) {
     >
       <Toaster position="top-center" richColors />
       <ProgressProvider options={{ showSpinner: false }} shallowRouting>
-        {children}
+        <QueryClientProvider client={queryClient}>
+          {children}
+        </QueryClientProvider>
       </ProgressProvider>
     </NextThemesProvider>
   );

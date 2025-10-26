@@ -19,27 +19,20 @@
     },
     "editAccount": "Is this not the right address? <button>Edit</button>",
     "errors": {
-      "OAuthAccountNotLinked": "This account already exists with another sign-in method. Please sign in using the method you used to register.",
-      "codeExpired": "The code has expired.",
       "email": {
-        "notFound": "No account is associated with this email address."
       },
-      "emailFound": "This email address is already in use.",
       "fields": {
-        "invalid": "All fields are required."
       },
       "generic": "An error occurred. Please try again.",
-      "invalidCode": "The code is invalid.",
-      "notAuthorized": "Unauthorized access.",
+      "invalidCode": "The code is invalid or expired.",
+      "invalidPassword": "The password is incorrect.",
       "token": {
-        "expired": "The link has expired.",
-        "invalid": "The link is invalid.",
-        "missing": "The link could not be found."
+        "invalid": "The link is invalid or expired."
       },
       "totp": {
-        "disabled": "TOTP not configured."
       },
-      "usernameFound": "This username is already in use."
+      "unauthorized": "Unauthorized access.",
+      "userAlreadyExist": "The user already exists. \nUse a different email address."
     },
     "forgotPassword": {
       "button": "Send reset link",
@@ -55,13 +48,9 @@
       },
       "resend": {
         "states": {
-          "error": "An error occurred while resending the link.",
-          "success": "The link was resent successfully."
         }
       },
       "states": {
-        "error": "An error occurred while resetting the password.",
-        "success": "A password reset email was sent successfully."
       },
       "successCard": {
         "description": "We’ve sent a password reset link to <strong>{email}</strong>"
@@ -80,7 +69,6 @@
         }
       },
       "states": {
-        "success": "Password was reset successfully."
       },
       "successCard": {
         "description": "Your password has been reset successfully. You can now sign in with your new password."
@@ -91,117 +79,79 @@
       "account": {
         "errors": {
           "role": {
-            "invalid": "Invalid role"
           },
           "username": {
-            "invalidPattern": "Special characters are not allowed (only letters, numbers, - and _ are accepted).",
-            "maxLength": "Username cannot exceed {max} characters.",
-            "minLength": "Username must be at least {min} characters."
           }
         }
       },
       "authentication": {
         "errors": {
           "twoFactor": {
-            "invalid": "Invalid 2FA setting."
           }
         }
       },
       "deleteAccount": {
         "errors": {
           "confirmation": {
-            "invalid": "You must type 'delete my account' to confirm.",
-            "required": "Confirmation is required."
           },
           "deleteConfirmation": {
-            "span1": "Please type",
-            "span2": "'delete my account",
-            "span3": "to confirm"
           },
           "email": {
-            "incorrect": "Email address is incorrect.",
-            "invalid": "Please enter a valid email address."
           },
           "password": {
-            "incorrect": "Password is incorrect.",
-            "required": "Your password is required."
           }
         },
         "states": {
-          "error": "An error occurred while deleting the account.",
-          "success": "Your account was deleted successfully."
         }
       },
       "deleteAvatar": {
         "states": {
-          "error": "An error occurred while deleting the avatar.",
-          "success": "Your avatar was deleted successfully."
         }
       },
       "password": {
         "errors": {
           "current": {
-            "required": "Your current password is required."
           },
           "mutual": {
-            "bothRequired": "Both password fields must be filled."
           },
           "new": {
-            "minLength": "New password must be at least {min} characters.",
-            "required": "New password is required."
           }
         }
       },
       "profile": {
         "errors": {
           "bio": {
-            "maxLength": "Bio cannot exceed {max} characters."
           },
           "location": {
-            "maxLength": "Location cannot exceed {max} characters."
           },
           "name": {
-            "maxLength": "Name cannot exceed {max} characters.",
-            "minLength": "Name must be at least {min} characters."
           }
         },
         "states": {
-          "error": "An error occurred while updating the profile."
         }
       },
       "updateAccount": {
         "states": {
-          "error": "An error occurred while updating the account.",
-          "success": "Your account was updated successfully."
         }
       },
       "updateAuthentication": {
         "states": {
-          "error": "An error occurred while updating authentication.",
-          "success": "Your authentication was updated successfully."
         }
       },
       "updateAvatar": {
         "states": {
-          "error": "An error occurred while updating your avatar.",
-          "success": "Your avatar was updated successfully."
         }
       },
       "updatePassword": {
         "errors": {
           "password": {
-            "incorrect": "Password is incorrect."
           }
         },
         "states": {
-          "error": "An error occurred while updating the password.",
-          "success": "Your password was updated successfully."
         }
       },
       "updateProfile": {
         "states": {
-          "error": "An error occurred while updating the profile.",
-          "success": "Your profile was updated successfully."
         }
       }
     },
@@ -225,7 +175,6 @@
       },
       "forgotPassword": "Forgot password?",
       "states": {
-        "error": "An error occurred while signing in."
       },
       "title": "Sign in"
     },
@@ -254,21 +203,16 @@
       },
       "haveAccount": "Already have an account? <link>Sign in</link>",
       "states": {
-        "error": "An error occurred while signing up."
       },
       "title": "Sign up"
     },
     "totp": {
       "generate": {
         "states": {
-          "error": "An error occurred while generating the one-time secret code.",
-          "success": "Your one-time secret code was generated successfully."
         }
       },
       "verify": {
         "states": {
-          "error": "An error occurred while verifying the one-time secret code.",
-          "success": "Your one-time secret code was verified successfully."
         }
       }
     },
@@ -277,7 +221,6 @@
       "description": "We’ve sent a verification code to <strong>{email}</strong>. Please enter it below.",
       "resend": {
         "states": {
-          "error": "An error occurred while resending the code.",
           "success": "The code was resent successfully."
         }
       },
@@ -290,13 +233,10 @@
       },
       "resend": {
         "states": {
-          "error": "An error occurred while resending the link.",
           "success": "The link was resent successfully."
         }
       },
       "states": {
-        "error": "An error occurred while verifying the email address.",
-        "success": "A verification email was sent successfully."
       },
       "successCard": {
         "description": "Congratulations! Your email address has been verified. Your account is now active."
@@ -325,7 +265,6 @@
   },
   "ThemeSwitcher": {
     "dark": "Dark",
-    "label": "Thème",
     "light": "Light",
     "srOnly": "Change theme",
     "system": "System"

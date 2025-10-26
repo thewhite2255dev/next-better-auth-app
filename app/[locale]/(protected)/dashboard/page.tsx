@@ -5,6 +5,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { SignOut } from "@/components/auth/sign-out-button";
 import { UserCircle } from "lucide-react";
 import { useTranslations } from "next-intl";
+import { Button } from "@/components/ui/button";
 
 export default function DashboardPage() {
   const t = useTranslations("DashboardPage");
@@ -38,9 +39,7 @@ export default function DashboardPage() {
         {t("email")} : {user.email}
       </p>
       <SignOut>
-        <button className="text-foreground w-full rounded-md px-4 py-2 font-medium hover:bg-slate-200">
-          {t("signOut")}
-        </button>
+        <Button variant="outline">{t("signOut")}</Button>
       </SignOut>
     </main>
   );

@@ -23,7 +23,7 @@ export default function ResetPasswordEmail({
   email = "utilisateur@example.com",
 }: ResetPasswordEmailProps) {
   const year = new Date().getFullYear();
-  const baseUrl = process.env.BETTER_AUTH_URL;
+  const baseUrl = process.env.BETTER_AUTH_URL!;
   const resetLink = `${baseUrl}/reset-password?token=${token}`;
 
   return (
@@ -37,31 +37,33 @@ export default function ResetPasswordEmail({
               {SiteConfig.title}
             </Text>
 
-            <Heading className="mb-6 text-center text-xl font-semibold text-gray-700">
+            <Heading className="mb-6 text-center text-lg font-semibold text-gray-700">
               Réinitialisation de mot de passe
             </Heading>
 
-            <Text className="text-base leading-7 text-gray-700">Bonjour,</Text>
-            <Text className="text-base leading-7 text-gray-700">
+            <Text className="text-[14px] leading-7 text-gray-700">
+              Bonjour,
+            </Text>
+            <Text className="text-[14px] leading-7 text-gray-700">
               Vous avez demandé à réinitialiser votre mot de passe. Cliquez sur
               le bouton ci-dessous pour définir un nouveau mot de passe :
             </Text>
 
-            <Section className="my-6 text-center">
+            <Section className="my-4 text-center">
               <Link
                 href={resetLink}
-                className="inline-block rounded bg-blue-600 px-6 py-3 text-white no-underline"
+                className="inline-block rounded bg-blue-600 px-4 py-2 text-white no-underline"
               >
                 Réinitialiser le mot de passe
               </Link>
             </Section>
 
-            <Text className="text-base leading-7 text-gray-700">
+            <Text className="text-[14px] leading-7 text-gray-700">
               Si vous n&apos;avez pas demandé cette action, vous pouvez ignorer
               cet email.
             </Text>
 
-            <Hr className="my-6 border-gray-200" />
+            <Hr className="my-4 border-gray-200" />
 
             <Text className="text-center text-xs text-gray-400">
               Vous recevez cet email car une demande de réinitialisation a été

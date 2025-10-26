@@ -3,12 +3,12 @@ import { render } from "@react-email/components";
 import type { ReactElement } from "react";
 import { SiteConfig } from "./site-config";
 
-const SMTP_HOST = process.env.SMTP_HOST as string;
-const SMTP_USER = process.env.SMTP_USER as string;
-const SMTP_PASS = process.env.SMTP_PASS as string;
+const SMTP_HOST = process.env.SMTP_HOST!;
+const SMTP_USER = process.env.SMTP_USER!;
+const SMTP_PASS = process.env.SMTP_PASS!;
 const SMTP_PORT = parseInt(process.env.SMTP_PORT || "587");
 const SMTP_SECURE = process.env.SMTP_SECURE === "true";
-const SMTP_FROM = process.env.SMTP_FROM as string;
+const SMTP_FROM = process.env.SMTP_FROM!;
 
 export const transporter = nodemailer.createTransport({
   service: "gmail",
