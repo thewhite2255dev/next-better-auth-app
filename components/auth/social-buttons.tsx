@@ -49,14 +49,14 @@ export function SocialButtons({
     null,
   );
 
-  const handleClick = async (provider: SocialProvider) => {
+  async function handleClick(provider: SocialProvider) {
     setSocialLoading(provider);
     signIn.social({
       provider,
       disableRedirect: false,
       callbackURL: callbackUrl || DEFAULT_SIGN_IN_REDIRECT,
     });
-  };
+  }
 
   return (
     <div

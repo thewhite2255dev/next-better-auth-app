@@ -31,6 +31,8 @@ export function SignUpForm() {
   const t = useTranslations();
   const authError = useAuthErrorMessages();
 
+  const { refetch } = authClient.useSession();
+
   const [isPending, startTransition] = useTransition();
   const [error, setError] = useState<string>("");
   const [step, setStep] = useState<"Credential" | "VerifyEmail">("Credential");
@@ -44,7 +46,7 @@ export function SignUpForm() {
     },
   });
 
-  async function handleSubmit(values: SignUpFormValues) {
+  function handleSubmit(values: SignUpFormValues) {
     setError("");
 
     startTransition(async () => {
@@ -59,6 +61,7 @@ export function SignUpForm() {
             );
           },
           onSuccess: () => {
+            refetch();
             setStep("VerifyEmail");
           },
         },

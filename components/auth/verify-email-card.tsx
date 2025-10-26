@@ -24,7 +24,7 @@ export function VerifyEmailCard({ email, description }: VerifyEmailCardProps) {
   const [error, setError] = useState<string>("");
   const [success, setSuccess] = useState<string>("");
 
-  const handleResendLink = () => {
+  function handleResendLink() {
     setError("");
     setSuccess("");
 
@@ -42,7 +42,7 @@ export function VerifyEmailCard({ email, description }: VerifyEmailCardProps) {
         },
       );
     });
-  };
+  }
 
   return (
     <div className="space-y-4 text-center">

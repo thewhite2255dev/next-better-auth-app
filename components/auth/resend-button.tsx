@@ -34,11 +34,11 @@ export function ResendButton({
 
   const [countdown, setCountdown] = useState<number>(initialCountdown);
 
-  const handleResend = () => {
+  function handleResend() {
     if (countdown > 0) return;
     setCountdown(initialCountdown);
     handler();
-  };
+  }
 
   useEffect(() => {
     let interval: number | undefined;

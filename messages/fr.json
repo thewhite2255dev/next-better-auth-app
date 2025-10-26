@@ -19,17 +19,11 @@
     },
     "editAccount": "Ce n'est pas la bonne adresse ? <button>modifier</button>",
     "errors": {
-      "email": {
-      },
-      "fields": {
-      },
       "generic": "Une erreur est survenue, veuillez réessayer.",
       "invalidCode": "Le code est invalide ou a expiré.",
       "invalidPassword": "Le mot de passe est incorrect.",
       "token": {
         "invalid": "Le lien est invalide ou a expiré."
-      },
-      "totp": {
       },
       "unauthorized": "Accès non autorisé.",
       "userAlreadyExist": "L'utilisateur existe déjà. Utilisez une autre adresse e-mail."
@@ -45,12 +39,6 @@
       },
       "fields": {
         "email": "Adresse e-mail"
-      },
-      "resend": {
-        "states": {
-        }
-      },
-      "states": {
       },
       "successCard": {
         "description": "Nous avons envoyé un lien de réinitialisation de mot de passe à <strong>{email}</strong>"
@@ -68,92 +56,10 @@
           "required": "Le mot de passe est requis."
         }
       },
-      "states": {
-      },
       "successCard": {
         "description": "Votre mot de passe a été réinitialisé avec succès. Vous pouvez maintenant vous connecter avec le nouveau mot de passe."
       },
       "title": "Réinitialiser le mot de passe"
-    },
-    "settings": {
-      "account": {
-        "errors": {
-          "role": {
-          },
-          "username": {
-          }
-        }
-      },
-      "authentication": {
-        "errors": {
-          "twoFactor": {
-          }
-        }
-      },
-      "deleteAccount": {
-        "errors": {
-          "confirmation": {
-          },
-          "deleteConfirmation": {
-          },
-          "email": {
-          },
-          "password": {
-          }
-        },
-        "states": {
-        }
-      },
-      "deleteAvatar": {
-        "states": {
-        }
-      },
-      "password": {
-        "errors": {
-          "current": {
-          },
-          "mutual": {
-          },
-          "new": {
-          }
-        }
-      },
-      "profile": {
-        "errors": {
-          "bio": {
-          },
-          "location": {
-          },
-          "name": {
-          }
-        },
-        "states": {
-        }
-      },
-      "updateAccount": {
-        "states": {
-        }
-      },
-      "updateAuthentication": {
-        "states": {
-        }
-      },
-      "updateAvatar": {
-        "states": {
-        }
-      },
-      "updatePassword": {
-        "errors": {
-          "password": {
-          }
-        },
-        "states": {
-        }
-      },
-      "updateProfile": {
-        "states": {
-        }
-      }
     },
     "signIn": {
       "button": "Se connecter",
@@ -174,8 +80,6 @@
         "password": "Mot de passe"
       },
       "forgotPassword": "Mot de passe oublié ?",
-      "states": {
-      },
       "title": "Connexion"
     },
     "signUp": {
@@ -202,19 +106,7 @@
         "password": "Mot de passe"
       },
       "haveAccount": "Vous avez déjà un compte ? <link>Connectez-vous</link>",
-      "states": {
-      },
       "title": "Inscription"
-    },
-    "totp": {
-      "generate": {
-        "states": {
-        }
-      },
-      "verify": {
-        "states": {
-        }
-      }
     },
     "twoFactor": {
       "button": "Valider le code",
@@ -235,8 +127,6 @@
         "states": {
           "success": "Le lien a été renvoyé avec succès."
         }
-      },
-      "states": {
       },
       "successCard": {
         "description": "Félicitations ! Votre adresse e-mail a été vérifiée avec succès. Votre compte est désormais actif."

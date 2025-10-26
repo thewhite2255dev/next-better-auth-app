@@ -44,10 +44,10 @@ export function ForgotPasswordForm() {
     },
   });
 
-  const handleResendLink = () => {
+  function handleResendLink() {
     setError("");
     setSuccess("");
-    setCountdown(AUTH_CONSTANTS.VERIFY_EMAIL_RESEND_DELAY);
+
     startTransition(async () => {
       await authClient.requestPasswordReset(
         {
@@ -58,14 +58,16 @@ export function ForgotPasswordForm() {
             setError(t("Form.errors.generic"));
           },
           onSuccess: () => {
+            setCountdown(AUTH_CONSTANTS.VERIFY_EMAIL_RESEND_DELAY);
             setSuccess(t("Form.verifyEmail.resend.states.success"));
           },
         },
       );
     });
-  };
+  }
 
-  async function handleSubmit(values: ForgotPasswordFormValues) {
+  function handleSubmit(values: ForgotPasswordFormValues) {
+    setSuccess("");
     setError("");
 
     startTransition(async () => {

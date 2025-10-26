@@ -40,7 +40,7 @@ export function ResetPasswordForm() {
     },
   });
 
-  async function handleSubmit(values: ResetPasswordFormValues) {
+  function handleSubmit(values: ResetPasswordFormValues) {
     setError("");
 
     startTransition(async () => {

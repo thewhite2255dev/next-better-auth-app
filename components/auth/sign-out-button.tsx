@@ -17,7 +17,7 @@ export function SignOut({
 }: SignOutProps) {
   const router = useRouter();
 
-  const handleClick = () => {
+  function handleClick() {
     signOut({
       fetchOptions: {
         onSuccess: () => {
@@ -25,7 +25,7 @@ export function SignOut({
         },
       },
     });
-  };
+  }
 
   return (
     <span onClick={handleClick} className={cn("cursor-pointer", className)}>

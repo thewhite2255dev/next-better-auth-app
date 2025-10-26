@@ -10,9 +10,9 @@ interface SignInButtonProps extends React.HTMLAttributes<HTMLElement> {
 export function SignInButton({ children, className }: SignInButtonProps) {
   const router = useRouter();
 
-  const handleClick = () => {
+  function handleClick() {
     router.push("/auth/sign-in");
-  };
+  }
 
   return (
     <span onClick={handleClick} className={cn("cursor-pointer", className)}>

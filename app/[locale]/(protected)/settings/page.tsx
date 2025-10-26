@@ -136,7 +136,7 @@ export default function SettingsPage() {
     router.refresh();
   }
 
-  async function handleVerifyTotp() {
+  function handleVerifyTotp() {
     setSuccess("");
     setError("");
 
@@ -157,7 +157,7 @@ export default function SettingsPage() {
     });
   }
 
-  async function handleSubmit(values: TwoFactorAuthFormValues) {
+  function handleSubmit(values: TwoFactorAuthFormValues) {
     setError("");
 
     startTransition(async () => {

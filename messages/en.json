@@ -19,24 +19,18 @@
     },
     "editAccount": "Is this not the right address? <button>Edit</button>",
     "errors": {
-      "email": {
-      },
-      "fields": {
-      },
       "generic": "An error occurred. Please try again.",
       "invalidCode": "The code is invalid or expired.",
       "invalidPassword": "The password is incorrect.",
       "token": {
         "invalid": "The link is invalid or expired."
       },
-      "totp": {
-      },
       "unauthorized": "Unauthorized access.",
       "userAlreadyExist": "The user already exists. \nUse a different email address."
     },
     "forgotPassword": {
       "button": "Send reset link",
-      "description": "Enter your email address and we’ll send you a link to reset your password.",
+      "description": "Enter your email address and we'll send you a link to reset your password.",
       "errors": {
         "email": {
           "invalid": "Please enter a valid email address.",
@@ -46,14 +40,8 @@
       "fields": {
         "email": "Email address"
       },
-      "resend": {
-        "states": {
-        }
-      },
-      "states": {
-      },
       "successCard": {
-        "description": "We’ve sent a password reset link to <strong>{email}</strong>"
+        "description": "We've sent a password reset link to <strong>{email}</strong>"
       },
       "title": "Forgot password"
     },
@@ -68,96 +56,15 @@
           "required": "Password is required."
         }
       },
-      "states": {
-      },
       "successCard": {
         "description": "Your password has been reset successfully. You can now sign in with your new password."
       },
       "title": "Reset password"
     },
-    "settings": {
-      "account": {
-        "errors": {
-          "role": {
-          },
-          "username": {
-          }
-        }
-      },
-      "authentication": {
-        "errors": {
-          "twoFactor": {
-          }
-        }
-      },
-      "deleteAccount": {
-        "errors": {
-          "confirmation": {
-          },
-          "deleteConfirmation": {
-          },
-          "email": {
-          },
-          "password": {
-          }
-        },
-        "states": {
-        }
-      },
-      "deleteAvatar": {
-        "states": {
-        }
-      },
-      "password": {
-        "errors": {
-          "current": {
-          },
-          "mutual": {
-          },
-          "new": {
-          }
-        }
-      },
-      "profile": {
-        "errors": {
-          "bio": {
-          },
-          "location": {
-          },
-          "name": {
-          }
-        },
-        "states": {
-        }
-      },
-      "updateAccount": {
-        "states": {
-        }
-      },
-      "updateAuthentication": {
-        "states": {
-        }
-      },
-      "updateAvatar": {
-        "states": {
-        }
-      },
-      "updatePassword": {
-        "errors": {
-          "password": {
-          }
-        },
-        "states": {
-        }
-      },
-      "updateProfile": {
-        "states": {
-        }
-      }
-    },
+
     "signIn": {
       "button": "Sign in",
-      "createAccount": "Don’t have an account? <link>Sign up</link>",
+      "createAccount": "Don't have an account? <link>Sign up</link>",
       "description": "Sign in to your account.",
       "errors": {
         "email": {
@@ -174,8 +81,6 @@
         "password": "Password"
       },
       "forgotPassword": "Forgot password?",
-      "states": {
-      },
       "title": "Sign in"
     },
     "signUp": {
@@ -202,23 +107,12 @@
         "password": "Password"
       },
       "haveAccount": "Already have an account? <link>Sign in</link>",
-      "states": {
-      },
       "title": "Sign up"
     },
-    "totp": {
-      "generate": {
-        "states": {
-        }
-      },
-      "verify": {
-        "states": {
-        }
-      }
-    },
+
     "twoFactor": {
       "button": "Validate code",
-      "description": "We’ve sent a verification code to <strong>{email}</strong>. Please enter it below.",
+      "description": "We've sent a verification code to <strong>{email}</strong>. Please enter it below.",
       "resend": {
         "states": {
           "success": "The code was resent successfully."
@@ -228,15 +122,13 @@
     },
     "verifyEmail": {
       "pending": {
-        "description": "We’ve sent a verification link to <strong>{email}</strong>. Click the link to complete the verification process.",
+        "description": "We've sent a verification link to <strong>{email}</strong>. Click the link to complete the verification process.",
         "title": "Verify your email address"
       },
       "resend": {
         "states": {
           "success": "The link was resent successfully."
         }
-      },
-      "states": {
       },
       "successCard": {
         "description": "Congratulations! Your email address has been verified. Your account is now active."
