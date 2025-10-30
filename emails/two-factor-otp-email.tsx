@@ -30,24 +30,19 @@ export default function TwoFactorOTPEmail({
       <Tailwind>
         <Body className="bg-white font-sans">
           <Container className="mx-auto max-w-[600px] px-4 py-5">
-            {/* Logo textuel */}
             <Text className="mb-6 text-center text-2xl font-bold text-gray-800">
               {SiteConfig.title}
             </Text>
-
-            {/* Titre principal */}
             <Heading className="mb-6 text-center text-lg font-semibold text-gray-700">
               Code de vérification en deux étapes
             </Heading>
 
-            {/* Message principal */}
             <Text className="text-[14px] leading-7 text-gray-700">
               Bonjour,
               <br />
               Voici votre code de vérification pour accéder à votre compte :
             </Text>
 
-            {/* Token de vérification */}
             <Section className="my-4 rounded-md border border-gray-200 bg-gray-50 text-center">
               <Text className="text-2xl font-bold tracking-widest text-blue-600">
                 {token}
@@ -62,7 +57,6 @@ export default function TwoFactorOTPEmail({
 
             <Hr className="my-4 border-gray-200" />
 
-            {/* Footer */}
             <Text className="text-center text-xs text-gray-400">
               Vous recevez cet email car une tentative de connexion a été
               effectuée avec l&apos;adresse {email}.

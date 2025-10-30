@@ -28,6 +28,9 @@
       "unauthorized": "Unauthorized access.",
       "userAlreadyExist": "The user already exists. \nUse a different email address."
     },
+    "fields": {
+      "name": "Name"
+    },
     "forgotPassword": {
       "button": "Send reset link",
       "description": "Enter your email address and we'll send you a link to reset your password.",
@@ -45,6 +48,15 @@
       },
       "title": "Forgot password"
     },
+    "profileForm": {
+      "errors": {
+        "name": {
+          "maxLength": "The name cannot exceed {max} characters.",
+          "minLength": "The name must contain at least {min} characters."
+        }
+      },
+      "updateButton": "Update profile"
+    },
     "resetPassword": {
       "button": "Reset password",
       "description": {
@@ -61,7 +73,6 @@
       },
       "title": "Reset password"
     },
-
     "signIn": {
       "button": "Sign in",
       "createAccount": "Don't have an account? <link>Sign up</link>",
@@ -109,7 +120,6 @@
       "haveAccount": "Already have an account? <link>Sign in</link>",
       "title": "Sign up"
     },
-
     "twoFactor": {
       "button": "Validate code",
       "description": "We've sent a verification code to <strong>{email}</strong>. Please enter it below.",
@@ -154,6 +164,44 @@
     "en": "English",
     "fr": "French",
     "srOnly": "Change language"
+  },
+  "SettingsLayout": {
+    "account": "Account",
+    "appearance": "Appearance",
+    "preferences": "Preferences",
+    "profile": "Profile",
+    "security": "Security",
+    "sessions": "Sessions"
+  },
+  "SettingsAccount": {
+    "title": "Account",
+    "description": "Manage your account settings and privacy.",
+    "delete": {
+      "label": "Delete account",
+      "button": "Delete"
+    }
+  },
+  "SettingsProfile": {
+    "title": "Profile",
+    "description": "Update your personal information and avatar."
+  },
+  "SettingsSecurity": {
+    "changePassword": {
+      "title": "Change password",
+      "description": "Choose a strong, unique password."
+    },
+    "twoFactor": {
+      "title": "Security",
+      "description": "Enable two-factor authentication and manage your authenticator app."
+    }
+  },
+  "SettingsSessions": {
+    "title": "Sessions",
+    "description": "View and sign out active sessions on other devices."
+  },
+  "SettingsPreferences": {
+    "title": "Preferences",
+    "description": "Customize your user experience."
   },
   "ThemeSwitcher": {
     "dark": "Dark",

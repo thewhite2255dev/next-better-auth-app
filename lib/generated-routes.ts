@@ -12,7 +12,12 @@ export const generatedRoutes = {
 ],
   protected: [
   ":locale/dashboard",
-  ":locale/settings"
+  ":locale/settings",
+  ":locale/settings/account",
+  ":locale/settings/preferences",
+  ":locale/settings/profile",
+  ":locale/settings/security",
+  ":locale/settings/sessions"
 ],
   auth: [
   ":locale/auth/forgot-password",
@@ -20,7 +25,7 @@ export const generatedRoutes = {
   ":locale/auth/sign-up"
 ],
   admin: [],
-  generatedAt: '2025-10-26T13:11:01.478Z'
+  generatedAt: '2025-10-30T13:24:33.863Z'
 } as const;
 
 export type GeneratedRoutes = typeof generatedRoutes;

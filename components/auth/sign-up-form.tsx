@@ -25,7 +25,7 @@ import { authClient } from "@/lib/auth-client";
 import { VerifyEmailCard } from "./verify-email-card";
 import { Spinner } from "../ui/spinner";
 import { PasswordInput } from "../layout/password-input";
-import { useAuthErrorMessages } from "@/hooks/use-better-auth-error";
+import { useAuthErrorMessages } from "@/hooks/use-auth-error-messages";
 
 export function SignUpForm() {
   const t = useTranslations();

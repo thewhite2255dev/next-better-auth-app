@@ -11,6 +11,7 @@ import { LogIn } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { UserButton } from "./user-button";
 import { Skeleton } from "../ui/skeleton";
+import { DEFAULT_HOME_REDIRECT } from "@/lib/redirect-config";
 
 export type navItemsType = {
   label: string;
@@ -27,7 +28,7 @@ export function Header() {
   return (
     <header className="bg-background/95 supports-[backdrop-filter]:bg-background/60 sticky top-0 z-50 w-full border-b backdrop-blur">
       <div className="container flex h-14 items-center justify-between">
-        <Link href="/">
+        <Link href={DEFAULT_HOME_REDIRECT}>
           <span className="text-foreground font-semibold">
             {SiteConfig.title}
           </span>
@@ -55,7 +56,7 @@ export function Header() {
             {isPending ? (
               <Skeleton className="flex size-8 shrink-0 overflow-hidden rounded-md" />
             ) : session?.user ? (
-              <UserButton {...session.user} />
+              <UserButton />
             ) : (
               <Button variant="outline" size="sm" asChild>
                 <Link href="/auth/sign-in">

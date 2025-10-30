@@ -16,23 +16,20 @@ import { generateAvatarFallback } from "@/lib/user-utils";
 import { useTranslations } from "next-intl";
 import { SignOut } from "../auth/sign-out-button";
 import { Link } from "@/i18n/navigation";
+import { authClient } from "@/lib/auth-client";
 
-interface UserButtonProps {
-  name: string;
-  email: string;
-  image?: string | null | undefined;
-}
-
-export function UserButton({ name, email, image }: UserButtonProps) {
+export function UserButton() {
   const t = useTranslations("UserButton");
 
-  const userFallback = generateAvatarFallback(name as string);
+  const { data: session } = authClient.useSession();
+
+  const userFallback = generateAvatarFallback(session?.user.name as string);
 
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Avatar className="rounded-md select-none">
-          <AvatarImage src={image as string} />
+          <AvatarImage src={session?.user.image as string} />
           <AvatarFallback className="rounded-md">{userFallback}</AvatarFallback>
         </Avatar>
       </DropdownMenuTrigger>
@@ -40,15 +37,18 @@ export function UserButton({ name, email, image }: UserButtonProps) {
         <DropdownMenuLabel className="p-0 font-normal">
           <div className="flex items-center gap-2 px-1 py-1.5 text-left text-sm">
             <Avatar className="rounded-md">
-              <AvatarImage src={image as string} alt={name} />
+              <AvatarImage
+                src={session?.user.image as string}
+                alt={session?.user.name}
+              />
               <AvatarFallback className="rounded-md">
                 {userFallback}
               </AvatarFallback>
             </Avatar>
             <div className="grid flex-1 text-left text-sm leading-tight">
-              <span className="truncate font-medium">{name}</span>
+              <span className="truncate font-medium">{session?.user.name}</span>
               <span className="text-muted-foreground truncate text-xs">
-                {email}
+                {session?.user.email}
               </span>
             </div>
           </div>
@@ -62,7 +62,7 @@ export function UserButton({ name, email, image }: UserButtonProps) {
             </Link>
           </DropdownMenuItem>
           <DropdownMenuItem asChild>
-            <Link href={"/settings"}>
+            <Link href={"/settings/profile"}>
               <Settings />
               {t("settings")}
             </Link>

@@ -2,6 +2,7 @@
 
 import { useRouter } from "@/i18n/navigation";
 import { signOut } from "@/lib/auth-client";
+import { DEFAULT_SIGN_OUT_REDIRECT } from "@/lib/redirect-config";
 import { cn } from "@/lib/utils";
 
 interface SignOutProps {
@@ -13,7 +14,7 @@ interface SignOutProps {
 export function SignOut({
   children,
   className,
-  redirectTo = "/",
+  redirectTo = DEFAULT_SIGN_OUT_REDIRECT,
 }: SignOutProps) {
   const router = useRouter();
 

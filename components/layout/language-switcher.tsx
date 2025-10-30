@@ -28,7 +28,7 @@ export function LanguageSwitcher({ className }: LanguageSwitcherProps) {
     { code: "en", name: t("en") },
   ];
 
-  const onLanguageChange = (newLocale: string) => {
+  const handleLanguageChange = (newLocale: string) => {
     router.push(pathname, { locale: newLocale });
   };
 
@@ -44,7 +44,7 @@ export function LanguageSwitcher({ className }: LanguageSwitcherProps) {
         {languages.map((language) => (
           <DropdownMenuItem
             key={language.code}
-            onClick={() => onLanguageChange(language.code)}
+            onClick={() => handleLanguageChange(language.code)}
           >
             <Check
               className={cn({

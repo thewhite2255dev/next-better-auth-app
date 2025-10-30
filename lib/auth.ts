@@ -46,10 +46,21 @@ export const auth = betterAuth({
     },
   },
   user: {
+    deleteUser: {
+      enabled: true,
+    },
     additionalFields: {
       totpEnabled: {
         type: "boolean",
         defaultValue: false,
+      },
+      bio: {
+        type: "string",
+        defaultValue: "",
+      },
+      location: {
+        type: "string",
+        defaultValue: "",
       },
     },
   },

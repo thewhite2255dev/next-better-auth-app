@@ -111,17 +111,47 @@
 }
 
 @layer base {
+  html {
+    font-size: 16px;
+  }
   * {
     @apply border-border outline-ring/50;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground text-sm;
   }
 }
 
 @utility container {
+  width: 100%;
   margin-inline: auto;
-  padding-inline: 1.25rem;
+  padding-inline: 1rem; /* ~16px — mobile par défaut */
+
+  /* Tablette */
+  @variant sm {
+    padding-inline: 1.5rem; /* ~24px */
+  }
+
+  /* Laptop */
+  @variant lg {
+    padding-inline: 2.5rem; /* ~40px */
+    max-width: 1024px;
+  }
+
+  /* Desktop large */
+  @variant xl {
+    padding-inline: 3.5rem; /* ~56px */
+    max-width: 1280px;
+  }
+
+  /* Très grand écran (optionnel) */
+  @variant 2xl {
+    padding-inline: 4rem; /* ~64px */
+    max-width: 1536px;
+  }
 }
 
 @utility text-balance {

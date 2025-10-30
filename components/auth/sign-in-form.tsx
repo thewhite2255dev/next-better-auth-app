@@ -26,7 +26,7 @@ import { VerifyEmailCard } from "./verify-email-card";
 import { Spinner } from "../ui/spinner";
 import { DEFAULT_SIGN_IN_REDIRECT } from "@/lib/redirect-config";
 import { PasswordInput } from "../layout/password-input";
-import { useAuthErrorMessages } from "@/hooks/use-better-auth-error";
+import { useAuthErrorMessages } from "@/hooks/use-auth-error-messages";
 import { checkTwoFactor } from "@/actions/auth/check-two-factor";
 import TwoFactorForm from "./two-factor-form";
 
@@ -34,6 +34,8 @@ export function SignInForm() {
   const t = useTranslations();
   const router = useRouter();
   const authError = useAuthErrorMessages();
+
+  const { refetch } = authClient.useSession();
 
   const [isPending, startTransition] = useTransition();
   const [error, setError] = useState<string>("");
@@ -90,44 +92,44 @@ export function SignInForm() {
                   });
                 }
               }
-
+              refetch();
               router.push(DEFAULT_SIGN_IN_REDIRECT);
             },
           },
         );
       }
 
-      if (step === "TwoFactor") {
-        await authClient.twoFactor.verifyOtp(
-          {
-            code: values.code as string,
-          },
-          {
-            onError: () => {
-              setError(t("Form.errors.invalidCode"));
-            },
-            onSuccess: () => {
-              router.push(DEFAULT_SIGN_IN_REDIRECT);
-            },
-          },
-        );
-      }
+      // if (step === "TwoFactor") {
+      //   await authClient.twoFactor.verifyOtp(
+      //     {
+      //       code: values.code as string,
+      //     },
+      //     {
+      //       onError: () => {
+      //         setError(t("Form.errors.invalidCode"));
+      //       },
+      //       onSuccess: () => {
+      //         router.push(DEFAULT_SIGN_IN_REDIRECT);
+      //       },
+      //     },
+      //   );
+      // }
 
-      if (step === "Totp") {
-        await authClient.twoFactor.verifyTotp(
-          {
-            code: values.code as string,
-          },
-          {
-            onError: () => {
-              setError(t("Form.errors.invalidCode"));
-            },
-            onSuccess: () => {
-              router.push(DEFAULT_SIGN_IN_REDIRECT);
-            },
-          },
-        );
-      }
+      // if (step === "Totp") {
+      //   await authClient.twoFactor.verifyTotp(
+      //     {
+      //       code: values.code as string,
+      //     },
+      //     {
+      //       onError: () => {
+      //         setError(t("Form.errors.invalidCode"));
+      //       },
+      //       onSuccess: () => {
+      //         router.push(DEFAULT_SIGN_IN_REDIRECT);
+      //       },
+      //     },
+      //   );
+      // }
     });
   }
 

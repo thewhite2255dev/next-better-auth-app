@@ -4,7 +4,6 @@ import type {
   SignInFormSchema,
   ResetPasswordFormSchema,
   SignUpFormSchema,
-  TwoFactorAuthFormSchema,
   TwoFactorFormSchema,
 } from "@/schemas/auth";
 
@@ -16,9 +15,6 @@ export type ForgotPasswordFormValues = z.infer<
 >;
 export type ResetPasswordFormValues = z.infer<
   ReturnType<typeof ResetPasswordFormSchema>
->;
-export type TwoFactorAuthFormValues = z.infer<
-  ReturnType<typeof TwoFactorAuthFormSchema>
 >;
 export type TwoFactorFormValues = z.infer<
   ReturnType<typeof TwoFactorFormSchema>

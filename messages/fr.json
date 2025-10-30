@@ -13,20 +13,64 @@
       "resendCountdown": "Renvoyer le {name} dans {countdown} s",
       "resendLabel": "Renvoyer le {name}"
     },
+    "changePassword": {
+      "errors": {
+        "currentPasswordRequired": "Le mot de passe actuel est requis.",
+        "newPasswordRequired": "Le nouveau mot de passe est requis."
+      },
+      "fields": {
+        "currentPassword": "Mot de passe actuel",
+        "newPassword": "Nouveau mot de passe",
+        "password": "Mot de passe"
+      },
+      "submitButton": "Mettre à jour le mot de passe"
+    },
     "common": {
       "code": "code",
       "link": "lien"
     },
+    "deleteAccount": {
+      "buttons": {
+        "cancel": "Annuler",
+        "submit": "Supprimer"
+      },
+      "confirmationWord": "delete my account",
+      "errors": {
+        "confirmationRequired": "La confirmation est requise.",
+        "deleteAccountConfirmation": "Vous devez saisir {keyword} pour confirmer.",
+        "invalidEmail": "Veuillez entrer une adresse e-mail valide."
+      },
+      "fields": {
+        "confirmation": "Pour confirmer, entrez <strong>{keyword}</strong> ci dessous.",
+        "email": "Entrez votre adresse e-mail <strong>{email}</strong> pour continuer.",
+        "password": "Mot de passe actuel"
+      },
+      "header": {
+        "description": "Nous supprimerons votre compte immédiatement.",
+        "title": "Voulez-vous vraiment supprimer votre compte ?"
+      },
+      "warning": "Cette action n'est pas réversible. Veuillez vous en assurer."
+    },
     "editAccount": "Ce n'est pas la bonne adresse ? <button>modifier</button>",
     "errors": {
+      "allFieldsRequired": "Tous les champs sont requis.",
       "generic": "Une erreur est survenue, veuillez réessayer.",
+      "incorrectEmail": "L'adresse e-mail est incorrect.",
       "invalidCode": "Le code est invalide ou a expiré.",
+      "invalidEmail": "Veuillez entrer une adresse e-mail valide.",
       "invalidPassword": "Le mot de passe est incorrect.",
+      "passwordRequired": "Le mot de passe est requis.",
       "token": {
         "invalid": "Le lien est invalide ou a expiré."
       },
       "unauthorized": "Accès non autorisé.",
       "userAlreadyExist": "L'utilisateur existe déjà. Utilisez une autre adresse e-mail."
+    },
+    "fields": {
+      "bio": "Biographie",
+      "email": "Adresse e-mail",
+      "location": "Emplacement",
+      "name": "Nom"
     },
     "forgotPassword": {
       "button": "Envoyer le lien de réinitialisation",
@@ -44,6 +88,15 @@
         "description": "Nous avons envoyé un lien de réinitialisation de mot de passe à <strong>{email}</strong>"
       },
       "title": "Mot de passe oublié"
+    },
+    "profileForm": {
+      "errors": {
+        "name": {
+          "maxLength": "Le nom ne peut pas dépasser {max} caractères.",
+          "minLength": "Le nom doit contenir au moins {min} caractères."
+        }
+      },
+      "updateButton": "Mettre à jour le profil"
     },
     "resetPassword": {
       "button": "Réinitialiser le mot de passe",
@@ -152,6 +205,44 @@
     "en": "Anglais",
     "fr": "Français",
     "srOnly": "Changer de langue"
+  },
+  "SettingsLayout": {
+    "account": "Compte",
+    "appearance": "Apparence",
+    "preferences": "Préférences",
+    "profile": "Profil",
+    "security": "Sécurité",
+    "sessions": "Sessions"
+  },
+  "SettingsAccount": {
+    "title": "Compte",
+    "description": "Gérez les paramètres et la confidentialité de votre compte.",
+    "delete": {
+      "label": "Supprimer le compte",
+      "button": "Supprimer"
+    }
+  },
+  "SettingsProfile": {
+    "title": "Profil",
+    "description": "Mettez à jour vos informations personnelles et votre avatar."
+  },
+  "SettingsSecurity": {
+    "changePassword": {
+      "title": "Changer le mot de passe",
+      "description": "Choisissez un mot de passe fort et unique."
+    },
+    "twoFactor": {
+      "title": "Sécurité",
+      "description": "Activez l’authentification à deux facteurs et gérez l’application d’authentification."
+    }
+  },
+  "SettingsSessions": {
+    "title": "Sessions",
+    "description": "Consultez et déconnectez vos sessions actives sur d’autres appareils."
+  },
+  "SettingsPreferences": {
+    "title": "Préférences",
+    "description": "Personnalisez votre expérience utilisateur."
   },
   "ThemeSwitcher": {
     "dark": "Sombre",

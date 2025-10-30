@@ -14,10 +14,10 @@ export default function DashboardPage() {
   if (isPending) {
     return (
       <main className="mx-auto flex h-screen max-w-md flex-col items-center justify-center space-y-4 p-6">
-        <Skeleton className="h-8 w-48 rounded-md" /> {/* titre */}
-        <Skeleton className="h-6 w-64 rounded-md" /> {/* nom utilisateur */}
-        <Skeleton className="h-6 w-56 rounded-md" /> {/* email */}
-        <Skeleton className="h-10 w-full rounded-md" /> {/* bouton */}
+        <Skeleton className="h-8 w-48 rounded-md" />
+        <Skeleton className="h-6 w-64 rounded-md" />
+        <Skeleton className="h-6 w-56 rounded-md" />
+        <Skeleton className="h-10 w-full rounded-md" />
       </main>
     );
   }
