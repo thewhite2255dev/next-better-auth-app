@@ -1,34 +1,28 @@
-"use client";
-
 import DeleteAccountButton from "@/components/settings/delete-account-button";
-import { Header } from "../_components/header";
+import { SettingsHeader } from "@/components/settings/settings-header";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
-import { useTranslations } from "next-intl";
+import { getTranslations } from "next-intl/server";
+import { headers } from "next/headers";
+import { auth } from "@/lib/auth";
 
-export default function SettingsAccountPage() {
-  const t = useTranslations("SettingsAccountPage");
+export default async function SettingsAccountPage() {
+  const t = await getTranslations("SettingsAccountPage");
 
-  // function handleRevokeOtherSessions() {
-  //     startTransition(async () => {
-  //       await authClient.revokeOtherSessions(undefined, {
-  //         onSuccess: () => {
-  //           toast.success("Vous avez été déconnecté de tous les appareils.");
-  //           router.refresh();
-  //         },
-  //         onError: () => {
-  //           toast.error(t("Form.errors.generic"));
-  //         },
-  //       });
-  //     });
-  //   }
+  const accounts = await auth.api.listUserAccounts({
+    headers: await headers(),
+  });
+
+  const hasPasswordAccount = accounts.some(
+    (a) => a.providerId === "credential",
+  );
 
   return (
     <div className="flex flex-col gap-6">
-      <Header title={t("title")} description={t("description")} />
+      <SettingsHeader title={t("title")} description={t("description")} />
       <div className="flex items-center justify-between">
         <Label>{t("delete.label")}</Label>
-        <DeleteAccountButton>
+        <DeleteAccountButton hasPasswordAccount={hasPasswordAccount}>
           <Button variant="destructive">{t("delete.button")}</Button>
         </DeleteAccountButton>
       </div>

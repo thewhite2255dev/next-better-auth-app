@@ -177,7 +177,11 @@ export default function TwoFactorForm({
           />
           <FormError message={error} />
           <FormSuccess message={success} />
-          <Button type="submit" className="w-full" disabled={isPending}>
+          <Button
+            type="submit"
+            className="w-full"
+            disabled={isPending || isEnablingTwoFactorAuth || isResendingCode}
+          >
             {isPending ? <Spinner /> : t("Form.twoFactor.button")}
           </Button>
         </form>

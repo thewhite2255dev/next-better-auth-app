@@ -32,7 +32,7 @@ export function SessionManagement({
     startTransition(async () => {
       await authClient.revokeOtherSessions(undefined, {
         onSuccess: () => {
-          toast.success("Vous avez été déconnecté de tous les appareils.");
+          toast.success(t("SessionManagement.success.revokedAll"));
           router.refresh();
         },
         onError: () => {
@@ -50,22 +50,28 @@ export function SessionManagement({
 
       <div className="space-y-4">
         <div className="flex items-center justify-between">
-          <h3 className="text-lg font-medium">Other active sessions</h3>
+          <h3 className="text-base font-medium">
+            {t("SessionManagement.otherSessions.title")}
+          </h3>
           {otherSessions.length > 0 && (
             <Button
               variant="destructive"
               size="sm"
               onClick={handleRevokeOtherSessions}
             >
-              {isPending ? <Spinner /> : "Revoke other sessions"}
+              {isPending ? (
+                <Spinner />
+              ) : (
+                t("SessionManagement.otherSessions.revokeAll")
+              )}
             </Button>
           )}
         </div>
 
         {otherSessions.length === 0 ? (
-          <Card>
-            <CardContent className="text-muted-foreground py-8 text-center">
-              No other active sessions
+          <Card className="rounded-md p-4 shadow-none">
+            <CardContent className="text-muted-foreground p-0 py-8 text-center">
+              {t("SessionManagement.otherSessions.empty")}
             </CardContent>
           </Card>
         ) : (
@@ -95,9 +101,10 @@ function SessionCard({
   const [isPending, startTransition] = useTransition();
 
   function getBrowserInformation() {
-    if (userAgentInfo == null) return "Unknown Device";
+    if (userAgentInfo == null)
+      return t("SessionManagement.session.unknownDevice");
     if (userAgentInfo.browser.name == null && userAgentInfo.os.name == null) {
-      return "Unknown Device";
+      return t("SessionManagement.session.unknownDevice");
     }
 
     if (userAgentInfo.browser.name == null) return userAgentInfo.os.name;
@@ -121,7 +128,7 @@ function SessionCard({
         },
         {
           onSuccess: () => {
-            toast.success("Cette session a été déconnectée avec succès.");
+            toast.success(t("SessionManagement.success.revokedSession"));
             router.refresh();
           },
           onError: () => {
@@ -133,12 +140,14 @@ function SessionCard({
   }
 
   return (
-    <Card>
-      <CardHeader className="flex justify-between">
+    <Card className="rounded-md p-4 shadow-none">
+      <CardHeader className="flex justify-between p-0">
         <CardTitle>{getBrowserInformation()}</CardTitle>
-        {isCurrentSession && <Badge>Current session</Badge>}
+        {isCurrentSession && (
+          <Badge>{t("SessionManagement.currentSession")}</Badge>
+        )}
       </CardHeader>
-      <CardContent>
+      <CardContent className="p-0">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-3">
             {userAgentInfo?.device.type === "mobile" ? (
@@ -148,10 +157,12 @@ function SessionCard({
             )}
             <div>
               <p className="text-muted-foreground text-sm">
-                Created: {formatDate(session.createdAt)}
+                {t("SessionManagement.session.created")}:{" "}
+                {formatDate(session.createdAt)}
               </p>
               <p className="text-muted-foreground text-sm">
-                Expires: {formatDate(session.expiresAt)}
+                {t("SessionManagement.session.expires")}:{" "}
+                {formatDate(session.expiresAt)}
               </p>
             </div>
           </div>

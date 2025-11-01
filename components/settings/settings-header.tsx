@@ -7,7 +7,7 @@ interface HeaderProps {
   description?: string;
 }
 
-export function Header({ title, description }: HeaderProps) {
+export function SettingsHeader({ title, description }: HeaderProps) {
   return (
     <div className="flex flex-col">
       <h1 className="text-lg font-medium">{title}</h1>

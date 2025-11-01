@@ -1,6 +1,6 @@
 "use client";
 
-import { LogOut, Settings, User } from "lucide-react";
+import { LogOut, Settings } from "lucide-react";
 
 import {
   DropdownMenu,
@@ -22,13 +22,9 @@ import { maskEmail } from "@/lib/utils";
 export function UserButton() {
   const t = useTranslations("UserButton");
 
-  const { data: session, isPending } = authClient.useSession();
+  const { data: session } = authClient.useSession();
 
   const userFallback = generateAvatarFallback(session?.user.name ?? "");
-
-  if (isPending) {
-    return null;
-  }
 
   return (
     <DropdownMenu>
@@ -60,12 +56,6 @@ export function UserButton() {
         </DropdownMenuLabel>
         <DropdownMenuSeparator />
         <DropdownMenuGroup>
-          <DropdownMenuItem asChild>
-            <Link href={"/profile"}>
-              <User />
-              {t("profile")}
-            </Link>
-          </DropdownMenuItem>
           <DropdownMenuItem asChild>
             <Link href={"/settings/profile"}>
               <Settings />

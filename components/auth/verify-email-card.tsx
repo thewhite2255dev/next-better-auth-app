@@ -6,7 +6,7 @@ import { useState, useTransition } from "react";
 import FormError from "../layout/form-error";
 import FormSuccess from "../layout/form-success";
 import { ResendButton } from "./resend-button";
-import { sendVerificationEmail } from "@/lib/auth-client";
+import { authClient } from "@/lib/auth-client";
 
 interface VerifyEmailCardProps {
   description: string;
@@ -26,7 +26,7 @@ export function VerifyEmailCard({ email, description }: VerifyEmailCardProps) {
 
     return new Promise<void>((resolve, reject) => {
       startTransition(async () => {
-        await sendVerificationEmail(
+        await authClient.sendVerificationEmail(
           { email },
           {
             onError: () => {

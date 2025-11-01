@@ -1,9 +1,9 @@
 "use client";
 
 import { useRouter } from "@/i18n/navigation";
-import { signOut } from "@/lib/auth-client";
 import { DEFAULT_SIGN_OUT_REDIRECT } from "@/lib/redirect-config";
 import { cn } from "@/lib/utils";
+import { authClient } from "@/lib/auth-client";
 
 interface SignOutProps {
   children: React.ReactNode;
@@ -19,7 +19,7 @@ export function SignOut({
   const router = useRouter();
 
   function handleClick() {
-    signOut({
+    authClient.signOut({
       fetchOptions: {
         onSuccess: () => {
           router.push(redirectTo);

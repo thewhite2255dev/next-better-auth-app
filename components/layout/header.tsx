@@ -5,7 +5,7 @@ import { cn } from "@/lib/utils";
 import { ThemeSwitcher } from "./theme-switcher";
 import { LanguageSwitcher } from "./language-switcher";
 import { SiteConfig } from "@/lib/site-config";
-import { useSession } from "@/lib/auth-client";
+import { authClient } from "@/lib/auth-client";
 import { Button } from "../ui/button";
 import { LogIn } from "lucide-react";
 import { useTranslations } from "next-intl";
@@ -21,7 +21,7 @@ export type navItemsType = {
 export function Header() {
   const t = useTranslations("Header");
   const pathname = usePathname();
-  const { data: session, isPending } = useSession();
+  const { data: session, isPending } = authClient.useSession();
 
   const navItems: navItemsType = [];
 
@@ -66,24 +66,6 @@ export function Header() {
               </Button>
             )}
           </div>
-
-          {/* <div className="hidden items-center gap-2 sm:flex">
-            <LanguageSwitcher />
-            <ThemeSwitcher />
-            {!session?.user && !isPending && (
-              <Button variant="outline" size="sm" asChild>
-                <Link href="/auth/sign-in">
-                  <LogIn className="mr-2 h-4 w-4" />
-                  {t("signInButton")}
-                </Link>
-              </Button>
-            )}
-            {isPending ? (
-              <Skeleton className="flex size-8 shrink-0 overflow-hidden rounded-md" />
-            ) : (
-              session?.user && <UserButton {...session?.user} />
-            )}
-          </div> */}
         </div>
       </div>
     </header>

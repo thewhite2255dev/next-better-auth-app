@@ -51,6 +51,5 @@ export async function sendEmail({
     return { error: null, messageId: info.messageId };
   } catch (error) {
     console.error("Erreur lors de l'envoi de l'email:", error);
-    return { error: t("Form.errors.generic") };
   }
 }

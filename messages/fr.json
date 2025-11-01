@@ -56,7 +56,7 @@
         "cancel": "Annuler",
         "submit": "Supprimer"
       },
-      "confirmationWord": "delete my account",
+      "confirmationWord": "supprimer mon compte",
       "errors": {
         "confirmationRequired": "La confirmation est requise.",
         "deleteAccountConfirmation": "Vous devez saisir {keyword} pour confirmer."
@@ -84,12 +84,6 @@
         "minLength": "Le mot de passe actuel doit contenir au moins {minLength} caractères.",
         "required": "Le mot de passe actuel est requis."
       },
-      "newPassword": {
-        "incorrect": "Le nouveau mot de passe est incorrect.",
-        "maxLength": "Le nouveau mot de passe ne peut pas dépasser {maxLength} caractères.",
-        "minLength": "Le nouveau mot de passe doit contenir au moins {minLength} caractères.",
-        "required": "Le nouveau mot de passe est requis."
-      },
       "email": {
         "incorrect": "L'adresse e-mail est incorrecte.",
         "invalid": "Veuillez entrer une adresse e-mail valide.",
@@ -101,6 +95,12 @@
         "maxLength": "Le nom ne peut pas dépasser {maxLength} caractères.",
         "minLength": "Le nom doit contenir au moins {minLength} caractères.",
         "required": "Le nom est requis."
+      },
+      "newPassword": {
+        "incorrect": "Le nouveau mot de passe est incorrect.",
+        "maxLength": "Le nouveau mot de passe ne peut pas dépasser {maxLength} caractères.",
+        "minLength": "Le nouveau mot de passe doit contenir au moins {minLength} caractères.",
+        "required": "Le nouveau mot de passe est requis."
       },
       "password": {
         "incorrect": "Le mot de passe est incorrect.",
@@ -207,6 +207,26 @@
     "fr": "Français",
     "srOnly": "Changer de langue"
   },
+  "SessionManagement": {
+    "currentSession": "Session actuelle",
+    "otherSessions": {
+      "empty": "Aucune autre session active",
+      "revokeAll": "Révoquer les autres sessions",
+      "title": "Autres sessions actives"
+    },
+    "session": {
+      "created": "Créée",
+      "expires": "Expire",
+      "unknownDevice": "Appareil inconnu"
+    },
+    "success": {
+      "revokedAll": "Vous avez été déconnecté de tous les appareils.",
+      "revokedSession": "Cette session a été déconnectée avec succès."
+    }
+  },
+  "SetPasswordButton": {
+    "success": "Le lien a été envoyé avec succès."
+  },
   "SettingsAccountPage": {
     "delete": {
       "button": "Supprimer",
@@ -240,6 +260,11 @@
     "changePassword": {
       "description": "Choisissez un mot de passe fort et unique.",
       "title": "Changer le mot de passe"
+    },
+    "setPassword": {
+      "button": "Envoyer un e-mail de réinitialisation de mot de passe",
+      "description": "Définissez un mot de passe pour sécuriser votre compte.",
+      "title": "Définir un mot de passe"
     },
     "twoFactor": {
       "description": "Activez l'authentification à deux facteurs et gérez l'application d'authentification.",

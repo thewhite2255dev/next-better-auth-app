@@ -96,6 +96,12 @@
         "minLength": "Name must be at least {minLength} characters.",
         "required": "Name is required."
       },
+      "newPassword": {
+        "incorrect": "The new password is incorrect.",
+        "maxLength": "The new password cannot exceed {maxLength} characters.",
+        "minLength": "The new password must contain at least {minLength} characters.",
+        "required": "The new password is required."
+      },
       "password": {
         "incorrect": "Password is incorrect.",
         "maxLength": "Password cannot exceed {maxLength} characters.",
@@ -201,6 +207,26 @@
     "fr": "French",
     "srOnly": "Change language"
   },
+  "SessionManagement": {
+    "currentSession": "Current session",
+    "otherSessions": {
+      "empty": "No other active sessions",
+      "revokeAll": "Revoke other sessions",
+      "title": "Other active sessions"
+    },
+    "session": {
+      "created": "Created",
+      "expires": "Expires",
+      "unknownDevice": "Unknown Device"
+    },
+    "success": {
+      "revokedAll": "You have been signed out of all devices.",
+      "revokedSession": "This session has been successfully revoked."
+    }
+  },
+  "SetPasswordButton": {
+    "success": "The link was sent successfully."
+  },
   "SettingsAccountPage": {
     "delete": {
       "button": "Delete",
@@ -234,6 +260,11 @@
     "changePassword": {
       "description": "Choose a strong and unique password.",
       "title": "Change password"
+    },
+    "setPassword": {
+      "button": "Send Password Reset Email",
+      "description": "Set a password to secure your account.",
+      "title": "Set password"
     },
     "twoFactor": {
       "description": "Enable two-factor authentication and manage your authenticator app.",

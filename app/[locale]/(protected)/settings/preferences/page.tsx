@@ -5,7 +5,7 @@ import { useTheme } from "next-themes";
 import { useLocale, useTranslations } from "next-intl";
 import { usePathname, useRouter } from "@/i18n/navigation";
 
-import { Header } from "../_components/header";
+import { SettingsHeader } from "@/components/settings/settings-header";
 import { Label } from "@/components/ui/label";
 import {
   Select,
@@ -15,7 +15,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { useEffect, useState } from "react";
+import { Card, CardContent } from "@/components/ui/card";
 
 export default function SettingsPreferencesPage() {
   const router = useRouter();
@@ -23,8 +23,6 @@ export default function SettingsPreferencesPage() {
   const locale = useLocale();
   const { theme, setTheme } = useTheme();
   const t = useTranslations();
-
-  const [isClient, setIsClient] = useState<boolean>(false);
 
   const languages = [
     { code: "fr", name: t("LanguageSwitcher.fr") },
@@ -41,18 +39,14 @@ export default function SettingsPreferencesPage() {
     router.push(pathname, { locale: newLocale });
   };
 
-  useEffect(() => {
-    setIsClient(true);
-  }, []);
-
   return (
-    <div className="flex flex-col gap-6">
-      <Header
+    <div className="flex flex-col gap-6" suppressHydrationWarning>
+      <SettingsHeader
         title={t("SettingsPreferencesPage.title")}
         description={t("SettingsPreferencesPage.description")}
       />
-      {!isClient ? null : (
-        <>
+      <Card className="rounded-md p-4 shadow-none">
+        <CardContent className="flex flex-col gap-4 p-0">
           <div className="flex items-center justify-between">
             <Label>{t("SettingsPreferencesPage.theme")}</Label>
             <Select value={theme ?? undefined} onValueChange={setTheme}>
@@ -96,8 +90,8 @@ export default function SettingsPreferencesPage() {
               </SelectContent>
             </Select>
           </div>
-        </>
-      )}
+        </CardContent>
+      </Card>
     </div>
   );
 }

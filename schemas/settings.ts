@@ -59,7 +59,7 @@ export const ChangePasswordFormSchema = (
         message: t("Form.errors.newPassword.required"),
       })
       .min(8, {
-        message: t("Form.errors.password.minLength", { minLength: 8 }),
+        message: t("Form.errors.newPassword.minLength", { minLength: 8 }),
       }),
     revokeOtherSessions: z.boolean(),
   });

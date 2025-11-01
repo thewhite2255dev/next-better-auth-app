@@ -3,7 +3,7 @@
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import { useTranslations } from "next-intl";
-import { signIn } from "@/lib/auth-client";
+import { authClient } from "@/lib/auth-client";
 import { useSearchParams } from "next/navigation";
 import { DEFAULT_SIGN_IN_REDIRECT } from "@/lib/redirect-config";
 import { Spinner } from "../ui/spinner";
@@ -51,7 +51,7 @@ export function SocialButtons({
 
   async function handleClick(provider: SocialProvider) {
     setSocialLoading(provider);
-    signIn.social({
+    authClient.signIn.social({
       provider,
       disableRedirect: false,
       callbackURL: callbackUrl || DEFAULT_SIGN_IN_REDIRECT,

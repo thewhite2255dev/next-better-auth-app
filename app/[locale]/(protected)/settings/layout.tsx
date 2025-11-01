@@ -3,11 +3,11 @@
 import { useTranslations } from "next-intl";
 import {
   Settings,
-  User,
   type LucideProps,
   KeyRound,
   Shield,
   Sliders,
+  User,
 } from "lucide-react";
 import { Link, usePathname } from "@/i18n/navigation";
 import { cn } from "@/lib/utils";

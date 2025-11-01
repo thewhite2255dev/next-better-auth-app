@@ -1,15 +1,15 @@
 "use client";
 
-import { useSession } from "@/lib/auth-client";
 import { Skeleton } from "@/components/ui/skeleton";
 import { SignOut } from "@/components/auth/sign-out-button";
 import { UserCircle } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { Button } from "@/components/ui/button";
+import { authClient } from "@/lib/auth-client";
 
 export default function DashboardPage() {
   const t = useTranslations("DashboardPage");
-  const { data: session, isPending } = useSession();
+  const { data: session, isPending } = authClient.useSession();
 
   if (isPending) {
     return (

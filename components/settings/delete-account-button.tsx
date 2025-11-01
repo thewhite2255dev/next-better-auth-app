@@ -39,10 +39,12 @@ import { Spinner } from "../ui/spinner";
 
 interface DeleteAccountButtonProps {
   children: React.ReactNode;
+  hasPasswordAccount: boolean;
 }
 
 export default function DeleteAccountButton({
   children,
+  hasPasswordAccount,
 }: DeleteAccountButtonProps) {
   const t = useTranslations();
   const { data: session, refetch } = authClient.useSession();
@@ -160,21 +162,23 @@ export default function DeleteAccountButton({
                     </FormItem>
                   )}
                 />
-                <FormField
-                  control={form.control}
-                  name="password"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>
-                        {t("Form.deleteAccount.fields.password")}
-                      </FormLabel>
-                      <FormControl>
-                        <PasswordInput field={field} loading={isPending} />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
+                {hasPasswordAccount && (
+                  <FormField
+                    control={form.control}
+                    name="password"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>
+                          {t("Form.fields.currentPassword")}
+                        </FormLabel>
+                        <FormControl>
+                          <PasswordInput field={field} loading={isPending} />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                )}
               </div>
               <FormError message={error} />
               <FormSuccess message={success} />

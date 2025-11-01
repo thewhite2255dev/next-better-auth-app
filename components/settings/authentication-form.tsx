@@ -12,7 +12,7 @@ import { useRouter } from "@/i18n/navigation";
 import { ConfirmPasswordDialog } from "./confirm-password-dialog";
 import { Switch } from "../ui/switch";
 import { TotpSetupDialog } from "./totp-setup-dialog";
-import { Separator } from "@/components/ui/separator";
+import { Card, CardContent } from "../ui/card";
 
 export type TwoFactorData = {
   totpURI: string;
@@ -173,49 +173,50 @@ export function AuthenticationForm() {
 
   return (
     <>
-      <div className="flex flex-col gap-4">
-        <div className="flex items-center justify-between rounded-md">
-          <div>
-            <Label>{t("AuthenticationForm.twoFactor.label")}</Label>
-            <p>{t("AuthenticationForm.twoFactor.description")}</p>
+      <Card className="rounded-md p-4 shadow-none">
+        <CardContent className="flex flex-col gap-4 p-0">
+          <div className="flex items-center justify-between">
+            <div>
+              <Label>{t("AuthenticationForm.twoFactor.label")}</Label>
+              <p>{t("AuthenticationForm.twoFactor.description")}</p>
+            </div>
+            <div>
+              <Switch
+                className="h-"
+                checked={session?.user.twoFactorEnabled ?? false}
+                onCheckedChange={(checked) => {
+                  setActionType("twoFactor");
+                  setPendingState(checked);
+                  setIsPasswordDialogOpen(true);
+                }}
+                disabled={isPending}
+              />
+            </div>
           </div>
-          <div>
-            <Switch
-              className="h-"
-              checked={session?.user.twoFactorEnabled ?? false}
-              onCheckedChange={(checked) => {
-                setActionType("twoFactor");
-                setPendingState(checked);
-                setIsPasswordDialogOpen(true);
-              }}
-              disabled={isPending}
-            />
+          <div className="flex items-center justify-between rounded-md">
+            <div>
+              <Label>{t("AuthenticationForm.totp.label")}</Label>
+              <p>{t("AuthenticationForm.totp.description")}</p>
+            </div>
+            <div>
+              <Switch
+                className="h-"
+                disabled={isPending}
+                checked={session?.user.totpEnabled ?? false}
+                onCheckedChange={(checked) => {
+                  setActionType("totp");
+                  setPendingState(checked);
+                  if (!session?.user.twoFactorEnabled) {
+                    toast.error(t("AuthenticationForm.totp.requireTwoFactor"));
+                    return;
+                  }
+                  setIsPasswordDialogOpen(true);
+                }}
+              />
+            </div>
           </div>
-        </div>
-        <Separator />
-        <div className="flex items-center justify-between rounded-md">
-          <div>
-            <Label>{t("AuthenticationForm.totp.label")}</Label>
-            <p>{t("AuthenticationForm.totp.description")}</p>
-          </div>
-          <div>
-            <Switch
-              className="h-"
-              disabled={isPending}
-              checked={session?.user.totpEnabled ?? false}
-              onCheckedChange={(checked) => {
-                setActionType("totp");
-                setPendingState(checked);
-                if (!session?.user.twoFactorEnabled) {
-                  toast.error(t("AuthenticationForm.totp.requireTwoFactor"));
-                  return;
-                }
-                setIsPasswordDialogOpen(true);
-              }}
-            />
-          </div>
-        </div>
-      </div>
+        </CardContent>
+      </Card>
       <ConfirmPasswordDialog
         title={
           actionType === "twoFactor"

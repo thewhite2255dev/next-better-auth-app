@@ -1,5 +1,5 @@
 import { SessionManagement } from "@/components/settings/session-management";
-import { Header } from "../_components/header";
+import { SettingsHeader } from "@/components/settings/settings-header";
 import { auth } from "@/lib/auth";
 import { headers } from "next/headers";
 import { getTranslations } from "next-intl/server";
@@ -16,7 +16,7 @@ export default async function SettingsSessionsPage() {
 
   return (
     <div className="flex flex-col gap-6">
-      <Header title={t("title")} description={t("description")} />
+      <SettingsHeader title={t("title")} description={t("description")} />
       <SessionManagement
         currentSessionToken={session?.session.token}
         sessions={sessions}

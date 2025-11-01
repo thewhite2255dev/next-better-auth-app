@@ -3,10 +3,11 @@
   "i18n-ally.keystyle": "nested",
   "i18n-ally.sortKeys": true,
   "i18n-ally.enabledParsers": ["json"],
-  "i18n-ally.sourceLanguage": "fr",
+  "i18n-ally.sourceLanguage": "en",
   "i18n-ally.displayLanguage": "fr",
   "commentTranslate.targetLanguage": "fr",
   "commentTranslate.source": "Google",
   "commentTranslate.hover.enabled": false,
-  "cSpell.enabled": true
+  "cSpell.enabled": true,
+  "typescript.tsdk": "node_modules\\typescript\\lib"
 }
