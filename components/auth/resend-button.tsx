@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
+import { Spinner } from "@/components/ui/spinner";
 import { useTranslations } from "next-intl";
 import { cn } from "@/lib/utils";
 import { AUTH_CONSTANTS } from "@/lib/auth-constants";
@@ -71,9 +72,13 @@ export function ResendButton({
       onClick={handleResend}
       {...props}
     >
-      {countdown > 0
-        ? t("Form.auth.resendCountdown", { name: label, countdown })
-        : t("Form.auth.resendLabel", { name: label })}
+      {isLoading ? (
+        <Spinner />
+      ) : countdown > 0 ? (
+        t("Form.auth.resendCountdown", { name: label, countdown })
+      ) : (
+        t("Form.auth.resendLabel", { name: label })
+      )}
     </Button>
   );
 }

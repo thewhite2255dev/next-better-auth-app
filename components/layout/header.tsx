@@ -49,7 +49,7 @@ export function Header() {
           ))}
         </nav>
         <div className="flex items-center gap-3">
-          <div className="hidden items-center gap-2 sm:flex">
+          <div className="items-center gap-2">
             <LanguageSwitcher />
             <ThemeSwitcher />
 
@@ -61,7 +61,7 @@ export function Header() {
               <Button variant="outline" size="sm" asChild>
                 <Link href="/auth/sign-in">
                   <LogIn className="mr-2 h-4 w-4" />
-                  {t("signInButton")}
+                  <span className="hidden sm:block">{t("signInButton")}</span>
                 </Link>
               </Button>
             )}
