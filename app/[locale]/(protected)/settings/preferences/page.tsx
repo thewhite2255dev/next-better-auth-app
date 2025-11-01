@@ -15,7 +15,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-// no client-only mount guards needed; we suppress hydration where necessary
+import { useEffect, useState } from "react";
 
 export default function SettingsPreferencesPage() {
   const router = useRouter();
@@ -23,6 +23,8 @@ export default function SettingsPreferencesPage() {
   const locale = useLocale();
   const { theme, setTheme } = useTheme();
   const t = useTranslations();
+
+  const [isClient, setIsClient] = useState<boolean>(false);
 
   const languages = [
     { code: "fr", name: t("LanguageSwitcher.fr") },
@@ -39,52 +41,63 @@ export default function SettingsPreferencesPage() {
     router.push(pathname, { locale: newLocale });
   };
 
-  // Note: theme comes from next-themes and resolves on client; we suppress hydration where needed.
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
 
   return (
     <div className="flex flex-col gap-6">
       <Header
-        title={t("SettingsPreferences.title")}
-        description={t("SettingsPreferences.description")}
+        title={t("SettingsPreferencesPage.title")}
+        description={t("SettingsPreferencesPage.description")}
       />
-      <div
-        className="flex items-center justify-between"
-        suppressHydrationWarning
-      >
-        <Label>Thème</Label>
-        <Select value={theme ?? undefined} onValueChange={setTheme}>
-          <SelectTrigger className="w-36">
-            <SelectValue placeholder="Sélectionner un thème" />
-          </SelectTrigger>
-          <SelectContent side="bottom">
-            <SelectGroup>
-              {themes.map((option) => (
-                <SelectItem key={option.value} value={option.value}>
-                  {option.label}
-                </SelectItem>
-              ))}
-            </SelectGroup>
-          </SelectContent>
-        </Select>
-      </div>
-
-      <div className="flex items-center justify-between">
-        <Label>Langue</Label>
-        <Select defaultValue={locale} onValueChange={handleLanguageChange}>
-          <SelectTrigger className="w-36">
-            <SelectValue placeholder="Sélectionner une langue" />
-          </SelectTrigger>
-          <SelectContent side="bottom">
-            <SelectGroup>
-              {languages.map((lang) => (
-                <SelectItem key={lang.code} value={lang.code}>
-                  {lang.name}
-                </SelectItem>
-              ))}
-            </SelectGroup>
-          </SelectContent>
-        </Select>
-      </div>
+      {!isClient ? null : (
+        <>
+          <div className="flex items-center justify-between">
+            <Label>{t("SettingsPreferencesPage.theme")}</Label>
+            <Select value={theme ?? undefined} onValueChange={setTheme}>
+              <SelectTrigger className="w-36">
+                <SelectValue
+                  placeholder={t(
+                    "SettingsPreferencesPage.placeholders.selectTheme",
+                  )}
+                />
+              </SelectTrigger>
+              <SelectContent side="bottom">
+                <SelectGroup>
+                  {themes.map((option) => (
+                    <SelectItem key={option.value} value={option.value}>
+                      {option.icon && <option.icon className="h-4 w-4" />}{" "}
+                      {option.label}
+                    </SelectItem>
+                  ))}
+                </SelectGroup>
+              </SelectContent>
+            </Select>
+          </div>
+          <div className="flex items-center justify-between">
+            <Label>{t("SettingsPreferencesPage.language")}</Label>
+            <Select defaultValue={locale} onValueChange={handleLanguageChange}>
+              <SelectTrigger className="w-36">
+                <SelectValue
+                  placeholder={t(
+                    "SettingsPreferencesPage.placeholders.selectLanguage",
+                  )}
+                />
+              </SelectTrigger>
+              <SelectContent side="bottom">
+                <SelectGroup>
+                  {languages.map((lang) => (
+                    <SelectItem key={lang.code} value={lang.code}>
+                      {lang.name}
+                    </SelectItem>
+                  ))}
+                </SelectGroup>
+              </SelectContent>
+            </Select>
+          </div>
+        </>
+      )}
     </div>
   );
 }

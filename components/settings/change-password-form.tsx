@@ -2,6 +2,7 @@
 
 import {
   Form,
+  FormControl,
   FormField,
   FormItem,
   FormLabel,
@@ -20,6 +21,7 @@ import type { ChangePasswordFormValues } from "@/types/settings";
 import { ChangePasswordFormSchema } from "@/schemas/settings";
 import { toast } from "sonner";
 import { useAuthErrorMessages } from "@/hooks/use-auth-error-messages";
+import { Checkbox } from "../ui/checkbox";
 
 export function ChangePasswordForm() {
   const t = useTranslations();
@@ -33,6 +35,7 @@ export function ChangePasswordForm() {
     defaultValues: {
       currentPassword: "",
       newPassword: "",
+      revokeOtherSessions: true,
     },
   });
 
@@ -66,9 +69,7 @@ export function ChangePasswordForm() {
           name="currentPassword"
           render={({ field }) => (
             <FormItem className="w-full">
-              <FormLabel>
-                {t("Form.changePassword.fields.currentPassword")}
-              </FormLabel>
+              <FormLabel>{t("Form.fields.currentPassword")}</FormLabel>
               <PasswordInput field={field} loading={isPending} />
               <FormMessage />
             </FormItem>
@@ -79,17 +80,31 @@ export function ChangePasswordForm() {
           name="newPassword"
           render={({ field }) => (
             <FormItem className="w-full">
-              <FormLabel>
-                {t("Form.changePassword.fields.newPassword")}
-              </FormLabel>
+              <FormLabel>{t("Form.fields.newPassword")}</FormLabel>
               <PasswordInput field={field} loading={isPending} />
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="revokeOtherSessions"
+          render={({ field }) => (
+            <FormItem className="flex">
+              <FormControl>
+                <Checkbox
+                  checked={field.value}
+                  onCheckedChange={field.onChange}
+                />
+              </FormControl>
+              <FormLabel>{t("Form.fields.revokeOtherSessions")}</FormLabel>
               <FormMessage />
             </FormItem>
           )}
         />
         <FormError message={error} />
         <Button type="submit" disabled={isPending}>
-          {isPending ? <Spinner /> : t("Form.changePassword.submitButton")}
+          {isPending ? <Spinner /> : t("Form.changePassword.button")}
         </Button>
       </form>
     </Form>

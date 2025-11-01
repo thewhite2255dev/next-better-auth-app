@@ -47,10 +47,10 @@ export async function sendEmail({
       replyTo,
     });
 
-    console.log("Email envoyé:", info.messageId);
-    return { success: true, messageId: info.messageId };
+    console.log("E-mail envoyé:", info.messageId);
+    return { error: null, messageId: info.messageId };
   } catch (error) {
     console.error("Erreur lors de l'envoi de l'email:", error);
-    throw error;
+    return { error: t("Form.errors.generic") };
   }
 }

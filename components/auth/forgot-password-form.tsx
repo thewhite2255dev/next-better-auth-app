@@ -21,7 +21,6 @@ import { BackButton } from "./back-button";
 import { Button } from "../ui/button";
 import FormSuccess from "../layout/form-success";
 import { ResendButton } from "./resend-button";
-import { AUTH_CONSTANTS } from "@/lib/auth-constants";
 import { Input } from "../ui/input";
 import { Spinner } from "../ui/spinner";
 import { authClient } from "@/lib/auth-client";
@@ -33,9 +32,6 @@ export function ForgotPasswordForm() {
   const [error, setError] = useState<string>("");
   const [success, setSuccess] = useState<string>("");
   const [isSubmitted, setIsSubmitted] = useState<boolean>(false);
-  const [countdown, setCountdown] = useState<number>(
-    AUTH_CONSTANTS.VERIFY_EMAIL_RESEND_DELAY,
-  );
 
   const form = useForm<ForgotPasswordFormValues>({
     resolver: zodResolver(ForgotPasswordFormSchema(t)),
@@ -44,25 +40,28 @@ export function ForgotPasswordForm() {
     },
   });
 
-  function handleResendLink() {
+  async function handleResendLink() {
     setError("");
     setSuccess("");
 
-    startTransition(async () => {
-      await authClient.requestPasswordReset(
-        {
-          email: form.getValues("email") as string,
-        },
-        {
-          onError: () => {
-            setError(t("Form.errors.generic"));
+    return new Promise<void>((resolve, reject) => {
+      startTransition(async () => {
+        await authClient.requestPasswordReset(
+          {
+            email: form.getValues("email") as string,
           },
-          onSuccess: () => {
-            setCountdown(AUTH_CONSTANTS.VERIFY_EMAIL_RESEND_DELAY);
-            setSuccess(t("Form.verifyEmail.resend.states.success"));
+          {
+            onError: () => {
+              setError(t("Form.errors.generic"));
+              reject(new Error("Failed to resend link"));
+            },
+            onSuccess: () => {
+              setSuccess(t("Form.verifyEmail.resend.states.success"));
+              resolve();
+            },
           },
-        },
-      );
+        );
+      });
     });
   }
 
@@ -99,11 +98,10 @@ export function ForgotPasswordForm() {
           />
         ) : (
           <p className="text-muted-foreground text-sm">
-            {t.rich("Form.editAccount", {
+            {t.rich("Form.auth.editAccount", {
               button: (chunks) => (
                 <button
                   onClick={() => {
-                    setCountdown(AUTH_CONSTANTS.TWO_FA_RESEND_DELAY);
                     setIsSubmitted(false);
                   }}
                   className="text-primary underline-offset-4 hover:underline"
@@ -127,7 +125,7 @@ export function ForgotPasswordForm() {
               name="email"
               render={({ field }) => (
                 <FormItem className="w-full">
-                  <FormLabel>{t("Form.forgotPassword.fields.email")}</FormLabel>
+                  <FormLabel>{t("Form.fields.email")}</FormLabel>
                   <FormControl>
                     <Input disabled={isPending} type="email" {...field} />
                   </FormControl>
@@ -160,7 +158,6 @@ export function ForgotPasswordForm() {
             variant="outline"
             label={t("Form.common.link")}
             handler={handleResendLink}
-            initialCountdown={countdown}
             isLoading={isPending}
           />
         </div>

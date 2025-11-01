@@ -5,8 +5,8 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
-export function maskEmail(email: string) {
-  if (!email) return null;
+export function maskEmail(email: string): string {
+  if (!email) return "";
 
   const [localPart, domain] = email.split("@");
 
@@ -16,8 +16,8 @@ export function maskEmail(email: string) {
   if (localPart.length > 4) {
     maskedLocalPart =
       localPart.slice(0, 3) +
-      "*".repeat(localPart.length - 4) +
-      localPart.slice(-1);
+      "*".repeat(localPart.length - 5) +
+      localPart.slice(-2);
   } else {
     maskedLocalPart =
       localPart[0] +
@@ -26,4 +26,15 @@ export function maskEmail(email: string) {
   }
 
   return `${maskedLocalPart}@${domain}`;
+}
+
+export function generateAvatarFallback(name: string): string {
+  if (!name) return "";
+
+  return name
+    .split(" ")
+    .slice(0, 2)
+    .map((part) => part[0])
+    .join("")
+    .toUpperCase();
 }

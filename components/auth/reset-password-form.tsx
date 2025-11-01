@@ -89,7 +89,7 @@ export function ResetPasswordForm() {
               name="password"
               render={({ field }) => (
                 <FormItem className="w-full">
-                  <FormLabel>{t("Form.signIn.fields.password")}</FormLabel>
+                  <FormLabel>{t("Form.fields.password")}</FormLabel>
                   <PasswordInput field={field} loading={isPending} />
                   <FormMessage />
                 </FormItem>

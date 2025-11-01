@@ -5,7 +5,6 @@ import { useTranslations } from "next-intl";
 import { useState, useTransition } from "react";
 import FormError from "../layout/form-error";
 import FormSuccess from "../layout/form-success";
-import { AUTH_CONSTANTS } from "@/lib/auth-constants";
 import { ResendButton } from "./resend-button";
 import { sendVerificationEmail } from "@/lib/auth-client";
 
@@ -17,30 +16,30 @@ interface VerifyEmailCardProps {
 export function VerifyEmailCard({ email, description }: VerifyEmailCardProps) {
   const t = useTranslations();
 
-  const [countdown, setCountdown] = useState<number>(
-    AUTH_CONSTANTS.VERIFY_EMAIL_RESEND_DELAY,
-  );
   const [isPending, startTransition] = useTransition();
   const [error, setError] = useState<string>("");
   const [success, setSuccess] = useState<string>("");
 
-  function handleResendLink() {
+  async function handleResendLink() {
     setError("");
     setSuccess("");
 
-    startTransition(async () => {
-      await sendVerificationEmail(
-        { email },
-        {
-          onError: () => {
-            setError(t("Form.errors.generic"));
+    return new Promise<void>((resolve, reject) => {
+      startTransition(async () => {
+        await sendVerificationEmail(
+          { email },
+          {
+            onError: () => {
+              setError(t("Form.errors.generic"));
+              reject(new Error("Failed to resend verification email"));
+            },
+            onSuccess: () => {
+              setSuccess(t("Form.verifyEmail.resend.states.success"));
+              resolve();
+            },
           },
-          onSuccess: () => {
-            setSuccess(t("Form.verifyEmail.resend.states.success"));
-            setCountdown(AUTH_CONSTANTS.VERIFY_EMAIL_RESEND_DELAY);
-          },
-        },
-      );
+        );
+      });
     });
   }
 
@@ -58,7 +57,6 @@ export function VerifyEmailCard({ email, description }: VerifyEmailCardProps) {
         variant="outline"
         label={t("Form.common.link")}
         handler={handleResendLink}
-        initialCountdown={countdown}
         isLoading={isPending}
       />
     </div>

@@ -1,12 +1,12 @@
 "use client";
 
-import { AuthentificationForm } from "@/components/settings/authentication-form";
+import { AuthenticationForm } from "@/components/settings/authentication-form";
 import { Header } from "../_components/header";
 import { ChangePasswordForm } from "@/components/settings/change-password-form";
 import { useTranslations } from "next-intl";
 
 export default function SettingsSecurityPage() {
-  const t = useTranslations("SettingsSecurity");
+  const t = useTranslations("SettingsSecurityPage");
   return (
     <div className="flex flex-col gap-6">
       <Header
@@ -18,7 +18,7 @@ export default function SettingsSecurityPage() {
         title={t("twoFactor.title")}
         description={t("twoFactor.description")}
       />
-      <AuthentificationForm />
+      <AuthenticationForm />
     </div>
   );
 }

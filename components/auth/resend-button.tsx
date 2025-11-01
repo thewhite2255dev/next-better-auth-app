@@ -7,10 +7,10 @@ import { cn } from "@/lib/utils";
 import { AUTH_CONSTANTS } from "@/lib/auth-constants";
 
 interface ResendButtonProps extends React.ComponentProps<"button"> {
-  handler: () => void;
+  handler: () => Promise<void> | void;
   label: string;
-  initialCountdown: number;
   isLoading: boolean;
+  countdownDelay?: number;
   variant?:
     | "link"
     | "default"
@@ -26,18 +26,23 @@ export function ResendButton({
   isLoading,
   handler,
   label,
-  initialCountdown = AUTH_CONSTANTS.TWO_FA_RESEND_DELAY,
+  countdownDelay = AUTH_CONSTANTS.TWO_FA_RESEND_DELAY,
   variant = "default",
   ...props
 }: ResendButtonProps) {
   const t = useTranslations();
 
-  const [countdown, setCountdown] = useState<number>(initialCountdown);
+  const [countdown, setCountdown] = useState<number>(0);
 
-  function handleResend() {
+  async function handleResend() {
     if (countdown > 0) return;
-    setCountdown(initialCountdown);
-    handler();
+
+    try {
+      await handler();
+      setCountdown(countdownDelay);
+    } catch (error) {
+      console.error("Resend failed:", error);
+    }
   }
 
   useEffect(() => {

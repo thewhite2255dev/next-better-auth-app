@@ -6,13 +6,13 @@ export const SignInFormSchema = (t: (key: string, object?: any) => string) =>
     email: z
       .string()
       .min(1, {
-        message: t("Form.signIn.errors.email.required"),
+        message: t("Form.errors.email.required"),
       })
       .email({
-        message: t("Form.signIn.errors.email.invalid"),
+        message: t("Form.errors.email.invalid"),
       }),
     password: z.string().min(1, {
-      message: t("Form.signIn.errors.password.required"),
+      message: t("Form.errors.password.required"),
     }),
     code: z.string().optional(),
   });
@@ -22,29 +22,29 @@ export const SignUpFormSchema = (t: (key: string, object?: any) => string) =>
     email: z
       .string()
       .min(1, {
-        message: t("Form.signUp.errors.email.required"),
+        message: t("Form.errors.email.required"),
       })
       .email({
-        message: t("Form.signUp.errors.email.invalid"),
+        message: t("Form.errors.email.invalid"),
       }),
     password: z
       .string()
       .min(1, {
-        message: t("Form.signUp.errors.password.required"),
+        message: t("Form.errors.password.required"),
       })
       .min(8, {
-        message: t("Form.signUp.errors.password.minLength", { min: 8 }),
+        message: t("Form.errors.password.minLength", { minLength: 8 }),
       }),
     name: z
       .string()
       .min(1, {
-        message: t("Form.signUp.errors.name.required"),
+        message: t("Form.errors.name.required"),
       })
       .min(2, {
-        message: t("Form.signUp.errors.name.minLength", { min: 2 }),
+        message: t("Form.errors.name.minLength", { minLength: 2 }),
       })
       .max(50, {
-        message: t("Form.signUp.errors.name.maxLength", { max: 50 }),
+        message: t("Form.errors.name.maxLength", { maxLength: 50 }),
       }),
   });
 
@@ -55,17 +55,17 @@ export const ResetPasswordFormSchema = (
     password: z
       .string()
       .min(1, {
-        message: t("Form.resetPassword.errors.password.required"),
+        message: t("Form.errors.password.required"),
       })
       .min(8, {
-        message: t("Form.resetPassword.errors.password.minLength", { min: 8 }),
+        message: t("Form.errors.password.minLength", { minLength: 8 }),
       }),
   });
 
 export const TwoFactorFormSchema = (t: (key: string, object?: any) => string) =>
   z.object({
     code: z.string().min(1, {
-      message: t("Form.resetPassword.errors.password.required"),
+      message: t("Form.errors.password.required"),
     }),
   });
 
@@ -76,10 +76,10 @@ export const TwoFactorAuthFormSchema = (
     password: z
       .string()
       .min(1, {
-        message: t("Form.resetPassword.errors.password.required"),
+        message: t("Form.errors.password.required"),
       })
       .min(8, {
-        message: t("Form.resetPassword.errors.password.minLength", { min: 8 }),
+        message: t("Form.errors.password.minLength", { minLength: 8 }),
       }),
   });
 
@@ -90,9 +90,9 @@ export const ForgotPasswordFormSchema = (
     email: z
       .string()
       .min(1, {
-        message: t("Form.forgotPassword.errors.email.required"),
+        message: t("Form.errors.email.required"),
       })
       .email({
-        message: t("Form.forgotPassword.errors.email.invalid"),
+        message: t("Form.errors.email.invalid"),
       }),
   });

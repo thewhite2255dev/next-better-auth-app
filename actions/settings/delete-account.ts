@@ -25,7 +25,7 @@ export async function deleteAccount(values: DeleteAccountFormValues) {
     }
 
     if (email !== existingUser?.email) {
-      return { error: t("Form.errors.incorrectEmail") };
+      return { error: t("Form.errors.email.incorrect") };
     }
 
     if (password && existingUser?.password) {
@@ -35,7 +35,7 @@ export async function deleteAccount(values: DeleteAccountFormValues) {
       );
 
       if (!passwordMatch) {
-        return { error: t("Form.errors.invalidPassword") };
+        return { error: t("Form.errors.password.incorrect") };
       }
     }
 

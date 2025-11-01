@@ -24,15 +24,20 @@ import { Button } from "../ui/button";
 import FormError from "../layout/form-error";
 import { toast } from "sonner";
 import { Textarea } from "../ui/textarea";
+import { maskEmail } from "@/lib/utils";
 
 export function ProfileForm() {
   const t = useTranslations();
   const router = useRouter();
   const authError = useAuthErrorMessages();
 
-  const { data: session, isPending, refetch } = authClient.useSession();
+  const {
+    data: session,
+    isPending: loading,
+    refetch,
+  } = authClient.useSession();
 
-  const [isSubmitting, startTransition] = useTransition();
+  const [isPending, startTransition] = useTransition();
   const [error, setError] = useState<string>("");
 
   const form = useForm<ProfileFormValues>({
@@ -78,8 +83,8 @@ export function ProfileForm() {
     });
   }
 
-  if (isPending) {
-    return <p>Loading...</p>;
+  if (loading) {
+    return null;
   }
 
   return (
@@ -92,7 +97,7 @@ export function ProfileForm() {
             <FormItem className="w-full">
               <FormLabel>{t("Form.fields.name")}</FormLabel>
               <FormControl>
-                <Input disabled={isSubmitting} {...field} />
+                <Input disabled={isPending} {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -101,7 +106,10 @@ export function ProfileForm() {
         <FormItem className="w-full">
           <FormLabel>{t("Form.fields.email")}</FormLabel>
           <FormControl>
-            <Input disabled defaultValue={session?.user.email} />
+            <Input
+              disabled
+              defaultValue={maskEmail(session?.user.email ?? "")}
+            />
           </FormControl>
           <FormMessage />
         </FormItem>
@@ -115,7 +123,7 @@ export function ProfileForm() {
                 <Textarea
                   className="resize-none"
                   maxLength={200}
-                  disabled={isSubmitting}
+                  disabled={isPending}
                   {...field}
                 />
               </FormControl>
@@ -133,7 +141,7 @@ export function ProfileForm() {
             <FormItem className="w-full">
               <FormLabel>{t("Form.fields.location")}</FormLabel>
               <FormControl>
-                <Input disabled={isSubmitting} {...field} />
+                <Input disabled={isPending} {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -141,13 +149,10 @@ export function ProfileForm() {
         />
 
         <FormError message={error} />
-        <Button type="submit" disabled={isSubmitting}>
-          {isSubmitting ? <Spinner /> : t("Form.profileForm.updateButton")}
+        <Button type="submit" disabled={isPending}>
+          {isPending ? <Spinner /> : t("Form.profileForm.updateButton")}
         </Button>
       </form>
-      <div className="opacity-70">
-        <p>UserData: {JSON.stringify(session)}</p>
-      </div>
     </Form>
   );
 }

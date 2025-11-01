@@ -22,21 +22,15 @@ export default function DashboardPage() {
     );
   }
 
-  if (!session?.user) {
-    return <p className="mt-8 text-center">Redirecting...</p>;
-  }
-
-  const { user } = session;
-
   return (
     <main className="text-foreground mx-auto flex h-screen max-w-md flex-col items-center justify-center space-y-4 p-6">
       <h1 className="text-2xl font-bold">{t("dashboard")}</h1>
       <UserCircle className="size-6" />
       <p>
-        {t("welcome")}, {user.name} !
+        {t("welcome")}, {session?.user.name} !
       </p>
       <p>
-        {t("email")} : {user.email}
+        {t("email")} : {session?.user.email}
       </p>
       <SignOut>
         <Button variant="outline">{t("signOut")}</Button>

@@ -6,10 +6,10 @@ export const ProfileFormSchema = (t: (key: string, object?: any) => string) =>
     name: z
       .string()
       .min(2, {
-        message: t("Form.profileForm.errors.name.minLength", { min: 2 }),
+        message: t("Form.errors.name.minLength", { minLength: 2 }),
       })
       .max(50, {
-        message: t("Form.profileForm.errors.name.maxLength", { max: 2 }),
+        message: t("Form.errors.name.maxLength", { maxLength: 50 }),
       })
       .optional(),
     bio: z.string().max(200).optional(),
@@ -20,17 +20,12 @@ export const DeleteAccountSchema = (t: (key: string, object?: any) => string) =>
   z
     .object({
       email: z.string().email({
-        message: t("Form.errors.invalidEmail"),
+        message: t("Form.errors.email.invalid"),
       }),
       confirmation: z.string().min(1, {
         message: t("Form.deleteAccount.errors.confirmationRequired"),
       }),
-      password: z
-        .string()
-        // .min(1, {
-        //   message: t("Form.errors.passwordRequired"),
-        // })
-        .optional(),
+      password: z.string().optional(),
     })
     .refine(
       (data) => {
@@ -56,14 +51,15 @@ export const ChangePasswordFormSchema = (
 ) =>
   z.object({
     currentPassword: z.string().min(1, {
-      message: t("Form.changePassword.errors.currentPasswordRequired"),
+      message: t("Form.errors.currentPassword.required"),
     }),
     newPassword: z
       .string()
       .min(1, {
-        message: t("Form.changePassword.errors.newPasswordRequired"),
+        message: t("Form.errors.newPassword.required"),
       })
       .min(8, {
-        message: t("Form.signUp.errors.password.minLength", { min: 8 }),
+        message: t("Form.errors.password.minLength", { minLength: 8 }),
       }),
+    revokeOtherSessions: z.boolean(),
   });

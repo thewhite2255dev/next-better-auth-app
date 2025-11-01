@@ -46,13 +46,13 @@ export function LanguageSwitcher({ className }: LanguageSwitcherProps) {
             key={language.code}
             onClick={() => handleLanguageChange(language.code)}
           >
+            <span className="mr-auto">{language.name}</span>
             <Check
               className={cn({
                 "pointer-events-none opacity-0": locale !== language.code,
                 "pointer-events-auto opacity-100": locale === language.code,
               })}
             />
-            <span className="mr-auto">{language.name}</span>
           </DropdownMenuItem>
         ))}
       </DropdownMenuContent>

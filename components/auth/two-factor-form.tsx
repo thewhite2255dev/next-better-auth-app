@@ -25,7 +25,6 @@ import { DEFAULT_SIGN_IN_REDIRECT } from "@/lib/redirect-config";
 import { ResendButton } from "./resend-button";
 import FormSuccess from "../layout/form-success";
 import { useRouter } from "@/i18n/navigation";
-import { AUTH_CONSTANTS } from "@/lib/auth-constants";
 
 interface TwoFactorFormProps {
   form: any;
@@ -44,47 +43,53 @@ export default function TwoFactorForm({
   const { refetch } = authClient.useSession();
 
   const [isPending, startTransition] = useTransition();
-  const [isSendingCode, startSendingCode] = useTransition();
+  const [isResendingCode, startTransitionResendingCode] = useTransition();
+  const [isEnablingTwoFactorAuth, startTransitionTwoFactorAuth] =
+    useTransition();
   const [success, setSuccess] = useState<string>("");
   const [error, setError] = useState<string>("");
-  const [countdown, setCountdown] = useState<number>(
-    AUTH_CONSTANTS.TWO_FA_RESEND_DELAY,
-  );
 
-  function handleResendCode() {
+  async function handleResendCode() {
     setError("");
     setSuccess("");
-    setCountdown(AUTH_CONSTANTS.VERIFY_EMAIL_RESEND_DELAY);
-    startSendingCode(async () => {
-      await authClient.twoFactor.sendOtp({
-        fetchOptions: {
-          onError: () => {
-            setError(t("Form.errors.generic"));
+
+    return new Promise<void>((resolve, reject) => {
+      startTransitionResendingCode(async () => {
+        await authClient.twoFactor.sendOtp({
+          fetchOptions: {
+            onError: () => {
+              setError(t("Form.errors.generic"));
+              reject(new Error("Failed to send OTP"));
+            },
+            onSuccess: () => {
+              setSuccess(t("Form.twoFactor.resend.states.success"));
+              resolve();
+            },
           },
-          onSuccess: () => {
-            setSuccess(t("Form.twoFactor.resend.states.success"));
-          },
-        },
+        });
       });
     });
   }
 
-  function handleTwoFactorAuth() {
+  async function handleTwoFactorAuth() {
     setError("");
     setSuccess("");
-    setCountdown(AUTH_CONSTANTS.TWO_FA_RESEND_DELAY);
 
-    startTransition(async () => {
-      await authClient.twoFactor.sendOtp({
-        fetchOptions: {
-          onError: () => {
-            setError(t("Form.errors.generic"));
+    return new Promise<void>((resolve, reject) => {
+      startTransitionTwoFactorAuth(async () => {
+        await authClient.twoFactor.sendOtp({
+          fetchOptions: {
+            onError: () => {
+              setError(t("Form.errors.generic"));
+              reject(new Error("Failed to send OTP"));
+            },
+            onSuccess: () => {
+              setStep("TwoFactor");
+              setSuccess(t("Form.twoFactor.resend.states.success"));
+              resolve();
+            },
           },
-          onSuccess: () => {
-            setStep("TwoFactor");
-            setSuccess(t("Form.twoFactor.resend.states.success"));
-          },
-        },
+        });
       });
     });
   }
@@ -182,17 +187,20 @@ export default function TwoFactorForm({
           variant="outline"
           label={t("Form.common.code")}
           handler={handleResendCode}
-          initialCountdown={countdown}
-          isLoading={isSendingCode}
+          isLoading={isResendingCode}
         />
       ) : (
         <Button
           onClick={handleTwoFactorAuth}
           variant="outline"
           className="w-full"
-          disabled={isPending}
+          disabled={isEnablingTwoFactorAuth}
         >
-          {isPending ? <Spinner /> : "Recevoir le code via email"}
+          {isEnablingTwoFactorAuth ? (
+            <Spinner />
+          ) : (
+            t("Form.twoFactor.receiveCodeViaEmail")
+          )}
         </Button>
       )}
     </div>

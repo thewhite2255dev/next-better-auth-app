@@ -126,7 +126,7 @@ export function SignUpForm() {
                     name="name"
                     render={({ field }) => (
                       <FormItem className="w-full">
-                        <FormLabel>{t("Form.signUp.fields.name")}</FormLabel>
+                        <FormLabel>{t("Form.fields.name")}</FormLabel>
                         <FormControl>
                           <Input disabled={isPending} {...field} />
                         </FormControl>
@@ -139,7 +139,7 @@ export function SignUpForm() {
                     name="email"
                     render={({ field }) => (
                       <FormItem className="w-full">
-                        <FormLabel>{t("Form.signUp.fields.email")}</FormLabel>
+                        <FormLabel>{t("Form.fields.email")}</FormLabel>
                         <FormControl>
                           <Input disabled={isPending} type="email" {...field} />
                         </FormControl>
@@ -152,9 +152,7 @@ export function SignUpForm() {
                     name="password"
                     render={({ field }) => (
                       <FormItem className="w-full">
-                        <FormLabel>
-                          {t("Form.signUp.fields.password")}
-                        </FormLabel>
+                        <FormLabel>{t("Form.fields.password")}</FormLabel>
                         <PasswordInput field={field} loading={isPending} />
                         <FormMessage />
                       </FormItem>

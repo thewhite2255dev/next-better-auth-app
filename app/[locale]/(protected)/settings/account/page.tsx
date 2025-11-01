@@ -7,7 +7,22 @@ import { Label } from "@/components/ui/label";
 import { useTranslations } from "next-intl";
 
 export default function SettingsAccountPage() {
-  const t = useTranslations("SettingsAccount");
+  const t = useTranslations("SettingsAccountPage");
+
+  // function handleRevokeOtherSessions() {
+  //     startTransition(async () => {
+  //       await authClient.revokeOtherSessions(undefined, {
+  //         onSuccess: () => {
+  //           toast.success("Vous avez été déconnecté de tous les appareils.");
+  //           router.refresh();
+  //         },
+  //         onError: () => {
+  //           toast.error(t("Form.errors.generic"));
+  //         },
+  //       });
+  //     });
+  //   }
+
   return (
     <div className="flex flex-col gap-6">
       <Header title={t("title")} description={t("description")} />

@@ -98,38 +98,6 @@ export function SignInForm() {
           },
         );
       }
-
-      // if (step === "TwoFactor") {
-      //   await authClient.twoFactor.verifyOtp(
-      //     {
-      //       code: values.code as string,
-      //     },
-      //     {
-      //       onError: () => {
-      //         setError(t("Form.errors.invalidCode"));
-      //       },
-      //       onSuccess: () => {
-      //         router.push(DEFAULT_SIGN_IN_REDIRECT);
-      //       },
-      //     },
-      //   );
-      // }
-
-      // if (step === "Totp") {
-      //   await authClient.twoFactor.verifyTotp(
-      //     {
-      //       code: values.code as string,
-      //     },
-      //     {
-      //       onError: () => {
-      //         setError(t("Form.errors.invalidCode"));
-      //       },
-      //       onSuccess: () => {
-      //         router.push(DEFAULT_SIGN_IN_REDIRECT);
-      //       },
-      //     },
-      //   );
-      // }
     });
   }
 
@@ -214,7 +182,7 @@ export function SignInForm() {
                 name="email"
                 render={({ field }) => (
                   <FormItem className="w-full">
-                    <FormLabel>{t("Form.signIn.fields.email")}</FormLabel>
+                    <FormLabel>{t("Form.fields.email")}</FormLabel>
                     <FormControl>
                       <Input disabled={isPending} type="email" {...field} />
                     </FormControl>
@@ -228,7 +196,7 @@ export function SignInForm() {
                 render={({ field }) => (
                   <FormItem className="w-full">
                     <div className="flex items-center justify-between">
-                      <FormLabel>{t("Form.signIn.fields.password")}</FormLabel>
+                      <FormLabel>{t("Form.fields.password")}</FormLabel>
                       <Link
                         href="/auth/forgot-password"
                         className="text-primary text-sm underline-offset-4 hover:underline"

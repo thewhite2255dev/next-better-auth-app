@@ -12,18 +12,23 @@ import {
   DropdownMenuSeparator,
 } from "@/components/ui/dropdown-menu";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
-import { generateAvatarFallback } from "@/lib/user-utils";
+import { generateAvatarFallback } from "@/lib/utils";
 import { useTranslations } from "next-intl";
 import { SignOut } from "../auth/sign-out-button";
 import { Link } from "@/i18n/navigation";
 import { authClient } from "@/lib/auth-client";
+import { maskEmail } from "@/lib/utils";
 
 export function UserButton() {
   const t = useTranslations("UserButton");
 
-  const { data: session } = authClient.useSession();
+  const { data: session, isPending } = authClient.useSession();
 
-  const userFallback = generateAvatarFallback(session?.user.name as string);
+  const userFallback = generateAvatarFallback(session?.user.name ?? "");
+
+  if (isPending) {
+    return null;
+  }
 
   return (
     <DropdownMenu>
@@ -48,7 +53,7 @@ export function UserButton() {
             <div className="grid flex-1 text-left text-sm leading-tight">
               <span className="truncate font-medium">{session?.user.name}</span>
               <span className="text-muted-foreground truncate text-xs">
-                {session?.user.email}
+                {maskEmail(session?.user.email ?? "")}
               </span>
             </div>
           </div>

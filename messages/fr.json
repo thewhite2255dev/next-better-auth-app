@@ -1,4 +1,34 @@
 {
+  "AuthenticationForm": {
+    "totp": {
+      "description": "Protégez votre compte avec des codes temporaires générés par une application.",
+      "disable": "Désactiver l'application d'authentification",
+      "enable": "Activer l'application d'authentification",
+      "label": "Application d'authentification",
+      "requireTwoFactor": "Veuillez vous assurer que l'authentification à deux facteurs est activée avant de continuer.",
+      "success": {
+        "enabled": "L'application d'authentification a été activée avec succès.",
+        "qrGenerated": "Le QR code a été généré avec succès."
+      }
+    },
+    "twoFactor": {
+      "description": "Renforcez la sécurité de votre compte grâce à la vérification en deux étapes.",
+      "disable": "Désactiver l'authentification à deux facteurs",
+      "enable": "Activer l'authentification à deux facteurs",
+      "label": "Authentification à deux facteurs",
+      "success": {
+        "disabled": "L'authentification à deux facteurs a été désactivée avec succès.",
+        "enabled": "L'authentification à deux facteurs a été activée avec succès."
+      }
+    }
+  },
+  "ConfirmPasswordDialog": {
+    "buttons": {
+      "cancel": "Annuler",
+      "submit": "Confirmer"
+    },
+    "description": "Veuillez saisir votre mot de passe pour confirmer cette action."
+  },
   "DashboardPage": {
     "dashboard": "Tableau de bord",
     "email": "Adresse e-mail",
@@ -9,21 +39,13 @@
     "auth": {
       "backToSignIn": "Retour à la connexion",
       "continueWith": "Continuer avec",
+      "editAccount": "Ce n'est pas la bonne adresse ? <button>modifier</button>",
       "orSignInWith": "Ou continuer avec",
       "resendCountdown": "Renvoyer le {name} dans {countdown} s",
       "resendLabel": "Renvoyer le {name}"
     },
     "changePassword": {
-      "errors": {
-        "currentPasswordRequired": "Le mot de passe actuel est requis.",
-        "newPasswordRequired": "Le nouveau mot de passe est requis."
-      },
-      "fields": {
-        "currentPassword": "Mot de passe actuel",
-        "newPassword": "Nouveau mot de passe",
-        "password": "Mot de passe"
-      },
-      "submitButton": "Mettre à jour le mot de passe"
+      "button": "Mettre à jour le mot de passe"
     },
     "common": {
       "code": "code",
@@ -37,11 +59,10 @@
       "confirmationWord": "delete my account",
       "errors": {
         "confirmationRequired": "La confirmation est requise.",
-        "deleteAccountConfirmation": "Vous devez saisir {keyword} pour confirmer.",
-        "invalidEmail": "Veuillez entrer une adresse e-mail valide."
+        "deleteAccountConfirmation": "Vous devez saisir {keyword} pour confirmer."
       },
       "fields": {
-        "confirmation": "Pour confirmer, entrez <strong>{keyword}</strong> ci dessous.",
+        "confirmation": "Pour confirmer, entrez <strong>{keyword}</strong> ci-dessous.",
         "email": "Entrez votre adresse e-mail <strong>{email}</strong> pour continuer.",
         "password": "Mot de passe actuel"
       },
@@ -51,15 +72,42 @@
       },
       "warning": "Cette action n'est pas réversible. Veuillez vous en assurer."
     },
-    "editAccount": "Ce n'est pas la bonne adresse ? <button>modifier</button>",
     "errors": {
       "allFieldsRequired": "Tous les champs sont requis.",
+      "credential": {
+        "incorrect": "L'adresse e-mail ou le mot de passe est incorrect.",
+        "required": "L'adresse e-mail ou le mot de passe est requis."
+      },
+      "currentPassword": {
+        "incorrect": "Le mot de passe actuel est incorrect.",
+        "maxLength": "Le mot de passe actuel ne peut pas dépasser {maxLength} caractères.",
+        "minLength": "Le mot de passe actuel doit contenir au moins {minLength} caractères.",
+        "required": "Le mot de passe actuel est requis."
+      },
+      "newPassword": {
+        "incorrect": "Le nouveau mot de passe est incorrect.",
+        "maxLength": "Le nouveau mot de passe ne peut pas dépasser {maxLength} caractères.",
+        "minLength": "Le nouveau mot de passe doit contenir au moins {minLength} caractères.",
+        "required": "Le nouveau mot de passe est requis."
+      },
+      "email": {
+        "incorrect": "L'adresse e-mail est incorrecte.",
+        "invalid": "Veuillez entrer une adresse e-mail valide.",
+        "required": "L'adresse e-mail est requise."
+      },
       "generic": "Une erreur est survenue, veuillez réessayer.",
-      "incorrectEmail": "L'adresse e-mail est incorrect.",
       "invalidCode": "Le code est invalide ou a expiré.",
-      "invalidEmail": "Veuillez entrer une adresse e-mail valide.",
-      "invalidPassword": "Le mot de passe est incorrect.",
-      "passwordRequired": "Le mot de passe est requis.",
+      "name": {
+        "maxLength": "Le nom ne peut pas dépasser {maxLength} caractères.",
+        "minLength": "Le nom doit contenir au moins {minLength} caractères.",
+        "required": "Le nom est requis."
+      },
+      "password": {
+        "incorrect": "Le mot de passe est incorrect.",
+        "maxLength": "Le mot de passe ne peut pas dépasser {maxLength} caractères.",
+        "minLength": "Le mot de passe doit contenir au moins {minLength} caractères.",
+        "required": "Le mot de passe est requis."
+      },
       "token": {
         "invalid": "Le lien est invalide ou a expiré."
       },
@@ -68,46 +116,29 @@
     },
     "fields": {
       "bio": "Biographie",
+      "currentPassword": "Mot de passe actuel",
       "email": "Adresse e-mail",
       "location": "Emplacement",
-      "name": "Nom"
+      "name": "Nom",
+      "newPassword": "Nouveau mot de passe",
+      "password": "Mot de passe",
+      "revokeOtherSessions": "Se déconnecter des autres sessions"
     },
     "forgotPassword": {
       "button": "Envoyer le lien de réinitialisation",
       "description": "Entrez votre adresse e-mail et nous vous enverrons un lien pour réinitialiser votre mot de passe.",
-      "errors": {
-        "email": {
-          "invalid": "Veuillez entrer une adresse e-mail valide.",
-          "required": "L'adresse e-mail est requise."
-        }
-      },
-      "fields": {
-        "email": "Adresse e-mail"
-      },
       "successCard": {
         "description": "Nous avons envoyé un lien de réinitialisation de mot de passe à <strong>{email}</strong>"
       },
       "title": "Mot de passe oublié"
     },
     "profileForm": {
-      "errors": {
-        "name": {
-          "maxLength": "Le nom ne peut pas dépasser {max} caractères.",
-          "minLength": "Le nom doit contenir au moins {min} caractères."
-        }
-      },
       "updateButton": "Mettre à jour le profil"
     },
     "resetPassword": {
       "button": "Réinitialiser le mot de passe",
       "description": {
         "enterEmail": "Entrez votre nouveau mot de passe ci-dessous."
-      },
-      "errors": {
-        "password": {
-          "minLength": "Le mot de passe doit contenir au moins {min} caractères.",
-          "required": "Le mot de passe est requis."
-        }
       },
       "successCard": {
         "description": "Votre mot de passe a été réinitialisé avec succès. Vous pouvez maintenant vous connecter avec le nouveau mot de passe."
@@ -118,52 +149,22 @@
       "button": "Se connecter",
       "createAccount": "Vous n'avez pas de compte ? <link>Inscrivez-vous</link>",
       "description": "Connectez-vous à votre compte.",
-      "errors": {
-        "email": {
-          "invalid": "Veuillez entrer une adresse e-mail valide.",
-          "required": "L'adresse e-mail est requise."
-        },
-        "invalidCredentials": "L'Adresse e-mail ou le mot de passe est incorrect.",
-        "password": {
-          "required": "Le mot de passe est requis."
-        }
-      },
-      "fields": {
-        "email": "Adresse e-mail",
-        "password": "Mot de passe"
-      },
       "forgotPassword": "Mot de passe oublié ?",
       "title": "Connexion"
     },
     "signUp": {
       "button": "Créer un compte",
       "description": "Créez votre compte dès maintenant.",
-      "errors": {
-        "email": {
-          "invalid": "Veuillez entrer une adresse e-mail valide.",
-          "required": "L'adresse e-mail est requise."
-        },
-        "name": {
-          "maxLength": "Le nom ne peut pas dépasser {max} caractères.",
-          "minLength": "Le nom doit contenir au moins {min} caractères.",
-          "required": "Le nom est requis."
-        },
-        "password": {
-          "minLength": "Le mot de passe doit contenir au moins {min} caractères.",
-          "required": "Le mot de passe est requis."
-        }
-      },
-      "fields": {
-        "email": "Adresse e-mail",
-        "name": "Nom",
-        "password": "Mot de passe"
-      },
       "haveAccount": "Vous avez déjà un compte ? <link>Connectez-vous</link>",
       "title": "Inscription"
+    },
+    "success": {
+      "verifyTotpCode": "Le code a été vérifié avec succès."
     },
     "twoFactor": {
       "button": "Valider le code",
       "description": "Nous avons envoyé un code de vérification à <strong>{email}</strong>. Veuillez l'entrer ci-dessous.",
+      "receiveCodeViaEmail": "Recevoir le code par email",
       "resend": {
         "states": {
           "success": "Le code a été renvoyé avec succès."
@@ -173,7 +174,7 @@
     },
     "verifyEmail": {
       "pending": {
-        "description": "Nous avons envoyé un lien de vérification à  <strong>{email}</strong>. Cliquez sur le lien pour terminer le processus de vérification.",
+        "description": "Nous avons envoyé un lien de vérification à <strong>{email}</strong>. Cliquez sur le lien pour terminer le processus de vérification.",
         "title": "Vérifiez votre adresse e-mail"
       },
       "resend": {
@@ -206,43 +207,48 @@
     "fr": "Français",
     "srOnly": "Changer de langue"
   },
+  "SettingsAccountPage": {
+    "delete": {
+      "button": "Supprimer",
+      "label": "Supprimer le compte"
+    },
+    "description": "Gérez les paramètres et la confidentialité de votre compte.",
+    "title": "Compte"
+  },
   "SettingsLayout": {
     "account": "Compte",
-    "appearance": "Apparence",
     "preferences": "Préférences",
     "profile": "Profil",
     "security": "Sécurité",
     "sessions": "Sessions"
   },
-  "SettingsAccount": {
-    "title": "Compte",
-    "description": "Gérez les paramètres et la confidentialité de votre compte.",
-    "delete": {
-      "label": "Supprimer le compte",
-      "button": "Supprimer"
-    }
+  "SettingsPreferencesPage": {
+    "description": "Personnalisez votre expérience utilisateur.",
+    "language": "Langue",
+    "placeholders": {
+      "selectLanguage": "Sélectionner une langue",
+      "selectTheme": "Sélectionner un thème"
+    },
+    "theme": "Thème",
+    "title": "Préférences"
   },
-  "SettingsProfile": {
-    "title": "Profil",
-    "description": "Mettez à jour vos informations personnelles et votre avatar."
+  "SettingsProfilePage": {
+    "description": "Mettez à jour vos informations personnelles et votre avatar.",
+    "title": "Profil"
   },
-  "SettingsSecurity": {
+  "SettingsSecurityPage": {
     "changePassword": {
-      "title": "Changer le mot de passe",
-      "description": "Choisissez un mot de passe fort et unique."
+      "description": "Choisissez un mot de passe fort et unique.",
+      "title": "Changer le mot de passe"
     },
     "twoFactor": {
-      "title": "Sécurité",
-      "description": "Activez l’authentification à deux facteurs et gérez l’application d’authentification."
+      "description": "Activez l'authentification à deux facteurs et gérez l'application d'authentification.",
+      "title": "Sécurité"
     }
   },
-  "SettingsSessions": {
-    "title": "Sessions",
-    "description": "Consultez et déconnectez vos sessions actives sur d’autres appareils."
-  },
-  "SettingsPreferences": {
-    "title": "Préférences",
-    "description": "Personnalisez votre expérience utilisateur."
+  "SettingsSessionsPage": {
+    "description": "Consultez et déconnectez vos sessions actives sur d'autres appareils.",
+    "title": "Sessions"
   },
   "ThemeSwitcher": {
     "dark": "Sombre",
@@ -250,9 +256,29 @@
     "srOnly": "Changer de thème",
     "system": "Système"
   },
+  "TotpSetupDialog": {
+    "buttons": {
+      "back": "Retour",
+      "continue": "Continuer",
+      "download": "Télécharger",
+      "saved": "J'ai enregistré mes codes de secours",
+      "verify": "Vérifier"
+    },
+    "description": {
+      "backupCodes": "Les codes de secours peuvent être utilisés comme mesure de sécurité supplémentaire si vous perdez l'accès à votre appareil.",
+      "setup": "Scannez ce QR code avec votre application d'authentification puis saisissez le code."
+    },
+    "fields": {
+      "code": "Code à 6 chiffres"
+    },
+    "title": {
+      "backupCodes": "Enregistrez vos codes de secours",
+      "setup": "Configurer l'application d'authentification"
+    }
+  },
   "UserButton": {
     "SignOut": "Déconnexion",
-    "profile": "Profile",
+    "profile": "Profil",
     "settings": "Paramètres"
   }
 }

@@ -50,8 +50,8 @@ export default function DeleteAccountButton({
 
   const maskedEmail = maskEmail(session?.user.email ?? "");
 
-  const [error, setError] = useState("");
-  const [success, setSuccess] = useState("");
+  const [error, setError] = useState<string>("");
+  const [success, setSuccess] = useState<string>("");
   const [isPending, startTransition] = useTransition();
 
   const form = useForm<DeleteAccountFormValues>({
@@ -88,19 +88,6 @@ export default function DeleteAccountButton({
           },
         },
       });
-
-      // await authClient.deleteUser({ callbackURL: DEFAULT_SIGN_OUT_REDIRECT });
-      // await authClient.deleteUser({
-      //   fetchOptions: {
-      //     onError: () => {
-      //       setError(t("Form.errors.generic"));
-      //     },
-      //     onSuccess: () => {
-      //       refetch();
-      //       router.push(DEFAULT_SIGN_OUT_REDIRECT);
-      //     },
-      //   },
-      // });
     });
   }
 

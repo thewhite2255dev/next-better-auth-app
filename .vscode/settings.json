@@ -1,5 +1,5 @@
 {
-  "i18n-ally.localesPaths": ["E:/Programmation/NEW NEXT JS/my-app/messages"],
+  "i18n-ally.localesPaths": ["messages"],
   "i18n-ally.keystyle": "nested",
   "i18n-ally.sortKeys": true,
   "i18n-ally.enabledParsers": ["json"],
@@ -9,36 +9,4 @@
   "commentTranslate.source": "Google",
   "commentTranslate.hover.enabled": false,
   "cSpell.enabled": true
-  // "i18n-ally.keysInUse": [
-  //   "Form.signIn.errors.email.required",
-  //   "Form.signIn.errors.email.invalid",
-  //   "Form.signIn.errors.password.required",
-  //   "Form.signUp.errors.email.required",
-  //   "Form.signUp.errors.email.invalid",
-  //   "Form.signUp.errors.password.required",
-  //   "Form.signUp.errors.password.minLength",
-  //   "Form.signUp.errors.name.required",
-  //   "Form.signUp.errors.name.minLength",
-  //   "Form.signUp.errors.name.maxLength",
-  //   "Form.resetPassword.errors.password.required",
-  //   "Form.resetPassword.errors.password.minLength",
-  //   "Form.forgotPassword.errors.email.required",
-  //   "Form.forgotPassword.errors.email.invalid",
-  //   "Form.settings.profile.errors.name.minLength",
-  //   "Form.settings.profile.errors.name.maxLength",
-  //   "Form.settings.profile.errors.bio.maxLength",
-  //   "Form.settings.profile.errors.location.maxLength",
-  //   "Form.settings.account.errors.username.minLength",
-  //   "Form.settings.account.errors.username.maxLength",
-  //   "Form.settings.account.errors.username.invalidPattern",
-  //   "Form.settings.account.errors.role.invalid",
-  //   "Form.settings.deleteAccount.errors.email.invalid",
-  //   "Form.settings.deleteAccount.errors.confirmation.required",
-  //   "Form.settings.deleteAccount.errors.password.required",
-  //   "Form.settings.deleteAccount.errors.confirmation.invalid",
-  //   "Form.settings.password.errors.current.required",
-  //   "Form.settings.password.errors.new.minLength",
-  //   "Form.settings.password.errors.new.required",
-  //   "Form.settings.authentication.errors.twoFactor.invalid"
-  // ]
 }
