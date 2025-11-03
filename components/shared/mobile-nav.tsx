@@ -96,7 +96,12 @@ export function MobileNav({ navItems }: MobileNavProps) {
           ) : session?.user ? (
             <UserButton />
           ) : (
-            <Button variant="default" size="lg" asChild className="w-full">
+            <Button
+              variant="default"
+              size="lg"
+              asChild
+              className="w-full justify-start"
+            >
               <Link href="/auth/sign-in" onClick={() => setOpen(false)}>
                 <LogIn className="mr-2 h-4 w-4" />
                 {t("Header.signInButton")}

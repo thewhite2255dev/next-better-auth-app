@@ -32,8 +32,13 @@ import { authClient } from "@/lib/auth-client";
 import { Button } from "../ui/button";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { useTheme } from "next-themes";
+import { type ComponentProps } from "react";
 
-export function UserButton() {
+interface UserButtonProps extends ComponentProps<typeof Button> {
+  className?: string;
+}
+
+export function UserButton({ className, ...props }: UserButtonProps) {
   const t = useTranslations();
   const { data: session } = authClient.useSession();
   const pathname = usePathname();
@@ -64,9 +69,11 @@ export function UserButton() {
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <Button
+            {...props}
             variant="ghost"
             className={cn(
               "data-[state=open]:bg-accent h-auto w-full justify-start gap-2 px-3 py-2",
+              className,
             )}
           >
             <Avatar className="h-8 w-8 rounded-md select-none">

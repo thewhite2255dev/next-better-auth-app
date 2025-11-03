@@ -40,7 +40,6 @@ export function AuthCard({
         <div className="absolute top-1/3 -right-40 h-96 w-96 animate-pulse rounded-full bg-purple-400/20 blur-3xl [animation-delay:2s] dark:bg-purple-600/20" />
         <div className="absolute -bottom-40 left-1/3 h-96 w-96 animate-pulse rounded-full bg-pink-400/20 blur-3xl [animation-delay:4s] dark:bg-pink-600/20" />
       </div>
-
       <header className="bg-background/80 supports-[backdrop-filter]:bg-background/60 sticky top-0 z-50 w-full border-b backdrop-blur-xl">
         <div className="container mx-auto flex h-16 max-w-7xl items-center justify-between px-4">
           <Link
@@ -61,7 +60,7 @@ export function AuthCard({
           </div>
         </div>
       </header>
-      <div className="container mx-auto flex min-h-[calc(100vh-3.5rem)] items-center justify-center">
+      <div className="container mx-auto my-auto py-6">
         <Card className={`mx-auto w-full max-w-md ${className}`}>
           <CardHeader className="space-y-1 text-center">
             <CardTitle className="text-2xl font-bold">{title}</CardTitle>
