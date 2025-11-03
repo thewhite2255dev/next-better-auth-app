@@ -2,10 +2,11 @@
 
 **Starter Kit d'Authentification Next.js** - Un template moderne et complet pour démarrer rapidement vos projets avec une authentification robuste.
 
-[![Next.js](https://img.shields.io/badge/Next.js-15-black?style=flat-square&logo=next.js)](https://nextjs.org/)
-[![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue?style=flat-square&logo=typescript)](https://www.typescriptlang.org/)
-[![Better Auth](https://img.shields.io/badge/Better_Auth-Latest-purple?style=flat-square)](https://better-auth.com/)
-[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4.0-38bdf8?style=flat-square&logo=tailwind-css)](https://tailwindcss.com/)
+[![Next.js](https://img.shields.io/badge/Next.js-16.0-black?style=flat-square&logo=next.js)](https://nextjs.org/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.9-blue?style=flat-square&logo=typescript)](https://www.typescriptlang.org/)
+[![Better Auth](https://img.shields.io/badge/Better_Auth-1.3-purple?style=flat-square)](https://better-auth.com/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4.1-38bdf8?style=flat-square&logo=tailwind-css)](https://tailwindcss.com/)
+[![React](https://img.shields.io/badge/React-19.2-61dafb?style=flat-square&logo=react)](https://react.dev/)
 
 ---
 
@@ -17,7 +18,7 @@
 - 🎨 **UI moderne** - Design épuré avec Tailwind CSS et shadcn/ui
 - 📱 **Responsive** - Interface adaptée à tous les écrans
 - 🌓 **Mode sombre** - Thème clair/sombre avec transition fluide
-- ⚡ **Performance** - SSR, optimisations et meilleures pratiques Next.js 15
+- ⚡ **Performance** - SSR, Turbopack, optimisations et meilleures pratiques Next.js 16
 - 🔄 **Gestion des sessions** - Visualisation et révocation des sessions actives
 
 ---
@@ -25,27 +26,27 @@
 ## 🛠️ Technologies
 
 ### Core
-- **[Next.js 15](https://nextjs.org/)** - Framework React avec App Router
-- **[React 19](https://react.dev/)** - Bibliothèque UI
-- **[TypeScript](https://www.typescriptlang.org/)** - Typage statique
-- **[Better Auth](https://better-auth.com/)** - Solution d'authentification moderne
+- **[Next.js 16](https://nextjs.org/)** - Framework React avec App Router et Turbopack
+- **[React 19.2](https://react.dev/)** - Bibliothèque UI avec nouvelles fonctionnalités
+- **[TypeScript 5.9](https://www.typescriptlang.org/)** - Typage statique
+- **[Better Auth 1.3](https://better-auth.com/)** - Solution d'authentification moderne
 
 ### Styling & UI
-- **[Tailwind CSS v4](https://tailwindcss.com/)** - Framework CSS utility-first
-- **[shadcn/ui](https://ui.shadcn.com/)** - Composants UI réutilisables
-- **[Lucide React](https://lucide.dev/)** - Icônes modernes
-- **[next-themes](https://github.com/pacocoursey/next-themes)** - Gestion du thème
+- **[Tailwind CSS v4.1](https://tailwindcss.com/)** - Framework CSS utility-first
+- **[shadcn/ui](https://ui.shadcn.com/)** - Composants UI réutilisables (Radix UI)
+- **[Lucide React 0.552](https://lucide.dev/)** - Icônes modernes
+- **[next-themes 0.4](https://github.com/pacocoursey/next-themes)** - Gestion du thème
 
 ### Database & Backend
-- **[Prisma](https://www.prisma.io/)** - ORM TypeScript
+- **[Prisma 6.18](https://www.prisma.io/)** - ORM TypeScript
 - **[PostgreSQL](https://www.postgresql.org/)** - Base de données (recommandé)
 
 ### Forms & Validation
-- **[React Hook Form](https://react-hook-form.com/)** - Gestion des formulaires
-- **[Zod](https://zod.dev/)** - Validation de schémas
+- **[React Hook Form 7.66](https://react-hook-form.com/)** - Gestion des formulaires
+- **[Zod 4.1](https://zod.dev/)** - Validation de schémas
 
 ### Internationalization
-- **[next-intl](https://next-intl-docs.vercel.app/)** - i18n pour Next.js
+- **[next-intl 4.4](https://next-intl-docs.vercel.app/)** - i18n pour Next.js
 
 ---
 
@@ -122,7 +123,7 @@ Ouvrir [http://localhost:3000](http://localhost:3000) dans votre navigateur.
 ## 📁 Structure du projet
 
 ```
-my-app/
+degni-kit/
 ├── app/                          # App Router Next.js
 │   ├── [locale]/                 # Routes internationalisées
 │   │   ├── (protected)/          # Routes protégées (auth requise)
@@ -136,7 +137,7 @@ my-app/
 │       └── auth/                 # Endpoints Better Auth
 ├── components/                   # Composants React
 │   ├── auth/                     # Composants d'authentification
-│   ├── layout/                   # Layout et navigation
+│   ├── shared/                   # Composants partagés
 │   ├── settings/                 # Composants de paramètres
 │   └── ui/                       # shadcn/ui components
 ├── lib/                          # Utilitaires et configurations

@@ -1,7 +1,5 @@
 import type { NextRequest } from "next/server";
 import { NextResponse } from "next/server";
-import { headers } from "next/headers";
-import { auth } from "@/lib/auth";
 import createIntlMiddleware from "next-intl/middleware";
 import { routing } from "./i18n/routing";
 import { generatedRoutes } from "./lib/generated-routes";
@@ -29,11 +27,12 @@ function testPathnameRegex(
   ).test(pathName);
 }
 
-export async function middleware(req: NextRequest) {
+export async function proxy(req: NextRequest) {
   const { nextUrl } = req;
-  const session = await auth.api.getSession({
-    headers: await headers(),
-  });
+
+  const { getSessionAction } = await import("./actions/auth/get-session");
+
+  const session = await getSessionAction();
 
   const isAuthRoute = testPathnameRegex(
     [...generatedRoutes.auth],
@@ -63,6 +62,5 @@ export async function middleware(req: NextRequest) {
 }
 
 export const config = {
-  runtime: "nodejs",
   matcher: ["/((?!api|_next|_vercel|.*\\..*).*)"],
 };
