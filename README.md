@@ -71,27 +71,43 @@ pnpm install
 
 3. **Configurer les variables d'environnement**
 ```bash
-cp .env.example .env.local
+cp .env.example .env
 ```
 
-Remplir le fichier `.env.local` :
+Remplir le fichier `.env` :
 ```env
 # Database
-DATABASE_URL="postgresql://user:password@localhost:5432/degni_kit"
+DATABASE_URL="postgresql://USER:PASSWORD@localhost:5432/DB-NAME?schema=public"
 
-# Better Auth
-BETTER_AUTH_SECRET="your-secret-key-here"
-BETTER_AUTH_URL="http://localhost:3000"
+# App
+BETTER_AUTH_URL=""
 
-# Email (optionnel)
-RESEND_API_KEY="your-resend-api-key"
-EMAIL_FROM="noreply@yourdomain.com"
+# Better-Auth
+# macOS openssl rand -base64 32
+# Windows can use https://generate-secret.vercel.app/32
+BETTER_AUTH_SECRET=""   
+
+# Oauth
+GOOGLE_CLIENT_ID=""
+GOOGLE_CLIENT_SECRET=""
+
+GITHUB_CLIENT_ID=""
+GITHUB_CLIENT_SECRET=""
+
+# Nodemailer SMTP (for verification / reset)
+SMTP_PORT="587"
+SMTP_SECURE="true"
+
+SMTP_HOST=""
+SMTP_USER=""
+SMTP_PASS=""
+SMTP_FROM="Your App <noreply@yourdomain.com>"
 ```
 
 4. **Initialiser la base de données**
 ```bash
-pnpm prisma generate
 pnpm prisma db push
+pnpm prisma generate
 ```
 
 5. **Lancer le serveur de développement**
@@ -217,9 +233,9 @@ pnpm build            # Build de production
 pnpm start            # Lancer le serveur de production
 
 # Base de données
-pnpm prisma:generate  # Générer le client Prisma
-pnpm prisma:push      # Pousser le schema vers la DB
-pnpm prisma:studio    # Ouvrir Prisma Studio
+pnpm db:push      # Pousser le schema vers la DB
+pnpm db:generate  # Générer le client Prisma
+pnpm db:studio    # Ouvrir Prisma Studio
 
 # Qualité de code
 pnpm lint             # Linter le code
