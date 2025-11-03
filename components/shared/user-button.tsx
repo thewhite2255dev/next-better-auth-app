@@ -69,7 +69,7 @@ export function UserButton() {
               "data-[state=open]:bg-accent h-auto w-full justify-start gap-2 px-3 py-2",
             )}
           >
-            <Avatar className="h-10 w-10 rounded-md select-none">
+            <Avatar className="h-8 w-8 rounded-md select-none">
               <AvatarImage src={session?.user.image as string} />
               <AvatarFallback className="rounded-md">
                 {userFallback}
@@ -173,6 +173,7 @@ export function UserButton() {
               </DropdownMenuSubContent>
             </DropdownMenuSub>
           </DropdownMenuGroup>
+          <DropdownMenuSeparator />
           <DropdownMenuItem asChild>
             <SignOut className="hover:bg-accent">
               <LogOut />

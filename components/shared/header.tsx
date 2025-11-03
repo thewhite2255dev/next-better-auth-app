@@ -27,17 +27,18 @@ export function Header() {
   const navItems: navItemsType = [];
 
   return (
-    <header className="bg-background/95 supports-[backdrop-filter]:bg-background/60 sticky top-0 z-50 w-full border-b backdrop-blur">
+    <header className="bg-background/80 supports-[backdrop-filter]:bg-background/60 sticky top-0 z-50 w-full border-b backdrop-blur-xl">
       <div className="container flex h-14 items-center justify-between px-4 md:px-6">
         <div className="flex items-center gap-3">
           <Link
             href={DEFAULT_HOME_REDIRECT}
-            className="flex items-center gap-2"
+            className="group flex items-center gap-2 transition-transform hover:scale-105"
           >
-            <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-blue-500 to-purple-600">
+            <div className="relative flex h-8 w-8 items-center justify-center rounded-md bg-gradient-to-br from-blue-500 to-purple-600 shadow-lg transition-all group-hover:shadow-xl group-hover:shadow-purple-500/50">
               <Sparkles className="h-5 w-5 text-white" />
+              <div className="absolute inset-0 rounded-xl bg-white/20 opacity-0 transition-opacity group-hover:opacity-100" />
             </div>
-            <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text font-bold text-transparent">
+            <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-xl font-bold text-transparent">
               {SiteConfig.name}
             </span>
           </Link>

@@ -22,6 +22,7 @@ import { Badge } from "@/components/ui/badge";
 import { auth } from "@/lib/auth";
 import { headers } from "next/headers";
 import { Link } from "@/i18n/navigation";
+import { getLocale } from "next-intl/server";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations("DashboardPage");
@@ -34,6 +35,7 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default async function DashboardPage() {
   const t = await getTranslations("DashboardPage");
+  const locale = await getLocale();
   const session = await auth.api.getSession({ headers: await headers() });
 
   if (!session) {
@@ -64,11 +66,11 @@ export default async function DashboardPage() {
       .slice(0, 2) || "U";
 
   const createdAt = session.session.createdAt
-    ? new Date(session.session.createdAt).toLocaleDateString("fr-FR", {
+    ? new Intl.DateTimeFormat(locale, {
         year: "numeric",
         month: "long",
         day: "numeric",
-      })
+      }).format(new Date(session.session.createdAt))
     : "N/A";
 
   return (
@@ -182,10 +184,10 @@ export default async function DashboardPage() {
               <CardContent className="relative">
                 <div className="flex items-baseline gap-2">
                   <div className="text-2xl font-bold">
-                    {new Date(session.session.createdAt).toLocaleDateString(
-                      "fr-FR",
-                      { month: "short", year: "numeric" },
-                    )}
+                    {new Intl.DateTimeFormat(locale, {
+                      month: "short",
+                      year: "numeric",
+                    }).format(new Date(session.session.createdAt))}
                   </div>
                 </div>
                 <p className="text-muted-foreground mt-1 text-xs">

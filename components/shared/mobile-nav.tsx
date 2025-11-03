@@ -20,6 +20,7 @@ import { authClient } from "@/lib/auth-client";
 import { Skeleton } from "@/components/ui/skeleton";
 import { useTranslations } from "next-intl";
 import { useIsMobile } from "@/hooks/use-mobile";
+import { DEFAULT_HOME_REDIRECT } from "@/lib/redirect-config";
 
 interface MobileNavProps {
   navItems: navItemsType;
@@ -47,16 +48,22 @@ export function MobileNav({ navItems }: MobileNavProps) {
       </SheetTrigger>
       <SheetContent
         side="left"
-        className="flex h-full w-[300px] flex-col px-4 sm:w-[350px]"
+        className="flex h-full w-[300px] flex-col sm:w-[350px]"
       >
         <SheetHeader className="py-4">
-          <SheetTitle className="flex items-center gap-2">
-            <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-blue-500 to-purple-600">
-              <Sparkles className="h-5 w-5 text-white" />
-            </div>
-            <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-xl font-bold text-transparent">
-              {SiteConfig.name}
-            </span>
+          <SheetTitle className="flex items-center gap-2" asChild>
+            <Link
+              href={DEFAULT_HOME_REDIRECT}
+              className="group flex items-center gap-2 transition-transform hover:scale-105"
+            >
+              <div className="relative flex h-8 w-8 items-center justify-center rounded-md bg-gradient-to-br from-blue-500 to-purple-600 shadow-lg transition-all group-hover:shadow-xl group-hover:shadow-purple-500/50">
+                <Sparkles className="h-5 w-5 text-white" />
+                <div className="absolute inset-0 rounded-xl bg-white/20 opacity-0 transition-opacity group-hover:opacity-100" />
+              </div>
+              <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-xl font-bold text-transparent">
+                {SiteConfig.name}
+              </span>
+            </Link>
           </SheetTitle>
         </SheetHeader>
 
@@ -83,7 +90,7 @@ export function MobileNav({ navItems }: MobileNavProps) {
         )}
 
         {/* User Section */}
-        <div className="mt-auto flex flex-col gap-4">
+        <div className="mt-auto flex flex-col gap-4 px-4">
           {isPending ? (
             <Skeleton className="h-10 w-full rounded-lg" />
           ) : session?.user ? (
