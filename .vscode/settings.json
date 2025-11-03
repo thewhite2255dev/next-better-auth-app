@@ -7,7 +7,7 @@
   "i18n-ally.displayLanguage": "fr",
   "commentTranslate.targetLanguage": "fr",
   "commentTranslate.source": "Google",
-  "commentTranslate.hover.enabled": false,
+  "commentTranslate.hover.enabled": true,
   "cSpell.enabled": true,
   "typescript.tsdk": "node_modules\\typescript\\lib"
 }

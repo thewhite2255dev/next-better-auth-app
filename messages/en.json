@@ -31,8 +31,25 @@
   },
   "DashboardPage": {
     "dashboard": "Dashboard",
-    "email": "Email address",
+    "quickActions": {
+      "preferences": "Preferences",
+      "profile": "Profile",
+      "security": "Security",
+      "sessions": "Sessions",
+      "title": "Quick actions"
+    },
     "signOut": "Sign out",
+    "status": {
+      "active": "Active",
+      "fullAccess": "Full access",
+      "memberSince": "Member since",
+      "no": "No",
+      "premium": "Premium",
+      "securityEnhanced": "Enhanced security",
+      "statusLabel": "Status",
+      "verified": "Verified Account",
+      "yes": "Yes"
+    },
     "welcome": "Welcome"
   },
   "Form": {
@@ -45,7 +62,8 @@
       "resendLabel": "Resend {name}"
     },
     "changePassword": {
-      "button": "Update password"
+      "button": "Update password",
+      "success": "Password has been updated successfully."
     },
     "common": {
       "code": "code",
@@ -63,8 +81,7 @@
       },
       "fields": {
         "confirmation": "To confirm, enter <strong>{keyword}</strong> below.",
-        "email": "Enter your email address <strong>{email}</strong> to continue.",
-        "password": "Current password"
+        "email": "Enter your email address <strong>{email}</strong> to continue."
       },
       "header": {
         "description": "We will delete your account immediately.",
@@ -75,13 +92,10 @@
     "errors": {
       "allFieldsRequired": "All fields are required.",
       "credential": {
-        "incorrect": "Email address or password is incorrect.",
-        "required": "Email address or password is required."
+        "incorrect": "Email address or password is incorrect."
       },
       "currentPassword": {
         "incorrect": "Current password is incorrect.",
-        "maxLength": "Current password cannot exceed {maxLength} characters.",
-        "minLength": "Current password must be at least {minLength} characters.",
         "required": "Current password is required."
       },
       "email": {
@@ -97,14 +111,10 @@
         "required": "Name is required."
       },
       "newPassword": {
-        "incorrect": "The new password is incorrect.",
-        "maxLength": "The new password cannot exceed {maxLength} characters.",
-        "minLength": "The new password must contain at least {minLength} characters.",
         "required": "The new password is required."
       },
       "password": {
         "incorrect": "Password is incorrect.",
-        "maxLength": "Password cannot exceed {maxLength} characters.",
         "minLength": "Password must be at least {minLength} characters.",
         "required": "Password is required."
       },
@@ -133,6 +143,7 @@
       "title": "Forgot password"
     },
     "profileForm": {
+      "success": "Profile has been updated successfully.",
       "updateButton": "Update profile"
     },
     "resetPassword": {
@@ -161,6 +172,7 @@
     "success": {
       "verifyTotpCode": "The code has been successfully verified."
     },
+    "totpAppInstruction": "Open your authenticator app and enter the code shown below.",
     "twoFactor": {
       "button": "Verify code",
       "description": "We've sent a verification code to <strong>{email}</strong>. Please enter it below.",
@@ -192,15 +204,63 @@
     "signInButton": "Sign in"
   },
   "Home": {
-    "deployNow": "Deploy now",
-    "footer": {
-      "examples": "Examples",
-      "goToNext": "Go to nextjs.org →",
-      "learn": "Learn"
+    "cta": {
+      "button": "Create Account",
+      "github": "View on GitHub",
+      "subtitle": "Join thousands of users who trust our platform for their applications.",
+      "title": "Ready to get started?"
     },
-    "getStarted": "Get started by editing",
-    "readDocs": "Read our docs",
-    "saveChanges": "Save and see your changes instantly"
+    "features": {
+      "auth": {
+        "description": "Complete authentication system with 2FA, OAuth, and session management.",
+        "title": "Secure Authentication"
+      },
+      "badge": "Features",
+      "design": {
+        "description": "Elegant interface with dark mode, smooth animations, and reusable components.",
+        "title": "Modern Design"
+      },
+      "i18n": {
+        "description": "Built-in multilingual support with next-intl to reach a global audience.",
+        "title": "Internationalization"
+      },
+      "performance": {
+        "description": "SSR, image optimization, and ultra-fast loading for a perfect experience.",
+        "title": "Optimal Performance"
+      },
+      "subtitle": "A complete solution to build your modern application with the best technologies.",
+      "title": "Everything you need"
+    },
+    "footer": {
+      "about": "About",
+      "company": "Company",
+      "contact": "Contact",
+      "documentation": "Documentation",
+      "features": "Features",
+      "github": "GitHub",
+      "pricing": "Pricing",
+      "product": "Product",
+      "resources": "Resources"
+    },
+    "hero": {
+      "badge": "New: Secure Authentication",
+      "cta": {
+        "primary": "Get Started Free",
+        "secondary": "Sign In"
+      },
+      "subtitle": "A modern platform with secure authentication, elegant design, and built-in internationalization.",
+      "title": "Build Your Next.js Application"
+    },
+    "stats": {
+      "fast": "Ultra",
+      "fastLabel": "Fast",
+      "modern": "2025",
+      "modernLabel": "Design",
+      "secure": "100%",
+      "secureLabel": "Secure",
+      "users": "1000+",
+      "usersLabel": "Users"
+    }
   },
   "LanguageSwitcher": {
     "en": "English",
@@ -303,7 +363,18 @@
   },
   "UserButton": {
     "SignOut": "Sign out",
-    "profile": "Profile",
+    "dashboard": "Dashboard",
+    "items": {
+      "preferences": {
+        "language": {
+          "label": "Language"
+        },
+        "theme": {
+          "label": "Theme"
+        },
+        "title": "Preferences"
+      }
+    },
     "settings": "Settings"
   }
 }

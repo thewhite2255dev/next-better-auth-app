@@ -28,6 +28,7 @@ export function ScrollToTop() {
   return (
     <Button
       onClick={scrollToTop}
+      variant="outline"
       className={cn(
         "fixed right-4 bottom-4 z-50 opacity-0 shadow-md transition-opacity duration-300 ease-in-out",
         showTopBtn

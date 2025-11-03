@@ -13,7 +13,7 @@ import { useTranslations } from "next-intl";
 import { useState, useTransition } from "react";
 import type { SignInFormValues } from "@/types/auth";
 import { authClient } from "@/lib/auth-client";
-import FormError from "../layout/form-error";
+import FormError from "../shared/form-error";
 import { Spinner } from "../ui/spinner";
 import {
   InputOTP,
@@ -23,7 +23,7 @@ import {
 } from "@/components/ui/input-otp";
 import { DEFAULT_SIGN_IN_REDIRECT } from "@/lib/redirect-config";
 import { ResendButton } from "./resend-button";
-import FormSuccess from "../layout/form-success";
+import FormSuccess from "../shared/form-success";
 import { useRouter } from "@/i18n/navigation";
 
 interface TwoFactorFormProps {
@@ -62,7 +62,6 @@ export default function TwoFactorForm({
               reject(new Error("Failed to send OTP"));
             },
             onSuccess: () => {
-              setSuccess(t("Form.twoFactor.resend.states.success"));
               resolve();
             },
           },

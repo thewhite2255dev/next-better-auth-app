@@ -3,8 +3,8 @@
 import { Check } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { useState, useTransition } from "react";
-import FormError from "../layout/form-error";
-import FormSuccess from "../layout/form-success";
+import FormError from "../shared/form-error";
+import FormSuccess from "../shared/form-success";
 import { ResendButton } from "./resend-button";
 import { authClient } from "@/lib/auth-client";
 

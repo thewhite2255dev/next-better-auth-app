@@ -2,9 +2,19 @@ import DeleteAccountButton from "@/components/settings/delete-account-button";
 import { SettingsHeader } from "@/components/settings/settings-header";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
+import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 import { headers } from "next/headers";
 import { auth } from "@/lib/auth";
+
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getTranslations("SettingsAccountPage");
+
+  return {
+    title: t("title"),
+    description: t("description"),
+  };
+}
 
 export default async function SettingsAccountPage() {
   const t = await getTranslations("SettingsAccountPage");

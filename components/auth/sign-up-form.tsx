@@ -20,11 +20,11 @@ import { Link } from "@/i18n/navigation";
 import { AuthCard } from "./auth-card";
 import { BackButton } from "./back-button";
 import { SocialButtons, SocialDivider } from "./social-buttons";
-import FormError from "../layout/form-error";
+import FormError from "../shared/form-error";
 import { authClient } from "@/lib/auth-client";
 import { VerifyEmailCard } from "./verify-email-card";
 import { Spinner } from "../ui/spinner";
-import { PasswordInput } from "../layout/password-input";
+import { PasswordInput } from "../shared/password-input";
 import { useAuthErrorMessages } from "@/hooks/use-auth-error-messages";
 
 export function SignUpForm() {

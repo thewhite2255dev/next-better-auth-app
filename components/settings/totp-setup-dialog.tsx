@@ -1,8 +1,8 @@
 "use client";
 
 import QRCode from "react-qr-code";
-import FormError from "@/components/layout/form-error";
-import FormSuccess from "@/components/layout/form-success";
+import FormError from "@/components/shared/form-error";
+import FormSuccess from "@/components/shared/form-success";
 import { Button } from "@/components/ui/button";
 import {
   AlertDialog,

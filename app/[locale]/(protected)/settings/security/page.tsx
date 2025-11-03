@@ -1,10 +1,20 @@
 import { AuthenticationForm } from "@/components/settings/authentication-form";
 import { SettingsHeader } from "@/components/settings/settings-header";
 import { ChangePasswordForm } from "@/components/settings/change-password-form";
+import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 import { headers } from "next/headers";
 import { auth } from "@/lib/auth";
 import { SetPasswordButton } from "@/components/settings/set-password-button";
+
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getTranslations("SettingsSecurityPage");
+
+  return {
+    title: t("twoFactor.title"),
+    description: t("twoFactor.description"),
+  };
+}
 
 export default async function SettingsSecurityPage() {
   const t = await getTranslations("SettingsSecurityPage");

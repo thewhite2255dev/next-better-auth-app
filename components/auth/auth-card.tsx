@@ -9,8 +9,8 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { LanguageSwitcher } from "../layout/language-switcher";
-import { ThemeSwitcher } from "../layout/theme-switcher";
+import { LanguageSwitcher } from "../shared/language-switcher";
+import { ThemeSwitcher } from "../shared/theme-switcher";
 
 interface AuthCardProps {
   title: string;

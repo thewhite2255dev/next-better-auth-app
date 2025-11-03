@@ -21,7 +21,7 @@ import { useEffect, useState, useTransition } from "react";
 import { useForm } from "react-hook-form";
 import { Spinner } from "../ui/spinner";
 import { Button } from "../ui/button";
-import FormError from "../layout/form-error";
+import FormError from "../shared/form-error";
 import { toast } from "sonner";
 import { Textarea } from "../ui/textarea";
 import { maskEmail } from "@/lib/utils";
@@ -74,7 +74,7 @@ export function ProfileForm() {
             );
           },
           onSuccess: () => {
-            toast.success("Le profil a été modifié avec succès.");
+            toast.success(t("Form.profileForm.success"));
             refetch();
             router.refresh();
           },

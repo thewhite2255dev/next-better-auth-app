@@ -15,12 +15,12 @@ import { ResetPasswordFormSchema } from "@/schemas/auth";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { Check } from "lucide-react";
-import FormError from "../layout/form-error";
+import FormError from "../shared/form-error";
 import { BackButton } from "./back-button";
 import { notFound, useSearchParams } from "next/navigation";
 import { Button } from "../ui/button";
 import { Spinner } from "../ui/spinner";
-import { PasswordInput } from "../layout/password-input";
+import { PasswordInput } from "../shared/password-input";
 import { authClient } from "@/lib/auth-client";
 
 export function ResetPasswordForm() {

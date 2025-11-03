@@ -21,11 +21,11 @@ import { AuthCard } from "./auth-card";
 import { BackButton } from "./back-button";
 import { SocialButtons, SocialDivider } from "./social-buttons";
 import { authClient } from "@/lib/auth-client";
-import FormError from "../layout/form-error";
+import FormError from "../shared/form-error";
 import { VerifyEmailCard } from "./verify-email-card";
 import { Spinner } from "../ui/spinner";
 import { DEFAULT_SIGN_IN_REDIRECT } from "@/lib/redirect-config";
-import { PasswordInput } from "../layout/password-input";
+import { PasswordInput } from "../shared/password-input";
 import { useAuthErrorMessages } from "@/hooks/use-auth-error-messages";
 import { checkTwoFactor } from "@/actions/auth/check-two-factor";
 import TwoFactorForm from "./two-factor-form";
@@ -112,8 +112,7 @@ export function SignInForm() {
     AuthCardTitle = t("Form.verifyEmail.pending.title");
 
   if (step === "Totp") {
-    AuthCardDescription =
-      "Ouvrez votre application d'authentification et saisissez le code généré ci-dessous.";
+    AuthCardDescription = t("Form.totpAppInstruction");
   } else if (step === "TwoFactor") {
     AuthCardDescription = t.rich("Form.twoFactor.description", {
       email: form.getValues("email"),

@@ -7,11 +7,12 @@ import { LanguageSwitcher } from "./language-switcher";
 import { SiteConfig } from "@/lib/site-config";
 import { authClient } from "@/lib/auth-client";
 import { Button } from "../ui/button";
-import { LogIn } from "lucide-react";
+import { LogIn, Sparkles } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { UserButton } from "./user-button";
 import { Skeleton } from "../ui/skeleton";
 import { DEFAULT_HOME_REDIRECT } from "@/lib/redirect-config";
+import { MobileNav } from "./mobile-nav";
 
 export type navItemsType = {
   label: string;
@@ -27,12 +28,20 @@ export function Header() {
 
   return (
     <header className="bg-background/95 supports-[backdrop-filter]:bg-background/60 sticky top-0 z-50 w-full border-b backdrop-blur">
-      <div className="container flex h-14 items-center justify-between">
-        <Link href={DEFAULT_HOME_REDIRECT}>
-          <span className="text-foreground font-semibold">
-            {SiteConfig.title}
-          </span>
-        </Link>
+      <div className="container flex h-14 items-center justify-between px-4 md:px-6">
+        <div className="flex items-center gap-3">
+          <Link
+            href={DEFAULT_HOME_REDIRECT}
+            className="flex items-center gap-2"
+          >
+            <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-blue-500 to-purple-600">
+              <Sparkles className="h-5 w-5 text-white" />
+            </div>
+            <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text font-bold text-transparent">
+              {SiteConfig.name}
+            </span>
+          </Link>
+        </div>
         <nav className="hidden gap-6 font-medium lg:flex">
           {navItems.map((item) => (
             <Link
@@ -48,25 +57,25 @@ export function Header() {
             </Link>
           ))}
         </nav>
-        <div className="flex items-center gap-3">
-          <div className="items-center gap-2">
+        <div className="hidden items-center gap-3 lg:flex">
+          <div className="flex items-center gap-2">
             <LanguageSwitcher />
             <ThemeSwitcher />
-
-            {isPending ? (
-              <Skeleton className="flex size-8 shrink-0 overflow-hidden rounded-md" />
-            ) : session?.user ? (
-              <UserButton />
-            ) : (
-              <Button variant="outline" size="sm" asChild>
-                <Link href="/auth/sign-in">
-                  <LogIn className="mr-2 h-4 w-4" />
-                  <span className="hidden sm:block">{t("signInButton")}</span>
-                </Link>
-              </Button>
-            )}
           </div>
+          {isPending ? (
+            <Skeleton className="flex size-8 shrink-0 overflow-hidden rounded-md" />
+          ) : session?.user ? (
+            <UserButton />
+          ) : (
+            <Button variant="outline" size="sm" asChild>
+              <Link href="/auth/sign-in">
+                <LogIn className="h-4 w-4" />
+                <span className="hidden sm:block">{t("signInButton")}</span>
+              </Link>
+            </Button>
+          )}
         </div>
+        <MobileNav navItems={navItems} />
       </div>
     </header>
   );

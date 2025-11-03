@@ -9,6 +9,8 @@ export function useAuthErrorMessages() {
     USER_ALREADY_EXISTS_USE_ANOTHER_EMAIL: t("Form.errors.userAlreadyExist"),
     INVALID_EMAIL_OR_PASSWORD: t("Form.errors.credential.incorrect"),
     INVALID_PASSWORD: t("Form.errors.password.incorrect"),
+    INCORRECT_PASSWORD: t("Form.errors.password.incorrect"),
+    INVALID_CURRENT_PASSWORD: t("Form.errors.currentPassword.incorrect"),
   };
 
   return ERROR_CODES;

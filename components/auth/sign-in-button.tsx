@@ -1,22 +1,16 @@
 "use client";
 
-import { useRouter } from "@/i18n/navigation";
-import { cn } from "@/lib/utils";
+import { Link } from "@/i18n/navigation";
+import { type ComponentProps } from "react";
 
-interface SignInButtonProps extends React.HTMLAttributes<HTMLElement> {
+interface SignInButtonProps extends ComponentProps<typeof Link> {
   children: React.ReactNode;
 }
 
-export function SignInButton({ children, className }: SignInButtonProps) {
-  const router = useRouter();
-
-  function handleClick() {
-    router.push("/auth/sign-in");
-  }
-
+export function SignInButton({ children, ...props }: SignInButtonProps) {
   return (
-    <span onClick={handleClick} className={cn("cursor-pointer", className)}>
+    <Link {...props} href="/auth/sign-in">
       {children}
-    </span>
+    </Link>
   );
 }

@@ -2,7 +2,7 @@
 
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import FormError from "@/components/layout/form-error";
+import FormError from "@/components/shared/form-error";
 import { Button } from "@/components/ui/button";
 import {
   AlertDialog,
@@ -21,7 +21,7 @@ import {
 } from "@/components/ui/form";
 import { Spinner } from "@/components/ui/spinner";
 import { useTranslations } from "next-intl";
-import { PasswordInput } from "../layout/password-input";
+import { PasswordInput } from "../shared/password-input";
 import { TwoFactorAuthFormSchema } from "@/schemas/auth";
 import type { TwoFactorAuthFormValues } from "@/types/settings";
 import { useEffect } from "react";

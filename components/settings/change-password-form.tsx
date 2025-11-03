@@ -12,10 +12,10 @@ import { useTranslations } from "next-intl";
 import { useState, useTransition } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import FormError from "../layout/form-error";
+import FormError from "../shared/form-error";
 import { Button } from "../ui/button";
 import { Spinner } from "../ui/spinner";
-import { PasswordInput } from "../layout/password-input";
+import { PasswordInput } from "../shared/password-input";
 import { authClient } from "@/lib/auth-client";
 import type { ChangePasswordFormValues } from "@/types/settings";
 import { ChangePasswordFormSchema } from "@/schemas/settings";
@@ -50,10 +50,15 @@ export function ChangePasswordForm() {
         },
         {
           onError: (ctx) => {
-            setError(auth[ctx.error.code] || t("Form.errors.generic"));
+            const errorCode = ctx.error.code;
+            if (errorCode === "INVALID_PASSWORD") {
+              setError(t("Form.errors.currentPassword.incorrect"));
+            } else {
+              setError(auth[errorCode] || t("Form.errors.generic"));
+            }
           },
           onSuccess: () => {
-            toast.success("Le mot de passe a été modifié avec succès.");
+            toast.success(t("Form.changePassword.success"));
             form.reset();
           },
         },

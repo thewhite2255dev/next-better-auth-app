@@ -1,5 +1,14 @@
-"use client";
 import { VerifyEmailForm } from "@/components/auth/verify-email-form";
+import type { Metadata } from "next";
+import { getTranslations } from "next-intl/server";
+
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getTranslations("Form.verifyEmail");
+
+  return {
+    title: t("title"),
+  };
+}
 
 export default function VerifyEmailPage() {
   return <VerifyEmailForm />;

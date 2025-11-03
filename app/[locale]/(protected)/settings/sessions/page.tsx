@@ -2,7 +2,17 @@ import { SessionManagement } from "@/components/settings/session-management";
 import { SettingsHeader } from "@/components/settings/settings-header";
 import { auth } from "@/lib/auth";
 import { headers } from "next/headers";
+import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
+
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getTranslations("SettingsSessionsPage");
+
+  return {
+    title: t("title"),
+    description: t("description"),
+  };
+}
 
 export default async function SettingsSessionsPage() {
   const t = await getTranslations("SettingsSessionsPage");

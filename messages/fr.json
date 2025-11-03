@@ -31,8 +31,25 @@
   },
   "DashboardPage": {
     "dashboard": "Tableau de bord",
-    "email": "Adresse e-mail",
-    "signOut": "Déconnexion",
+    "quickActions": {
+      "preferences": "Préférences",
+      "profile": "Profil",
+      "security": "Sécurité",
+      "sessions": "Sessions",
+      "title": "Actions rapides"
+    },
+    "signOut": "Se déconnecter",
+    "status": {
+      "active": "Actif",
+      "fullAccess": "Accès complet",
+      "memberSince": "Membre depuis",
+      "no": "Non",
+      "premium": "Premium",
+      "securityEnhanced": "Sécurité renforcée",
+      "statusLabel": "Status",
+      "verified": "Compte vérifié",
+      "yes": "Oui"
+    },
     "welcome": "Bienvenue"
   },
   "Form": {
@@ -45,7 +62,8 @@
       "resendLabel": "Renvoyer le {name}"
     },
     "changePassword": {
-      "button": "Mettre à jour le mot de passe"
+      "button": "Mettre à jour le mot de passe",
+      "success": "Le mot de passe a été modifié avec succès."
     },
     "common": {
       "code": "code",
@@ -63,8 +81,7 @@
       },
       "fields": {
         "confirmation": "Pour confirmer, entrez <strong>{keyword}</strong> ci-dessous.",
-        "email": "Entrez votre adresse e-mail <strong>{email}</strong> pour continuer.",
-        "password": "Mot de passe actuel"
+        "email": "Entrez votre adresse e-mail <strong>{email}</strong> pour continuer."
       },
       "header": {
         "description": "Nous supprimerons votre compte immédiatement.",
@@ -75,13 +92,10 @@
     "errors": {
       "allFieldsRequired": "Tous les champs sont requis.",
       "credential": {
-        "incorrect": "L'adresse e-mail ou le mot de passe est incorrect.",
-        "required": "L'adresse e-mail ou le mot de passe est requis."
+        "incorrect": "L'adresse e-mail ou le mot de passe est incorrect."
       },
       "currentPassword": {
         "incorrect": "Le mot de passe actuel est incorrect.",
-        "maxLength": "Le mot de passe actuel ne peut pas dépasser {maxLength} caractères.",
-        "minLength": "Le mot de passe actuel doit contenir au moins {minLength} caractères.",
         "required": "Le mot de passe actuel est requis."
       },
       "email": {
@@ -97,14 +111,10 @@
         "required": "Le nom est requis."
       },
       "newPassword": {
-        "incorrect": "Le nouveau mot de passe est incorrect.",
-        "maxLength": "Le nouveau mot de passe ne peut pas dépasser {maxLength} caractères.",
-        "minLength": "Le nouveau mot de passe doit contenir au moins {minLength} caractères.",
         "required": "Le nouveau mot de passe est requis."
       },
       "password": {
         "incorrect": "Le mot de passe est incorrect.",
-        "maxLength": "Le mot de passe ne peut pas dépasser {maxLength} caractères.",
         "minLength": "Le mot de passe doit contenir au moins {minLength} caractères.",
         "required": "Le mot de passe est requis."
       },
@@ -133,6 +143,7 @@
       "title": "Mot de passe oublié"
     },
     "profileForm": {
+      "success": "Le profil a été modifié avec succès.",
       "updateButton": "Mettre à jour le profil"
     },
     "resetPassword": {
@@ -150,7 +161,7 @@
       "createAccount": "Vous n'avez pas de compte ? <link>Inscrivez-vous</link>",
       "description": "Connectez-vous à votre compte.",
       "forgotPassword": "Mot de passe oublié ?",
-      "title": "Connexion"
+      "title": "Se connecter"
     },
     "signUp": {
       "button": "Créer un compte",
@@ -161,6 +172,7 @@
     "success": {
       "verifyTotpCode": "Le code a été vérifié avec succès."
     },
+    "totpAppInstruction": "Ouvrez votre application d'authentification et saisissez le code généré ci-dessous.",
     "twoFactor": {
       "button": "Valider le code",
       "description": "Nous avons envoyé un code de vérification à <strong>{email}</strong>. Veuillez l'entrer ci-dessous.",
@@ -189,18 +201,66 @@
     }
   },
   "Header": {
-    "signInButton": "Connexion"
+    "signInButton": "Se connecter"
   },
   "Home": {
-    "deployNow": "Déployer maintenant",
-    "footer": {
-      "examples": "Exemples",
-      "goToNext": "Aller sur nextjs.org →",
-      "learn": "Apprendre"
+    "cta": {
+      "button": "Créer un compte",
+      "github": "Voir sur GitHub",
+      "subtitle": "Rejoignez des milliers d'utilisateurs qui font confiance à notre plateforme pour leurs applications.",
+      "title": "Prêt à commencer ?"
     },
-    "getStarted": "Commencez par éditer",
-    "readDocs": "Lire nos docs",
-    "saveChanges": "Enregistrez et visualisez vos modifications instantanément"
+    "features": {
+      "auth": {
+        "description": "Système d'authentification complet avec 2FA, OAuth et gestion des sessions.",
+        "title": "Authentification sécurisée"
+      },
+      "badge": "Fonctionnalités",
+      "design": {
+        "description": "Interface élégante avec mode sombre, animations fluides et composants réutilisables.",
+        "title": "Design moderne"
+      },
+      "i18n": {
+        "description": "Support multilingue intégré avec next-intl pour atteindre une audience mondiale.",
+        "title": "Internationalisation"
+      },
+      "performance": {
+        "description": "SSR, optimisation des images et chargement ultra-rapide pour une expérience parfaite.",
+        "title": "Performance optimale"
+      },
+      "subtitle": "Une solution complète pour créer votre application moderne avec les meilleures technologies.",
+      "title": "Tout ce dont vous avez besoin"
+    },
+    "footer": {
+      "about": "À propos",
+      "company": "Entreprise",
+      "contact": "Contact",
+      "documentation": "Documentation",
+      "features": "Fonctionnalités",
+      "github": "GitHub",
+      "pricing": "Tarifs",
+      "product": "Produit",
+      "resources": "Ressources"
+    },
+    "hero": {
+      "badge": "Nouveau : Authentification sécurisée",
+      "cta": {
+        "primary": "Commencer gratuitement",
+        "secondary": "Se connecter"
+      },
+      "subtitle": "Une plateforme moderne avec authentification sécurisée, design élégant et internationalisation intégrée.",
+      "title": "Construisez votre application Next.js"
+    },
+    "stats": {
+      "fast": "Ultra",
+      "fastLabel": "Rapide",
+      "modern": "2025",
+      "modernLabel": "Design",
+      "secure": "100%",
+      "secureLabel": "Sécurisé",
+      "users": "1000+",
+      "usersLabel": "Utilisateurs"
+    }
   },
   "LanguageSwitcher": {
     "en": "Anglais",
@@ -302,8 +362,19 @@
     }
   },
   "UserButton": {
-    "SignOut": "Déconnexion",
-    "profile": "Profil",
+    "SignOut": "Se déconnecter",
+    "dashboard": "Tableau de bord",
+    "items": {
+      "preferences": {
+        "language": {
+          "label": "Langue"
+        },
+        "theme": {
+          "label": "Thème"
+        },
+        "title": "Préférences"
+      }
+    },
     "settings": "Paramètres"
   }
 }

@@ -35,7 +35,7 @@ export async function deleteAccount(values: DeleteAccountFormValues) {
       );
 
       if (!passwordMatch) {
-        return { error: t("Form.errors.password.incorrect") };
+        return { error: t("Form.errors.currentPassword.incorrect") };
       }
     }
 
