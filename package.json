@@ -14,7 +14,8 @@
     "db:studio": "prisma studio",
     "auth:generate": "pnpm dlx @better-auth/cli@latest generate --config ./lib/auth.ts --output ./prisma/new-schema.prisma --yes",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "postinstall": "prisma generate"
   },
   "dependencies": {
     "@bprogress/next": "^3.2.12",
