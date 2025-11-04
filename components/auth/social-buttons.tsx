@@ -7,6 +7,7 @@ import { authClient } from "@/lib/auth-client";
 import { useSearchParams } from "next/navigation";
 import { DEFAULT_SIGN_IN_REDIRECT } from "@/lib/redirect-config";
 import { Spinner } from "../ui/spinner";
+import { cn } from "@/lib/utils";
 
 export const socialItems = [
   {
@@ -60,7 +61,10 @@ export function SocialButtons({
 
   return (
     <div
-      className={`${direction === "column" ? "flex flex-col space-y-2" : "grid grid-cols-2 gap-2"} ${className}`}
+      className={cn({
+        "flex flex-col space-y-2": direction === "column",
+        "grid grid-cols-2 gap-2": direction === "row",
+      })}
     >
       {providers.map((provider) => (
         <SocialButton
@@ -150,7 +154,12 @@ export function SocialButton({
       type="button"
       disabled={isLoading}
       onClick={onClick}
-      className={`${fullWidth ? "w-full" : ""} ${className}`}
+      className={cn(
+        {
+          "w-full": fullWidth === true,
+        },
+        className,
+      )}
     >
       {isLoading ? <Spinner /> : <span>{providerIcons[provider]}</span>}
       {text}

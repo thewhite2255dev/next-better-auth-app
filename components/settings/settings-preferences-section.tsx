@@ -23,7 +23,7 @@ export function SettingsPreferencesSection() {
   const { theme, setTheme } = useTheme();
   const t = useTranslations();
   const changeLocale = useChangeLocale();
-  const [mounted, setMounted] = useState(false);
+  const [mounted, setMounted] = useState<boolean>(false);
 
   const languages = [
     { code: "fr", name: t("LanguageSwitcher.fr") },

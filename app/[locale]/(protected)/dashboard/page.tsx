@@ -40,8 +40,8 @@ export default async function DashboardPage() {
 
   if (!session) {
     return (
-      <main className="container mx-auto min-h-screen py-6">
-        <div className="mx-auto max-w-7xl space-y-8">
+      <main className="container min-h-screen py-6">
+        <div className="space-y-8">
           <div className="flex items-center justify-between">
             <Skeleton className="h-10 w-64 rounded-lg" />
             <Skeleton className="h-10 w-32 rounded-lg" />

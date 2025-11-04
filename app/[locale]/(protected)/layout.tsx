@@ -3,7 +3,7 @@
 import { Header } from "@/components/shared/header";
 import { ScrollToTop } from "@/components/shared/scroll-to-top";
 
-export default function MainLayout({
+export default function ProtectedLayout({
   children,
 }: {
   children: React.ReactNode;

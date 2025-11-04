@@ -39,7 +39,7 @@ interface MobileNavProps {
 }
 
 export function MobileNav({ navItems }: MobileNavProps) {
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState<boolean>(false);
   const changeLocale = useChangeLocale();
   const locale = useLocale();
   const { theme, setTheme } = useTheme();
@@ -117,55 +117,52 @@ export function MobileNav({ navItems }: MobileNavProps) {
 
         <div className="flex flex-col gap-4 px-4">
           <FeedbackDialog />
-          {!session?.user && (
-            <>
-              <div className="flex items-center justify-between">
-                <Label>{t("SettingsPreferencesPage.theme")}</Label>
-                <Select value={theme ?? undefined} onValueChange={setTheme}>
-                  <SelectTrigger className="w-36">
-                    <SelectValue
-                      placeholder={t(
-                        "SettingsPreferencesPage.placeholders.selectTheme",
-                      )}
-                    />
-                  </SelectTrigger>
-                  <SelectContent side="bottom">
-                    <SelectGroup>
-                      {themes.map((option) => (
-                        <SelectItem key={option.value} value={option.value}>
-                          <div className="flex items-center gap-2">
-                            <option.icon className="h-4 w-4" />
-                            <span>{option.label}</span>
-                          </div>
-                        </SelectItem>
-                      ))}
-                    </SelectGroup>
-                  </SelectContent>
-                </Select>
-              </div>
-              <div className="flex items-center justify-between">
-                <Label>{t("SettingsPreferencesPage.language")}</Label>
-                <Select defaultValue={locale} onValueChange={changeLocale}>
-                  <SelectTrigger className="w-36">
-                    <SelectValue
-                      placeholder={t(
-                        "SettingsPreferencesPage.placeholders.selectLanguage",
-                      )}
-                    />
-                  </SelectTrigger>
-                  <SelectContent side="bottom">
-                    <SelectGroup>
-                      {languages.map((lang) => (
-                        <SelectItem key={lang.code} value={lang.code}>
-                          {lang.name}
-                        </SelectItem>
-                      ))}
-                    </SelectGroup>
-                  </SelectContent>
-                </Select>
-              </div>
-            </>
-          )}
+
+          <div className="flex items-center justify-between">
+            <Label>{t("SettingsPreferencesPage.theme")}</Label>
+            <Select value={theme ?? undefined} onValueChange={setTheme}>
+              <SelectTrigger className="w-36">
+                <SelectValue
+                  placeholder={t(
+                    "SettingsPreferencesPage.placeholders.selectTheme",
+                  )}
+                />
+              </SelectTrigger>
+              <SelectContent side="bottom">
+                <SelectGroup>
+                  {themes.map((option) => (
+                    <SelectItem key={option.value} value={option.value}>
+                      <div className="flex items-center gap-2">
+                        <option.icon className="h-4 w-4" />
+                        <span>{option.label}</span>
+                      </div>
+                    </SelectItem>
+                  ))}
+                </SelectGroup>
+              </SelectContent>
+            </Select>
+          </div>
+          <div className="flex items-center justify-between">
+            <Label>{t("SettingsPreferencesPage.language")}</Label>
+            <Select defaultValue={locale} onValueChange={changeLocale}>
+              <SelectTrigger className="w-36">
+                <SelectValue
+                  placeholder={t(
+                    "SettingsPreferencesPage.placeholders.selectLanguage",
+                  )}
+                />
+              </SelectTrigger>
+              <SelectContent side="bottom">
+                <SelectGroup>
+                  {languages.map((lang) => (
+                    <SelectItem key={lang.code} value={lang.code}>
+                      {lang.name}
+                    </SelectItem>
+                  ))}
+                </SelectGroup>
+              </SelectContent>
+            </Select>
+          </div>
         </div>
 
         {/* User Section */}

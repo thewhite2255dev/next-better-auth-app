@@ -131,7 +131,7 @@ degni-kit/
 │   │   │   └── settings/         # Paramètres du compte
 │   │   ├── (public)/             # Routes publiques
 │   │   │   └── page.tsx          # Page d'accueil
-│   │   └── (without-header)/     # Routes sans header
+│   │   └── (auth)/     # Routes sans header
 │   │       └── auth/             # Pages d'authentification
 │   └── api/                      # API Routes
 │       └── auth/                 # Endpoints Better Auth

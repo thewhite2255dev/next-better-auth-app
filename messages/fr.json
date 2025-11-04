@@ -161,7 +161,7 @@
       "createAccount": "Vous n'avez pas de compte ? <link>Inscrivez-vous</link>",
       "description": "Connectez-vous à votre compte.",
       "forgotPassword": "Mot de passe oublié ?",
-      "title": "Se connecter"
+      "title": "Connexion"
     },
     "signUp": {
       "button": "Créer un compte",

@@ -5,10 +5,6 @@ import {
   Settings,
   ChevronsUpDown,
   LayoutDashboard,
-  Check,
-  Monitor,
-  Sun,
-  Moon,
 } from "lucide-react";
 
 import {
@@ -19,21 +15,16 @@ import {
   DropdownMenuLabel,
   DropdownMenuTrigger,
   DropdownMenuSeparator,
-  DropdownMenuSub,
-  DropdownMenuSubTrigger,
-  DropdownMenuSubContent,
 } from "@/components/ui/dropdown-menu";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 import { generateAvatarFallback, maskEmail, cn } from "@/lib/utils";
-import { useLocale, useTranslations } from "next-intl";
+import { useTranslations } from "next-intl";
 import { SignOut } from "../auth/sign-out-button";
 import { Link } from "@/i18n/navigation";
 import { authClient } from "@/lib/auth-client";
 import { Button } from "../ui/button";
 import { useIsTablet } from "@/hooks/use-media-query";
-import { useTheme } from "next-themes";
 import { type ComponentProps } from "react";
-import { useChangeLocale } from "@/hooks/use-change-locale";
 
 interface UserButtonProps extends ComponentProps<typeof Button> {
   className?: string;
@@ -42,22 +33,7 @@ interface UserButtonProps extends ComponentProps<typeof Button> {
 export function UserButton({ className, ...props }: UserButtonProps) {
   const t = useTranslations();
   const { data: session } = authClient.useSession();
-  const changeLocale = useChangeLocale();
-  const locale = useLocale();
   const isTablet = useIsTablet();
-
-  const { theme, setTheme } = useTheme();
-
-  const languages = [
-    { code: "fr", name: t("LanguageSwitcher.fr") },
-    { code: "en", name: t("LanguageSwitcher.en") },
-  ];
-
-  const themes = [
-    { value: "system", label: t("ThemeSwitcher.system"), icon: Monitor },
-    { value: "light", label: t("ThemeSwitcher.light"), icon: Sun },
-    { value: "dark", label: t("ThemeSwitcher.dark"), icon: Moon },
-  ];
 
   const userFallback = generateAvatarFallback(session?.user.name ?? "");
 
@@ -128,54 +104,6 @@ export function UserButton({ className, ...props }: UserButtonProps) {
                 {t("UserButton.settings")}
               </Link>
             </DropdownMenuItem>
-          </DropdownMenuGroup>
-          <DropdownMenuSeparator />
-          <DropdownMenuGroup>
-            <DropdownMenuLabel className="text-muted-foreground text-sm font-medium">
-              <span>{t("UserButton.items.preferences.title")}</span>
-            </DropdownMenuLabel>
-            <DropdownMenuSub>
-              <DropdownMenuSubTrigger>
-                <span>{t("UserButton.items.preferences.theme.label")}</span>
-              </DropdownMenuSubTrigger>
-              <DropdownMenuSubContent className="w-40">
-                {themes.map(({ value, label, icon: Icon }) => (
-                  <DropdownMenuItem key={value} onClick={() => setTheme(value)}>
-                    <Icon className="h-4 w-4" />
-                    <span className="mr-auto">{label}</span>
-                    <Check
-                      className={cn({
-                        "pointer-events-none opacity-0": theme !== value,
-                        "pointer-events-auto opacity-100": theme === value,
-                      })}
-                    />
-                  </DropdownMenuItem>
-                ))}
-              </DropdownMenuSubContent>
-            </DropdownMenuSub>
-            <DropdownMenuSub>
-              <DropdownMenuSubTrigger>
-                <span>{t("UserButton.items.preferences.language.label")}</span>
-              </DropdownMenuSubTrigger>
-              <DropdownMenuSubContent className="w-40">
-                {languages.map((language) => (
-                  <DropdownMenuItem
-                    key={language.code}
-                    onClick={() => changeLocale(language.code)}
-                  >
-                    <span className="mr-auto">{language.name}</span>
-                    <Check
-                      className={cn({
-                        "pointer-events-none opacity-0":
-                          locale !== language.code,
-                        "pointer-events-auto opacity-100":
-                          locale === language.code,
-                      })}
-                    />
-                  </DropdownMenuItem>
-                ))}
-              </DropdownMenuSubContent>
-            </DropdownMenuSub>
           </DropdownMenuGroup>
           <DropdownMenuSeparator />
           <DropdownMenuItem asChild>

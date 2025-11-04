@@ -19,10 +19,10 @@ import { toast } from "sonner";
 
 export function FeedbackDialog() {
   const t = useTranslations("FeedbackDialog");
-  const [open, setOpen] = useState(false);
-  const [feedback, setFeedback] = useState("");
+  const [open, setOpen] = useState<boolean>(false);
+  const [feedback, setFeedback] = useState<string>("");
   const [rating, setRating] = useState<number>(0);
-  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
 
   const handleSubmit = async () => {
     if (!feedback.trim()) {

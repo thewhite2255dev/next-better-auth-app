@@ -68,12 +68,12 @@ export default async function Home() {
       </div>
 
       {/* Hero Section */}
-      <section className="relative container px-4 py-20 md:py-32">
-        <div className="mx-auto max-w-5xl text-center">
+      <section className="relative container py-20 md:py-32">
+        <div className="text-center">
           {/* Badge */}
           <Badge
             variant="secondary"
-            className="border-primary/20 bg-primary/5 mb-6 gap-2 px-4 py-2 text-sm"
+            className="border-primary/20 bg-primary/5 mb-6 gap-2 py-2 text-sm"
           >
             <Sparkles className="h-4 w-4" />
             {t("hero.badge")}
@@ -85,7 +85,7 @@ export default async function Home() {
           </h1>
 
           {/* Hero Subtitle */}
-          <p className="text-muted-foreground mx-auto mb-10 max-w-2xl text-lg md:text-xl">
+          <p className="text-muted-foreground mb-10 text-lg md:text-xl">
             {t("hero.subtitle")}
           </p>
 
@@ -158,8 +158,8 @@ export default async function Home() {
       </section>
 
       {/* Features Section */}
-      <section className="relative container px-4 py-20">
-        <div className="mx-auto max-w-6xl">
+      <section className="relative container py-20">
+        <div>
           {/* Section Header */}
           <div className="mb-16 text-center">
             <Badge variant="secondary" className="mb-4">
@@ -168,7 +168,7 @@ export default async function Home() {
             <h2 className="mb-4 text-3xl font-bold tracking-tight md:text-4xl">
               {t("features.title")}
             </h2>
-            <p className="text-muted-foreground mx-auto max-w-2xl text-lg">
+            <p className="text-muted-foreground text-lg">
               {t("features.subtitle")}
             </p>
           </div>
@@ -201,14 +201,14 @@ export default async function Home() {
       </section>
 
       {/* CTA Section */}
-      <section className="relative container px-4 py-20">
+      <section className="relative container py-20">
         <Card className="border-primary/20 from-primary/5 via-card to-primary/5 relative overflow-hidden bg-linear-to-br">
           <div className="from-primary/10 absolute top-0 right-0 h-full w-1/3 bg-linear-to-l to-transparent blur-3xl" />
           <CardContent className="relative p-12 text-center">
             <h2 className="mb-4 text-3xl font-bold md:text-4xl">
               {t("cta.title")}
             </h2>
-            <p className="text-muted-foreground mx-auto mb-8 max-w-2xl text-lg">
+            <p className="text-muted-foreground mb-8 text-lg">
               {t("cta.subtitle")}
             </p>
             <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
@@ -245,8 +245,8 @@ export default async function Home() {
 
       {/* Footer */}
       <footer className="bg-muted/50 border-t py-12">
-        <div className="container px-4">
-          <div className="mx-auto max-w-6xl">
+        <div className="container">
+          <div>
             <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
               {/* Brand */}
               <div className="space-y-4">
