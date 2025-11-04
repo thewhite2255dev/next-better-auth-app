@@ -27,12 +27,13 @@ import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 import { generateAvatarFallback, maskEmail, cn } from "@/lib/utils";
 import { useLocale, useTranslations } from "next-intl";
 import { SignOut } from "../auth/sign-out-button";
-import { Link, usePathname, useRouter } from "@/i18n/navigation";
+import { Link } from "@/i18n/navigation";
 import { authClient } from "@/lib/auth-client";
 import { Button } from "../ui/button";
-import { useIsMobile } from "@/hooks/use-mobile";
+import { useIsTablet } from "@/hooks/use-media-query";
 import { useTheme } from "next-themes";
 import { type ComponentProps } from "react";
+import { useChangeLocale } from "@/hooks/use-change-locale";
 
 interface UserButtonProps extends ComponentProps<typeof Button> {
   className?: string;
@@ -41,10 +42,10 @@ interface UserButtonProps extends ComponentProps<typeof Button> {
 export function UserButton({ className, ...props }: UserButtonProps) {
   const t = useTranslations();
   const { data: session } = authClient.useSession();
-  const pathname = usePathname();
-  const router = useRouter();
-  const isMobile = useIsMobile();
+  const changeLocale = useChangeLocale();
   const locale = useLocale();
+  const isTablet = useIsTablet();
+
   const { theme, setTheme } = useTheme();
 
   const languages = [
@@ -58,13 +59,9 @@ export function UserButton({ className, ...props }: UserButtonProps) {
     { value: "dark", label: t("ThemeSwitcher.dark"), icon: Moon },
   ];
 
-  const handleLanguageChange = (newLocale: string) => {
-    router.push(pathname, { locale: newLocale });
-  };
-
   const userFallback = generateAvatarFallback(session?.user.name ?? "");
 
-  if (isMobile) {
+  if (isTablet) {
     return (
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
@@ -164,7 +161,7 @@ export function UserButton({ className, ...props }: UserButtonProps) {
                 {languages.map((language) => (
                   <DropdownMenuItem
                     key={language.code}
-                    onClick={() => handleLanguageChange(language.code)}
+                    onClick={() => changeLocale(language.code)}
                   >
                     <span className="mr-auto">{language.name}</span>
                     <Check

@@ -2,7 +2,6 @@
 
 import { Check, Globe } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
-import { usePathname, useRouter } from "@/i18n/navigation";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -12,25 +11,21 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { cn } from "@/lib/utils";
+import { useChangeLocale } from "@/hooks/use-change-locale";
 
 interface LanguageSwitcherProps {
   className?: string;
 }
 
 export function LanguageSwitcher({ className }: LanguageSwitcherProps) {
-  const router = useRouter();
-  const pathname = usePathname();
   const locale = useLocale();
   const t = useTranslations("LanguageSwitcher");
+  const changeLocale = useChangeLocale();
 
   const languages = [
     { code: "fr", name: t("fr") },
     { code: "en", name: t("en") },
   ];
-
-  const handleLanguageChange = (newLocale: string) => {
-    router.push(pathname, { locale: newLocale });
-  };
 
   return (
     <DropdownMenu>
@@ -44,7 +39,7 @@ export function LanguageSwitcher({ className }: LanguageSwitcherProps) {
         {languages.map((language) => (
           <DropdownMenuItem
             key={language.code}
-            onClick={() => handleLanguageChange(language.code)}
+            onClick={() => changeLocale(language.code)}
           >
             <span className="mr-auto">{language.name}</span>
             <Check

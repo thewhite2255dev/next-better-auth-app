@@ -3,7 +3,6 @@
 import { Monitor, Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
 import { useLocale, useTranslations } from "next-intl";
-import { usePathname, useRouter } from "@/i18n/navigation";
 import { Label } from "@/components/ui/label";
 import {
   Select,
@@ -17,13 +16,13 @@ import { Card, CardContent } from "@/components/ui/card";
 import { useEffect, useState } from "react";
 import { SettingsHeader } from "./settings-header";
 import { Skeleton } from "../ui/skeleton";
+import { useChangeLocale } from "@/hooks/use-change-locale";
 
 export function SettingsPreferencesSection() {
-  const router = useRouter();
-  const pathname = usePathname();
   const locale = useLocale();
   const { theme, setTheme } = useTheme();
   const t = useTranslations();
+  const changeLocale = useChangeLocale();
   const [mounted, setMounted] = useState(false);
 
   const languages = [
@@ -36,10 +35,6 @@ export function SettingsPreferencesSection() {
     { value: "light", label: t("ThemeSwitcher.light"), icon: Sun },
     { value: "dark", label: t("ThemeSwitcher.dark"), icon: Moon },
   ];
-
-  const handleLanguageChange = (newLocale: string) => {
-    router.push(pathname, { locale: newLocale });
-  };
 
   useEffect(() => {
     // eslint-disable-next-line react-hooks/set-state-in-effect
@@ -103,7 +98,7 @@ export function SettingsPreferencesSection() {
           </div>
           <div className="flex items-center justify-between">
             <Label>{t("SettingsPreferencesPage.language")}</Label>
-            <Select defaultValue={locale} onValueChange={handleLanguageChange}>
+            <Select defaultValue={locale} onValueChange={changeLocale}>
               <SelectTrigger className="w-36">
                 <SelectValue
                   placeholder={t(

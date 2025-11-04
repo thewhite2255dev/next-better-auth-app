@@ -13,10 +13,10 @@ import {
   Github,
   Rocket,
   Lock,
-  Users,
-  LayoutDashboard,
   Palette,
   Globe,
+  Code2,
+  Scale,
 } from "lucide-react";
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -80,7 +80,7 @@ export default async function Home() {
           </Badge>
 
           {/* Hero Title */}
-          <h1 className="from-foreground via-foreground/90 to-foreground/70 mb-6 bg-gradient-to-r bg-clip-text text-5xl font-bold tracking-tight text-transparent md:text-7xl">
+          <h1 className="from-foreground via-foreground/90 to-foreground/70 mb-6 bg-linear-to-r bg-clip-text text-5xl font-bold tracking-tight text-transparent md:text-7xl">
             {t("hero.title")}
           </h1>
 
@@ -137,20 +137,20 @@ export default async function Home() {
             </div>
             <div className="group bg-card/50 rounded-lg border p-4 backdrop-blur transition-all hover:scale-105 hover:shadow-lg">
               <div className="mb-2 flex justify-center">
-                <Users className="h-8 w-8 text-green-500 transition-transform group-hover:scale-110" />
-              </div>
-              <div className="text-2xl font-bold">{t("stats.users")}</div>
-              <div className="text-muted-foreground text-sm">
-                {t("stats.usersLabel")}
-              </div>
-            </div>
-            <div className="group bg-card/50 rounded-lg border p-4 backdrop-blur transition-all hover:scale-105 hover:shadow-lg">
-              <div className="mb-2 flex justify-center">
-                <LayoutDashboard className="h-8 w-8 text-purple-500 transition-transform group-hover:scale-110" />
+                <Scale className="h-8 w-8 text-green-500 transition-transform group-hover:scale-110" />
               </div>
               <div className="text-2xl font-bold">{t("stats.modern")}</div>
               <div className="text-muted-foreground text-sm">
                 {t("stats.modernLabel")}
+              </div>
+            </div>
+            <div className="group bg-card/50 rounded-lg border p-4 backdrop-blur transition-all hover:scale-105 hover:shadow-lg">
+              <div className="mb-2 flex justify-center">
+                <Code2 className="h-8 w-8 text-purple-500 transition-transform group-hover:scale-110" />
+              </div>
+              <div className="text-2xl font-bold">{t("stats.users")}</div>
+              <div className="text-muted-foreground text-sm">
+                {t("stats.usersLabel")}
               </div>
             </div>
           </div>
@@ -178,14 +178,14 @@ export default async function Home() {
             {features.map((feature, index) => (
               <Card
                 key={index}
-                className="group border-primary/10 from-card to-card/50 relative overflow-hidden bg-gradient-to-br transition-all hover:scale-[1.02] hover:shadow-2xl"
+                className="group border-primary/10 from-card to-card/50 relative overflow-hidden bg-linear-to-br transition-all hover:scale-[1.02] hover:shadow-2xl"
               >
                 <div
-                  className={`absolute top-0 right-0 h-32 w-32 translate-x-16 -translate-y-16 rounded-full bg-gradient-to-br ${feature.gradient} opacity-20 blur-2xl transition-all group-hover:scale-150`}
+                  className={`absolute top-0 right-0 h-32 w-32 translate-x-16 -translate-y-16 rounded-full bg-linear-to-br ${feature.gradient} opacity-20 blur-2xl transition-all group-hover:scale-150`}
                 />
                 <CardContent className="relative p-6">
                   <div
-                    className={`mb-4 inline-flex rounded-lg bg-gradient-to-br ${feature.gradient} p-3 shadow-lg`}
+                    className={`mb-4 inline-flex rounded-lg bg-linear-to-br ${feature.gradient} p-3 shadow-lg`}
                   >
                     <feature.icon className="h-6 w-6 text-white" />
                   </div>
@@ -202,8 +202,8 @@ export default async function Home() {
 
       {/* CTA Section */}
       <section className="relative container px-4 py-20">
-        <Card className="border-primary/20 from-primary/5 via-card to-primary/5 relative overflow-hidden bg-gradient-to-br">
-          <div className="from-primary/10 absolute top-0 right-0 h-full w-1/3 bg-gradient-to-l to-transparent blur-3xl" />
+        <Card className="border-primary/20 from-primary/5 via-card to-primary/5 relative overflow-hidden bg-linear-to-br">
+          <div className="from-primary/10 absolute top-0 right-0 h-full w-1/3 bg-linear-to-l to-transparent blur-3xl" />
           <CardContent className="relative p-12 text-center">
             <h2 className="mb-4 text-3xl font-bold md:text-4xl">
               {t("cta.title")}
@@ -230,7 +230,7 @@ export default async function Home() {
                 asChild
               >
                 <a
-                  href="https://github.com"
+                  href={SiteConfig.links.github}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -251,7 +251,7 @@ export default async function Home() {
               {/* Brand */}
               <div className="space-y-4">
                 <div className="flex items-center gap-2">
-                  <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-blue-500 to-purple-600">
+                  <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-linear-to-br from-blue-500 to-purple-600">
                     <Sparkles className="h-5 w-5 text-white" />
                   </div>
                   <span className="text-xl font-bold">{SiteConfig.name}</span>
@@ -259,34 +259,17 @@ export default async function Home() {
                 <p className="text-muted-foreground text-sm">
                   {SiteConfig.description}
                 </p>
+                <div className="flex items-center gap-2">
+                  <Badge variant="secondary" className="text-xs">
+                    Open Source
+                  </Badge>
+                  <Badge variant="secondary" className="text-xs">
+                    MIT License
+                  </Badge>
+                </div>
               </div>
 
-              {/* Product */}
-              <div>
-                <h3 className="mb-4 text-lg font-semibold">
-                  {t("footer.product")}
-                </h3>
-                <ul className="text-muted-foreground space-y-2 text-sm">
-                  <li>
-                    <Link
-                      href="/"
-                      className="hover:text-foreground transition-colors"
-                    >
-                      {t("footer.features")}
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      href="/"
-                      className="hover:text-foreground transition-colors"
-                    >
-                      {t("footer.pricing")}
-                    </Link>
-                  </li>
-                </ul>
-              </div>
-
-              {/* Resources */}
+              {/* Community */}
               <div>
                 <h3 className="mb-4 text-lg font-semibold">
                   {t("footer.resources")}
@@ -297,6 +280,17 @@ export default async function Home() {
                       href={SiteConfig.links.github}
                       target="_blank"
                       rel="noopener noreferrer"
+                      className="hover:text-foreground flex items-center gap-2 transition-colors"
+                    >
+                      <Github className="h-4 w-4" />
+                      {t("footer.github")}
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href={`${SiteConfig.links.github}/issues`}
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="hover:text-foreground transition-colors"
                     >
                       {t("footer.documentation")}
@@ -304,46 +298,99 @@ export default async function Home() {
                   </li>
                   <li>
                     <a
-                      href={SiteConfig.author.githubUrl}
+                      href={`${SiteConfig.links.github}/discussions`}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="hover:text-foreground transition-colors"
                     >
-                      {t("footer.github")}
+                      {t("footer.community")}
                     </a>
                   </li>
                 </ul>
               </div>
 
-              {/* Company */}
+              {/* Contribute */}
               <div>
                 <h3 className="mb-4 text-lg font-semibold">
-                  {t("footer.company")}
+                  {t("footer.contribute")}
                 </h3>
                 <ul className="text-muted-foreground space-y-2 text-sm">
                   <li>
-                    <Link
-                      href="/"
+                    <a
+                      href={`${SiteConfig.links.github}/issues/new`}
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="hover:text-foreground transition-colors"
                     >
-                      {t("footer.about")}
-                    </Link>
+                      {t("footer.reportIssues")}
+                    </a>
                   </li>
                   <li>
-                    <Link
-                      href="/"
+                    <a
+                      href={`${SiteConfig.links.github}/pulls`}
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="hover:text-foreground transition-colors"
                     >
-                      {t("footer.contact")}
-                    </Link>
+                      {t("footer.pullRequests")}
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href={`${SiteConfig.links.github}/blob/main/CONTRIBUTING.md`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="hover:text-foreground transition-colors"
+                    >
+                      {t("footer.contributingGuide")}
+                    </a>
+                  </li>
+                </ul>
+              </div>
+
+              {/* Project */}
+              <div>
+                <h3 className="mb-4 text-lg font-semibold">
+                  {t("footer.project")}
+                </h3>
+                <ul className="text-muted-foreground space-y-2 text-sm">
+                  <li>
+                    <a
+                      href={`${SiteConfig.links.github}/releases`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="hover:text-foreground transition-colors"
+                    >
+                      {t("footer.releases")}
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href={`${SiteConfig.links.github}/blob/main/CHANGELOG.md`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="hover:text-foreground transition-colors"
+                    >
+                      {t("footer.changelog")}
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href={`${SiteConfig.links.github}/blob/main/LICENSE`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="hover:text-foreground transition-colors"
+                    >
+                      {t("footer.license")}
+                    </a>
                   </li>
                 </ul>
               </div>
             </div>
 
             <div className="text-muted-foreground mt-8 border-t pt-8 text-center text-sm">
-              <p>
-                © {new Date().getFullYear()} {SiteConfig.name}. Made with ❤️ by{" "}
+              <p className="mb-2">
+                {t("footer.builtWith")}{" "}
                 <a
                   href={SiteConfig.author.githubUrl}
                   target="_blank"
@@ -351,7 +398,12 @@ export default async function Home() {
                   className="hover:text-foreground font-medium"
                 >
                   {SiteConfig.author.name}
-                </a>
+                </a>{" "}
+                {t("footer.openSourceCommunity")}
+              </p>
+              <p>
+                {t("footer.licensedUnder")} · {new Date().getFullYear()}{" "}
+                {SiteConfig.name}
               </p>
             </div>
           </div>

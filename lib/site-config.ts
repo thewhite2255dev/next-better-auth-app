@@ -18,7 +18,7 @@ export const SiteConfig = {
     "Thewhite2255",
 
     // Technologies principales
-    "Next.js 15",
+    "Next.js 16",
     "React 19",
     "TypeScript",
     "Tailwind CSS",

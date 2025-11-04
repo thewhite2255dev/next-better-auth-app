@@ -200,66 +200,100 @@
       "title": "Email address verification"
     }
   },
+  "FeedbackDialog": {
+    "buttons": {
+      "cancel": "Cancel",
+      "submit": "Send Feedback",
+      "submitting": "Sending..."
+    },
+    "description": "Help us improve degni-kit! Your feedback is valuable to the community.",
+    "errors": {
+      "feedbackRequired": "Please enter your feedback"
+    },
+    "feedback": {
+      "hint": "Your feedback will help make degni-kit better for everyone.",
+      "label": "Your feedback",
+      "placeholder": "Tell us what you think about degni-kit, what features you'd like, or report any issues..."
+    },
+    "rating": {
+      "label": "How would you rate your experience?"
+    },
+    "success": "Thank you for your feedback! 🎉",
+    "title": "Share Your Feedback",
+    "trigger": "Feedback"
+  },
   "Header": {
     "signInButton": "Sign in"
   },
   "Home": {
     "cta": {
-      "button": "Create Account",
-      "github": "View on GitHub",
-      "subtitle": "Join thousands of users who trust our platform for their applications.",
-      "title": "Ready to get started?"
+      "button": "Start Building Now",
+      "github": "Star on GitHub",
+      "subtitle": "Join the community of developers building amazing applications with degni-kit.",
+      "title": "Ready to build something amazing?"
     },
     "features": {
       "auth": {
-        "description": "Complete authentication system with 2FA, OAuth, and session management.",
-        "title": "Secure Authentication"
+        "description": "Complete authentication with Better Auth: OAuth, 2FA, sessions, and email verification out of the box.",
+        "title": "Production-Ready Auth"
       },
-      "badge": "Features",
+      "badge": "Why degni-kit?",
       "design": {
-        "description": "Elegant interface with dark mode, smooth animations, and reusable components.",
-        "title": "Modern Design"
+        "description": "Beautiful UI with shadcn/ui, dark mode, smooth animations, and fully customizable components.",
+        "title": "Modern Design System"
       },
       "i18n": {
-        "description": "Built-in multilingual support with next-intl to reach a global audience.",
-        "title": "Internationalization"
+        "description": "Multi-language support with next-intl. Easily reach a global audience with built-in i18n.",
+        "title": "Full Internationalization"
       },
       "performance": {
-        "description": "SSR, image optimization, and ultra-fast loading for a perfect experience.",
-        "title": "Optimal Performance"
+        "description": "Next.js 16 with App Router, React Server Components, and optimized for speed and SEO.",
+        "title": "Blazing Fast Performance"
       },
-      "subtitle": "A complete solution to build your modern application with the best technologies.",
-      "title": "Everything you need"
+      "subtitle": "Everything you need to launch your SaaS, side project, or MVP in days, not weeks.",
+      "title": "Ship faster with degni-kit"
     },
     "footer": {
       "about": "About",
+      "builtWith": "Built with ❤️ by",
+      "changelog": "Changelog",
+      "community": "Community",
       "company": "Company",
       "contact": "Contact",
+      "contribute": "Contribute",
+      "contributingGuide": "Contributing Guide",
       "documentation": "Documentation",
       "features": "Features",
       "github": "GitHub",
+      "license": "License",
+      "licensedUnder": "Licensed under MIT",
+      "openSourceCommunity": "and the open source community",
       "pricing": "Pricing",
       "product": "Product",
+      "project": "Project",
+      "pullRequests": "Pull Requests",
+      "releases": "Releases",
+      "reportIssues": "Report Issues",
       "resources": "Resources"
     },
     "hero": {
-      "badge": "New: Secure Authentication",
+      "badge": "Open Source · MIT License",
       "cta": {
         "primary": "Get Started Free",
-        "secondary": "Sign In"
+        "secondary": "Try Demo"
       },
-      "subtitle": "A modern platform with secure authentication, elegant design, and built-in internationalization.",
-      "title": "Build Your Next.js Application"
+      "subtitle": "The ultimate Next.js 16 starter kit with authentication, i18n, and beautiful UI. Save weeks of development time and focus on what matters.",
+      "title": "Ship Your Next.js SaaS Faster"
     },
     "stats": {
-      "fast": "Ultra",
-      "fastLabel": "Fast",
-      "modern": "2025",
-      "modernLabel": "Design",
-      "secure": "100%",
-      "secureLabel": "Secure",
-      "users": "1000+",
-      "usersLabel": "Users"
+      "fast": "Next.js 16",
+      "fastLabel": "Latest",
+      "modern": "MIT",
+      "modernLabel": "Open Source",
+      "secure": "Better Auth",
+      "secureLabel": "Powered by",
+      "users": "TypeScript",
+      "usersLabel": "100% Type-Safe"
     }
   },
   "LanguageSwitcher": {
