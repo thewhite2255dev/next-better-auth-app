@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "@/i18n/navigation";
 import { Button } from "@/components/ui/button";
 import {
@@ -49,6 +49,8 @@ export function MobileNav({ navItems }: MobileNavProps) {
 
   const { data: session, isPending } = authClient.useSession();
 
+  const [mounted, setMounted] = useState<boolean>(false);
+
   const languages = [
     { code: "fr", name: t("LanguageSwitcher.fr") },
     { code: "en", name: t("LanguageSwitcher.en") },
@@ -59,6 +61,15 @@ export function MobileNav({ navItems }: MobileNavProps) {
     { value: "light", label: t("ThemeSwitcher.light"), icon: Sun },
     { value: "dark", label: t("ThemeSwitcher.dark"), icon: Moon },
   ];
+
+  useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setMounted(true);
+  }, []);
+
+  if (!mounted) {
+    return null;
+  }
 
   return (
     <Sheet open={isTablet && open} onOpenChange={setOpen}>
@@ -74,7 +85,7 @@ export function MobileNav({ navItems }: MobileNavProps) {
       </SheetTrigger>
       <SheetContent
         side="left"
-        className="flex h-full w-[300px] flex-col sm:w-[350px]"
+        className="flex h-full w-[300px] flex-col overflow-y-auto sm:w-[350px]"
       >
         <SheetHeader className="py-4">
           <SheetTitle className="flex items-center gap-2" asChild>
@@ -95,7 +106,7 @@ export function MobileNav({ navItems }: MobileNavProps) {
 
         {/* Navigation Links */}
         {navItems.length > 0 && (
-          <nav className="no-scrollbar mt-6 flex flex-col gap-2 overflow-x-auto px-2">
+          <nav className="mt-6 flex flex-col gap-2 px-2">
             {navItems.map((item) => (
               <Link
                 key={item.href}

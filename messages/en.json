@@ -144,13 +144,6 @@
         "invalid": "Please enter a valid email address.",
         "required": "Email address is required."
       },
-      "feedback": {
-        "errors": {
-          "rating": {
-            "required": "Please rate your experience."
-          }
-        }
-      },
       "generic": "An error occurred, please try again.",
       "invalidCode": "The code is invalid or has expired.",
       "message": {
@@ -177,6 +170,122 @@
       },
       "unauthorized": "Unauthorized access.",
       "userAlreadyExist": "User already exists. Please use a different email address."
+    },
+    "feedback": {
+      "category": {
+        "bug": "Bug",
+        "feature": "Feature request",
+        "improvement": "Improvement",
+        "other": "Other"
+      },
+      "errors": {
+        "rating": {
+          "required": "Please rate your experience."
+        }
+      },
+      "labels": {
+        "category": "Category",
+        "email": "Email address (optional)",
+        "message": "Message",
+        "rating": "How would you rate your experience?"
+      },
+      "placeholders": {
+        "category": "Select a category",
+        "email": "your@email.com",
+        "message": "Tell us what you think about degni-kit, what features you'd like, or report any issues..."
+      },
+      "hints": {
+        "email": "We'll only use this to respond to your feedback."
+      }
+    },
+    "filters": {
+      "status": {
+        "label": "Status",
+        "all": "All",
+        "pending": "Pending",
+        "resolved": "Resolved",
+        "rejected": "Rejected"
+      },
+      "category": {
+        "label": "Category",
+        "all": "All"
+      },
+      "reset": "Reset"
+    },
+    "table": {
+      "headers": {
+        "category": "Category",
+        "message": "Message",
+        "rating": "Rating",
+        "email": "Email",
+        "status": "Status",
+        "date": "Date",
+        "actions": "Actions"
+      },
+      "empty": {
+        "title": "No feedbacks found",
+        "description": "Try adjusting your filters"
+      },
+      "anonymous": "Anonymous",
+      "date": {
+        "today": "Today",
+        "yesterday": "Yesterday",
+        "daysAgo": "{days} days ago",
+        "weeksAgo": "{weeks} weeks ago",
+        "monthsAgo": "{months} months ago",
+        "yearsAgo": "{years} years ago"
+      }
+    },
+    "admin": {
+      "title": "Feedback management",
+      "subtitle": "Manage and respond to user feedback 📊",
+      "stats": {
+        "total": {
+          "title": "Total feedbacks",
+          "description": "All time submissions"
+        },
+        "pending": {
+          "title": "Pending",
+          "description": "Awaiting review"
+        },
+        "resolved": {
+          "title": "Resolved",
+          "description": "Successfully handled"
+        },
+        "averageRating": {
+          "title": "Average rating",
+          "description": "Out of 5 stars"
+        }
+      },
+      "categories": {
+        "title": "Feedbacks by category",
+        "bugs": "Bugs",
+        "features": "Features",
+        "improvements": "Improvements",
+        "other": "Other"
+      },
+      "table": {
+        "title": "All feedbacks"
+      },
+      "actions": {
+        "markResolved": "Mark as resolved",
+        "markRejected": "Mark as rejected",
+        "markPending": "Mark as pending",
+        "delete": "Delete",
+        "deleteDialog": {
+          "title": "Delete feedback?",
+          "description": "This action cannot be undone. This will permanently delete this feedback from the database.",
+          "cancel": "Cancel",
+          "confirm": "Delete",
+          "deleting": "Deleting..."
+        },
+        "toast": {
+          "statusUpdated": "Status updated to {status}",
+          "statusUpdateFailed": "Failed to update status",
+          "deleted": "Feedback deleted successfully",
+          "deleteFailed": "Failed to delete feedback"
+        }
+      }
     },
     "fields": {
       "bio": "Bio",

@@ -3,7 +3,6 @@
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { authClient } from "@/lib/auth-client";
-import type { Session } from "better-auth";
 import { Monitor, Smartphone, Trash2 } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useTransition } from "react";
@@ -12,6 +11,7 @@ import { Button } from "../ui/button";
 import { Spinner } from "../ui/spinner";
 import { toast } from "sonner";
 import { useLocale, useTranslations } from "next-intl";
+import type { Session } from "better-auth";
 
 export function SessionManagement({
   sessions,

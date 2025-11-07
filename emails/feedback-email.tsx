@@ -34,17 +34,11 @@ export default function FeedbackEmail({
   const date = new Date().toLocaleDateString("en-US");
 
   const renderStars = (rating: number) => {
-    const stars = [];
-    for (let i = 1; i <= 5; i++) {
-      if (i <= rating) {
-        stars.push("★");
-      } else if (i - 0.5 <= rating && rating < i) {
-        stars.push("⯪");
-      } else {
-        stars.push("☆");
-      }
-    }
-    return stars.join(" ");
+    return (
+      "★".repeat(rating) +
+      "⯪".repeat(rating % 1 ? 1 : 0) +
+      "☆".repeat(5 - rating)
+    );
   };
 
   const getCategoryLabel = (cat: string) => {

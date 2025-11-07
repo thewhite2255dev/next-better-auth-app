@@ -11,7 +11,7 @@ import {
   AlertDialogFooter,
 } from "@/components/ui/alert-dialog";
 import { Button } from "@/components/ui/button";
-import { MessageSquare } from "lucide-react";
+import { MessageCircle } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { FeedbackForm, type FeedbackFormRef } from "./feedback-form";
 import { Spinner } from "../ui/spinner";
@@ -43,14 +43,14 @@ export function FeedbackDialog() {
     <AlertDialog open={open} onOpenChange={setOpen}>
       <AlertDialogTrigger asChild>
         <Button variant="outline" size="sm">
-          <MessageSquare className="h-4 w-4" />
+          <MessageCircle className="h-4 w-4" />
           {t("FeedbackDialog.trigger")}
         </Button>
       </AlertDialogTrigger>
-      <AlertDialogContent className="no-scrollbar max-h-120 max-w-md overflow-y-auto">
+      <AlertDialogContent className="max-h-[calc(100vh-4rem)] max-w-md overflow-y-auto">
         <AlertDialogHeader>
           <AlertDialogTitle className="flex items-center gap-2">
-            <MessageSquare className="h-5 w-5" />
+            <MessageCircle className="h-5 w-5" />
             {t("FeedbackDialog.title")}
           </AlertDialogTitle>
           <AlertDialogDescription>
@@ -66,7 +66,7 @@ export function FeedbackDialog() {
           >
             {t("FeedbackDialog.buttons.cancel")}
           </Button>
-          <Button onClick={handleSubmit} disabled={isPending} className="gap-2">
+          <Button onClick={handleSubmit} disabled={isPending}>
             {isPending ? <Spinner /> : t("FeedbackDialog.buttons.submit")}
           </Button>
         </AlertDialogFooter>

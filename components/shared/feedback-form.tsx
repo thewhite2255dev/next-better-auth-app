@@ -20,13 +20,7 @@ import {
   SelectContent,
   SelectItem,
 } from "@/components/ui/select";
-import {
-  Star,
-  Bug,
-  Sparkles,
-  Settings2,
-  MessageSquareText,
-} from "lucide-react";
+import { Bug, Sparkles, Settings2, MessageCircle } from "lucide-react";
 
 import { toast } from "sonner";
 import { useTranslations } from "next-intl";
@@ -34,6 +28,7 @@ import { useImperativeHandle, forwardRef } from "react";
 import type { FeedbackFormValues } from "@/types/other";
 import { FeedbackFormSchema } from "@/schemas/other";
 import { sendFeedback } from "@/actions/feedback";
+import { StarRating } from "./star-rating";
 
 export type FeedbackFormRef = {
   resetForm: () => void;
@@ -60,6 +55,25 @@ export const FeedbackForm = forwardRef<FeedbackFormRef, FeedbackFormProps>(
     });
 
     const watchType = form.watch("category");
+
+    const categoryIcon: Record<
+      string,
+      React.ComponentType<React.SVGProps<SVGSVGElement>>
+    > = {
+      BUG: Bug,
+      FEATURE: Sparkles,
+      IMPROVEMENT: Settings2,
+      OTHER: MessageCircle,
+    };
+
+    const feedbackCategoryItems = Object.entries(categoryIcon).map(
+      ([key, Icon]) => (
+        <SelectItem key={key} value={key}>
+          <Icon className="h-4 w-4" />
+          {t(`Form.feedback.category.${key.toLowerCase()}`)}
+        </SelectItem>
+      ),
+    );
 
     async function handleSubmit(values: FeedbackFormValues) {
       if (watchType !== "BUG" && values.rating === undefined) {
@@ -98,30 +112,19 @@ export const FeedbackForm = forwardRef<FeedbackFormRef, FeedbackFormProps>(
             name="category"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Catégorie</FormLabel>
+                <FormLabel>{t("Form.feedback.labels.category")}</FormLabel>
                 <Select
                   onValueChange={field.onChange}
                   defaultValue={field.value}
                 >
                   <FormControl>
                     <SelectTrigger className="w-full">
-                      <SelectValue placeholder="Sélectionnez une catégorie" />
+                      <SelectValue
+                        placeholder={t("Form.feedback.placeholders.category")}
+                      />
                     </SelectTrigger>
                   </FormControl>
-                  <SelectContent>
-                    <SelectItem value="BUG">
-                      <Bug /> Bug
-                    </SelectItem>
-                    <SelectItem value="FEATURE">
-                      <Sparkles /> Nouvelle fonctionnalité
-                    </SelectItem>
-                    <SelectItem value="IMPROVEMENT">
-                      <Settings2 /> Amélioration
-                    </SelectItem>
-                    <SelectItem value="OTHER">
-                      <MessageSquareText /> Autre
-                    </SelectItem>
-                  </SelectContent>
+                  <SelectContent>{feedbackCategoryItems}</SelectContent>
                 </Select>
                 <FormMessage />
               </FormItem>
@@ -134,9 +137,7 @@ export const FeedbackForm = forwardRef<FeedbackFormRef, FeedbackFormProps>(
               name="rating"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>
-                    Comment évalueriez-vous votre expérience ?
-                  </FormLabel>
+                  <FormLabel>{t("Form.feedback.labels.rating")}</FormLabel>
                   <FormControl>
                     <StarRating value={field.value} onChange={field.onChange} />
                   </FormControl>
@@ -151,11 +152,11 @@ export const FeedbackForm = forwardRef<FeedbackFormRef, FeedbackFormProps>(
             name="message"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Message</FormLabel>
+                <FormLabel>{t("Form.feedback.labels.message")}</FormLabel>
                 <FormControl>
                   <Textarea
                     className="max-h-48 resize-none"
-                    placeholder="Dites-nous ce que vous pensez de degni-kit, quelles fonctionnalités vous aimeriez, ou signalez des problèmes..."
+                    placeholder={t("Form.feedback.placeholders.message")}
                     {...field}
                   />
                 </FormControl>
@@ -169,14 +170,16 @@ export const FeedbackForm = forwardRef<FeedbackFormRef, FeedbackFormProps>(
             name="userEmail"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Adresse e-mail (facultatif)</FormLabel>
+                <FormLabel>{t("Form.feedback.labels.email")}</FormLabel>
                 <FormControl>
-                  <Input placeholder="votre@email.com" {...field} />
+                  <Input
+                    placeholder={t("Form.feedback.placeholders.email")}
+                    {...field}
+                  />
                 </FormControl>
                 <FormMessage />
                 <FormDescription>
-                  Nous l&apos;utiliserons uniquement pour répondre à votre
-                  retour.
+                  {t("Form.feedback.hints.email")}
                 </FormDescription>
               </FormItem>
             )}
@@ -188,31 +191,3 @@ export const FeedbackForm = forwardRef<FeedbackFormRef, FeedbackFormProps>(
 );
 
 FeedbackForm.displayName = "FeedbackForm";
-
-type StarRatingProps = {
-  value?: number;
-  onChange?: (value: number) => void;
-};
-
-function StarRating({ value = 0, onChange }: StarRatingProps) {
-  return (
-    <div className="flex gap-1">
-      {[1, 2, 3, 4, 5].map((star) => (
-        <button
-          key={star}
-          type="button"
-          onClick={() => onChange?.(star)}
-          className="transition-all hover:scale-110"
-        >
-          <Star
-            className={`h-5 w-5 ${
-              star <= value
-                ? "fill-yellow-400 text-yellow-400"
-                : "text-muted-foreground"
-            }`}
-          />
-        </button>
-      ))}
-    </div>
-  );
-}
