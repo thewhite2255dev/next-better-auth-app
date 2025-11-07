@@ -29,6 +29,14 @@
     },
     "description": "Please enter your password to confirm this action."
   },
+  "ConfirmActionDialog": {
+    "title": "Are you sure?",
+    "description": "This action cannot be undone.",
+    "buttons": {
+      "cancel": "Cancel",
+      "yes": "Confirm"
+    }
+  },
   "DashboardPage": {
     "dashboard": "Dashboard",
     "quickActions": {
@@ -465,6 +473,8 @@
     "title": "Account"
   },
   "SettingsLayout": {
+    "title": "Settings",
+    "description": "Manage and customize your Degni Kit experience.",
     "account": "Account",
     "preferences": "Preferences",
     "profile": "Profile",
@@ -482,7 +492,7 @@
     "title": "Preferences"
   },
   "SettingsProfilePage": {
-    "description": "Update your personal information and avatar.",
+    "description": "Update your personal information.",
     "title": "Profile"
   },
   "SettingsSecurityPage": {

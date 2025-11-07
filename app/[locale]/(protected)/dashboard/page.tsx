@@ -23,6 +23,7 @@ import { auth } from "@/lib/auth";
 import { headers } from "next/headers";
 import { Link } from "@/i18n/navigation";
 import { getLocale } from "next-intl/server";
+import { getNamePart, maskEmail } from "@/lib/utils";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations("DashboardPage");
@@ -91,10 +92,10 @@ export default async function DashboardPage() {
                 {t("dashboard")}
               </h1>
               <p className="text-muted-foreground text-lg">
-                {t("welcome")}, {session.user.name} 👋
+                {t("welcome")}, {getNamePart(session.user.name, 1)} 👋
               </p>
             </div>
-            <SignOut>
+            <SignOut className="w-max">
               <Button
                 variant="outline"
                 size="lg"
@@ -108,18 +109,18 @@ export default async function DashboardPage() {
 
           {/* Profile Card */}
           <Card className="border-primary/20 from-card to-card/50 overflow-hidden bg-linear-to-br shadow-xl transition-all hover:shadow-2xl">
-            <CardHeader className="space-y-4 pb-4">
+            <CardContent className="space-y-4">
               <div className="flex items-start justify-between">
                 <div className="flex items-center gap-4">
-                  <Avatar className="border-primary/20 ring-primary/10 h-20 w-20 border-4 shadow-lg ring-4">
+                  <Avatar className="border-primary/20 ring-primary/10 size-16 border-4 shadow-lg ring-4 lg:size-20">
                     <AvatarFallback className="from-primary to-primary/80 text-primary-foreground bg-linear-to-br text-2xl font-bold">
                       {userInitials}
                     </AvatarFallback>
                   </Avatar>
                   <div className="space-y-2">
                     <div className="flex items-center gap-2">
-                      <h2 className="text-2xl font-bold">
-                        {session.user.name}
+                      <h2 className="truncate text-lg font-bold md:text-2xl">
+                        {getNamePart(session.user.name, 1)}
                       </h2>
                       <Badge
                         variant="secondary"
@@ -131,7 +132,9 @@ export default async function DashboardPage() {
                     </div>
                     <div className="text-muted-foreground flex items-center gap-2">
                       <Mail className="h-4 w-4" />
-                      <span className="text-sm">{session.user.email}</span>
+                      <span className="text-sm">
+                        {maskEmail(session.user.email)}
+                      </span>
                     </div>
                   </div>
                 </div>
@@ -145,7 +148,7 @@ export default async function DashboardPage() {
                   </Button>
                 </Link>
               </div>
-            </CardHeader>
+            </CardContent>
           </Card>
 
           {/* Stats Grid */}

@@ -29,6 +29,14 @@
     },
     "description": "Veuillez saisir votre mot de passe pour confirmer cette action."
   },
+  "ConfirmActionDialog": {
+    "title": "Êtes-vous sûr ?",
+    "description": "Cette action ne peut pas être annulée.",
+    "buttons": {
+      "cancel": "Annuler",
+      "yes": "Confirmer"
+    }
+  },
   "DashboardPage": {
     "dashboard": "Tableau de bord",
     "quickActions": {
@@ -94,6 +102,57 @@
     }
   },
   "Form": {
+    "admin": {
+      "actions": {
+        "delete": "Supprimer",
+        "deleteDialog": {
+          "cancel": "Annuler",
+          "confirm": "Supprimer",
+          "deleting": "Suppression...",
+          "description": "Cette action est irréversible. Le feedback sera définitivement supprimé de la base de données.",
+          "title": "Supprimer le feedback ?"
+        },
+        "markPending": "Marquer comme en attente",
+        "markRejected": "Marquer comme rejeté",
+        "markResolved": "Marquer comme résolu",
+        "toast": {
+          "deleteFailed": "Échec de la suppression du feedback",
+          "deleted": "Feedback supprimé avec succès",
+          "statusUpdateFailed": "Échec de la mise à jour du statut",
+          "statusUpdated": "Statut mis à jour : {status}"
+        }
+      },
+      "categories": {
+        "bugs": "Bugs",
+        "features": "Fonctionnalités",
+        "improvements": "Améliorations",
+        "other": "Autres",
+        "title": "Feedbacks par catégorie"
+      },
+      "stats": {
+        "averageRating": {
+          "description": "Sur 5 étoiles",
+          "title": "Note moyenne"
+        },
+        "pending": {
+          "description": "En attente de révision",
+          "title": "En attente"
+        },
+        "resolved": {
+          "description": "Traités avec succès",
+          "title": "Résolus"
+        },
+        "total": {
+          "description": "Soumissions totales",
+          "title": "Total feedbacks"
+        }
+      },
+      "subtitle": "Gérez et répondez aux retours utilisateurs 📊",
+      "table": {
+        "title": "Tous les feedbacks"
+      },
+      "title": "Gestion des feedbacks"
+    },
     "auth": {
       "backToSignIn": "Retour à la connexion",
       "continueWith": "Continuer avec",
@@ -128,7 +187,7 @@
         "description": "Nous supprimerons votre compte immédiatement.",
         "title": "Voulez-vous vraiment supprimer votre compte ?"
       },
-      "warning": "Cette action n'est pas réversible. Veuillez vous en assurer."
+      "warning": "Cette action est irréversible. Veuillez vous en assurer."
     },
     "errors": {
       "allFieldsRequired": "Tous les champs sont requis.",
@@ -183,6 +242,9 @@
           "required": "Veuillez évaluer votre expérience s'il vous plaît."
         }
       },
+      "hints": {
+        "email": "Nous l'utiliserons uniquement pour répondre à votre retour."
+      },
       "labels": {
         "category": "Catégorie",
         "email": "Adresse e-mail (facultatif)",
@@ -193,98 +255,6 @@
         "category": "Sélectionnez une catégorie",
         "email": "votre@email.com",
         "message": "Dites-nous ce que vous pensez de degni-kit, quelles fonctionnalités vous aimeriez, ou signalez des problèmes..."
-      },
-      "hints": {
-        "email": "Nous l'utiliserons uniquement pour répondre à votre retour."
-      }
-    },
-    "filters": {
-      "status": {
-        "label": "Statut",
-        "all": "Tous",
-        "pending": "En attente",
-        "resolved": "Résolu",
-        "rejected": "Rejeté"
-      },
-      "category": {
-        "label": "Catégorie",
-        "all": "Toutes"
-      },
-      "reset": "Réinitialiser"
-    },
-    "table": {
-      "headers": {
-        "category": "Catégorie",
-        "message": "Message",
-        "rating": "Note",
-        "email": "Email",
-        "status": "Statut",
-        "date": "Date",
-        "actions": "Actions"
-      },
-      "empty": {
-        "title": "Aucun feedback trouvé",
-        "description": "Essayez d'ajuster vos filtres"
-      },
-      "anonymous": "Anonyme",
-      "date": {
-        "today": "Aujourd'hui",
-        "yesterday": "Hier",
-        "daysAgo": "il y a {days} jours",
-        "weeksAgo": "il y a {weeks} semaines",
-        "monthsAgo": "il y a {months} mois",
-        "yearsAgo": "il y a {years} ans"
-      }
-    },
-    "admin": {
-      "title": "Gestion des feedbacks",
-      "subtitle": "Gérez et répondez aux retours utilisateurs 📊",
-      "stats": {
-        "total": {
-          "title": "Total feedbacks",
-          "description": "Soumissions totales"
-        },
-        "pending": {
-          "title": "En attente",
-          "description": "En attente de révision"
-        },
-        "resolved": {
-          "title": "Résolus",
-          "description": "Traités avec succès"
-        },
-        "averageRating": {
-          "title": "Note moyenne",
-          "description": "Sur 5 étoiles"
-        }
-      },
-      "categories": {
-        "title": "Feedbacks par catégorie",
-        "bugs": "Bugs",
-        "features": "Fonctionnalités",
-        "improvements": "Améliorations",
-        "other": "Autres"
-      },
-      "table": {
-        "title": "Tous les feedbacks"
-      },
-      "actions": {
-        "markResolved": "Marquer comme résolu",
-        "markRejected": "Marquer comme rejeté",
-        "markPending": "Marquer comme en attente",
-        "delete": "Supprimer",
-        "deleteDialog": {
-          "title": "Supprimer le feedback ?",
-          "description": "Cette action est irréversible. Le feedback sera définitivement supprimé de la base de données.",
-          "cancel": "Annuler",
-          "confirm": "Supprimer",
-          "deleting": "Suppression..."
-        },
-        "toast": {
-          "statusUpdated": "Statut mis à jour : {status}",
-          "statusUpdateFailed": "Échec de la mise à jour du statut",
-          "deleted": "Feedback supprimé avec succès",
-          "deleteFailed": "Échec de la suppression du feedback"
-        }
       }
     },
     "fields": {
@@ -296,6 +266,20 @@
       "newPassword": "Nouveau mot de passe",
       "password": "Mot de passe",
       "revokeOtherSessions": "Se déconnecter des autres sessions"
+    },
+    "filters": {
+      "category": {
+        "all": "Toutes",
+        "label": "Catégorie"
+      },
+      "reset": "Réinitialiser",
+      "status": {
+        "all": "Tous",
+        "label": "Statut",
+        "pending": "En attente",
+        "rejected": "Rejeté",
+        "resolved": "Résolu"
+      }
     },
     "forgotPassword": {
       "button": "Envoyer le lien de réinitialisation",
@@ -334,6 +318,30 @@
     },
     "success": {
       "verifyTotpCode": "Le code a été vérifié avec succès."
+    },
+    "table": {
+      "anonymous": "Anonyme",
+      "date": {
+        "daysAgo": "il y a {days} jours",
+        "monthsAgo": "il y a {months} mois",
+        "today": "Aujourd'hui",
+        "weeksAgo": "il y a {weeks} semaines",
+        "yearsAgo": "il y a {years} ans",
+        "yesterday": "Hier"
+      },
+      "empty": {
+        "description": "Essayez d'ajuster vos filtres",
+        "title": "Aucun feedback trouvé"
+      },
+      "headers": {
+        "actions": "Actions",
+        "category": "Catégorie",
+        "date": "Date",
+        "email": "Email",
+        "message": "Message",
+        "rating": "Note",
+        "status": "Statut"
+      }
     },
     "totpAppInstruction": "Ouvrez votre application d'authentification et saisissez le code généré ci-dessous.",
     "twoFactor": {
@@ -465,6 +473,8 @@
     "title": "Compte"
   },
   "SettingsLayout": {
+    "title": "Paramètres",
+    "description": "Gérez et personnalisez votre expérience sur Degni Kit.",
     "account": "Compte",
     "preferences": "Préférences",
     "profile": "Profil",
@@ -482,7 +492,7 @@
     "title": "Préférences"
   },
   "SettingsProfilePage": {
-    "description": "Mettez à jour vos informations personnelles et votre avatar.",
+    "description": "Mettez à jour vos informations personnelles.",
     "title": "Profil"
   },
   "SettingsSecurityPage": {

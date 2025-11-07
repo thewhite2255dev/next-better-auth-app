@@ -38,3 +38,8 @@ export function generateAvatarFallback(name: string): string {
     .join("")
     .toUpperCase();
 }
+
+export function getNamePart(fullName: string, index: number): string {
+  const parts = fullName?.trim().split(/\s+/) ?? [];
+  return parts[index - 1] ?? "";
+}

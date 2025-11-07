@@ -43,7 +43,7 @@ export function SetPasswordButton({
 
   return (
     <Button {...props} onClick={handleResendLink}>
-      {isPending ? <Spinner /> : children}
+      {isPending ? <Spinner /> : <span className="truncate">{children}</span>}
     </Button>
   );
 }

@@ -37,15 +37,15 @@ import { DEFAULT_SIGN_OUT_REDIRECT } from "@/lib/redirect-config";
 import { deleteAccount } from "@/actions/settings/delete-account";
 import { Spinner } from "../ui/spinner";
 
-interface DeleteAccountButtonProps {
+interface DeleteAccountDialogProps {
   children: React.ReactNode;
   hasPasswordAccount: boolean;
 }
 
-export default function DeleteAccountButton({
+export default function DeleteAccountDialog({
   children,
   hasPasswordAccount,
-}: DeleteAccountButtonProps) {
+}: DeleteAccountDialogProps) {
   const t = useTranslations();
   const { data: session, refetch } = authClient.useSession();
   const router = useRouter();
@@ -143,7 +143,7 @@ export default function DeleteAccountButton({
                   name="confirmation"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>
+                      <FormLabel className="block">
                         {
                           t.rich("Form.deleteAccount.fields.confirmation", {
                             keyword: t("Form.deleteAccount.confirmationWord"),

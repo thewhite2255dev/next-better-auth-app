@@ -1,4 +1,4 @@
-import DeleteAccountButton from "@/components/settings/delete-account-button";
+import DeleteAccountDialog from "@/components/settings/delete-account-dialog";
 import { SettingsHeader } from "@/components/settings/settings-header";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
@@ -32,9 +32,9 @@ export default async function SettingsAccountPage() {
       <SettingsHeader title={t("title")} description={t("description")} />
       <div className="flex items-center justify-between">
         <Label>{t("delete.label")}</Label>
-        <DeleteAccountButton hasPasswordAccount={hasPasswordAccount}>
+        <DeleteAccountDialog hasPasswordAccount={hasPasswordAccount}>
           <Button variant="destructive">{t("delete.button")}</Button>
-        </DeleteAccountButton>
+        </DeleteAccountDialog>
       </div>
     </div>
   );

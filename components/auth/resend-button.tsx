@@ -5,7 +5,6 @@ import { Button } from "@/components/ui/button";
 import { Spinner } from "@/components/ui/spinner";
 import { useTranslations } from "next-intl";
 import { cn } from "@/lib/utils";
-import { AUTH_CONSTANTS } from "@/lib/auth-constants";
 
 interface ResendButtonProps extends React.ComponentProps<"button"> {
   handler: () => Promise<void> | void;
@@ -27,7 +26,7 @@ export function ResendButton({
   isLoading,
   handler,
   label,
-  countdownDelay = AUTH_CONSTANTS.TWO_FA_RESEND_DELAY,
+  countdownDelay = 30,
   variant = "default",
   ...props
 }: ResendButtonProps) {

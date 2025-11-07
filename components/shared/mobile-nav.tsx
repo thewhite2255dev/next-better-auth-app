@@ -85,7 +85,7 @@ export function MobileNav({ navItems }: MobileNavProps) {
       </SheetTrigger>
       <SheetContent
         side="left"
-        className="flex h-full w-[300px] flex-col overflow-y-auto sm:w-[350px]"
+        className="no-scrollbar flex h-full w-[300px] flex-col overflow-y-auto sm:w-[350px]"
       >
         <SheetHeader className="py-4">
           <SheetTitle className="flex items-center gap-2" asChild>
@@ -181,7 +181,7 @@ export function MobileNav({ navItems }: MobileNavProps) {
           {isPending ? (
             <Skeleton className="h-10 w-full rounded-lg" />
           ) : session?.user ? (
-            <UserButton />
+            <UserButton closeMobileNav={() => setOpen(false)} />
           ) : (
             <Button
               variant="default"

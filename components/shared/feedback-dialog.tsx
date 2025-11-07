@@ -47,7 +47,7 @@ export function FeedbackDialog() {
           {t("FeedbackDialog.trigger")}
         </Button>
       </AlertDialogTrigger>
-      <AlertDialogContent className="max-h-[calc(100vh-4rem)] max-w-md overflow-y-auto">
+      <AlertDialogContent className="no-scrollbar max-h-[calc(90vh)] max-w-md overflow-y-auto">
         <AlertDialogHeader>
           <AlertDialogTitle className="flex items-center gap-2">
             <MessageCircle className="h-5 w-5" />

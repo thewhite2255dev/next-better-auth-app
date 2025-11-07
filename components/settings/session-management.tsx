@@ -12,6 +12,7 @@ import { Spinner } from "../ui/spinner";
 import { toast } from "sonner";
 import { useLocale, useTranslations } from "next-intl";
 import type { Session } from "better-auth";
+import { ConfirmActionDialog } from "../shared/confirm-action-dialog";
 
 export function SessionManagement({
   sessions,
@@ -167,13 +168,11 @@ function SessionCard({
             </div>
           </div>
           {!isCurrentSession && (
-            <Button
-              variant="destructive"
-              size="sm"
-              onClick={handleRevokeSession}
-            >
-              {isPending ? <Spinner /> : <Trash2 />}
-            </Button>
+            <ConfirmActionDialog onSubmit={handleRevokeSession}>
+              <Button variant="destructive" size="sm">
+                {isPending ? <Spinner /> : <Trash2 />}
+              </Button>
+            </ConfirmActionDialog>
           )}
         </div>
       </CardContent>

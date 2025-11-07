@@ -28,9 +28,14 @@ import { type ComponentProps } from "react";
 
 interface UserButtonProps extends ComponentProps<typeof Button> {
   className?: string;
+  closeMobileNav?: () => void;
 }
 
-export function UserButton({ className, ...props }: UserButtonProps) {
+export function UserButton({
+  closeMobileNav,
+  className,
+  ...props
+}: UserButtonProps) {
   const t = useTranslations();
   const { data: session } = authClient.useSession();
   const isTablet = useIsTablet();
@@ -92,13 +97,13 @@ export function UserButton({ className, ...props }: UserButtonProps) {
           </DropdownMenuLabel>
           <DropdownMenuSeparator />
           <DropdownMenuGroup>
-            <DropdownMenuItem asChild>
+            <DropdownMenuItem asChild onClick={closeMobileNav}>
               <Link href={"/dashboard"}>
                 <LayoutDashboard />
                 {t("UserButton.dashboard")}
               </Link>
             </DropdownMenuItem>
-            <DropdownMenuItem asChild>
+            <DropdownMenuItem asChild onClick={closeMobileNav}>
               <Link href={"/settings/profile"}>
                 <Settings />
                 {t("UserButton.settings")}

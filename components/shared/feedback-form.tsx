@@ -54,6 +54,8 @@ export const FeedbackForm = forwardRef<FeedbackFormRef, FeedbackFormProps>(
       },
     });
 
+    const isPending = form.formState.isSubmitting;
+
     const watchType = form.watch("category");
 
     const categoryIcon: Record<
@@ -106,7 +108,7 @@ export const FeedbackForm = forwardRef<FeedbackFormRef, FeedbackFormProps>(
 
     return (
       <Form {...form}>
-        <div className="space-y-4">
+        <form className="space-y-4">
           <FormField
             control={form.control}
             name="category"
@@ -151,10 +153,11 @@ export const FeedbackForm = forwardRef<FeedbackFormRef, FeedbackFormProps>(
             control={form.control}
             name="message"
             render={({ field }) => (
-              <FormItem>
+              <FormItem className="w-full">
                 <FormLabel>{t("Form.feedback.labels.message")}</FormLabel>
                 <FormControl>
                   <Textarea
+                    disabled={isPending}
                     className="max-h-48 resize-none"
                     placeholder={t("Form.feedback.placeholders.message")}
                     {...field}
@@ -184,7 +187,7 @@ export const FeedbackForm = forwardRef<FeedbackFormRef, FeedbackFormProps>(
               </FormItem>
             )}
           />
-        </div>
+        </form>
       </Form>
     );
   },

@@ -43,17 +43,19 @@ export default async function SettingsSecurityPage() {
         </>
       ) : (
         <>
-          <SettingsHeader
-            title={t("setPassword.title")}
-            description={t("setPassword.description")}
-          />
-          <SetPasswordButton
-            className="w-max"
-            variant="outline"
-            email={session?.user.email ?? ""}
-          >
-            {t("setPassword.button")}
-          </SetPasswordButton>
+          <div className="grid flex-1 grid-cols-1 gap-6">
+            <SettingsHeader
+              title={t("setPassword.title")}
+              description={t("setPassword.description")}
+            />
+            <SetPasswordButton
+              className="sm:w-max"
+              variant="outline"
+              email={session?.user.email ?? ""}
+            >
+              {t("setPassword.button")}
+            </SetPasswordButton>
+          </div>
         </>
       )}
       {hasPasswordAccount && (
