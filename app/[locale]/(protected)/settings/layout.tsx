@@ -59,45 +59,47 @@ export default function SettingsLayout({ children }: SettingsLayoutProps) {
 
   return (
     <div className="flex min-h-screen flex-col lg:flex-row">
-      <div className="container">
-        <main className="flex-1">{children}</main>
+      <div className="container py-6">
+        <div className="flex flex-col gap-6 lg:flex-row">
+          <div className="flex flex-col lg:w-64">
+            {settingsNavItems.map((item) => (
+              <Link
+                key={item.label}
+                href={item.href}
+                className={cn(
+                  "text-muted-foreground group hover:bg-accent relative flex h-9 items-center truncate rounded-md px-4 py-2",
+                  { "bg-accent": pathname.endsWith(item.href) },
+                )}
+              >
+                <div
+                  className={cn(
+                    "absolute top-1/2 left-0 h-4.5 w-1 -translate-y-1/2 rounded-full group-hover:bg-blue-500",
+                    { "bg-blue-500": pathname.endsWith(item.href) },
+                  )}
+                ></div>
+                <div
+                  className={cn("flex items-center gap-2", {
+                    "text-foreground font-medium": pathname.endsWith(item.href),
+                  })}
+                >
+                  <item.icon
+                    className={cn("size-4", {
+                      "text-blue-500": pathname.endsWith(item.href),
+                    })}
+                  />
+                  {item.label}
+                </div>
+              </Link>
+            ))}
+          </div>
+          <main className="flex-1">{children}</main>
+        </div>
       </div>
     </div>
-    // <div className="container py-6">
-    //   <div className="flex flex-col gap-6 lg:flex-row">
-    //     <div className="flex flex-col lg:w-64">
-    //       {settingsNavItems.map((item) => (
-    //         <Link
-    //           key={item.label}
-    //           href={item.href}
-    //           className={cn(
-    //             "text-muted-foreground group hover:bg-accent relative flex h-9 items-center truncate rounded-md px-4 py-2",
-    //             { "bg-accent": pathname.endsWith(item.href) },
-    //           )}
-    //         >
-    //           <div
-    //             className={cn(
-    //               "absolute top-1/2 left-0 h-4.5 w-1 -translate-y-1/2 rounded-full group-hover:bg-blue-500",
-    //               { "bg-blue-500": pathname.endsWith(item.href) },
-    //             )}
-    //           ></div>
-    //           <div
-    //             className={cn("flex items-center gap-2", {
-    //               "text-foreground font-medium": pathname.endsWith(item.href),
-    //             })}
-    //           >
-    //             <item.icon
-    //               className={cn("size-4", {
-    //                 "text-blue-500": pathname.endsWith(item.href),
-    //               })}
-    //             />
-    //             {item.label}
-    //           </div>
-    //         </Link>
-    //       ))}
-    //     </div>
-    //     <main className="flex-1">{children}</main>
-    //   </div>
-    // </div>
   );
 }
+
+// <div className="container">
+//       <main className="flex-1">{children}</main>
+//     </div>
+//   </div>

@@ -9,12 +9,6 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { LanguageSwitcher } from "../shared/language-switcher";
-import { ThemeSwitcher } from "../shared/theme-switcher";
-import { Sparkles } from "lucide-react";
-import { Link } from "@/i18n/navigation";
-import { DEFAULT_HOME_REDIRECT } from "@/lib/redirect-config";
-import { SiteConfig } from "@/lib/site-config";
 
 interface AuthCardProps {
   title: string;

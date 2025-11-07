@@ -13,7 +13,7 @@ export const ProfileFormSchema = (t: (key: string, object?: any) => string) =>
       })
       .optional(),
     bio: z.string().max(200).optional(),
-    location: z.string().max(100).optional(),
+    location: z.string().optional(),
   });
 
 export const DeleteAccountSchema = (t: (key: string, object?: any) => string) =>
@@ -29,11 +29,7 @@ export const DeleteAccountSchema = (t: (key: string, object?: any) => string) =>
     })
     .refine(
       (data) => {
-        if (
-          data.confirmation !== t("Form.deleteAccount.confirmationWord")
-          // data.confirmation !==  "delete my account" &&
-          // data.confirmation !== "supprimer mon compte"
-        ) {
+        if (data.confirmation !== t("Form.deleteAccount.confirmationWord")) {
           return false;
         }
         return true;

@@ -47,10 +47,51 @@
       "premium": "Premium",
       "securityEnhanced": "Enhanced security",
       "statusLabel": "Status",
-      "verified": "Verified Account",
+      "verified": "Verified account",
       "yes": "Yes"
     },
     "welcome": "Welcome"
+  },
+  "FeedbackDialog": {
+    "buttons": {
+      "cancel": "Cancel",
+      "submit": "Send feedback"
+    },
+    "category": {},
+    "description": "Help us improve degni-kit! Your feedback is valuable to the community.",
+    "email": {},
+    "errors": {},
+    "feedback": {},
+    "rating": {},
+    "success": "Thank you for your feedback! 🎉",
+    "title": "Share your feedback",
+    "trigger": "Feedback"
+  },
+  "FeedbackForm": {
+    "category": {
+      "label": "Category",
+      "options": {
+        "BUG": "Bug",
+        "FEATURE": "New feature",
+        "IMPROVEMENT": "Improvement",
+        "OTHER": "Other"
+      },
+      "placeholder": "Select a category"
+    },
+    "email": {
+      "hint": "We'll only use this to respond to your feedback.",
+      "label": "Email address (optional)"
+    },
+    "message": {
+      "label": "Message",
+      "placeholder": "Tell us what you think about degni-kit, what features you'd like, or report any issues..."
+    },
+    "name": {
+      "label": "Name (optional)"
+    },
+    "rating": {
+      "label": "How would you rate your experience?"
+    }
   },
   "Form": {
     "auth": {
@@ -103,14 +144,26 @@
         "invalid": "Please enter a valid email address.",
         "required": "Email address is required."
       },
+      "feedback": {
+        "errors": {
+          "rating": {
+            "required": "Please rate your experience."
+          }
+        }
+      },
       "generic": "An error occurred, please try again.",
       "invalidCode": "The code is invalid or has expired.",
+      "message": {
+        "minLength": "The message must contain at least {minLength} characters.",
+        "required": "The message is required."
+      },
       "name": {
         "maxLength": "Name cannot exceed {maxLength} characters.",
         "minLength": "Name must be at least {minLength} characters.",
         "required": "Name is required."
       },
       "newPassword": {
+        "minLength": "The new password must contain at least {minLength} characters.",
         "required": "The new password is required."
       },
       "password": {
@@ -118,6 +171,7 @@
         "minLength": "Password must be at least {minLength} characters.",
         "required": "Password is required."
       },
+      "rating": {},
       "token": {
         "invalid": "The link is invalid or has expired."
       },
@@ -200,34 +254,12 @@
       "title": "Email address verification"
     }
   },
-  "FeedbackDialog": {
-    "buttons": {
-      "cancel": "Cancel",
-      "submit": "Send Feedback",
-      "submitting": "Sending..."
-    },
-    "description": "Help us improve degni-kit! Your feedback is valuable to the community.",
-    "errors": {
-      "feedbackRequired": "Please enter your feedback"
-    },
-    "feedback": {
-      "hint": "Your feedback will help make degni-kit better for everyone.",
-      "label": "Your feedback",
-      "placeholder": "Tell us what you think about degni-kit, what features you'd like, or report any issues..."
-    },
-    "rating": {
-      "label": "How would you rate your experience?"
-    },
-    "success": "Thank you for your feedback! 🎉",
-    "title": "Share Your Feedback",
-    "trigger": "Feedback"
-  },
   "Header": {
     "signInButton": "Sign in"
   },
   "Home": {
     "cta": {
-      "button": "Start Building Now",
+      "button": "Start building now",
       "github": "Star on GitHub",
       "subtitle": "Join the community of developers building amazing applications with degni-kit.",
       "title": "Ready to build something amazing?"
@@ -235,70 +267,64 @@
     "features": {
       "auth": {
         "description": "Complete authentication with Better Auth: OAuth, 2FA, sessions, and email verification out of the box.",
-        "title": "Production-Ready Auth"
+        "title": "Production-ready auth"
       },
       "badge": "Why degni-kit?",
       "design": {
         "description": "Beautiful UI with shadcn/ui, dark mode, smooth animations, and fully customizable components.",
-        "title": "Modern Design System"
+        "title": "Modern design system"
       },
       "i18n": {
         "description": "Multi-language support with next-intl. Easily reach a global audience with built-in i18n.",
-        "title": "Full Internationalization"
+        "title": "Full internationalization"
       },
       "performance": {
         "description": "Next.js 16 with App Router, React Server Components, and optimized for speed and SEO.",
-        "title": "Blazing Fast Performance"
+        "title": "Blazing fast performance"
       },
       "subtitle": "Everything you need to launch your SaaS, side project, or MVP in days, not weeks.",
       "title": "Ship faster with degni-kit"
     },
     "footer": {
-      "about": "About",
       "builtWith": "Built with ❤️ by",
       "changelog": "Changelog",
       "community": "Community",
-      "company": "Company",
-      "contact": "Contact",
       "contribute": "Contribute",
-      "contributingGuide": "Contributing Guide",
+      "contributingGuide": "Contributing guide",
       "documentation": "Documentation",
-      "features": "Features",
       "github": "GitHub",
       "license": "License",
       "licensedUnder": "Licensed under MIT",
       "openSourceCommunity": "and the open source community",
-      "pricing": "Pricing",
-      "product": "Product",
       "project": "Project",
-      "pullRequests": "Pull Requests",
+      "pullRequests": "Pull requests",
       "releases": "Releases",
-      "reportIssues": "Report Issues",
+      "reportIssues": "Report issues",
       "resources": "Resources"
     },
     "hero": {
-      "badge": "Open Source · MIT License",
+      "badge": "Open source · MIT license",
       "cta": {
-        "primary": "Get Started Free",
-        "secondary": "Try Demo"
+        "primary": "Get started free",
+        "secondary": "Try demo"
       },
       "subtitle": "The ultimate Next.js 16 starter kit with authentication, i18n, and beautiful UI. Save weeks of development time and focus on what matters.",
-      "title": "Ship Your Next.js SaaS Faster"
+      "title": "Ship your Next.js SaaS faster"
     },
     "stats": {
       "fast": "Next.js 16",
       "fastLabel": "Latest",
       "modern": "MIT",
-      "modernLabel": "Open Source",
+      "modernLabel": "Open source",
       "secure": "Better Auth",
       "secureLabel": "Powered by",
       "users": "TypeScript",
-      "usersLabel": "100% Type-Safe"
+      "usersLabel": "100% type-safe"
     }
   },
   "LanguageSwitcher": {
     "en": "English",
-    "fr": "French",
+    "fr": "Français",
     "srOnly": "Change language"
   },
   "SessionManagement": {
@@ -400,13 +426,8 @@
     "dashboard": "Dashboard",
     "items": {
       "preferences": {
-        "language": {
-          "label": "Language"
-        },
-        "theme": {
-          "label": "Theme"
-        },
-        "title": "Preferences"
+        "language": {},
+        "theme": {}
       }
     },
     "settings": "Settings"

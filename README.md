@@ -26,26 +26,31 @@
 ## 🛠️ Technologies
 
 ### Core
+
 - **[Next.js 16](https://nextjs.org/)** - Framework React avec App Router et Turbopack
 - **[React 19.2](https://react.dev/)** - Bibliothèque UI avec nouvelles fonctionnalités
 - **[TypeScript 5.9](https://www.typescriptlang.org/)** - Typage statique
 - **[Better Auth 1.3](https://better-auth.com/)** - Solution d'authentification moderne
 
 ### Styling & UI
+
 - **[Tailwind CSS v4.1](https://tailwindcss.com/)** - Framework CSS utility-first
 - **[shadcn/ui](https://ui.shadcn.com/)** - Composants UI réutilisables (Radix UI)
 - **[Lucide React 0.552](https://lucide.dev/)** - Icônes modernes
 - **[next-themes 0.4](https://github.com/pacocoursey/next-themes)** - Gestion du thème
 
 ### Database & Backend
+
 - **[Prisma 6.18](https://www.prisma.io/)** - ORM TypeScript
 - **[PostgreSQL](https://www.postgresql.org/)** - Base de données (recommandé)
 
 ### Forms & Validation
+
 - **[React Hook Form 7.66](https://react-hook-form.com/)** - Gestion des formulaires
 - **[Zod 4.1](https://zod.dev/)** - Validation de schémas
 
 ### Internationalization
+
 - **[next-intl 4.4](https://next-intl-docs.vercel.app/)** - i18n pour Next.js
 
 ---
@@ -60,22 +65,26 @@
 ### Installation
 
 1. **Cloner le projet**
+
 ```bash
 git clone https://github.com/thewhite2255dev/degni-kit.git
 cd degni-kit
 ```
 
 2. **Installer les dépendances**
+
 ```bash
 pnpm install
 ```
 
 3. **Configurer les variables d'environnement**
+
 ```bash
 cp .env.example .env
 ```
 
 Remplir le fichier `.env` :
+
 ```env
 # Database
 DATABASE_URL="postgresql://USER:PASSWORD@localhost:5432/DB-NAME?schema=public"
@@ -86,7 +95,7 @@ BETTER_AUTH_URL=""
 # Better-Auth
 # macOS openssl rand -base64 32
 # Windows can use https://generate-secret.vercel.app/32
-BETTER_AUTH_SECRET=""   
+BETTER_AUTH_SECRET=""
 
 # Oauth
 GOOGLE_CLIENT_ID=""
@@ -106,12 +115,14 @@ SMTP_FROM="Your App <noreply@yourdomain.com>"
 ```
 
 4. **Initialiser la base de données**
+
 ```bash
 pnpm prisma db push
 pnpm prisma generate
 ```
 
 5. **Lancer le serveur de développement**
+
 ```bash
 pnpm dev
 ```
@@ -161,12 +172,14 @@ degni-kit/
 ## 🔐 Fonctionnalités d'authentification
 
 ### Inscription & Connexion
+
 - ✅ Inscription avec email et mot de passe
 - ✅ Connexion sécurisée
 - ✅ Vérification d'email obligatoire
 - ✅ Réinitialisation de mot de passe
 
 ### Sécurité avancée
+
 - ✅ Authentification à deux facteurs (2FA/TOTP)
 - ✅ Gestion des sessions multiples
 - ✅ Révocation de sessions
@@ -174,6 +187,7 @@ degni-kit/
 - ✅ Tokens d'expiration
 
 ### Gestion du compte
+
 - ✅ Modification du profil
 - ✅ Changement de mot de passe
 - ✅ Configuration de 2FA
@@ -193,10 +207,11 @@ Le projet supporte plusieurs langues grâce à `next-intl` :
 
 1. Créer un fichier de traduction dans `messages/` (ex: `de.json`)
 2. Ajouter la locale dans `i18n/routing.ts` :
+
 ```typescript
 export const routing = defineRouting({
-  locales: ['fr', 'en', 'de'],
-  defaultLocale: 'fr'
+  locales: ["fr", "en", "de"],
+  defaultLocale: "fr",
 });
 ```
 
@@ -218,6 +233,7 @@ Modifier les couleurs dans `app/globals.css` :
 ### Configuration du site
 
 Modifier `lib/site-config.ts` pour personnaliser :
+
 - Nom et description
 - URLs et liens
 - Métadonnées SEO
@@ -240,8 +256,8 @@ pnpm db:studio    # Ouvrir Prisma Studio
 
 # Qualité de code
 pnpm lint             # Linter le code
-pnpm lint:fix         # Corriger les erreurs de lint
 pnpm typecheck        # Vérifier les types TypeScript
+pnpm format           # Format tout le projet avec Prettier
 ```
 
 ---
@@ -258,6 +274,7 @@ pnpm typecheck        # Vérifier les types TypeScript
 ### Autres plateformes
 
 Le projet peut être déployé sur :
+
 - Netlify
 - Railway
 - Render

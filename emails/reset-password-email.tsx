@@ -32,21 +32,18 @@ export default function ResetPasswordEmail({
       <Preview>Reset your password securely</Preview>
       <Tailwind>
         <Body className="bg-gray-50 font-sans">
-          <Container className="mx-auto my-10 max-w-[600px] rounded-lg border border-gray-200 bg-white px-8 py-10 shadow-sm">
+          <Container className="mx-auto my-8 max-w-2xl bg-white px-2 py-8">
             {/* Header */}
             <Section className="mb-8 text-center">
-              {/* <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-lg bg-blue-600">
-                <Text className="text-2xl font-bold text-white">🔐</Text>
-              </div> */}
-              <Text className="text-2xl font-bold text-gray-900">
+              <Heading className="m-0 mb-2 text-2xl font-bold text-gray-900">
                 {SiteConfig.name}
-              </Text>
-              <Text className="text-sm text-gray-500">
-                Production-Ready Next.js Starter Kit
+              </Heading>
+              <Text className="m-0 text-sm text-gray-500">
+                Production-ready Next.js starter kit
               </Text>
             </Section>
 
-            <Heading className="mb-6 text-center text-2xl font-bold text-gray-900">
+            <Heading className="mt-0 mb-6 text-center text-xl font-semibold text-gray-900">
               Reset Your Password
             </Heading>
 
@@ -75,8 +72,8 @@ export default function ResetPasswordEmail({
             </Text>
 
             <Text className="mb-6 text-sm leading-relaxed text-gray-600">
-              If the button doesn't work, copy and paste this link into your
-              browser:
+              If the button doesn&apos;t work, copy and paste this link into
+              your browser:
             </Text>
 
             <Section className="mb-6 rounded-md bg-gray-50 p-3">
@@ -93,9 +90,9 @@ export default function ResetPasswordEmail({
                 ⚠️ Security Notice
               </Text>
               <Text className="text-sm leading-relaxed text-amber-800">
-                If you didn't request a password reset, please ignore this email
-                and ensure your account is secure. Your password will remain
-                unchanged.
+                If you didn&apos;t request a password reset, please ignore this
+                email and ensure your account is secure. Your password will
+                remain unchanged.
               </Text>
             </Section>
 

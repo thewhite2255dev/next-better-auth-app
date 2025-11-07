@@ -52,6 +52,47 @@
     },
     "welcome": "Bienvenue"
   },
+  "FeedbackDialog": {
+    "buttons": {
+      "cancel": "Annuler",
+      "submit": "Envoyer"
+    },
+    "category": {},
+    "description": "Aidez-nous à améliorer degni-kit ! Vos retours sont précieux pour la communauté.",
+    "email": {},
+    "errors": {},
+    "feedback": {},
+    "rating": {},
+    "success": "Merci pour votre retour ! 🎉",
+    "title": "Partagez votre avis",
+    "trigger": "Feedback"
+  },
+  "FeedbackForm": {
+    "category": {
+      "label": "Catégorie",
+      "options": {
+        "BUG": "Bug",
+        "FEATURE": "Nouvelle fonctionnalité",
+        "IMPROVEMENT": "Amélioration",
+        "OTHER": "Autre"
+      },
+      "placeholder": "Sélectionnez une catégorie"
+    },
+    "email": {
+      "hint": "Nous l'utiliserons uniquement pour répondre à votre retour.",
+      "label": "Adresse e-mail (facultatif)"
+    },
+    "message": {
+      "label": "Message",
+      "placeholder": "Dites-nous ce que vous pensez de degni-kit, quelles fonctionnalités vous aimeriez, ou signalez des problèmes..."
+    },
+    "name": {
+      "label": "Nom (facultatif)"
+    },
+    "rating": {
+      "label": "Comment évalueriez-vous votre expérience ?"
+    }
+  },
   "Form": {
     "auth": {
       "backToSignIn": "Retour à la connexion",
@@ -105,12 +146,17 @@
       },
       "generic": "Une erreur est survenue, veuillez réessayer.",
       "invalidCode": "Le code est invalide ou a expiré.",
+      "message": {
+        "minLength": "Le message doit contenir au moins {minLength} caractères.",
+        "required": "Le message est requis."
+      },
       "name": {
         "maxLength": "Le nom ne peut pas dépasser {maxLength} caractères.",
         "minLength": "Le nom doit contenir au moins {minLength} caractères.",
         "required": "Le nom est requis."
       },
       "newPassword": {
+        "minLength": "Le nouveau mot de passe doit contenir au moins {minLength} caractères.",
         "required": "Le nouveau mot de passe est requis."
       },
       "password": {
@@ -118,11 +164,19 @@
         "minLength": "Le mot de passe doit contenir au moins {minLength} caractères.",
         "required": "Le mot de passe est requis."
       },
+      "rating": {},
       "token": {
         "invalid": "Le lien est invalide ou a expiré."
       },
       "unauthorized": "Accès non autorisé.",
       "userAlreadyExist": "L'utilisateur existe déjà. Utilisez une autre adresse e-mail."
+    },
+    "feedback": {
+      "errors": {
+        "rating": {
+          "required": "Veuillez évaluer votre expérience s'il vous plaît."
+        }
+      }
     },
     "fields": {
       "bio": "Biographie",
@@ -200,28 +254,6 @@
       "title": "Vérification de l'adresse e-mail"
     }
   },
-  "FeedbackDialog": {
-    "buttons": {
-      "cancel": "Annuler",
-      "submit": "Envoyer",
-      "submitting": "Envoi..."
-    },
-    "description": "Aidez-nous à améliorer degni-kit ! Vos retours sont précieux pour la communauté.",
-    "errors": {
-      "feedbackRequired": "Veuillez entrer votre commentaire"
-    },
-    "feedback": {
-      "hint": "Vos retours aideront à améliorer degni-kit pour tous.",
-      "label": "Votre commentaire",
-      "placeholder": "Dites-nous ce que vous pensez de degni-kit, quelles fonctionnalités vous aimeriez, ou signalez des problèmes..."
-    },
-    "rating": {
-      "label": "Comment évalueriez-vous votre expérience ?"
-    },
-    "success": "Merci pour votre retour ! 🎉",
-    "title": "Partagez votre avis",
-    "trigger": "Feedback"
-  },
   "Header": {
     "signInButton": "Se connecter"
   },
@@ -250,34 +282,28 @@
         "description": "Next.js 16 avec App Router, React Server Components, et optimisé pour la vitesse et le SEO.",
         "title": "Performance ultra-rapide"
       },
-      "subtitle": "Tout ce dont vous avez besoin pour lancer votre SaaS, side project ou MVP en quelques jours, pas semaines.",
+      "subtitle": "Tout ce dont vous avez besoin pour lancer votre SaaS, side project ou MVP en quelques jours, pas en semaines.",
       "title": "Livrez plus vite avec degni-kit"
     },
     "footer": {
-      "about": "À propos",
       "builtWith": "Conçu avec ❤️ par",
       "changelog": "Journal des modifications",
       "community": "Communauté",
-      "company": "Entreprise",
-      "contact": "Contact",
       "contribute": "Contribuer",
       "contributingGuide": "Guide de contribution",
       "documentation": "Documentation",
-      "features": "Fonctionnalités",
       "github": "GitHub",
       "license": "Licence",
       "licensedUnder": "Sous licence MIT",
       "openSourceCommunity": "et la communauté open source",
-      "pricing": "Tarifs",
-      "product": "Produit",
       "project": "Projet",
-      "pullRequests": "Pull Requests",
+      "pullRequests": "Pull requests",
       "releases": "Versions",
       "reportIssues": "Signaler un problème",
       "resources": "Ressources"
     },
     "hero": {
-      "badge": "Open Source · Licence MIT",
+      "badge": "Open source · Licence MIT",
       "cta": {
         "primary": "Commencer gratuitement",
         "secondary": "Essayer la démo"
@@ -289,15 +315,15 @@
       "fast": "Next.js 16",
       "fastLabel": "Dernière version",
       "modern": "MIT",
-      "modernLabel": "Open Source",
+      "modernLabel": "Open source",
       "secure": "Better Auth",
       "secureLabel": "Propulsé par",
       "users": "TypeScript",
-      "usersLabel": "100% Type-Safe"
+      "usersLabel": "100% type-safe"
     }
   },
   "LanguageSwitcher": {
-    "en": "Anglais",
+    "en": "English",
     "fr": "Français",
     "srOnly": "Changer de langue"
   },
@@ -400,13 +426,8 @@
     "dashboard": "Tableau de bord",
     "items": {
       "preferences": {
-        "language": {
-          "label": "Langue"
-        },
-        "theme": {
-          "label": "Thème"
-        },
-        "title": "Préférences"
+        "language": {},
+        "theme": {}
       }
     },
     "settings": "Paramètres"

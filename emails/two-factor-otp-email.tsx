@@ -29,22 +29,19 @@ export default function TwoFactorOTPEmail({
       <Preview>Your two-factor authentication code</Preview>
       <Tailwind>
         <Body className="bg-gray-50 font-sans">
-          <Container className="mx-auto my-10 max-w-[600px] rounded-lg border border-gray-200 bg-white px-8 py-10 shadow-sm">
+          <Container className="mx-auto my-8 max-w-2xl bg-white px-2 py-8">
             {/* Header */}
             <Section className="mb-8 text-center">
-              {/* <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-lg bg-blue-600">
-                <Text className="text-2xl font-bold text-white">🔒</Text>
-              </div> */}
-              <Text className="text-2xl font-bold text-gray-900">
+              <Heading className="m-0 mb-2 text-2xl font-bold text-gray-900">
                 {SiteConfig.name}
-              </Text>
-              <Text className="text-sm text-gray-500">
-                Production-Ready Next.js Starter Kit
+              </Heading>
+              <Text className="m-0 text-sm text-gray-500">
+                Security notification
               </Text>
             </Section>
 
-            <Heading className="mb-6 text-center text-2xl font-bold text-gray-900">
-              Two-Factor Authentication
+            <Heading className="mt-0 mb-6 text-center text-xl font-semibold text-gray-900">
+              Two-factor authentication
             </Heading>
 
             <Text className="mb-4 text-base leading-relaxed text-gray-700">
@@ -52,9 +49,9 @@ export default function TwoFactorOTPEmail({
             </Text>
 
             <Text className="mb-6 text-base leading-relaxed text-gray-700">
-              You're receiving this email because you (or someone) attempted to
-              sign in to your <strong>{SiteConfig.name}</strong> account. Enter
-              the verification code below to complete your login:
+              You&apos;re receiving this email because you (or someone)
+              attempted to sign in to your <strong>{SiteConfig.name}</strong>{" "}
+              account. Enter the verification code below to complete your login:
             </Text>
 
             {/* OTP Code Box */}
@@ -86,7 +83,7 @@ export default function TwoFactorOTPEmail({
                 🚨 Important Security Notice
               </Text>
               <Text className="text-sm leading-relaxed text-red-800">
-                If you didn't attempt to sign in, someone may be trying to
+                If you didn&apos;t attempt to sign in, someone may be trying to
                 access your account. Please secure your account immediately by:
               </Text>
               <Text className="mt-2 ml-4 text-sm leading-relaxed text-red-800">

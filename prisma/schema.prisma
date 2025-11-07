@@ -12,6 +12,31 @@ enum UserRole {
   USER
 }
 
+enum FeedbackCategory {
+  BUG
+  FEATURE
+  IMPROVEMENT
+  OTHER
+}
+
+enum FeedbackStatus {
+  PENDING
+  REJECTED
+  RESOLVED
+}
+
+model Feedback {
+  id        String           @id @default(cuid())
+  userEmail String?
+  category  FeedbackCategory
+  message   String           @db.Text
+  rating    Int?
+  status    FeedbackStatus   @default(PENDING)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now()) @updatedAt
+}
+
 model User {
   id               String   @id
   name             String

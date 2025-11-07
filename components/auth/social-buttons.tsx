@@ -36,7 +36,6 @@ interface SocialButtonsProps {
 
 export function SocialButtons({
   providers,
-  className = "",
   direction = "row",
   variant = "outline",
   showFullNames = false,
