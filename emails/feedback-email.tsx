@@ -205,7 +205,6 @@ export default function FeedbackEmail({
                 style={{
                   width: "100%",
                   borderRadius: "8px",
-                  borderLeft: "4px solid #3b82f6",
                   backgroundColor: "#eff6ff",
                 }}
               >
