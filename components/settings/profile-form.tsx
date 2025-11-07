@@ -105,7 +105,9 @@ export function ProfileForm() {
           </h2>
           <div className="text-muted-foreground flex items-center gap-2">
             <span className="text-sm">
-              {t("Form.profileForm.administrator")}
+              {session?.user.role === "ADMIN" &&
+                t("Form.profileForm.administrator")}
+              {session?.user.role === "USER" && t("Form.profileForm.user")}
             </span>
           </div>
         </div>

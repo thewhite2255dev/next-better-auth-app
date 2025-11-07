@@ -36,7 +36,7 @@ export default async function AdminFeedbacksPage({
   const session = await auth.api.getSession({
     headers: await headers(),
   });
-  if (!session?.user || (session.user as { role?: string }).role !== "ADMIN") {
+  if (!session?.user || session?.user.role !== "ADMIN") {
     redirect("/dashboard");
   }
 
@@ -117,20 +117,20 @@ export default async function AdminFeedbacksPage({
             </CardContent>
           </Card>
 
-          <Card className="group relative overflow-hidden border-green-500/20 bg-linear-to-br from-green-500/5 to-green-600/5 transition-all hover:scale-[1.02] hover:shadow-xl">
-            <div className="absolute top-0 right-0 h-24 w-24 translate-x-8 -translate-y-8 rounded-full bg-green-500/20 blur-2xl transition-all group-hover:scale-150" />
+          <Card className="group relative overflow-hidden border-emerald-500/20 bg-linear-to-br from-emerald-500/5 to-emerald-600/5 transition-all hover:scale-[1.02] hover:shadow-xl">
+            <div className="absolute top-0 right-0 h-24 w-24 translate-x-8 -translate-y-8 rounded-full bg-emerald-500/20 blur-2xl transition-all group-hover:scale-150" />
             <CardHeader className="relative flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium">
                 {t("Form.admin.stats.resolved.title")}
               </CardTitle>
-              <CheckCircle2 className="h-5 w-5 text-green-500" />
+              <CheckCircle2 className="h-5 w-5 text-emerald-500" />
             </CardHeader>
             <CardContent className="relative">
               <div className="flex items-baseline gap-2">
                 <div className="text-2xl font-bold">
                   {stats.byStatus.RESOLVED}
                 </div>
-                <TrendingUp className="h-4 w-4 text-green-500" />
+                <TrendingUp className="h-4 w-4 text-emerald-500" />
               </div>
               <p className="text-muted-foreground mt-1 text-xs">
                 {t("Form.admin.stats.resolved.description")}

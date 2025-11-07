@@ -74,7 +74,7 @@ export function FeedbackActions({ feedback, onUpdate }: FeedbackActionsProps) {
         <DropdownMenuContent align="end">
           {feedback.status !== "RESOLVED" && (
             <DropdownMenuItem onClick={() => handleStatusChange("RESOLVED")}>
-              <Check className="mr-2 h-4 w-4 text-green-600" />
+              <Check className="mr-2 h-4 w-4 text-emerald-600" />
               {t("markResolved")}
             </DropdownMenuItem>
           )}

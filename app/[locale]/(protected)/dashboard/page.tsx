@@ -7,7 +7,6 @@ import {
   Shield,
   Settings,
   Sliders,
-  Activity,
   KeyRound,
   TrendingUp,
   Zap,
@@ -124,10 +123,10 @@ export default async function DashboardPage() {
                       </h2>
                       <Badge
                         variant="secondary"
-                        className="bg-linear-to-r from-green-500/10 to-emerald-500/10 text-green-600 dark:text-green-400"
+                        className="bg-linear-to-r from-emerald-500/10 to-emerald-500/10 text-emerald-600 dark:text-emerald-400"
                       >
-                        <Activity className="mr-1 h-3 w-3" />
-                        {t("status.active")}
+                        {session?.user.role === "ADMIN" && t("administrator")}
+                        {session?.user.role === "USER" && t("user")}
                       </Badge>
                     </div>
                     <div className="text-muted-foreground flex items-center gap-2">

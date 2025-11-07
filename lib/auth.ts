@@ -50,6 +50,10 @@ export const auth = betterAuth({
       enabled: true,
     },
     additionalFields: {
+      role: {
+        type: "string",
+        defaultValue: "USER",
+      },
       totpEnabled: {
         type: "boolean",
         defaultValue: false,

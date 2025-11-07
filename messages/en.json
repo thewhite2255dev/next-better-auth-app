@@ -22,6 +22,14 @@
       }
     }
   },
+  "ConfirmActionDialog": {
+    "buttons": {
+      "cancel": "Cancel",
+      "yes": "Confirm"
+    },
+    "description": "This action cannot be undone.",
+    "title": "Are you sure?"
+  },
   "ConfirmPasswordDialog": {
     "buttons": {
       "cancel": "Cancel",
@@ -29,15 +37,8 @@
     },
     "description": "Please enter your password to confirm this action."
   },
-  "ConfirmActionDialog": {
-    "title": "Are you sure?",
-    "description": "This action cannot be undone.",
-    "buttons": {
-      "cancel": "Cancel",
-      "yes": "Confirm"
-    }
-  },
   "DashboardPage": {
+    "administrator": "Administrator",
     "dashboard": "Dashboard",
     "quickActions": {
       "preferences": "Preferences",
@@ -58,6 +59,7 @@
       "verified": "Verified account",
       "yes": "Yes"
     },
+    "user": "User",
     "welcome": "Welcome"
   },
   "FeedbackDialog": {
@@ -65,12 +67,17 @@
       "cancel": "Cancel",
       "submit": "Send feedback"
     },
-    "category": {},
+    "category": {
+    },
     "description": "Help us improve degni-kit! Your feedback is valuable to the community.",
-    "email": {},
-    "errors": {},
-    "feedback": {},
-    "rating": {},
+    "email": {
+    },
+    "errors": {
+    },
+    "feedback": {
+    },
+    "rating": {
+    },
     "success": "Thank you for your feedback! 🎉",
     "title": "Share your feedback",
     "trigger": "Feedback"
@@ -102,6 +109,57 @@
     }
   },
   "Form": {
+    "admin": {
+      "actions": {
+        "delete": "Delete",
+        "deleteDialog": {
+          "cancel": "Cancel",
+          "confirm": "Delete",
+          "deleting": "Deleting...",
+          "description": "This action cannot be undone. This will permanently delete this feedback from the database.",
+          "title": "Delete feedback?"
+        },
+        "markPending": "Mark as pending",
+        "markRejected": "Mark as rejected",
+        "markResolved": "Mark as resolved",
+        "toast": {
+          "deleteFailed": "Failed to delete feedback",
+          "deleted": "Feedback deleted successfully",
+          "statusUpdateFailed": "Failed to update status",
+          "statusUpdated": "Status updated to {status}"
+        }
+      },
+      "categories": {
+        "bugs": "Bugs",
+        "features": "Features",
+        "improvements": "Improvements",
+        "other": "Other",
+        "title": "Feedbacks by category"
+      },
+      "stats": {
+        "averageRating": {
+          "description": "Out of 5 stars",
+          "title": "Average rating"
+        },
+        "pending": {
+          "description": "Awaiting review",
+          "title": "Pending"
+        },
+        "resolved": {
+          "description": "Successfully handled",
+          "title": "Resolved"
+        },
+        "total": {
+          "description": "All time submissions",
+          "title": "Total feedbacks"
+        }
+      },
+      "subtitle": "Manage and respond to user feedback 📊",
+      "table": {
+        "title": "All feedbacks"
+      },
+      "title": "Feedback management"
+    },
     "auth": {
       "backToSignIn": "Back to sign in",
       "continueWith": "Continue with",
@@ -172,7 +230,8 @@
         "minLength": "Password must be at least {minLength} characters.",
         "required": "Password is required."
       },
-      "rating": {},
+      "rating": {
+      },
       "token": {
         "invalid": "The link is invalid or has expired."
       },
@@ -191,6 +250,9 @@
           "required": "Please rate your experience."
         }
       },
+      "hints": {
+        "email": "We'll only use this to respond to your feedback."
+      },
       "labels": {
         "category": "Category",
         "email": "Email address (optional)",
@@ -201,98 +263,6 @@
         "category": "Select a category",
         "email": "your@email.com",
         "message": "Tell us what you think about degni-kit, what features you'd like, or report any issues..."
-      },
-      "hints": {
-        "email": "We'll only use this to respond to your feedback."
-      }
-    },
-    "filters": {
-      "status": {
-        "label": "Status",
-        "all": "All",
-        "pending": "Pending",
-        "resolved": "Resolved",
-        "rejected": "Rejected"
-      },
-      "category": {
-        "label": "Category",
-        "all": "All"
-      },
-      "reset": "Reset"
-    },
-    "table": {
-      "headers": {
-        "category": "Category",
-        "message": "Message",
-        "rating": "Rating",
-        "email": "Email",
-        "status": "Status",
-        "date": "Date",
-        "actions": "Actions"
-      },
-      "empty": {
-        "title": "No feedbacks found",
-        "description": "Try adjusting your filters"
-      },
-      "anonymous": "Anonymous",
-      "date": {
-        "today": "Today",
-        "yesterday": "Yesterday",
-        "daysAgo": "{days} days ago",
-        "weeksAgo": "{weeks} weeks ago",
-        "monthsAgo": "{months} months ago",
-        "yearsAgo": "{years} years ago"
-      }
-    },
-    "admin": {
-      "title": "Feedback management",
-      "subtitle": "Manage and respond to user feedback 📊",
-      "stats": {
-        "total": {
-          "title": "Total feedbacks",
-          "description": "All time submissions"
-        },
-        "pending": {
-          "title": "Pending",
-          "description": "Awaiting review"
-        },
-        "resolved": {
-          "title": "Resolved",
-          "description": "Successfully handled"
-        },
-        "averageRating": {
-          "title": "Average rating",
-          "description": "Out of 5 stars"
-        }
-      },
-      "categories": {
-        "title": "Feedbacks by category",
-        "bugs": "Bugs",
-        "features": "Features",
-        "improvements": "Improvements",
-        "other": "Other"
-      },
-      "table": {
-        "title": "All feedbacks"
-      },
-      "actions": {
-        "markResolved": "Mark as resolved",
-        "markRejected": "Mark as rejected",
-        "markPending": "Mark as pending",
-        "delete": "Delete",
-        "deleteDialog": {
-          "title": "Delete feedback?",
-          "description": "This action cannot be undone. This will permanently delete this feedback from the database.",
-          "cancel": "Cancel",
-          "confirm": "Delete",
-          "deleting": "Deleting..."
-        },
-        "toast": {
-          "statusUpdated": "Status updated to {status}",
-          "statusUpdateFailed": "Failed to update status",
-          "deleted": "Feedback deleted successfully",
-          "deleteFailed": "Failed to delete feedback"
-        }
       }
     },
     "fields": {
@@ -304,6 +274,20 @@
       "newPassword": "New password",
       "password": "Password",
       "revokeOtherSessions": "Sign out other sessions"
+    },
+    "filters": {
+      "category": {
+        "all": "All",
+        "label": "Category"
+      },
+      "reset": "Reset",
+      "status": {
+        "all": "All",
+        "label": "Status",
+        "pending": "Pending",
+        "rejected": "Rejected",
+        "resolved": "Resolved"
+      }
     },
     "forgotPassword": {
       "button": "Send reset link",
@@ -344,6 +328,30 @@
     },
     "success": {
       "verifyTotpCode": "The code has been successfully verified."
+    },
+    "table": {
+      "anonymous": "Anonymous",
+      "date": {
+        "daysAgo": "{days} days ago",
+        "monthsAgo": "{months} months ago",
+        "today": "Today",
+        "weeksAgo": "{weeks} weeks ago",
+        "yearsAgo": "{years} years ago",
+        "yesterday": "Yesterday"
+      },
+      "empty": {
+        "description": "Try adjusting your filters",
+        "title": "No feedbacks found"
+      },
+      "headers": {
+        "actions": "Actions",
+        "category": "Category",
+        "date": "Date",
+        "email": "Email",
+        "message": "Message",
+        "rating": "Rating",
+        "status": "Status"
+      }
     },
     "totpAppInstruction": "Open your authenticator app and enter the code shown below.",
     "twoFactor": {
@@ -475,13 +483,13 @@
     "title": "Account"
   },
   "SettingsLayout": {
-    "title": "Settings",
-    "description": "Manage and customize your Degni Kit experience.",
     "account": "Account",
+    "description": "Manage and customize your Degni Kit experience.",
     "preferences": "Preferences",
     "profile": "Profile",
     "security": "Security",
-    "sessions": "Sessions"
+    "sessions": "Sessions",
+    "title": "Settings"
   },
   "SettingsPreferencesPage": {
     "description": "Customize your user experience.",
@@ -547,8 +555,10 @@
     "dashboard": "Dashboard",
     "items": {
       "preferences": {
-        "language": {},
-        "theme": {}
+        "language": {
+        },
+        "theme": {
+        }
       }
     },
     "settings": "Settings"

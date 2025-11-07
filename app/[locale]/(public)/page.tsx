@@ -54,7 +54,7 @@ export default async function Home() {
       icon: Zap,
       title: t("features.performance.title"),
       description: t("features.performance.description"),
-      gradient: "from-green-500 to-emerald-500",
+      gradient: "from-emerald-500 to-emerald-500",
     },
   ];
 
@@ -137,7 +137,7 @@ export default async function Home() {
             </div>
             <div className="group bg-card/50 rounded-lg border p-4 backdrop-blur transition-all hover:scale-105 hover:shadow-lg">
               <div className="mb-2 flex justify-center">
-                <Scale className="h-8 w-8 text-green-500 transition-transform group-hover:scale-110" />
+                <Scale className="h-8 w-8 text-emerald-500 transition-transform group-hover:scale-110" />
               </div>
               <div className="text-2xl font-bold">{t("stats.modern")}</div>
               <div className="text-muted-foreground text-sm">

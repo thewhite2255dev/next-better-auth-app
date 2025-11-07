@@ -22,6 +22,14 @@
       }
     }
   },
+  "ConfirmActionDialog": {
+    "buttons": {
+      "cancel": "Annuler",
+      "yes": "Confirmer"
+    },
+    "description": "Cette action ne peut pas être annulée.",
+    "title": "Êtes-vous sûr ?"
+  },
   "ConfirmPasswordDialog": {
     "buttons": {
       "cancel": "Annuler",
@@ -29,15 +37,8 @@
     },
     "description": "Veuillez saisir votre mot de passe pour confirmer cette action."
   },
-  "ConfirmActionDialog": {
-    "title": "Êtes-vous sûr ?",
-    "description": "Cette action ne peut pas être annulée.",
-    "buttons": {
-      "cancel": "Annuler",
-      "yes": "Confirmer"
-    }
-  },
   "DashboardPage": {
+    "administrator": "Administrateur",
     "dashboard": "Tableau de bord",
     "quickActions": {
       "preferences": "Préférences",
@@ -58,6 +59,7 @@
       "verified": "Compte vérifié",
       "yes": "Oui"
     },
+    "user": "Utilisateur",
     "welcome": "Bienvenue"
   },
   "FeedbackDialog": {
@@ -65,12 +67,17 @@
       "cancel": "Annuler",
       "submit": "Envoyer"
     },
-    "category": {},
+    "category": {
+    },
     "description": "Aidez-nous à améliorer degni-kit ! Vos retours sont précieux pour la communauté.",
-    "email": {},
-    "errors": {},
-    "feedback": {},
-    "rating": {},
+    "email": {
+    },
+    "errors": {
+    },
+    "feedback": {
+    },
+    "rating": {
+    },
     "success": "Merci pour votre retour ! 🎉",
     "title": "Partagez votre avis",
     "trigger": "Feedback"
@@ -223,7 +230,8 @@
         "minLength": "Le mot de passe doit contenir au moins {minLength} caractères.",
         "required": "Le mot de passe est requis."
       },
-      "rating": {},
+      "rating": {
+      },
       "token": {
         "invalid": "Le lien est invalide ou a expiré."
       },
@@ -293,7 +301,8 @@
       "administrator": "Administrateur",
       "signOut": "Se déconnecter",
       "success": "Le profil a été modifié avec succès.",
-      "updateButton": "Mettre à jour le profil"
+      "updateButton": "Mettre à jour le profil",
+      "user": "Utilisateur"
     },
     "resetPassword": {
       "button": "Réinitialiser le mot de passe",
@@ -475,13 +484,13 @@
     "title": "Compte"
   },
   "SettingsLayout": {
-    "title": "Paramètres",
-    "description": "Gérez et personnalisez votre expérience sur Degni Kit.",
     "account": "Compte",
+    "description": "Gérez et personnalisez votre expérience sur Degni Kit.",
     "preferences": "Préférences",
     "profile": "Profil",
     "security": "Sécurité",
-    "sessions": "Sessions"
+    "sessions": "Sessions",
+    "title": "Paramètres"
   },
   "SettingsPreferencesPage": {
     "description": "Personnalisez votre expérience utilisateur.",
@@ -547,8 +556,10 @@
     "dashboard": "Tableau de bord",
     "items": {
       "preferences": {
-        "language": {},
-        "theme": {}
+        "language": {
+        },
+        "theme": {
+        }
       }
     },
     "settings": "Paramètres"

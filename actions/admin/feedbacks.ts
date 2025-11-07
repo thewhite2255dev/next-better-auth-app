@@ -11,7 +11,7 @@ async function verifyAdmin() {
     headers: await headers(),
   });
 
-  if (!session?.user || (session.user as { role?: string }).role !== "ADMIN") {
+  if (!session?.user || session?.user.role !== "ADMIN") {
     throw new Error("Unauthorized: Admin access required");
   }
 
