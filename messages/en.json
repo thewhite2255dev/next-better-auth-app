@@ -314,6 +314,8 @@
       "title": "Forgot password"
     },
     "profileForm": {
+      "administrator": "Administrator",
+      "signOut": "Sign out",
       "success": "Profile has been updated successfully.",
       "updateButton": "Update profile"
     },

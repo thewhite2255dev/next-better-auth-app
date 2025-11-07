@@ -290,6 +290,8 @@
       "title": "Mot de passe oublié"
     },
     "profileForm": {
+      "administrator": "Administrateur",
+      "signOut": "Se déconnecter",
       "success": "Le profil a été modifié avec succès.",
       "updateButton": "Mettre à jour le profil"
     },

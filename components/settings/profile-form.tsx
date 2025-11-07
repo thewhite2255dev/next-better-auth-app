@@ -27,6 +27,7 @@ import { Textarea } from "../ui/textarea";
 import { generateAvatarFallback, maskEmail } from "@/lib/utils";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { SignOut } from "../auth/sign-out-button";
+import { LogOut } from "lucide-react";
 
 export function ProfileForm() {
   const t = useTranslations();
@@ -103,11 +104,18 @@ export function ProfileForm() {
             {session?.user.name}
           </h2>
           <div className="text-muted-foreground flex items-center gap-2">
-            <span className="text-sm">Administrateur</span>
+            <span className="text-sm">
+              {t("Form.profileForm.administrator")}
+            </span>
           </div>
         </div>
-        <SignOut className="ml-auto">
-          <Button variant="outline">Se déconnecter</Button>
+        <SignOut className="ml-auto hidden lg:block">
+          <Button variant="outline">{t("Form.profileForm.signOut")}</Button>
+        </SignOut>
+        <SignOut className="ml-auto block lg:hidden">
+          <Button variant="outline" size="icon">
+            <LogOut />
+          </Button>
         </SignOut>
       </div>
 
