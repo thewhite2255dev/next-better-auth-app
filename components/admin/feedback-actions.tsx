@@ -74,19 +74,19 @@ export function FeedbackActions({ feedback, onUpdate }: FeedbackActionsProps) {
         <DropdownMenuContent align="end">
           {feedback.status !== "RESOLVED" && (
             <DropdownMenuItem onClick={() => handleStatusChange("RESOLVED")}>
-              <Check className="mr-2 h-4 w-4 text-emerald-600" />
+              <Check className="h-4 w-4 text-emerald-600" />
               {t("markResolved")}
             </DropdownMenuItem>
           )}
           {feedback.status !== "REJECTED" && (
             <DropdownMenuItem onClick={() => handleStatusChange("REJECTED")}>
-              <X className="mr-2 h-4 w-4 text-red-600" />
+              <X className="h-4 w-4 text-red-600" />
               {t("markRejected")}
             </DropdownMenuItem>
           )}
           {feedback.status !== "PENDING" && (
             <DropdownMenuItem onClick={() => handleStatusChange("PENDING")}>
-              <Clock className="mr-2 h-4 w-4 text-yellow-600" />
+              <Clock className="h-4 w-4 text-yellow-600" />
               {t("markPending")}
             </DropdownMenuItem>
           )}
@@ -94,7 +94,7 @@ export function FeedbackActions({ feedback, onUpdate }: FeedbackActionsProps) {
             onClick={() => setShowDeleteDialog(true)}
             className="text-destructive"
           >
-            <Trash2 className="mr-2 h-4 w-4" />
+            <Trash2 className="h-4 w-4" />
             {t("delete")}
           </DropdownMenuItem>
         </DropdownMenuContent>

@@ -10,7 +10,7 @@ import {
   KeyRound,
   TrendingUp,
   Zap,
-  Award,
+  LogOut,
 } from "lucide-react";
 import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
@@ -22,7 +22,7 @@ import { auth } from "@/lib/auth";
 import { headers } from "next/headers";
 import { Link } from "@/i18n/navigation";
 import { getLocale } from "next-intl/server";
-import { getNamePart, maskEmail } from "@/lib/utils";
+import { generateAvatarFallback, getNamePart, maskEmail } from "@/lib/utils";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations("DashboardPage");
@@ -46,7 +46,7 @@ export default async function DashboardPage() {
             <Skeleton className="h-10 w-64 rounded-lg" />
             <Skeleton className="h-10 w-32 rounded-lg" />
           </div>
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-6 md:grid-cols-2">
             <Skeleton className="h-48 rounded-xl" />
             <Skeleton className="h-48 rounded-xl" />
             <Skeleton className="h-48 rounded-xl" />
@@ -56,14 +56,6 @@ export default async function DashboardPage() {
       </main>
     );
   }
-
-  const userInitials =
-    session.user.name
-      ?.split(" ")
-      .map((n) => n[0])
-      .join("")
-      .toUpperCase()
-      .slice(0, 2) || "U";
 
   const createdAt = session.session.createdAt
     ? new Intl.DateTimeFormat(locale, {
@@ -82,7 +74,7 @@ export default async function DashboardPage() {
         <div className="absolute bottom-0 left-1/3 h-96 w-96 animate-pulse rounded-full bg-purple-500/10 blur-3xl [animation-delay:4s]" />
       </div>
 
-      <main className="relative container min-h-screen py-6">
+      <main className="relative min-h-screen">
         <div className="space-y-8">
           {/* Header */}
           <div className="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
@@ -100,8 +92,8 @@ export default async function DashboardPage() {
                 size="lg"
                 className="group transition-all hover:scale-105"
               >
+                <LogOut className="h-4 w-4" />
                 {t("signOut")}
-                <Zap className="ml-2 h-4 w-4 transition-transform group-hover:rotate-12" />
               </Button>
             </SignOut>
           </div>
@@ -113,7 +105,7 @@ export default async function DashboardPage() {
                 <div className="flex items-center gap-4">
                   <Avatar className="border-primary/20 ring-primary/10 size-16 border-4 shadow-lg ring-4 lg:size-20">
                     <AvatarFallback className="from-primary to-primary/80 text-primary-foreground bg-linear-to-br text-2xl font-bold">
-                      {userInitials}
+                      {generateAvatarFallback(session?.user.name ?? "")}
                     </AvatarFallback>
                   </Avatar>
                   <div className="space-y-2">
@@ -151,7 +143,7 @@ export default async function DashboardPage() {
           </Card>
 
           {/* Stats Grid */}
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-6 sm:grid-cols-2">
             <Card className="group relative overflow-hidden border-blue-500/20 bg-linear-to-br from-blue-500/5 to-blue-600/5 transition-all hover:scale-[1.02] hover:shadow-xl">
               <div className="absolute top-0 right-0 h-24 w-24 translate-x-8 -translate-y-8 rounded-full bg-blue-500/20 blur-2xl transition-all group-hover:scale-150" />
               <CardHeader className="relative flex flex-row items-center justify-between space-y-0 pb-2">
@@ -194,27 +186,6 @@ export default async function DashboardPage() {
                 </div>
                 <p className="text-muted-foreground mt-1 text-xs">
                   {createdAt}
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card className="group relative overflow-hidden border-amber-500/20 bg-linear-to-br from-amber-500/5 to-amber-600/5 transition-all hover:scale-[1.02] hover:shadow-xl">
-              <div className="absolute top-0 right-0 h-24 w-24 translate-x-8 -translate-y-8 rounded-full bg-amber-500/20 blur-2xl transition-all group-hover:scale-150" />
-              <CardHeader className="relative flex flex-row items-center justify-between space-y-0 pb-2">
-                <CardTitle className="text-sm font-medium">
-                  {t("status.statusLabel")}
-                </CardTitle>
-                <Award className="h-5 w-5 text-amber-500" />
-              </CardHeader>
-              <CardContent className="relative">
-                <div className="flex items-baseline gap-2">
-                  <div className="text-2xl font-bold">
-                    {t("status.premium")}
-                  </div>
-                  <Zap className="h-4 w-4 text-amber-500" />
-                </div>
-                <p className="text-muted-foreground mt-1 text-xs">
-                  {t("status.fullAccess")}
                 </p>
               </CardContent>
             </Card>

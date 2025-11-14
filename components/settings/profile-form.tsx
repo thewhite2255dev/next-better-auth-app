@@ -27,7 +27,9 @@ import { Textarea } from "../ui/textarea";
 import { generateAvatarFallback, maskEmail } from "@/lib/utils";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { SignOut } from "../auth/sign-out-button";
-import { LogOut } from "lucide-react";
+import { LogOut, Mail } from "lucide-react";
+import { Card, CardContent } from "../ui/card";
+import { Badge } from "../ui/badge";
 
 export function ProfileForm() {
   const t = useTranslations();
@@ -55,9 +57,9 @@ export function ProfileForm() {
   useEffect(() => {
     if (session?.user) {
       form.reset({
-        name: session.user.name || "",
-        bio: session.user.bio || "",
-        location: session.user.location || "",
+        name: session?.user.name || "",
+        bio: session?.user.bio || "",
+        location: session?.user.location || "",
       });
     }
   }, [session, form]);
@@ -92,34 +94,53 @@ export function ProfileForm() {
 
   return (
     <>
-      <div className="relativee flex items-center gap-4 rounded-md border p-4">
-        <Avatar className="border-primary/20 ring-primary/10 size-16 shrink-0 border-4 shadow-lg ring-4">
-          <AvatarImage src={session?.user.image as string} />
-          <AvatarFallback className="from-primary to-primary/80 text-primary-foreground bg-linear-to-br text-2xl font-bold">
-            {generateAvatarFallback(session?.user.name ?? "")}
-          </AvatarFallback>
-        </Avatar>
-        <div className="flex flex-col gap-2">
-          <h2 className="truncate text-lg font-bold md:text-2xl">
-            {session?.user.name}
-          </h2>
-          <div className="text-muted-foreground flex items-center gap-2">
-            <span className="text-sm">
-              {session?.user.role === "ADMIN" &&
-                t("Form.profileForm.administrator")}
-              {session?.user.role === "USER" && t("Form.profileForm.user")}
-            </span>
+      <Card className="border-primary/20 from-card to-card/50 overflow-hidden rounded-md bg-linear-to-br shadow-xl transition-all hover:shadow-2xl">
+        <CardContent className="space-y-4 px-4">
+          <div className="flex items-center justify-between gap-2">
+            <div className="flex items-center gap-4">
+              <Avatar className="border-primary/20 ring-primary/10 size-16 border-4 shadow-lg ring-4 lg:size-20">
+                <AvatarImage
+                  src={session?.user.image ?? ""}
+                  alt={session?.user.name}
+                />
+                <AvatarFallback className="from-primary to-primary/80 text-primary-foreground bg-linear-to-br text-2xl font-bold">
+                  {generateAvatarFallback(session?.user.name ?? "")}
+                </AvatarFallback>
+              </Avatar>
+              <div className="grid flex-1 grid-cols-1">
+                <div className="flex items-center gap-2">
+                  <h2 className="truncate text-lg font-bold md:text-2xl">
+                    {session?.user.name}
+                  </h2>
+                  <Badge
+                    variant="secondary"
+                    className="bg-linear-to-r from-emerald-500/10 to-emerald-500/10 text-emerald-600 dark:text-emerald-400"
+                  >
+                    {session?.user.role === "ADMIN" &&
+                      t("Form.profileForm.administrator")}
+                    {session?.user.role === "USER" &&
+                      t("Form.profileForm.user")}
+                  </Badge>
+                </div>
+                <div className="text-muted-foreground flex items-center gap-2">
+                  <Mail className="h-4 w-4" />
+                  <span className="truncate text-sm">
+                    {maskEmail(session?.user.email ?? "")}
+                  </span>
+                </div>
+              </div>
+            </div>
+            <SignOut className="ml-auto hidden lg:block">
+              <Button variant="outline">{t("Form.profileForm.signOut")}</Button>
+            </SignOut>
+            <SignOut className="ml-auto block lg:hidden">
+              <Button variant="outline" size="icon">
+                <LogOut />
+              </Button>
+            </SignOut>
           </div>
-        </div>
-        <SignOut className="ml-auto hidden lg:block">
-          <Button variant="outline">{t("Form.profileForm.signOut")}</Button>
-        </SignOut>
-        <SignOut className="ml-auto block lg:hidden">
-          <Button variant="outline" size="icon">
-            <LogOut />
-          </Button>
-        </SignOut>
-      </div>
+        </CardContent>
+      </Card>
 
       <Form {...form}>
         <form onSubmit={form.handleSubmit(handleSubmit)} className="space-y-4">

@@ -173,47 +173,41 @@ export function AuthenticationForm() {
 
   return (
     <>
-      <Card className="rounded-md p-4 shadow-none">
-        <CardContent className="flex flex-col gap-4 p-0">
-          <div className="flex items-center justify-between">
+      <Card className="rounded-md shadow-none">
+        <CardContent className="flex flex-col gap-4 px-4">
+          <div className="flex items-center justify-between gap-2">
             <div>
               <Label>{t("AuthenticationForm.twoFactor.label")}</Label>
               <p>{t("AuthenticationForm.twoFactor.description")}</p>
             </div>
-            <div>
-              <Switch
-                className="h-"
-                checked={session?.user.twoFactorEnabled ?? false}
-                onCheckedChange={(checked) => {
-                  setActionType("twoFactor");
-                  setPendingState(checked);
-                  setIsPasswordDialogOpen(true);
-                }}
-                disabled={isPending}
-              />
-            </div>
+            <Switch
+              checked={session?.user.twoFactorEnabled ?? false}
+              onCheckedChange={(checked) => {
+                setActionType("twoFactor");
+                setPendingState(checked);
+                setIsPasswordDialogOpen(true);
+              }}
+              disabled={isPending}
+            />
           </div>
-          <div className="flex items-center justify-between rounded-md">
+          <div className="flex items-center justify-between gap-2 rounded-md">
             <div>
               <Label>{t("AuthenticationForm.totp.label")}</Label>
               <p>{t("AuthenticationForm.totp.description")}</p>
             </div>
-            <div>
-              <Switch
-                className="h-"
-                disabled={isPending}
-                checked={session?.user.totpEnabled ?? false}
-                onCheckedChange={(checked) => {
-                  setActionType("totp");
-                  setPendingState(checked);
-                  if (!session?.user.twoFactorEnabled) {
-                    toast.error(t("AuthenticationForm.totp.requireTwoFactor"));
-                    return;
-                  }
-                  setIsPasswordDialogOpen(true);
-                }}
-              />
-            </div>
+            <Switch
+              disabled={isPending}
+              checked={session?.user.totpEnabled ?? false}
+              onCheckedChange={(checked) => {
+                setActionType("totp");
+                setPendingState(checked);
+                if (!session?.user.twoFactorEnabled) {
+                  toast.error(t("AuthenticationForm.totp.requireTwoFactor"));
+                  return;
+                }
+                setIsPasswordDialogOpen(true);
+              }}
+            />
           </div>
         </CardContent>
       </Card>

@@ -97,9 +97,9 @@ export default async function Home() {
               asChild
             >
               <Link href="/auth/sign-up">
-                <Rocket className="h-5 w-5 transition-transform group-hover:translate-x-1" />
+                <Rocket className="h-5 w-5" />
                 {t("hero.cta.primary")}
-                <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
+                <ArrowRight className="h-5 w-5" />
               </Link>
             </Button>
             <Button
@@ -119,7 +119,7 @@ export default async function Home() {
           <div className="mt-16 grid grid-cols-2 gap-6 md:grid-cols-4">
             <div className="group bg-card/50 rounded-lg border p-4 backdrop-blur transition-all hover:scale-105 hover:shadow-lg">
               <div className="mb-2 flex justify-center">
-                <Shield className="h-8 w-8 text-blue-500 transition-transform group-hover:scale-110" />
+                <Shield className="h-8 w-8 text-blue-500" />
               </div>
               <div className="text-2xl font-bold">{t("stats.secure")}</div>
               <div className="text-muted-foreground text-sm">
@@ -128,7 +128,7 @@ export default async function Home() {
             </div>
             <div className="group bg-card/50 rounded-lg border p-4 backdrop-blur transition-all hover:scale-105 hover:shadow-lg">
               <div className="mb-2 flex justify-center">
-                <Zap className="h-8 w-8 text-amber-500 transition-transform group-hover:scale-110" />
+                <Zap className="h-8 w-8 text-amber-500" />
               </div>
               <div className="text-2xl font-bold">{t("stats.fast")}</div>
               <div className="text-muted-foreground text-sm">
@@ -137,7 +137,7 @@ export default async function Home() {
             </div>
             <div className="group bg-card/50 rounded-lg border p-4 backdrop-blur transition-all hover:scale-105 hover:shadow-lg">
               <div className="mb-2 flex justify-center">
-                <Scale className="h-8 w-8 text-emerald-500 transition-transform group-hover:scale-110" />
+                <Scale className="h-8 w-8 text-emerald-500" />
               </div>
               <div className="text-2xl font-bold">{t("stats.modern")}</div>
               <div className="text-muted-foreground text-sm">
@@ -146,7 +146,7 @@ export default async function Home() {
             </div>
             <div className="group bg-card/50 rounded-lg border p-4 backdrop-blur transition-all hover:scale-105 hover:shadow-lg">
               <div className="mb-2 flex justify-center">
-                <Code2 className="h-8 w-8 text-purple-500 transition-transform group-hover:scale-110" />
+                <Code2 className="h-8 w-8 text-purple-500" />
               </div>
               <div className="text-2xl font-bold">{t("stats.users")}</div>
               <div className="text-muted-foreground text-sm">
@@ -220,7 +220,7 @@ export default async function Home() {
                 <Link href="/auth/sign-up">
                   <Sparkles className="h-5 w-5" />
                   {t("cta.button")}
-                  <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
+                  <ArrowRight className="h-5 w-5" />
                 </Link>
               </Button>
               <Button

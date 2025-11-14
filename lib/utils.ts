@@ -40,6 +40,7 @@ export function generateAvatarFallback(name: string): string {
 }
 
 export function getNamePart(fullName: string, index: number): string {
+  if (!fullName) return "";
   const parts = fullName?.trim().split(/\s+/) ?? [];
   return parts[index - 1] ?? "";
 }

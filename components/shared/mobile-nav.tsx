@@ -91,7 +91,7 @@ export function MobileNav({ navItems }: MobileNavProps) {
           <SheetTitle className="flex items-center gap-2" asChild>
             <Link
               href={DEFAULT_HOME_REDIRECT}
-              className="group flex items-center gap-2 transition-transform hover:scale-105"
+              className="group flex items-center gap-2"
             >
               <div className="relative flex h-8 w-8 items-center justify-center rounded-md bg-linear-to-br from-blue-500 to-purple-600 shadow-lg transition-all group-hover:shadow-xl group-hover:shadow-purple-500/50">
                 <Sparkles className="h-5 w-5 text-white" />

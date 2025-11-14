@@ -13,7 +13,7 @@ export function SettingsHeader({ title, description }: HeaderProps) {
     <div className="flex flex-col">
       <h1 className="text-lg font-medium">{title}</h1>
       {description && <p>{description}</p>}
-      <Separator className="w-full" />
+      <Separator className="mt-2" />
     </div>
   );
 }

@@ -37,6 +37,10 @@
     },
     "description": "Veuillez saisir votre mot de passe pour confirmer cette action."
   },
+  "DashboardLayout": {
+    "dashboard": "Tableau de bord",
+    "feedbacks": "Feedbacks"
+  },
   "DashboardPage": {
     "administrator": "Administrateur",
     "dashboard": "Tableau de bord",
@@ -49,13 +53,9 @@
     },
     "signOut": "Se déconnecter",
     "status": {
-      "active": "Actif",
-      "fullAccess": "Accès complet",
       "memberSince": "Membre depuis",
       "no": "Non",
-      "premium": "Premium",
       "securityEnhanced": "Sécurité renforcée",
-      "statusLabel": "Status",
       "verified": "Compte vérifié",
       "yes": "Oui"
     },
@@ -84,28 +84,16 @@
   },
   "FeedbackForm": {
     "category": {
-      "label": "Catégorie",
       "options": {
-        "BUG": "Bug",
-        "FEATURE": "Nouvelle fonctionnalité",
-        "IMPROVEMENT": "Amélioration",
-        "OTHER": "Autre"
-      },
-      "placeholder": "Sélectionnez une catégorie"
+      }
     },
     "email": {
-      "hint": "Nous l'utiliserons uniquement pour répondre à votre retour.",
-      "label": "Adresse e-mail (facultatif)"
     },
     "message": {
-      "label": "Message",
-      "placeholder": "Dites-nous ce que vous pensez de degni-kit, quelles fonctionnalités vous aimeriez, ou signalez des problèmes..."
     },
     "name": {
-      "label": "Nom (facultatif)"
     },
     "rating": {
-      "label": "Comment évalueriez-vous votre expérience ?"
     }
   },
   "Form": {
@@ -130,10 +118,6 @@
         }
       },
       "categories": {
-        "bugs": "Bugs",
-        "features": "Fonctionnalités",
-        "improvements": "Améliorations",
-        "other": "Autres",
         "title": "Feedbacks par catégorie"
       },
       "stats": {
@@ -213,8 +197,7 @@
       "generic": "Une erreur est survenue, veuillez réessayer.",
       "invalidCode": "Le code est invalide ou a expiré.",
       "message": {
-        "minLength": "Le message doit contenir au moins {minLength} caractères.",
-        "required": "Le message est requis."
+        "minLength": "Le message doit contenir au moins {minLength} caractères."
       },
       "name": {
         "maxLength": "Le nom ne peut pas dépasser {maxLength} caractères.",
@@ -240,10 +223,6 @@
     },
     "feedback": {
       "category": {
-        "bug": "Bug",
-        "feature": "Nouvelle fonctionnalité",
-        "improvement": "Amélioration",
-        "other": "Autre"
       },
       "errors": {
         "rating": {

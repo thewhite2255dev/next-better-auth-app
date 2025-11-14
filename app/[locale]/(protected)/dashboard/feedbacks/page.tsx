@@ -64,7 +64,7 @@ export default async function AdminFeedbacksPage({
         <div className="absolute bottom-0 left-1/3 h-96 w-96 animate-pulse rounded-full bg-purple-500/10 blur-3xl [animation-delay:4s]" />
       </div>
 
-      <main className="relative container mx-auto min-h-screen space-y-8 py-8">
+      <main className="relative min-h-screen space-y-8">
         {/* Header */}
         <div className="space-y-2">
           <h1 className="from-foreground to-foreground/70 bg-linear-to-r bg-clip-text text-4xl font-bold tracking-tight text-transparent">

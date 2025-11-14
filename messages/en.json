@@ -37,6 +37,10 @@
     },
     "description": "Please enter your password to confirm this action."
   },
+  "DashboardLayout": {
+    "dashboard": "Dashboard",
+    "feedbacks": "Feedback"
+  },
   "DashboardPage": {
     "administrator": "Administrator",
     "dashboard": "Dashboard",
@@ -49,13 +53,9 @@
     },
     "signOut": "Sign out",
     "status": {
-      "active": "Active",
-      "fullAccess": "Full access",
       "memberSince": "Member since",
       "no": "No",
-      "premium": "Premium",
       "securityEnhanced": "Enhanced security",
-      "statusLabel": "Status",
       "verified": "Verified account",
       "yes": "Yes"
     },
@@ -84,28 +84,16 @@
   },
   "FeedbackForm": {
     "category": {
-      "label": "Category",
       "options": {
-        "BUG": "Bug",
-        "FEATURE": "New feature",
-        "IMPROVEMENT": "Improvement",
-        "OTHER": "Other"
-      },
-      "placeholder": "Select a category"
+      }
     },
     "email": {
-      "hint": "We'll only use this to respond to your feedback.",
-      "label": "Email address (optional)"
     },
     "message": {
-      "label": "Message",
-      "placeholder": "Tell us what you think about degni-kit, what features you'd like, or report any issues..."
     },
     "name": {
-      "label": "Name (optional)"
     },
     "rating": {
-      "label": "How would you rate your experience?"
     }
   },
   "Form": {
@@ -130,10 +118,6 @@
         }
       },
       "categories": {
-        "bugs": "Bugs",
-        "features": "Features",
-        "improvements": "Improvements",
-        "other": "Other",
         "title": "Feedbacks by category"
       },
       "stats": {
@@ -213,8 +197,7 @@
       "generic": "An error occurred, please try again.",
       "invalidCode": "The code is invalid or has expired.",
       "message": {
-        "minLength": "The message must contain at least {minLength} characters.",
-        "required": "The message is required."
+        "minLength": "The message must contain at least {minLength} characters."
       },
       "name": {
         "maxLength": "Name cannot exceed {maxLength} characters.",
@@ -240,10 +223,6 @@
     },
     "feedback": {
       "category": {
-        "bug": "Bug",
-        "feature": "Feature request",
-        "improvement": "Improvement",
-        "other": "Other"
       },
       "errors": {
         "rating": {
@@ -301,7 +280,8 @@
       "administrator": "Administrator",
       "signOut": "Sign out",
       "success": "Profile has been updated successfully.",
-      "updateButton": "Update profile"
+      "updateButton": "Update profile",
+      "user": "User"
     },
     "resetPassword": {
       "button": "Reset password",
