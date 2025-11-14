@@ -83,7 +83,7 @@ export default function SettingsLayout({ children }: SettingsLayoutProps) {
                 key={item.label}
                 href={item.href}
                 className={cn(
-                  "group relative flex h-9 items-center gap-3 overflow-hidden rounded-md px-4 py-2 transition-all duration-200",
+                  "group relative flex h-9 items-center gap-3 overflow-hidden rounded-md px-4 py-2",
                   isActive
                     ? "text-foreground bg-linear-to-r from-blue-500/10 to-blue-600/10 ring-1 ring-blue-500/20"
                     : "text-muted-foreground hover:bg-accent hover:text-foreground",
@@ -92,7 +92,7 @@ export default function SettingsLayout({ children }: SettingsLayoutProps) {
                 {/* Icon with background */}
                 <div
                   className={cn(
-                    "relative flex h-6 w-6 items-center justify-center rounded-md transition-all duration-200",
+                    "relative flex h-6 w-6 items-center justify-center rounded-md",
                     isActive
                       ? "bg-blue-500/20"
                       : "bg-muted/50 group-hover:bg-blue-500/10",
@@ -100,7 +100,7 @@ export default function SettingsLayout({ children }: SettingsLayoutProps) {
                 >
                   <item.icon
                     className={cn(
-                      "h-4 w-4 transition-all duration-200",
+                      "h-4 w-4",
                       isActive
                         ? "text-blue-500"
                         : "text-muted-foreground group-hover:text-blue-500",
@@ -114,7 +114,7 @@ export default function SettingsLayout({ children }: SettingsLayoutProps) {
                 {/* Label */}
                 <span
                   className={cn(
-                    "font-medium transition-all duration-200",
+                    "font-medium",
                     isActive
                       ? "text-foreground"
                       : "group-hover:text-foreground",
@@ -125,7 +125,7 @@ export default function SettingsLayout({ children }: SettingsLayoutProps) {
 
                 {/* Hover gradient effect */}
                 {!isActive && (
-                  <div className="absolute inset-0 -z-10 rounded-md bg-linear-to-r from-blue-500/0 via-blue-500/5 to-blue-500/0 opacity-0 transition-opacity duration-200 group-hover:opacity-100" />
+                  <div className="absolute inset-0 -z-10 rounded-md bg-linear-to-r from-blue-500/0 via-blue-500/5 to-blue-500/0" />
                 )}
               </Link>
             );

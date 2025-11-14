@@ -95,7 +95,7 @@ export default async function DashboardPage() {
           </div>
 
           {/* Profile Card */}
-          <Card className="border-primary/20 from-card to-card/50 overflow-hidden bg-linear-to-br transition-all">
+          <Card className="border-primary/20 from-card to-card/50 overflow-hidden bg-linear-to-br">
             <CardContent className="space-y-4">
               <div className="flex items-start justify-between">
                 <div className="flex items-center gap-4">
@@ -141,7 +141,7 @@ export default async function DashboardPage() {
           {/* Stats Grid */}
           <div className="grid gap-6 sm:grid-cols-2">
             <Card className="group relative overflow-hidden border-blue-500/20 bg-linear-to-br from-blue-500/5 to-blue-600/5">
-              <div className="absolute top-0 right-0 h-24 w-24 translate-x-8 -translate-y-8 rounded-full bg-blue-500/20 blur-2xl transition-all group-hover:scale-150" />
+              <div className="absolute top-0 right-0 h-24 w-24 translate-x-8 -translate-y-8 rounded-full bg-blue-500/20 blur-2xl" />
               <CardHeader className="relative flex flex-row items-center justify-between space-y-0 pb-2">
                 <CardTitle className="text-sm font-medium">
                   {t("status.verified")}
@@ -164,7 +164,7 @@ export default async function DashboardPage() {
             </Card>
 
             <Card className="group relative overflow-hidden border-purple-500/20 bg-linear-to-br from-purple-500/5 to-purple-600/5">
-              <div className="absolute top-0 right-0 h-24 w-24 translate-x-8 -translate-y-8 rounded-full bg-purple-500/20 blur-2xl transition-all group-hover:scale-150" />
+              <div className="absolute top-0 right-0 h-24 w-24 translate-x-8 -translate-y-8 rounded-full bg-purple-500/20 blur-2xl" />
               <CardHeader className="relative flex flex-row items-center justify-between space-y-0 pb-2">
                 <CardTitle className="text-sm font-medium">
                   {t("status.memberSince")}

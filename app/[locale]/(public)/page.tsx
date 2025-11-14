@@ -175,10 +175,10 @@ export default async function Home({
             {features.map((feature, index) => (
               <Card
                 key={index}
-                className="group border-primary/10 from-card to-card/50 relative overflow-hidden bg-linear-to-br hover:scale-[1.02]"
+                className="group border-primary/10 from-card to-card/50 relative overflow-hidden bg-linear-to-br"
               >
                 <div
-                  className={`absolute top-0 right-0 h-32 w-32 translate-x-16 -translate-y-16 rounded-full bg-linear-to-br ${feature.gradient} opacity-20 blur-2xl group-hover:scale-150`}
+                  className={`absolute top-0 right-0 h-32 w-32 translate-x-16 -translate-y-16 rounded-full bg-linear-to-br ${feature.gradient} opacity-20 blur-2xl`}
                 />
                 <CardContent className="relative p-6">
                   <div
@@ -270,7 +270,7 @@ export default async function Home({
                       href={siteConfig.links.github}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="hover:text-foreground flex items-center gap-2 transition-colors"
+                      className="hover:text-foreground flex items-center gap-2"
                     >
                       <Github className="h-4 w-4" />
                       {t("footer.github")}
@@ -281,7 +281,7 @@ export default async function Home({
                       href={`${siteConfig.links.github}/issues`}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="hover:text-foreground transition-colors"
+                      className="hover:text-foreground"
                     >
                       {t("footer.documentation")}
                     </a>
@@ -291,7 +291,7 @@ export default async function Home({
                       href={`${siteConfig.links.github}/discussions`}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="hover:text-foreground transition-colors"
+                      className="hover:text-foreground"
                     >
                       {t("footer.community")}
                     </a>
@@ -310,7 +310,7 @@ export default async function Home({
                       href={`${siteConfig.links.github}/issues/new`}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="hover:text-foreground transition-colors"
+                      className="hover:text-foreground"
                     >
                       {t("footer.reportIssues")}
                     </a>
@@ -320,7 +320,7 @@ export default async function Home({
                       href={`${siteConfig.links.github}/pulls`}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="hover:text-foreground transition-colors"
+                      className="hover:text-foreground"
                     >
                       {t("footer.pullRequests")}
                     </a>
@@ -330,7 +330,7 @@ export default async function Home({
                       href={`${siteConfig.links.github}/blob/main/CONTRIBUTING.md`}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="hover:text-foreground transition-colors"
+                      className="hover:text-foreground"
                     >
                       {t("footer.contributingGuide")}
                     </a>
@@ -349,7 +349,7 @@ export default async function Home({
                       href={`${siteConfig.links.github}/releases`}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="hover:text-foreground transition-colors"
+                      className="hover:text-foreground"
                     >
                       {t("footer.releases")}
                     </a>
@@ -359,7 +359,7 @@ export default async function Home({
                       href={`${siteConfig.links.github}/blob/main/CHANGELOG.md`}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="hover:text-foreground transition-colors"
+                      className="hover:text-foreground"
                     >
                       {t("footer.changelog")}
                     </a>
@@ -369,7 +369,7 @@ export default async function Home({
                       href={`${siteConfig.links.github}/blob/main/LICENSE`}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="hover:text-foreground transition-colors"
+                      className="hover:text-foreground"
                     >
                       {t("footer.license")}
                     </a>

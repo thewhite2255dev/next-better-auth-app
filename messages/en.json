@@ -535,5 +535,12 @@
       }
     },
     "settings": "Settings"
+  },
+  "Common": {
+    "back": "Back",
+    "menu": "Menu",
+    "scrollToTop": "Scroll to top",
+    "loading": "Loading",
+    "close": "Close"
   }
 }

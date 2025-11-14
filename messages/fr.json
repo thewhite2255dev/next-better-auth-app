@@ -535,5 +535,12 @@
       }
     },
     "settings": "Paramètres"
+  },
+  "Common": {
+    "back": "Retour",
+    "menu": "Menu",
+    "scrollToTop": "Retour en haut",
+    "loading": "Chargement",
+    "close": "Fermer"
   }
 }

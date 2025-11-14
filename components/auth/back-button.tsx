@@ -14,7 +14,7 @@ interface BackButtonProps extends React.ComponentProps<"button"> {
 
 export function BackButton({
   href,
-  label = "Back",
+  label,
   showIcon = true,
   variant = "link",
   className,

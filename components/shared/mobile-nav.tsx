@@ -79,7 +79,7 @@ export function MobileNav({ navItems }: MobileNavProps) {
           variant="ghost"
           size="icon-sm"
           className="lg:hidden"
-          aria-label="Menu"
+          aria-label={t("Common.menu")}
         >
           <Menu />
         </Button>
@@ -96,7 +96,7 @@ export function MobileNav({ navItems }: MobileNavProps) {
             >
               <div className="relative flex h-8 w-8 items-center justify-center rounded-md bg-linear-to-br from-blue-500 to-purple-600">
                 <Sparkles className="h-5 w-5 text-white" />
-                <div className="absolute inset-0 rounded-xl bg-white/20 opacity-0 group-hover:opacity-100" />
+                <div className="absolute inset-0 rounded-xl bg-white/20" />
               </div>
               <span className="bg-linear-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-xl font-bold text-transparent">
                 {siteConfig.siteName}

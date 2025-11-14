@@ -28,9 +28,9 @@ export default function Layout({ children }: { children: React.ReactNode }) {
               href={DEFAULT_HOME_REDIRECT}
               className="group flex items-center gap-2"
             >
-              <div className="relative flex h-8 w-8 items-center justify-center rounded-md bg-linear-to-br from-blue-500 to-purple-600 transition-all">
+              <div className="relative flex h-8 w-8 items-center justify-center rounded-md bg-linear-to-br from-blue-500 to-purple-600">
                 <Sparkles className="h-5 w-5 text-white" />
-                <div className="absolute inset-0 rounded-xl bg-white/20 opacity-0 transition-opacity group-hover:opacity-100" />
+                <div className="absolute inset-0 rounded-xl bg-white/20" />
               </div>
               <span className="bg-linear-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-xl font-bold text-transparent">
                 {siteConfig.siteName}
