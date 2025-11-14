@@ -28,7 +28,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
               href={DEFAULT_HOME_REDIRECT}
               className="group flex items-center gap-2"
             >
-              <div className="relative flex h-8 w-8 items-center justify-center rounded-md bg-linear-to-br from-blue-500 to-purple-600 shadow-lg transition-all group-hover:shadow-xl group-hover:shadow-purple-500/50">
+              <div className="relative flex h-8 w-8 items-center justify-center rounded-md bg-linear-to-br from-blue-500 to-purple-600 transition-all">
                 <Sparkles className="h-5 w-5 text-white" />
                 <div className="absolute inset-0 rounded-xl bg-white/20 opacity-0 transition-opacity group-hover:opacity-100" />
               </div>

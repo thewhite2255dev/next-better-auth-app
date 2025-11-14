@@ -94,11 +94,11 @@ export function ProfileForm() {
 
   return (
     <>
-      <Card className="border-primary/20 from-card to-card/50 overflow-hidden rounded-md bg-linear-to-br shadow-xl transition-all hover:shadow-2xl">
+      <Card className="border-primary/20 from-card to-card/50 overflow-hidden rounded-md bg-linear-to-br">
         <CardContent className="space-y-4 px-4">
           <div className="flex items-center justify-between gap-2">
             <div className="flex items-center gap-4">
-              <Avatar className="border-primary/20 ring-primary/10 size-16 border-4 shadow-lg ring-4 lg:size-20">
+              <Avatar className="border-primary/20 ring-primary/10 size-16 border-4 ring-4 lg:size-20">
                 <AvatarImage
                   src={session?.user.image ?? ""}
                   alt={session?.user.name}

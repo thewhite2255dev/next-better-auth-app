@@ -21,7 +21,7 @@ export function StarRating({
           key={star}
           type="button"
           onClick={() => onChange?.(star)}
-          className={cn("transition-all hover:scale-110", className)}
+          className={cn(className)}
         >
           <Star
             className={`h-5 w-5 ${

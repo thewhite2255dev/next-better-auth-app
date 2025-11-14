@@ -29,12 +29,18 @@ export function FeedbackFilters() {
     IMPROVEMENT: Settings2,
     OTHER: MessageCircle,
   };
+  const categoryItems: Record<string, string> = {
+    BUG: t("Form.feedback.category.bug"),
+    FEATURE: t("Form.feedback.category.feature"),
+    IMPROVEMENT: t("Form.feedback.category.improvement"),
+    OTHER: t("Form.feedback.category.other"),
+  };
 
   const feedbackCategoryItems = Object.entries(categoryIcon).map(
     ([key, Icon]) => (
       <SelectItem key={key} value={key}>
         <Icon className="h-4 w-4" />
-        {t(`Form.feedback.category.${key.toLowerCase()}`)}
+        {categoryItems[key]}
       </SelectItem>
     ),
   );

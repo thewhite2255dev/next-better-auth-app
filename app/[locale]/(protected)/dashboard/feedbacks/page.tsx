@@ -77,7 +77,7 @@ export default async function AdminFeedbacksPage({
 
         {/* Stats Cards */}
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          <Card className="group relative overflow-hidden border-blue-500/20 bg-linear-to-br from-blue-500/5 to-blue-600/5 transition-all hover:scale-[1.02] hover:shadow-xl">
+          <Card className="group relative overflow-hidden border-blue-500/20 bg-linear-to-br from-blue-500/5 to-blue-600/5">
             <div className="absolute top-0 right-0 h-24 w-24 translate-x-8 -translate-y-8 rounded-full bg-blue-500/20 blur-2xl transition-all group-hover:scale-150" />
             <CardHeader className="relative flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium">
@@ -96,7 +96,7 @@ export default async function AdminFeedbacksPage({
             </CardContent>
           </Card>
 
-          <Card className="group relative overflow-hidden border-amber-500/20 bg-linear-to-br from-amber-500/5 to-amber-600/5 transition-all hover:scale-[1.02] hover:shadow-xl">
+          <Card className="group relative overflow-hidden border-amber-500/20 bg-linear-to-br from-amber-500/5 to-amber-600/5">
             <div className="absolute top-0 right-0 h-24 w-24 translate-x-8 -translate-y-8 rounded-full bg-amber-500/20 blur-2xl transition-all group-hover:scale-150" />
             <CardHeader className="relative flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium">
@@ -117,7 +117,7 @@ export default async function AdminFeedbacksPage({
             </CardContent>
           </Card>
 
-          <Card className="group relative overflow-hidden border-emerald-500/20 bg-linear-to-br from-emerald-500/5 to-emerald-600/5 transition-all hover:scale-[1.02] hover:shadow-xl">
+          <Card className="group relative overflow-hidden border-emerald-500/20 bg-linear-to-br from-emerald-500/5 to-emerald-600/5">
             <div className="absolute top-0 right-0 h-24 w-24 translate-x-8 -translate-y-8 rounded-full bg-emerald-500/20 blur-2xl transition-all group-hover:scale-150" />
             <CardHeader className="relative flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium">
@@ -138,7 +138,7 @@ export default async function AdminFeedbacksPage({
             </CardContent>
           </Card>
 
-          <Card className="group relative overflow-hidden border-purple-500/20 bg-linear-to-br from-purple-500/5 to-purple-600/5 transition-all hover:scale-[1.02] hover:shadow-xl">
+          <Card className="group relative overflow-hidden border-purple-500/20 bg-linear-to-br from-purple-500/5 to-purple-600/5">
             <div className="absolute top-0 right-0 h-24 w-24 translate-x-8 -translate-y-8 rounded-full bg-purple-500/20 blur-2xl transition-all group-hover:scale-150" />
             <CardHeader className="relative flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium">
@@ -161,7 +161,7 @@ export default async function AdminFeedbacksPage({
         </div>
 
         {/* Category Stats */}
-        <Card className="border-primary/20 from-card to-card/50 overflow-hidden bg-linear-to-br shadow-xl transition-all hover:shadow-2xl">
+        <Card className="border-primary/20 from-card to-card/50 overflow-hidden bg-linear-to-br transition-all">
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
               <BarChart3 className="h-5 w-5" />
@@ -170,14 +170,16 @@ export default async function AdminFeedbacksPage({
           </CardHeader>
           <CardContent>
             <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-              <div className="group relative overflow-hidden rounded-lg border border-red-500/20 bg-linear-to-br from-red-500/5 to-red-600/5 p-4 transition-all hover:scale-[1.02] hover:shadow-lg">
+              <div className="group relative overflow-hidden rounded-lg border border-red-500/20 bg-linear-to-br from-red-500/5 to-red-600/5 p-4">
                 <div className="absolute top-0 right-0 h-16 w-16 translate-x-4 -translate-y-4 rounded-full bg-red-500/20 blur-xl transition-all group-hover:scale-150" />
                 <div className="relative flex items-center justify-between">
                   <div className="flex items-center gap-2">
                     <div className="rounded-lg bg-red-500/10 p-2">
                       <Bug className="h-5 w-5 text-red-500" />
                     </div>
-                    <span className="font-medium">Bugs</span>
+                    <span className="font-medium">
+                      {t("Form.admin.categories.bug")}
+                    </span>
                   </div>
                   <span className="text-2xl font-bold">
                     {stats.byCategory.BUG}
@@ -185,14 +187,16 @@ export default async function AdminFeedbacksPage({
                 </div>
               </div>
 
-              <div className="group relative overflow-hidden rounded-lg border border-blue-500/20 bg-linear-to-br from-blue-500/5 to-blue-600/5 p-4 transition-all hover:scale-[1.02] hover:shadow-lg">
+              <div className="group relative overflow-hidden rounded-lg border border-blue-500/20 bg-linear-to-br from-blue-500/5 to-blue-600/5 p-4">
                 <div className="absolute top-0 right-0 h-16 w-16 translate-x-4 -translate-y-4 rounded-full bg-blue-500/20 blur-xl transition-all group-hover:scale-150" />
                 <div className="relative flex items-center justify-between">
                   <div className="flex items-center gap-2">
                     <div className="rounded-lg bg-blue-500/10 p-2">
                       <Sparkles className="h-5 w-5 text-blue-500" />
                     </div>
-                    <span className="font-medium">Features</span>
+                    <span className="font-medium">
+                      {t("Form.admin.categories.feature")}
+                    </span>
                   </div>
                   <span className="text-2xl font-bold">
                     {stats.byCategory.FEATURE}
@@ -200,14 +204,16 @@ export default async function AdminFeedbacksPage({
                 </div>
               </div>
 
-              <div className="group relative overflow-hidden rounded-lg border border-violet-500/20 bg-linear-to-br from-violet-500/5 to-violet-600/5 p-4 transition-all hover:scale-[1.02] hover:shadow-lg">
+              <div className="group relative overflow-hidden rounded-lg border border-violet-500/20 bg-linear-to-br from-violet-500/5 to-violet-600/5 p-4">
                 <div className="absolute top-0 right-0 h-16 w-16 translate-x-4 -translate-y-4 rounded-full bg-violet-500/20 blur-xl transition-all group-hover:scale-150" />
                 <div className="relative flex items-center justify-between">
                   <div className="flex items-center gap-2">
                     <div className="rounded-lg bg-violet-500/10 p-2">
                       <Settings2 className="h-5 w-5 text-violet-500" />
                     </div>
-                    <span className="font-medium">Improvements</span>
+                    <span className="font-medium">
+                      {t("Form.admin.categories.improvement")}
+                    </span>
                   </div>
                   <span className="text-2xl font-bold">
                     {stats.byCategory.IMPROVEMENT}
@@ -215,14 +221,16 @@ export default async function AdminFeedbacksPage({
                 </div>
               </div>
 
-              <div className="group relative overflow-hidden rounded-lg border border-emerald-500/20 bg-linear-to-br from-emerald-500/5 to-emerald-600/5 p-4 transition-all hover:scale-[1.02] hover:shadow-lg">
+              <div className="group relative overflow-hidden rounded-lg border border-emerald-500/20 bg-linear-to-br from-emerald-500/5 to-emerald-600/5 p-4">
                 <div className="absolute top-0 right-0 h-16 w-16 translate-x-4 -translate-y-4 rounded-full bg-emerald-500/20 blur-xl transition-all group-hover:scale-150" />
                 <div className="relative flex items-center justify-between">
                   <div className="flex items-center gap-2">
                     <div className="rounded-lg bg-emerald-500/10 p-2">
                       <MessageCircle className="h-5 w-5 text-emerald-500" />
                     </div>
-                    <span className="font-medium">Other</span>
+                    <span className="font-medium">
+                      {t("Form.admin.categories.other")}
+                    </span>
                   </div>
                   <span className="text-2xl font-bold">
                     {stats.byCategory.OTHER}
@@ -237,7 +245,7 @@ export default async function AdminFeedbacksPage({
         <FeedbackFilters />
 
         {/* Table */}
-        <Card className="border-primary/20 from-card to-card/50 overflow-hidden bg-linear-to-br shadow-xl">
+        <Card className="border-primary/20 from-card to-card/50 overflow-hidden bg-linear-to-br">
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
               <MessageCircle className="h-5 w-5" />
@@ -257,10 +265,10 @@ export default async function AdminFeedbacksPage({
                 <a
                   key={p}
                   href={`?page=${p}${status ? `&status=${status}` : ""}${category ? `&category=${category}` : ""}`}
-                  className={`group rounded-lg border px-4 py-2 transition-all ${
+                  className={`group rounded-lg border px-4 py-2 ${
                     p === page
-                      ? "bg-primary text-primary-foreground shadow-lg"
-                      : "hover:bg-accent hover:scale-105 hover:shadow-md"
+                      ? "bg-primary text-primary-foreground"
+                      : "hover:bg-accent"
                   }`}
                 >
                   {p}

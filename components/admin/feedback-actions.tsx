@@ -33,7 +33,7 @@ type FeedbackActionsProps = {
 };
 
 export function FeedbackActions({ feedback, onUpdate }: FeedbackActionsProps) {
-  const t = useTranslations("Form.admin.actions");
+  const t = useTranslations();
   const [isPending, startTransition] = useTransition();
   const [showDeleteDialog, setShowDeleteDialog] = useState<boolean>(false);
 
@@ -42,10 +42,12 @@ export function FeedbackActions({ feedback, onUpdate }: FeedbackActionsProps) {
       try {
         await updateFeedbackStatus(feedback.id, status);
         toast.success(
-          t("toast.statusUpdated", { status: status.toLowerCase() }),
+          t("Form.admin.actions.toast.statusUpdated", {
+            status: status.toLowerCase(),
+          }),
         );
       } catch (_error) {
-        toast.error(t("toast.statusUpdateFailed"));
+        toast.error(t("Form.errors.generic"));
       }
     });
   };
@@ -54,11 +56,11 @@ export function FeedbackActions({ feedback, onUpdate }: FeedbackActionsProps) {
     startTransition(async () => {
       try {
         await deleteFeedback(feedback.id);
-        toast.success(t("toast.deleted"));
+        toast.success(t("Form.admin.actions.toast.deleted"));
         setShowDeleteDialog(false);
         onUpdate();
       } catch (_error) {
-        toast.error(t("toast.deleteFailed"));
+        toast.error(t("Form.errors.generic"));
       }
     });
   };
@@ -75,19 +77,19 @@ export function FeedbackActions({ feedback, onUpdate }: FeedbackActionsProps) {
           {feedback.status !== "RESOLVED" && (
             <DropdownMenuItem onClick={() => handleStatusChange("RESOLVED")}>
               <Check className="h-4 w-4 text-emerald-600" />
-              {t("markResolved")}
+              {t("Form.admin.actions.markResolved")}
             </DropdownMenuItem>
           )}
           {feedback.status !== "REJECTED" && (
             <DropdownMenuItem onClick={() => handleStatusChange("REJECTED")}>
               <X className="h-4 w-4 text-red-600" />
-              {t("markRejected")}
+              {t("Form.admin.actions.markRejected")}
             </DropdownMenuItem>
           )}
           {feedback.status !== "PENDING" && (
             <DropdownMenuItem onClick={() => handleStatusChange("PENDING")}>
               <Clock className="h-4 w-4 text-yellow-600" />
-              {t("markPending")}
+              {t("Form.admin.actions.markPending")}
             </DropdownMenuItem>
           )}
           <DropdownMenuItem
@@ -95,7 +97,7 @@ export function FeedbackActions({ feedback, onUpdate }: FeedbackActionsProps) {
             className="text-destructive"
           >
             <Trash2 className="h-4 w-4" />
-            {t("delete")}
+            {t("Form.admin.actions.delete")}
           </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>
@@ -103,14 +105,16 @@ export function FeedbackActions({ feedback, onUpdate }: FeedbackActionsProps) {
       <AlertDialog open={showDeleteDialog} onOpenChange={setShowDeleteDialog}>
         <AlertDialogContent>
           <AlertDialogHeader>
-            <AlertDialogTitle>{t("deleteDialog.title")}</AlertDialogTitle>
+            <AlertDialogTitle>
+              {t("Form.admin.actions.deleteDialog.title")}
+            </AlertDialogTitle>
             <AlertDialogDescription>
-              {t("deleteDialog.description")}
+              {t("Form.admin.actions.deleteDialog.description")}
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>
             <AlertDialogCancel disabled={isPending}>
-              {t("deleteDialog.cancel")}
+              {t("Form.admin.actions.deleteDialog.cancel")}
             </AlertDialogCancel>
             <AlertDialogAction
               onClick={handleDelete}
@@ -118,8 +122,8 @@ export function FeedbackActions({ feedback, onUpdate }: FeedbackActionsProps) {
               className="bg-destructive text-destructive-foreground hover:bg-destructive/90"
             >
               {isPending
-                ? t("deleteDialog.deleting")
-                : t("deleteDialog.confirm")}
+                ? t("Form.admin.actions.deleteDialog.deleting")
+                : t("Form.admin.actions.deleteDialog.confirm")}
             </AlertDialogAction>
           </AlertDialogFooter>
         </AlertDialogContent>

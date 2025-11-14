@@ -83,15 +83,11 @@ export default async function DashboardPage() {
                 {t("dashboard")}
               </h1>
               <p className="text-muted-foreground text-lg">
-                {t("welcome")}, {getNamePart(session.user.name, 1)} 👋
+                {t("welcome")}, {session.user.name} 👋
               </p>
             </div>
             <SignOut className="w-max">
-              <Button
-                variant="outline"
-                size="lg"
-                className="group transition-all hover:scale-105"
-              >
+              <Button variant="outline" size="lg" className="group">
                 <LogOut className="h-4 w-4" />
                 {t("signOut")}
               </Button>
@@ -99,11 +95,11 @@ export default async function DashboardPage() {
           </div>
 
           {/* Profile Card */}
-          <Card className="border-primary/20 from-card to-card/50 overflow-hidden bg-linear-to-br shadow-xl transition-all hover:shadow-2xl">
+          <Card className="border-primary/20 from-card to-card/50 overflow-hidden bg-linear-to-br transition-all">
             <CardContent className="space-y-4">
               <div className="flex items-start justify-between">
                 <div className="flex items-center gap-4">
-                  <Avatar className="border-primary/20 ring-primary/10 size-16 border-4 shadow-lg ring-4 lg:size-20">
+                  <Avatar className="border-primary/20 ring-primary/10 size-16 border-4 ring-4 lg:size-20">
                     <AvatarFallback className="from-primary to-primary/80 text-primary-foreground bg-linear-to-br text-2xl font-bold">
                       {generateAvatarFallback(session?.user.name ?? "")}
                     </AvatarFallback>
@@ -144,7 +140,7 @@ export default async function DashboardPage() {
 
           {/* Stats Grid */}
           <div className="grid gap-6 sm:grid-cols-2">
-            <Card className="group relative overflow-hidden border-blue-500/20 bg-linear-to-br from-blue-500/5 to-blue-600/5 transition-all hover:scale-[1.02] hover:shadow-xl">
+            <Card className="group relative overflow-hidden border-blue-500/20 bg-linear-to-br from-blue-500/5 to-blue-600/5">
               <div className="absolute top-0 right-0 h-24 w-24 translate-x-8 -translate-y-8 rounded-full bg-blue-500/20 blur-2xl transition-all group-hover:scale-150" />
               <CardHeader className="relative flex flex-row items-center justify-between space-y-0 pb-2">
                 <CardTitle className="text-sm font-medium">
@@ -167,7 +163,7 @@ export default async function DashboardPage() {
               </CardContent>
             </Card>
 
-            <Card className="group relative overflow-hidden border-purple-500/20 bg-linear-to-br from-purple-500/5 to-purple-600/5 transition-all hover:scale-[1.02] hover:shadow-xl">
+            <Card className="group relative overflow-hidden border-purple-500/20 bg-linear-to-br from-purple-500/5 to-purple-600/5">
               <div className="absolute top-0 right-0 h-24 w-24 translate-x-8 -translate-y-8 rounded-full bg-purple-500/20 blur-2xl transition-all group-hover:scale-150" />
               <CardHeader className="relative flex flex-row items-center justify-between space-y-0 pb-2">
                 <CardTitle className="text-sm font-medium">
@@ -204,7 +200,7 @@ export default async function DashboardPage() {
                 <Link href="/settings/profile">
                   <Button
                     variant="outline"
-                    className="hover:border-primary h-auto w-full flex-col gap-2 py-6 transition-all hover:scale-105"
+                    className="hover:border-primary h-auto w-full flex-col gap-2 py-6"
                   >
                     <UserCircle className="h-6 w-6" />
                     <span className="font-semibold">
@@ -215,7 +211,7 @@ export default async function DashboardPage() {
                 <Link href="/settings/security">
                   <Button
                     variant="outline"
-                    className="hover:border-primary h-auto w-full flex-col gap-2 py-6 transition-all hover:scale-105"
+                    className="hover:border-primary h-auto w-full flex-col gap-2 py-6"
                   >
                     <Shield className="h-6 w-6" />
                     <span className="font-semibold">
@@ -226,7 +222,7 @@ export default async function DashboardPage() {
                 <Link href="/settings/preferences">
                   <Button
                     variant="outline"
-                    className="hover:border-primary h-auto w-full flex-col gap-2 py-6 transition-all hover:scale-105"
+                    className="hover:border-primary h-auto w-full flex-col gap-2 py-6"
                   >
                     <Sliders className="h-6 w-6" />
                     <span className="font-semibold">
@@ -237,7 +233,7 @@ export default async function DashboardPage() {
                 <Link href="/settings/sessions">
                   <Button
                     variant="outline"
-                    className="hover:border-primary h-auto w-full flex-col gap-2 py-6 transition-all hover:scale-105"
+                    className="hover:border-primary h-auto w-full flex-col gap-2 py-6"
                   >
                     <KeyRound className="h-6 w-6" />
                     <span className="font-semibold">

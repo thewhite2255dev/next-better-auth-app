@@ -85,7 +85,7 @@ export default function SettingsLayout({ children }: SettingsLayoutProps) {
                 className={cn(
                   "group relative flex h-9 items-center gap-3 overflow-hidden rounded-md px-4 py-2 transition-all duration-200",
                   isActive
-                    ? "text-foreground bg-linear-to-r from-blue-500/10 to-blue-600/10 shadow-md ring-1 ring-blue-500/20"
+                    ? "text-foreground bg-linear-to-r from-blue-500/10 to-blue-600/10 ring-1 ring-blue-500/20"
                     : "text-muted-foreground hover:bg-accent hover:text-foreground",
                 )}
               >
@@ -94,7 +94,7 @@ export default function SettingsLayout({ children }: SettingsLayoutProps) {
                   className={cn(
                     "relative flex h-6 w-6 items-center justify-center rounded-md transition-all duration-200",
                     isActive
-                      ? "bg-blue-500/20 shadow-sm"
+                      ? "bg-blue-500/20"
                       : "bg-muted/50 group-hover:bg-blue-500/10",
                   )}
                 >

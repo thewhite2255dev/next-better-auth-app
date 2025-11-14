@@ -60,7 +60,7 @@ export default function VerificationEmail({
             <Section className="my-8 text-center">
               <Link
                 href={verificationLink}
-                className="inline-block rounded-lg bg-blue-600 px-8 py-3 text-base font-semibold text-white no-underline shadow-lg"
+                className="inline-block rounded-lg bg-blue-600 px-8 py-3 text-base font-semibold text-white no-underline"
               >
                 Verify Email Address
               </Link>

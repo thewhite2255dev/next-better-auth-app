@@ -97,23 +97,14 @@ export default async function Home({
 
           {/* CTA Buttons */}
           <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
-            <Button
-              size="lg"
-              className="group gap-2 shadow-lg transition-all hover:scale-105 hover:shadow-xl"
-              asChild
-            >
+            <Button size="lg" className="group gap-2" asChild>
               <Link href="/auth/sign-up">
                 <Rocket className="h-5 w-5" />
                 {t("hero.cta.primary")}
                 <ArrowRight className="h-5 w-5" />
               </Link>
             </Button>
-            <Button
-              size="lg"
-              variant="outline"
-              className="group gap-2 transition-all hover:scale-105"
-              asChild
-            >
+            <Button size="lg" variant="outline" className="group gap-2" asChild>
               <Link href="/auth/sign-in">
                 <Lock className="h-5 w-5" />
                 {t("hero.cta.secondary")}
@@ -123,7 +114,7 @@ export default async function Home({
 
           {/* Stats */}
           <div className="mt-16 grid grid-cols-2 gap-6 md:grid-cols-4">
-            <div className="group bg-card/50 rounded-lg border p-4 backdrop-blur transition-all hover:scale-105 hover:shadow-lg">
+            <div className="group bg-card/50 rounded-lg border p-4 backdrop-blur">
               <div className="mb-2 flex justify-center">
                 <Shield className="h-8 w-8 text-blue-500" />
               </div>
@@ -132,7 +123,7 @@ export default async function Home({
                 {t("stats.secureLabel")}
               </div>
             </div>
-            <div className="group bg-card/50 rounded-lg border p-4 backdrop-blur transition-all hover:scale-105 hover:shadow-lg">
+            <div className="group bg-card/50 rounded-lg border p-4 backdrop-blur">
               <div className="mb-2 flex justify-center">
                 <Zap className="h-8 w-8 text-amber-500" />
               </div>
@@ -141,7 +132,7 @@ export default async function Home({
                 {t("stats.fastLabel")}
               </div>
             </div>
-            <div className="group bg-card/50 rounded-lg border p-4 backdrop-blur transition-all hover:scale-105 hover:shadow-lg">
+            <div className="group bg-card/50 rounded-lg border p-4 backdrop-blur">
               <div className="mb-2 flex justify-center">
                 <Scale className="h-8 w-8 text-emerald-500" />
               </div>
@@ -150,7 +141,7 @@ export default async function Home({
                 {t("stats.modernLabel")}
               </div>
             </div>
-            <div className="group bg-card/50 rounded-lg border p-4 backdrop-blur transition-all hover:scale-105 hover:shadow-lg">
+            <div className="group bg-card/50 rounded-lg border p-4 backdrop-blur">
               <div className="mb-2 flex justify-center">
                 <Code2 className="h-8 w-8 text-purple-500" />
               </div>
@@ -184,14 +175,14 @@ export default async function Home({
             {features.map((feature, index) => (
               <Card
                 key={index}
-                className="group border-primary/10 from-card to-card/50 relative overflow-hidden bg-linear-to-br transition-all hover:scale-[1.02] hover:shadow-2xl"
+                className="group border-primary/10 from-card to-card/50 relative overflow-hidden bg-linear-to-br hover:scale-[1.02]"
               >
                 <div
-                  className={`absolute top-0 right-0 h-32 w-32 translate-x-16 -translate-y-16 rounded-full bg-linear-to-br ${feature.gradient} opacity-20 blur-2xl transition-all group-hover:scale-150`}
+                  className={`absolute top-0 right-0 h-32 w-32 translate-x-16 -translate-y-16 rounded-full bg-linear-to-br ${feature.gradient} opacity-20 blur-2xl group-hover:scale-150`}
                 />
                 <CardContent className="relative p-6">
                   <div
-                    className={`mb-4 inline-flex rounded-lg bg-linear-to-br ${feature.gradient} p-3 shadow-lg`}
+                    className={`mb-4 inline-flex rounded-lg bg-linear-to-br ${feature.gradient} p-3`}
                   >
                     <feature.icon className="h-6 w-6 text-white" />
                   </div>
@@ -218,23 +209,14 @@ export default async function Home({
               {t("cta.subtitle")}
             </p>
             <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
-              <Button
-                size="lg"
-                className="group gap-2 shadow-lg transition-all hover:scale-105"
-                asChild
-              >
+              <Button size="lg" className="group gap-2" asChild>
                 <Link href="/auth/sign-up">
                   <Sparkles className="h-5 w-5" />
                   {t("cta.button")}
                   <ArrowRight className="h-5 w-5" />
                 </Link>
               </Button>
-              <Button
-                size="lg"
-                variant="outline"
-                className="gap-2 transition-all hover:scale-105"
-                asChild
-              >
+              <Button size="lg" variant="outline" className="gap-2" asChild>
                 <a
                   href={siteConfig.links.github}
                   target="_blank"

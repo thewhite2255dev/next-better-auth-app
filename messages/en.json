@@ -67,34 +67,24 @@
       "cancel": "Cancel",
       "submit": "Send feedback"
     },
-    "category": {
-    },
+    "category": {},
     "description": "Help us improve degni-kit! Your feedback is valuable to the community.",
-    "email": {
-    },
-    "errors": {
-    },
-    "feedback": {
-    },
-    "rating": {
-    },
+    "email": {},
+    "errors": {},
+    "feedback": {},
+    "rating": {},
     "success": "Thank you for your feedback! 🎉",
     "title": "Share your feedback",
     "trigger": "Feedback"
   },
   "FeedbackForm": {
     "category": {
-      "options": {
-      }
+      "options": {}
     },
-    "email": {
-    },
-    "message": {
-    },
-    "name": {
-    },
-    "rating": {
-    }
+    "email": {},
+    "message": {},
+    "name": {},
+    "rating": {}
   },
   "Form": {
     "admin": {
@@ -111,13 +101,15 @@
         "markRejected": "Mark as rejected",
         "markResolved": "Mark as resolved",
         "toast": {
-          "deleteFailed": "Failed to delete feedback",
           "deleted": "Feedback deleted successfully",
-          "statusUpdateFailed": "Failed to update status",
           "statusUpdated": "Status updated to {status}"
         }
       },
       "categories": {
+        "bug": "Bugs",
+        "feature": "Features",
+        "improvement": "Improvements",
+        "other": "Other",
         "title": "Feedbacks by category"
       },
       "stats": {
@@ -213,8 +205,7 @@
         "minLength": "Password must be at least {minLength} characters.",
         "required": "Password is required."
       },
-      "rating": {
-      },
+      "rating": {},
       "token": {
         "invalid": "The link is invalid or has expired."
       },
@@ -223,6 +214,10 @@
     },
     "feedback": {
       "category": {
+        "bug": "Bug",
+        "feature": "Feature request",
+        "improvement": "Improvement",
+        "other": "Other"
       },
       "errors": {
         "rating": {
@@ -456,7 +451,7 @@
   },
   "SettingsAccountPage": {
     "delete": {
-      "button": "Delete account",
+      "button": "Delete",
       "label": "Delete account"
     },
     "description": "Manage your account settings and privacy.",
@@ -535,10 +530,8 @@
     "dashboard": "Dashboard",
     "items": {
       "preferences": {
-        "language": {
-        },
-        "theme": {
-        }
+        "language": {},
+        "theme": {}
       }
     },
     "settings": "Settings"

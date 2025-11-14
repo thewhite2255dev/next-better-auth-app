@@ -67,34 +67,24 @@
       "cancel": "Annuler",
       "submit": "Envoyer"
     },
-    "category": {
-    },
+    "category": {},
     "description": "Aidez-nous à améliorer degni-kit ! Vos retours sont précieux pour la communauté.",
-    "email": {
-    },
-    "errors": {
-    },
-    "feedback": {
-    },
-    "rating": {
-    },
+    "email": {},
+    "errors": {},
+    "feedback": {},
+    "rating": {},
     "success": "Merci pour votre retour ! 🎉",
     "title": "Partagez votre avis",
     "trigger": "Feedback"
   },
   "FeedbackForm": {
     "category": {
-      "options": {
-      }
+      "options": {}
     },
-    "email": {
-    },
-    "message": {
-    },
-    "name": {
-    },
-    "rating": {
-    }
+    "email": {},
+    "message": {},
+    "name": {},
+    "rating": {}
   },
   "Form": {
     "admin": {
@@ -111,13 +101,15 @@
         "markRejected": "Marquer comme rejeté",
         "markResolved": "Marquer comme résolu",
         "toast": {
-          "deleteFailed": "Échec de la suppression du feedback",
           "deleted": "Feedback supprimé avec succès",
-          "statusUpdateFailed": "Échec de la mise à jour du statut",
           "statusUpdated": "Statut mis à jour : {status}"
         }
       },
       "categories": {
+        "bug": "Bugs",
+        "feature": "Fonctionnalités",
+        "improvement": "Améliorations",
+        "other": "Autre",
         "title": "Feedbacks par catégorie"
       },
       "stats": {
@@ -213,8 +205,7 @@
         "minLength": "Le mot de passe doit contenir au moins {minLength} caractères.",
         "required": "Le mot de passe est requis."
       },
-      "rating": {
-      },
+      "rating": {},
       "token": {
         "invalid": "Le lien est invalide ou a expiré."
       },
@@ -223,6 +214,10 @@
     },
     "feedback": {
       "category": {
+        "bug": "Bug",
+        "feature": "Nouvelle fonctionnalité",
+        "improvement": "Amélioration",
+        "other": "Autre"
       },
       "errors": {
         "rating": {
@@ -456,8 +451,8 @@
   },
   "SettingsAccountPage": {
     "delete": {
-      "button": "Supprimer le compte",
-      "label": "Supprimer votre compte"
+      "button": "Supprimer",
+      "label": "Supprimer le compte"
     },
     "description": "Gérez les paramètres et la confidentialité de votre compte.",
     "title": "Compte"
@@ -535,10 +530,8 @@
     "dashboard": "Tableau de bord",
     "items": {
       "preferences": {
-        "language": {
-        },
-        "theme": {
-        }
+        "language": {},
+        "theme": {}
       }
     },
     "settings": "Paramètres"

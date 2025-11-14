@@ -84,9 +84,9 @@ export function Header() {
             href={DEFAULT_HOME_REDIRECT}
             className="group flex items-center gap-2"
           >
-            <div className="relative flex h-8 w-8 items-center justify-center rounded-md bg-linear-to-br from-blue-500 to-purple-600 shadow-lg transition-all group-hover:shadow-xl group-hover:shadow-purple-500/50">
+            <div className="relative flex h-8 w-8 items-center justify-center rounded-md bg-linear-to-br from-blue-500 to-purple-600">
               <Sparkles className="h-5 w-5 text-white" />
-              <div className="absolute inset-0 rounded-xl bg-white/20 opacity-0 transition-opacity group-hover:opacity-100" />
+              <div className="absolute inset-0 rounded-xl bg-white/20 opacity-0 group-hover:opacity-100" />
             </div>
             <span className="bg-linear-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-xl font-bold text-transparent">
               {siteConfig.siteName}
@@ -99,7 +99,7 @@ export function Header() {
               key={item.href}
               href={item.href}
               className={cn(
-                "text-foreground/70 hover:text-foreground transition-colors",
+                "text-foreground/70 hover:text-foreground",
                 pathname === item.href && "text-foreground font-semibold",
               )}
               data-prevent-nprogress={true}

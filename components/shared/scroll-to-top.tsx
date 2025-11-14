@@ -30,7 +30,7 @@ export function ScrollToTop() {
       onClick={scrollToTop}
       variant="outline"
       className={cn(
-        "fixed right-4 bottom-4 z-50 opacity-0 shadow-md transition-opacity duration-300 ease-in-out",
+        "fixed right-4 bottom-4 z-50 opacity-0 duration-300 ease-in-out",
         showTopBtn
           ? "opacity-100"
           : "pointer-events-none cursor-default opacity-0",

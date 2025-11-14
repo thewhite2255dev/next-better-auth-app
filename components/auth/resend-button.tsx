@@ -64,7 +64,7 @@ export function ResendButton({
       type="button"
       variant={countdown > 0 ? null : variant}
       className={cn(
-        "w-full transition-colors",
+        "w-full",
         countdown > 0 ? "bg-muted/50 text-muted-foreground" : "",
       )}
       disabled={countdown > 0 || isLoading}
