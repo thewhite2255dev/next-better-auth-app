@@ -1,8 +1,9 @@
-export const SiteConfig = {
-  name: "Degni Kit",
-  title: "Degni Kit - Starter Kit d'Authentification Next.js",
-  description:
-    "Kit de démarrage moderne avec authentification complète, i18n, et UI élégante. Créé par Degni Beugre Israël.",
+import { SiteConfigFR } from "./site-config.fr";
+import { SiteConfigEN } from "./site-config.en";
+
+// Constantes communes (ne changent pas selon la langue)
+export const SiteConfigCommon = {
+  siteName: "Degni Kit",
   url: "https://degni-kit.vercel.app",
   author: {
     name: "Degni Beugre Israël",
@@ -52,15 +53,19 @@ export const SiteConfig = {
     "Vercel Deployment",
     "Production Ready",
   ],
-  features: [
-    "🔐 Authentification complète (Email/Password, OAuth, 2FA)",
-    "🌍 Multilingue (FR/EN) avec next-intl",
-    "🎨 Mode sombre/clair",
-    "⚡ Server-Side Rendering (SSR)",
-    "🛡️ Sécurité renforcée",
-    "📱 Design responsive",
-    "🚀 Prêt pour la production",
-  ],
 } as const;
 
-export type SiteConfig = typeof SiteConfig;
+// Helper pour obtenir la config selon la locale
+export function getSiteConfig(locale: string = "fr") {
+  const localeConfig = locale === "en" ? SiteConfigEN : SiteConfigFR;
+
+  return {
+    ...SiteConfigCommon,
+    ...localeConfig,
+  };
+}
+
+// Config par défaut (FR)
+export const SiteConfig = getSiteConfig("fr");
+
+export type SiteConfig = ReturnType<typeof getSiteConfig>;

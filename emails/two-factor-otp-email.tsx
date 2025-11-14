@@ -33,7 +33,7 @@ export default function TwoFactorOTPEmail({
             {/* Header */}
             <Section className="mb-8 text-center">
               <Heading className="m-0 mb-2 text-2xl font-bold text-gray-900">
-                {SiteConfig.name}
+                {SiteConfig.siteName}
               </Heading>
               <Text className="m-0 text-sm text-gray-500">
                 Security notification
@@ -50,8 +50,9 @@ export default function TwoFactorOTPEmail({
 
             <Text className="mb-6 text-base leading-relaxed text-gray-700">
               You&apos;re receiving this email because you (or someone)
-              attempted to sign in to your <strong>{SiteConfig.name}</strong>{" "}
-              account. Enter the verification code below to complete your login:
+              attempted to sign in to your{" "}
+              <strong>{SiteConfig.siteName}</strong> account. Enter the
+              verification code below to complete your login:
             </Text>
 
             {/* OTP Code Box */}
@@ -97,7 +98,7 @@ export default function TwoFactorOTPEmail({
             <Text className="mb-4 text-sm leading-relaxed text-gray-600">
               <strong>Pro Tip:</strong> Two-factor authentication adds an extra
               layer of security to your account. Never share your verification
-              codes with anyone, including {SiteConfig.name} team members.
+              codes with anyone, including {SiteConfig.siteName} team members.
             </Text>
 
             <Hr className="my-8 border-gray-200" />
@@ -105,10 +106,10 @@ export default function TwoFactorOTPEmail({
             {/* Footer */}
             <Text className="text-center text-xs leading-relaxed text-gray-400">
               This email was sent to <strong>{email}</strong> because a sign-in
-              attempt was made on your {SiteConfig.name} account.
+              attempt was made on your {SiteConfig.siteName} account.
             </Text>
             <Text className="mt-4 text-center text-xs text-gray-400">
-              © {year} {SiteConfig.name} · Open Source · MIT License
+              © {year} {SiteConfig.siteName} · Open Source · MIT License
             </Text>
             <Text className="mt-2 text-center text-xs text-gray-400">
               Built with ❤️ by {SiteConfig.author.name}

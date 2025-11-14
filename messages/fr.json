@@ -456,8 +456,8 @@
   },
   "SettingsAccountPage": {
     "delete": {
-      "button": "Supprimer",
-      "label": "Supprimer le compte"
+      "button": "Supprimer le compte",
+      "label": "Supprimer votre compte"
     },
     "description": "Gérez les paramètres et la confidentialité de votre compte.",
     "title": "Compte"

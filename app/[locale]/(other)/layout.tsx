@@ -4,10 +4,13 @@ import { LanguageSwitcher } from "@/components/shared/language-switcher";
 import { ThemeSwitcher } from "@/components/shared/theme-switcher";
 import { Link } from "@/i18n/navigation";
 import { DEFAULT_HOME_REDIRECT } from "@/lib/redirect-config";
-import { SiteConfig } from "@/lib/site-config";
+import { getSiteConfig } from "@/lib/site-config";
 import { Sparkles } from "lucide-react";
+import { useLocale } from "next-intl";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
+  const locale = useLocale();
+  const siteConfig = getSiteConfig(locale);
   return (
     <div className="relative flex min-h-screen flex-col">
       {/* Animated Background */}
@@ -30,7 +33,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                 <div className="absolute inset-0 rounded-xl bg-white/20 opacity-0 transition-opacity group-hover:opacity-100" />
               </div>
               <span className="bg-linear-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-xl font-bold text-transparent">
-                {SiteConfig.name}
+                {siteConfig.siteName}
               </span>
             </Link>
           </div>

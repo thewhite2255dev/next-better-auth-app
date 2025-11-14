@@ -456,7 +456,7 @@
   },
   "SettingsAccountPage": {
     "delete": {
-      "button": "Delete",
+      "button": "Delete account",
       "label": "Delete account"
     },
     "description": "Manage your account settings and privacy.",

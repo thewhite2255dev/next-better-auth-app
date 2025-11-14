@@ -79,7 +79,7 @@ export default function FeedbackEmail({
             {/* Header */}
             <Section className="mb-8 text-center">
               <Heading className="m-0 mb-2 text-2xl font-bold text-gray-900">
-                {SiteConfig.name}
+                {SiteConfig.siteName}
               </Heading>
               <Text className="m-0 text-sm text-gray-500">
                 Community Feedback
@@ -225,10 +225,10 @@ export default function FeedbackEmail({
             {/* Footer */}
             <Text className="m-0 mb-2 text-center text-xs text-gray-400">
               This feedback was submitted through the {""}
-              <strong>{SiteConfig.name}</strong> feedback form.
+              <strong>{SiteConfig.siteName}</strong> feedback form.
             </Text>
             <Text className="m-0 mb-2 text-center text-xs text-gray-400">
-              © {year} {SiteConfig.name} · Open Source · MIT License
+              © {year} {SiteConfig.siteName} · Open Source · MIT License
             </Text>
             <Text className="m-0 text-center text-xs text-gray-400">
               Built with ❤️ by {SiteConfig.author.name}

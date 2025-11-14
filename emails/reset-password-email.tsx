@@ -36,7 +36,7 @@ export default function ResetPasswordEmail({
             {/* Header */}
             <Section className="mb-8 text-center">
               <Heading className="m-0 mb-2 text-2xl font-bold text-gray-900">
-                {SiteConfig.name}
+                {SiteConfig.siteName}
               </Heading>
               <Text className="m-0 text-sm text-gray-500">
                 Production-ready Next.js starter kit
@@ -53,8 +53,8 @@ export default function ResetPasswordEmail({
 
             <Text className="mb-6 text-base leading-relaxed text-gray-700">
               We received a request to reset your password for your{" "}
-              <strong>{SiteConfig.name}</strong> account. Click the button below
-              to create a new password:
+              <strong>{SiteConfig.siteName}</strong> account. Click the button
+              below to create a new password:
             </Text>
 
             <Section className="my-8 text-center">
@@ -111,10 +111,10 @@ export default function ResetPasswordEmail({
             {/* Footer */}
             <Text className="text-center text-xs leading-relaxed text-gray-400">
               This email was sent to <strong>{email}</strong> because a password
-              reset was requested for your {SiteConfig.name} account.
+              reset was requested for your {SiteConfig.siteName} account.
             </Text>
             <Text className="mt-4 text-center text-xs text-gray-400">
-              © {year} {SiteConfig.name} · Open Source · MIT License
+              © {year} {SiteConfig.siteName} · Open Source · MIT License
             </Text>
             <Text className="mt-2 text-center text-xs text-gray-400">
               Built with ❤️ by {SiteConfig.author.name}

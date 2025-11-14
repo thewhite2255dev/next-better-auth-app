@@ -19,11 +19,11 @@ import {
 import { Spinner } from "@/components/ui/spinner";
 import { Label } from "@/components/ui/label";
 import { Download } from "lucide-react";
-import { SiteConfig } from "@/lib/site-config";
+import { getSiteConfig } from "@/lib/site-config";
 import { useEffect, useState, useTransition } from "react";
 import { useRouter } from "@/i18n/navigation";
 import { authClient } from "@/lib/auth-client";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import type { TwoFactorData } from "./authentication-form";
 
 interface TotpSetupDialogProps {
@@ -46,6 +46,8 @@ export function TotpSetupDialog({
   onResetStates,
 }: TotpSetupDialogProps) {
   const t = useTranslations();
+  const locale = useLocale();
+  const siteConfig = getSiteConfig(locale);
   const router = useRouter();
   const { refetch } = authClient.useSession();
 
@@ -135,7 +137,7 @@ export function TotpSetupDialog({
                 variant="outline"
                 onClick={() => {
                   downloadTxtFile(
-                    `${SiteConfig.title} backup codes`.replaceAll(" ", "-"),
+                    `${siteConfig.siteName} backup codes`.replaceAll(" ", "-"),
                     twoFactorData?.backupCodes,
                   );
                 }}

@@ -85,5 +85,5 @@ export const auth = betterAuth({
       },
     }),
   ],
-  appName: SiteConfig.title,
+  appName: SiteConfig.siteName,
 });

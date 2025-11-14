@@ -5,7 +5,7 @@ import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
 import { getMessages } from "next-intl/server";
-import { SiteConfig } from "@/lib/site-config";
+import { getSiteConfig } from "@/lib/site-config";
 import { Providers } from "@/components/shared/providers";
 
 const inter = localFont({
@@ -14,42 +14,53 @@ const inter = localFont({
   weight: "100 900",
 });
 
-export const metadata: Metadata = {
-  title: {
-    template: `%s | ${SiteConfig.name}`,
-    default: SiteConfig.title,
-  },
-  description: SiteConfig.description,
-  authors: [{ name: SiteConfig.author.name, url: SiteConfig.author.githubUrl }],
-  keywords: [...SiteConfig.keywords],
-  creator: SiteConfig.author.name,
-  openGraph: {
-    type: "website",
-    locale: "fr_FR",
-    alternateLocale: ["en_US"],
-    url: SiteConfig.url,
-    title: SiteConfig.title,
-    description: SiteConfig.description,
-    siteName: SiteConfig.name,
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: SiteConfig.title,
-    description: SiteConfig.description,
-    creator: `@${SiteConfig.author.name.replace(/\s+/g, "")}`,
-  },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const siteConfig = getSiteConfig(locale);
+
+  return {
+    title: {
+      template: `%s | ${siteConfig.siteName}`,
+      default: siteConfig.title,
+    },
+    description: siteConfig.description,
+    authors: [
+      { name: siteConfig.author.name, url: siteConfig.author.githubUrl },
+    ],
+    keywords: [...siteConfig.keywords],
+    creator: siteConfig.author.name,
+    openGraph: {
+      type: "website",
+      locale: locale === "fr" ? "fr_FR" : "en_US",
+      alternateLocale: locale === "fr" ? ["en_US"] : ["fr_FR"],
+      url: siteConfig.url,
+      title: siteConfig.title,
+      description: siteConfig.description,
+      siteName: siteConfig.siteName,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: siteConfig.title,
+      description: siteConfig.description,
+      creator: `@${siteConfig.author.name.replace(/\s+/g, "")}`,
+    },
+    robots: {
       index: true,
       follow: true,
-      "max-video-preview": -1,
-      "max-image-preview": "large",
-      "max-snippet": -1,
+      googleBot: {
+        index: true,
+        follow: true,
+        "max-video-preview": -1,
+        "max-image-preview": "large",
+        "max-snippet": -1,
+      },
     },
-  },
-};
+  };
+}
 
 export default async function RootLayout({
   children,

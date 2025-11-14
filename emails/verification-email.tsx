@@ -36,7 +36,7 @@ export default function VerificationEmail({
             {/* Header */}
             <Section className="mb-8 text-center">
               <Heading className="m-0 mb-2 text-2xl font-bold text-gray-900">
-                {SiteConfig.name}
+                {SiteConfig.siteName}
               </Heading>
               <Text className="m-0 text-sm text-gray-500">
                 Welcome to our community
@@ -48,7 +48,7 @@ export default function VerificationEmail({
             </Heading>
 
             <Text className="mb-4 text-base leading-relaxed text-gray-700">
-              Welcome to <strong>{SiteConfig.name}</strong>! 👋
+              Welcome to <strong>{SiteConfig.siteName}</strong>! 👋
             </Text>
 
             <Text className="mb-6 text-base leading-relaxed text-gray-700">
@@ -105,10 +105,10 @@ export default function VerificationEmail({
             {/* Footer */}
             <Text className="text-center text-xs leading-relaxed text-gray-400">
               This email was sent to <strong>{email}</strong> because an account
-              was created on {SiteConfig.name}.
+              was created on {SiteConfig.siteName}.
             </Text>
             <Text className="mt-4 text-center text-xs text-gray-400">
-              © {year} {SiteConfig.name} · Open Source · MIT License
+              © {year} {SiteConfig.siteName} · Open Source · MIT License
             </Text>
             <Text className="mt-2 text-center text-xs text-gray-400">
               Built with ❤️ by {SiteConfig.author.name}

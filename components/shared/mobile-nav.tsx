@@ -20,7 +20,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Monitor, Moon, Sun, Menu, Sparkles, LogIn } from "lucide-react";
-import { SiteConfig } from "@/lib/site-config";
+import { getSiteConfig } from "@/lib/site-config";
 import { usePathname } from "@/i18n/navigation";
 import { cn } from "@/lib/utils";
 import type { navItemsType } from "./header";
@@ -42,6 +42,7 @@ export function MobileNav({ navItems }: MobileNavProps) {
   const [open, setOpen] = useState<boolean>(false);
   const changeLocale = useChangeLocale();
   const locale = useLocale();
+  const siteConfig = getSiteConfig(locale);
   const { theme, setTheme } = useTheme();
   const pathname = usePathname();
   const t = useTranslations();
@@ -68,7 +69,7 @@ export function MobileNav({ navItems }: MobileNavProps) {
   }, []);
 
   if (!mounted) {
-    return null;
+    return <Skeleton className="h-8 w-8 rounded-md" />;
   }
 
   return (
@@ -98,37 +99,14 @@ export function MobileNav({ navItems }: MobileNavProps) {
                 <div className="absolute inset-0 rounded-xl bg-white/20 opacity-0 transition-opacity group-hover:opacity-100" />
               </div>
               <span className="bg-linear-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-xl font-bold text-transparent">
-                {SiteConfig.name}
+                {siteConfig.siteName}
               </span>
             </Link>
           </SheetTitle>
         </SheetHeader>
 
-        {/* Navigation Links */}
-        {navItems.length > 0 && (
-          <nav className="mt-6 flex flex-col gap-2 px-2">
-            {navItems.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                onClick={() => setOpen(false)}
-                className={cn(
-                  "text-muted-foreground hover:text-foreground hover:bg-accent flex items-center rounded-lg px-2 py-3 text-base font-medium transition-all",
-                  {
-                    "text-foreground bg-accent font-semibold":
-                      pathname === item.href,
-                  },
-                )}
-              >
-                {item.label}
-              </Link>
-            ))}
-          </nav>
-        )}
-
         <div className="flex flex-col gap-4 px-4">
           <FeedbackDialog />
-
           <div className="flex items-center justify-between">
             <Label>{t("SettingsPreferencesPage.theme")}</Label>
             <Select value={theme ?? undefined} onValueChange={setTheme}>
@@ -176,12 +154,36 @@ export function MobileNav({ navItems }: MobileNavProps) {
           </div>
         </div>
 
+        {/* Navigation Links */}
+        {navItems.length > 0 && (
+          <nav className="flex flex-col gap-2 px-2">
+            {navItems.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                onClick={() => setOpen(false)}
+                className={cn(
+                  "text-muted-foreground hover:text-foreground hover:bg-accent flex items-center rounded-md px-2 py-2 text-base font-medium transition-all",
+                  {
+                    "text-foreground bg-accent font-semibold":
+                      pathname === item.href,
+                  },
+                )}
+              >
+                {item.label}
+              </Link>
+            ))}
+          </nav>
+        )}
+
         {/* User Section */}
-        <div className="mt-auto flex flex-col gap-4 px-4">
+        <div className="mt-auto flex flex-col gap-4">
           {isPending ? (
-            <Skeleton className="h-10 w-full rounded-lg" />
+            <Skeleton className="h-10 w-full rounded-md" />
           ) : session?.user ? (
-            <UserButton closeMobileNav={() => setOpen(false)} />
+            <div className="px-2">
+              <UserButton closeMobileNav={() => setOpen(false)} />
+            </div>
           ) : (
             <Button
               variant="default"
@@ -200,18 +202,18 @@ export function MobileNav({ navItems }: MobileNavProps) {
             <p className="mb-2">
               {t("Home.footer.builtWith")}{" "}
               <a
-                href={SiteConfig.author.githubUrl}
+                href={siteConfig.author.githubUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hover:text-foreground font-medium"
               >
-                {SiteConfig.author.name}
+                {siteConfig.author.name}
               </a>{" "}
               {t("Home.footer.openSourceCommunity")}
             </p>
             <p>
               {t("Home.footer.licensedUnder")} · {new Date().getFullYear()}{" "}
-              {SiteConfig.name}
+              {siteConfig.siteName}
             </p>
           </div>
         </div>

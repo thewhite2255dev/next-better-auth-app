@@ -11,7 +11,7 @@ const SMTP_USER = process.env.SMTP_USER!;
 
 export const sendTwoFactorOTPEmail = async (email: string, token: string) => {
   await sendEmail({
-    from: `"${SiteConfig.title}" <${SMTP_USER}>`,
+    from: `"${SiteConfig.siteName}" <${SMTP_USER}>`,
     to: email,
     subject: "Votre code de vérification 2FA",
     react: TwoFactorOTPEmail({ token, email }),
@@ -20,7 +20,7 @@ export const sendTwoFactorOTPEmail = async (email: string, token: string) => {
 
 export const sendResetPasswordEmail = async (email: string, token: string) => {
   await sendEmail({
-    from: `"${SiteConfig.title}" <${SMTP_USER}>`,
+    from: `"${SiteConfig.siteName}" <${SMTP_USER}>`,
     to: email,
     subject: "Réinitialisez votre mot de passe",
     react: ResetPasswordEmail({ token, email }),
@@ -29,7 +29,7 @@ export const sendResetPasswordEmail = async (email: string, token: string) => {
 
 export const sendVerificationEmail = async (email: string, token: string) => {
   await sendEmail({
-    from: `"${SiteConfig.title}" <${SMTP_USER}>`,
+    from: `"${SiteConfig.siteName}" <${SMTP_USER}>`,
     to: email,
     subject: "Vérifiez votre adresse e-mail",
     react: VerificationEmail({ token, email }),
@@ -44,7 +44,7 @@ export const sendFeedbackEmail = async (
   averageRating: number,
 ) => {
   await sendEmail({
-    from: `"${SiteConfig.title}" <${SMTP_USER}>`,
+    from: `"${SiteConfig.siteName}" <${SMTP_USER}>`,
     to: SMTP_USER,
     subject: "New user feedback received",
     replyTo: userEmail ?? "",

@@ -182,13 +182,17 @@ export default function DeleteAccountDialog({
               </div>
               <FormError message={error} />
               <FormSuccess message={success} />
-              <div className="flex justify-between">
+              <div className="flex items-center justify-end gap-2">
                 <AlertDialogCancel onClick={() => form.reset()} asChild>
                   <Button type="button" variant="outline" disabled={isPending}>
                     {t("Form.deleteAccount.buttons.cancel")}
                   </Button>
                 </AlertDialogCancel>
-                <Button type="submit" disabled={isPending}>
+                <Button
+                  variant="destructive"
+                  type="submit"
+                  disabled={isPending}
+                >
                   {isPending ? (
                     <Spinner />
                   ) : (

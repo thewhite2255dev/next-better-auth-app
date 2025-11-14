@@ -40,7 +40,7 @@ export async function sendEmail({
     });
 
     const info = await transporter.sendMail({
-      from: from || `"${SiteConfig.title}" ${SMTP_FROM}`,
+      from: from || `"${SiteConfig.siteName}" ${SMTP_FROM}`,
       to: Array.isArray(to) ? to.join(", ") : to,
       subject,
       html,

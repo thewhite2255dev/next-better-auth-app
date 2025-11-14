@@ -4,7 +4,6 @@ import { Link } from "@/i18n/navigation";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { SiteConfig } from "@/lib/site-config";
 import {
   Zap,
   Shield,
@@ -18,6 +17,7 @@ import {
   Code2,
   Scale,
 } from "lucide-react";
+import { getSiteConfig } from "@/lib/site-config";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations("Home");
@@ -28,8 +28,14 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 
-export default async function Home() {
+export default async function Home({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
   const t = await getTranslations("Home");
+  const { locale } = await params;
+  const siteConfig = getSiteConfig(locale);
 
   const features = [
     {
@@ -230,7 +236,7 @@ export default async function Home() {
                 asChild
               >
                 <a
-                  href={SiteConfig.links.github}
+                  href={siteConfig.links.github}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -254,10 +260,12 @@ export default async function Home() {
                   <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-linear-to-br from-blue-500 to-purple-600">
                     <Sparkles className="h-5 w-5 text-white" />
                   </div>
-                  <span className="text-xl font-bold">{SiteConfig.name}</span>
+                  <span className="text-xl font-bold">
+                    {siteConfig.siteName}
+                  </span>
                 </div>
                 <p className="text-muted-foreground text-sm">
-                  {SiteConfig.description}
+                  {siteConfig.description}
                 </p>
                 <div className="flex items-center gap-2">
                   <Badge variant="secondary" className="text-xs">
@@ -277,7 +285,7 @@ export default async function Home() {
                 <ul className="text-muted-foreground space-y-2 text-sm">
                   <li>
                     <a
-                      href={SiteConfig.links.github}
+                      href={siteConfig.links.github}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="hover:text-foreground flex items-center gap-2 transition-colors"
@@ -288,7 +296,7 @@ export default async function Home() {
                   </li>
                   <li>
                     <a
-                      href={`${SiteConfig.links.github}/issues`}
+                      href={`${siteConfig.links.github}/issues`}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="hover:text-foreground transition-colors"
@@ -298,7 +306,7 @@ export default async function Home() {
                   </li>
                   <li>
                     <a
-                      href={`${SiteConfig.links.github}/discussions`}
+                      href={`${siteConfig.links.github}/discussions`}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="hover:text-foreground transition-colors"
@@ -317,7 +325,7 @@ export default async function Home() {
                 <ul className="text-muted-foreground space-y-2 text-sm">
                   <li>
                     <a
-                      href={`${SiteConfig.links.github}/issues/new`}
+                      href={`${siteConfig.links.github}/issues/new`}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="hover:text-foreground transition-colors"
@@ -327,7 +335,7 @@ export default async function Home() {
                   </li>
                   <li>
                     <a
-                      href={`${SiteConfig.links.github}/pulls`}
+                      href={`${siteConfig.links.github}/pulls`}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="hover:text-foreground transition-colors"
@@ -337,7 +345,7 @@ export default async function Home() {
                   </li>
                   <li>
                     <a
-                      href={`${SiteConfig.links.github}/blob/main/CONTRIBUTING.md`}
+                      href={`${siteConfig.links.github}/blob/main/CONTRIBUTING.md`}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="hover:text-foreground transition-colors"
@@ -356,7 +364,7 @@ export default async function Home() {
                 <ul className="text-muted-foreground space-y-2 text-sm">
                   <li>
                     <a
-                      href={`${SiteConfig.links.github}/releases`}
+                      href={`${siteConfig.links.github}/releases`}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="hover:text-foreground transition-colors"
@@ -366,7 +374,7 @@ export default async function Home() {
                   </li>
                   <li>
                     <a
-                      href={`${SiteConfig.links.github}/blob/main/CHANGELOG.md`}
+                      href={`${siteConfig.links.github}/blob/main/CHANGELOG.md`}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="hover:text-foreground transition-colors"
@@ -376,7 +384,7 @@ export default async function Home() {
                   </li>
                   <li>
                     <a
-                      href={`${SiteConfig.links.github}/blob/main/LICENSE`}
+                      href={`${siteConfig.links.github}/blob/main/LICENSE`}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="hover:text-foreground transition-colors"
@@ -392,18 +400,18 @@ export default async function Home() {
               <p className="mb-2">
                 {t("footer.builtWith")}{" "}
                 <a
-                  href={SiteConfig.author.githubUrl}
+                  href={siteConfig.author.githubUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="hover:text-foreground font-medium"
                 >
-                  {SiteConfig.author.name}
+                  {siteConfig.author.name}
                 </a>{" "}
                 {t("footer.openSourceCommunity")}
               </p>
               <p>
                 {t("footer.licensedUnder")} · {new Date().getFullYear()}{" "}
-                {SiteConfig.name}
+                {siteConfig.siteName}
               </p>
             </div>
           </div>
