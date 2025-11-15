@@ -15,7 +15,6 @@
     "auth:generate": "pnpm dlx @better-auth/cli@latest generate --config ./lib/auth.ts --output ./prisma/new-schema.prisma --yes",
     "start": "next start",
     "lint": "eslint",
-    "postinstall": "prisma generate",
     "typecheck": "tsc -noEmit",
     "format": "prettier --write ."
   },

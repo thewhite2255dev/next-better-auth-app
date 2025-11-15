@@ -20,6 +20,8 @@
 - 🌓 **Mode sombre** - Thème clair/sombre avec transition fluide
 - ⚡ **Performance** - SSR, Turbopack, optimisations et meilleures pratiques Next.js 16
 - 🔄 **Gestion des sessions** - Visualisation et révocation des sessions actives
+- 💬 **Système de feedback** - Collection et gestion des retours utilisateurs
+- 👨‍💼 **Panel administrateur** - Gestion des feedbacks avec filtres et actions
 
 ---
 
@@ -142,14 +144,23 @@ degni-kit/
 │   │   │   └── settings/         # Paramètres du compte
 │   │   ├── (public)/             # Routes publiques
 │   │   │   └── page.tsx          # Page d'accueil
-│   │   └── (auth)/     # Routes sans header
-│   │       └── auth/             # Pages d'authentification
+│   │   └── (other)/              # Routes avec layout alternatif (auth, reset, verify)
+│   │       ├── auth/             # Pages d'authentification
+│   │       ├── reset-password/   # Réinitialisation de mot de passe
+│   │       └── verify-email/     # Vérification d'email
 │   └── api/                      # API Routes
 │       └── auth/                 # Endpoints Better Auth
+├── actions/                      # Server Actions
+│   ├── admin/                    # Actions administrateur
+│   ├── auth/                     # Actions d'authentification
+│   ├── settings/                 # Actions de paramètres
+│   └── feedback.ts               # Actions de feedback
 ├── components/                   # Composants React
+│   ├── admin/                    # Composants administrateur
 │   ├── auth/                     # Composants d'authentification
-│   ├── shared/                   # Composants partagés
+│   ├── react-email/              # Templates d'email
 │   ├── settings/                 # Composants de paramètres
+│   ├── shared/                   # Composants partagés
 │   └── ui/                       # shadcn/ui components
 ├── lib/                          # Utilitaires et configurations
 │   ├── auth.ts                   # Configuration Better Auth
@@ -194,6 +205,14 @@ degni-kit/
 - ✅ Gestion des préférences
 - ✅ Suppression du compte
 
+### Fonctionnalités additionnelles
+
+- ✅ Système de feedback utilisateur
+- ✅ Panel administrateur pour gérer les feedbacks
+- ✅ Filtres et recherche avancée
+- ✅ Envoi d'emails de notification
+- ✅ Navigation responsive avec menu mobile
+
 ---
 
 ## 🌍 Internationalisation
@@ -232,12 +251,159 @@ Modifier les couleurs dans `app/globals.css` :
 
 ### Configuration du site
 
-Modifier `lib/site-config.ts` pour personnaliser :
+Le projet utilise un système de configuration modulaire en trois fichiers :
 
-- Nom et description
-- URLs et liens
-- Métadonnées SEO
-- Fonctionnalités
+#### 📁 Structure des fichiers
+
+- **`lib/site-config.ts`** - Configuration principale et constantes communes
+- **`lib/site-config.fr.ts`** - Traductions françaises
+- **`lib/site-config.en.ts`** - Traductions anglaises
+
+#### 🔧 Configuration commune (`site-config.ts`)
+
+Modifiez les constantes qui ne changent pas selon la langue :
+
+```typescript
+export const SiteConfigCommon = {
+  siteName: "Votre App",          // Nom de l'application
+  url: "https://votreapp.com",     // URL de production
+  author: {
+    name: "Votre Nom",
+    githubUrl: "https://github.com/votre-profil",
+  },
+  links: {
+    github: "https://github.com/votre-profil/votre-repo",
+  },
+  keywords: [
+    // Ajoutez vos mots-clés pour le SEO
+    "Votre App",
+    "Next.js",
+    // ...
+  ],
+};
+```
+
+#### 🇫🇷 Configuration française (`site-config.fr.ts`)
+
+Personnalisez le contenu en français :
+
+```typescript
+export const SiteConfigFR = {
+  title: "Votre App - Titre SEO en français",
+  description: "Description de votre application en français",
+  features: [
+    "🔐 Fonctionnalité 1",
+    "🌍 Fonctionnalité 2",
+    // ...
+  ],
+};
+```
+
+#### 🇬🇧 Configuration anglaise (`site-config.en.ts`)
+
+Personnalisez le contenu en anglais :
+
+```typescript
+export const SiteConfigEN = {
+  title: "Your App - SEO Title in English",
+  description: "Your application description in English",
+  features: [
+    "🔐 Feature 1",
+    "🌍 Feature 2",
+    // ...
+  ],
+};
+```
+
+#### 💡 Utilisation dans votre code
+
+**Dans un Server Component :**
+
+```typescript
+import { getSiteConfig } from "@/lib/site-config";
+
+export default async function Page({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  const siteConfig = getSiteConfig(locale);
+
+  return (
+    <div>
+      <h1>{siteConfig.siteName}</h1>
+      <p>{siteConfig.description}</p>
+      <a href={siteConfig.author.githubUrl}>{siteConfig.author.name}</a>
+    </div>
+  );
+}
+```
+
+**Dans un Client Component :**
+
+```typescript
+"use client";
+
+import { getSiteConfig } from "@/lib/site-config";
+import { useLocale } from "next-intl";
+
+export default function Component() {
+  const locale = useLocale();
+  const siteConfig = getSiteConfig(locale);
+
+  return <h1>{siteConfig.title}</h1>;
+}
+```
+
+**Pour les métadonnées SEO :**
+
+```typescript
+import { getSiteConfig } from "@/lib/site-config";
+import type { Metadata } from "next";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const siteConfig = getSiteConfig(locale);
+
+  return {
+    title: siteConfig.title,
+    description: siteConfig.description,
+    keywords: siteConfig.keywords,
+    authors: [
+      { name: siteConfig.author.name, url: siteConfig.author.githubUrl },
+    ],
+    openGraph: {
+      title: siteConfig.title,
+      description: siteConfig.description,
+      url: siteConfig.url,
+    },
+  };
+}
+```
+
+**Dans les emails :**
+
+```typescript
+import { SiteConfig } from "@/lib/site-config";
+
+// Utilise la configuration par défaut (FR)
+<Text>
+  Bienvenue sur {SiteConfig.siteName}
+</Text>
+```
+
+#### ✨ Avantages de cette approche
+
+- ✅ **Séparation des préoccupations** - Configuration commune vs traductions
+- ✅ **Type-safe** - TypeScript garantit la cohérence
+- ✅ **i18n intégré** - Contenu adapté automatiquement selon la langue
+- ✅ **SEO optimisé** - Métadonnées multilingues
+- ✅ **Maintenance facile** - Un seul endroit pour chaque type de config
 
 ---
 
@@ -250,14 +416,20 @@ pnpm build            # Build de production
 pnpm start            # Lancer le serveur de production
 
 # Base de données
-pnpm db:push      # Pousser le schema vers la DB
-pnpm db:generate  # Générer le client Prisma
-pnpm db:studio    # Ouvrir Prisma Studio
+pnpm db:push          # Pousser le schema vers la DB
+pnpm db:generate      # Générer le client Prisma
+pnpm db:studio        # Ouvrir Prisma Studio
+
+# Better Auth
+pnpm auth:generate    # Générer le schéma Prisma depuis Better Auth
 
 # Qualité de code
 pnpm lint             # Linter le code
 pnpm typecheck        # Vérifier les types TypeScript
 pnpm format           # Format tout le projet avec Prettier
+
+# Routes
+pnpm generate-routes  # Générer les routes typées (automatique avec dev/build)
 ```
 
 ---
